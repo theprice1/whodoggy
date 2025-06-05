@@ -1,0 +1,21 @@
+{
+  "name": "whodoggy-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A monorepo for Whodoggy project containing mobile, web, and backend applications.",
+  "author": "Anthony Price",
+  "license": "MIT",
+  "workspaces": [
+    "mobile",
+    "web",
+    "backend"
+  ],
+  "scripts": {
+    "start": "lerna run start --stream",
+    "build": "lerna run build --stream",
+    "test": "lerna run test --stream"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}

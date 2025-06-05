@@ -1,3 +1,13 @@
+# WhoDoggy?
+
+A mobile and web application to scan dog microchips via QR and identify owners using cross-database lookup.
+
+## Stack
+- Mobile: React Native (Expo)
+- Web: React
+- Backend: Express + PostgreSQL
+- Auth: Firebase
+
 ## 📅 Commit Log / Dev Journal
 
 ### [2025-06-05] Initial project setup
