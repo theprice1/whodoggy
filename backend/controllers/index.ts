@@ -1,1 +1,2 @@
-// Future controller logic goes here.
+import deleteDataController from '../controllers/deleteDataController';
+

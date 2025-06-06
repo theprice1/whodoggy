@@ -1,16 +1,22 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "lib": ["dom", "esnext"],
+    "target": "ES2020",
+    "module": "CommonJS",
+    "rootDir": "./",
+    "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "@shared/*": ["shared/*"]
-    }
+    "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*.ts",
+    "backend/types/express/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
+// This configuration is for a TypeScript project that compiles to modern JavaScript (ES2020) and uses CommonJS modules. It includes all TypeScript files in the project, while excluding the `node_modules` and `dist` directories. The `esModuleInterop` option allows for compatibility with CommonJS modules, and strict type checking is enabled for better code quality. The `skipLibCheck` option speeds up compilation by skipping type checks on declaration files.
+// The `forceConsistentCasingInFileNames` option ensures that file names are treated consistently across different operating systems. 
