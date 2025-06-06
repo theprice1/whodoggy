@@ -1,0 +1,33 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "types": ["nativewind/types"]
+  },
+  "include": [
+    "app.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}
+// This file is used to configure TypeScript for the mobile application.
+// It extends the base Expo TypeScript configuration and includes additional types for NativeWind.
+// The `app.d.ts` file is included to provide type definitions for the app.
+// The `**/*.ts` and `**/*.tsx` patterns ensure that all TypeScript files in the project are included in the compilation.
+// The `types` option in `compilerOptions` specifies that the types from NativeWind should be included in the compilation.
+// This setup allows for type checking and IntelliSense support in the mobile application development environment.
+// The `tsconfig.json` file is essential for TypeScript projects as it defines the compiler options and the files to be included in the compilation process.
+// It helps in maintaining type safety and provides a better development experience with features like autocompletion and error checking.
+// The configuration is tailored for a React Native project using Expo, which is a framework for building cross-platform mobile applications.
+// The use of NativeWind allows for utility-first styling in React Native applications, similar to Tailwind CSS.
+// This setup is particularly useful for developers who prefer a functional and declarative approach to styling in React Native.
+// The `tsconfig.json` file is typically located at the root of the project and is crucial for TypeScript projects to function correctly.
+// It is recommended to keep this file updated with any changes in the project's structure or dependencies to ensure smooth development and build processes.
+// The configuration can be further customized based on the project's specific needs, such as adding paths for module resolution or enabling strict type checking.
+// The `extends` property allows for easy sharing of common configurations across multiple projects or packages, promoting consistency and reducing duplication.
+// The `include` property specifies which files should be included in the TypeScript compilation, ensuring that all relevant code is type-checked and compiled correctly.
+// This file is essential for maintaining a well-structured and type-safe codebase in a React Native application using TypeScript and Expo.
+// The configuration is designed to work seamlessly with the Expo ecosystem, which provides a set of tools and services for building React Native applications.
+// The use of TypeScript in this setup enhances code quality and maintainability, making it easier to catch errors early in the development process.
+// The `tsconfig.json` file is a fundamental part of any TypeScript project, providing the necessary configuration for the TypeScript compiler to understand how to process the code.
+// It is important to keep this file in sync with the project's dependencies and development practices to ensure a smooth development experience.
+// The configuration can be further extended or modified based on the project's requirements, such as adding custom type definitions or enabling experimental features. 
