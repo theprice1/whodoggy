@@ -13,7 +13,9 @@
   "scripts": {
     "start": "lerna run start --stream",
     "build": "lerna run build --stream",
-    "test": "lerna run test --stream"
+    "test": "lerna run test --stream",
+    "filetree": "node genFiletreeAndSyncReadme.cjs",
+    "sync-readme": "node syncReadme.js"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
