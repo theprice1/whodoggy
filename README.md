@@ -87,8 +87,3 @@ BSc (Hons) Computing, Open University
 📜 License
 This project is for academic purposes and is not yet licensed for commercial use.
 """
-
-readme_path = Path("/mnt/data/README.md")
-readme_path.write_text(readme_content, encoding="utf-8")
-
-readme_path.name # Return just the filename for confirmation
