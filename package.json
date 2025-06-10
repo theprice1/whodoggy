@@ -14,7 +14,6 @@
     "start": "lerna run start --stream",
     "build": "lerna run build --stream",
     "test": "lerna run test --stream",
-    "filetree": "node genFiletreeAndSyncReadme.cjs",
     "sync-readme": "node syncReadme.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier --write ."
