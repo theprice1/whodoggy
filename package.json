@@ -20,5 +20,9 @@
   },
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "firebase": "^11.9.1"
   }
 }

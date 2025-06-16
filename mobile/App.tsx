@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StatusBar } from 'react-native';
-
+import { auth } from "./firebaseConfig";
 export default function App() {
   return (
     <View className="flex-1 items-center justify-center bg-white">
