@@ -28,6 +28,11 @@
 
 ## 🚀 Getting Started
 
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/whodoggy.git
+cd whodoggy
+
 ### 📦 Install Dependencies
 
 ```bash
@@ -43,23 +48,67 @@ cd ../web && npm install
 # backend
 cd ../backend && npm install
 
-shared/firebase.ts         # Universal config
-mobile/firebaseConfig.ts   # Mobile import
-web/firebaseConfig.ts      # Web import
+🔧 Firebase Config
+Ensure Firebase config is set up in the following files:
+
+shared/firebase.ts # Universal config
+apps/mobile/firebaseConfig.ts # Mobile import
+apps/web/firebaseConfig.ts # Web import
 
 WhoDoggy/
-├── mobile/             # React Native (Expo) app
-│   └── screens/        # Screens incl. Login
-├── web/                # React web app
-│   └── src/components/ # Login + future UI
-├── backend/            # Express API server
-├── shared/             # Shared Firebase + types/interfaces
-├── scripts/            # Mock data generators + upload tools
-├── mock-databases/     # JSON files for 22 mock registries
-├── legal/              # Legal and ethical documentation
-├── LESP/               # Legal, Ethical, Social, and Professional planning
-├── docs/               # Extra documentation
-└── README.md           # This file
+├── apps/
+│   ├── mobile/             # React Native (Expo) app
+│   │   ├── screens/        # Screens incl. Login, Scanner
+│   │   ├── components/     # Reusable UI components
+│   │   ├── services/       # Firebase, API, QR logic
+│   │   ├── hooks/          # Custom React hooks
+│   │   └── contexts/       # Global state (e.g., AuthContext)
+│   ├── web/                # React web app
+│   │   ├── src/components/ # Login + shared UI
+│   │   ├── src/pages/      # Route-based views
+│   │   ├── src/hooks/      # Custom hooks
+│   │   ├── src/contexts/   # Context providers
+│   │   ├── src/types/      # TypeScript interfaces
+│   │   └── src/config/     # Firebase, API config
+│   └── backend/            # Express API server
+│       ├── controllers/    # Route logic
+│       ├── routes/         # API endpoints
+│       ├── middleware/     # Auth, error handling
+│       ├── mock-apis/      # Simulated registries
+│       ├── jobs/           # Background tasks
+│       └── tests/          # Unit/integration tests
+├── packages/
+│   ├── ui/                 # Shared UI components
+│   ├── utils/              # Shared utility functions
+│   └── api-client/         # Shared API logic
+├── shared/                 # Firebase config, types/interfaces
+├── scripts/                # Mock data generators + upload tools
+├── mock-databases/         # JSON files for 22 mock registries
+├── legal/                  # Legal and ethical documentation
+├── LESP/                   # Legal, Ethical, Social, and Professional planning
+├── docs/                   # Extra documentation
+└── README.md               # This file
+
+🧰 Tooling
+Monorepo: Managed manually or with Turborepo
+TypeScript: Across all apps and packages
+Firebase: Auth, analytics, and hosting
+Tailwind CSS: Web styling
+NativeWind: Mobile styling
+PostgreSQL: Backend database
+Prisma: ORM for backend
+
+🧪 Testing
+Each app/package can include its own test suite:
+npm run test
+
+🤝 Contributing
+Fork the repo
+Create a new branch (git checkout -b feature/your-feature)
+Commit your changes (git commit -m 'Add feature')
+Push to the branch (git push origin feature/your-feature)
+Open a Pull Request
+
 
 ⚖️ LESP Commitment
 WhoDoggy is built from the ground up with Legal, Ethical, Social, and Professional (LESP) principles in mind. It includes:
@@ -75,8 +124,6 @@ Start: April 2025
 
 Target Deadline: 15th September 2025
 
-Current Milestone: Core features implemented & tested with mock data
-
 🧑‍💻 Author
 Anthony Price
 BSc (Hons) Computing
@@ -85,8 +132,3 @@ The Open University
 📜 License
 This project is developed for academic purposes only and is not licensed for commercial deployment or use.
 
-## 📝 Commit History
-
-- Firebase setup: Shared config, web + mobile login screens, and updated README  
-- Add project report sections 3.4 to 6 including SDLC review, solution description, and reflection  
-- Remove file tree generation scripts and reset README.md  
