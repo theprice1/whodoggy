@@ -29,7 +29,9 @@
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
+
 ```bash
+
 git clone https://github.com/your-username/whodoggy.git
 cd whodoggy
 
@@ -58,7 +60,7 @@ apps/web/firebaseConfig.ts # Web import
 WhoDoggy/
 ├── apps/
 │   ├── mobile/             # React Native (Expo) app
-│   │   ├── screens/        # Screens incl. Login, Scanner
+│   │   ├── screens/        # Screens including Login, Scanner
 │   │   ├── components/     # Reusable UI components
 │   │   ├── services/       # Firebase, API, QR logic
 │   │   ├── hooks/          # Custom React hooks
@@ -100,43 +102,49 @@ Prisma: ORM for backend
 
 # WhoDoggy Backend
 
-This is the backend server for the **WhoDoggy** application. It is built using **Node.js** and **Express**, and provides API endpoints for searching and deleting pet data based on microchip IDs.
-
+Backend server for WhoDoggy, built with Node.js and Express, provides API endpoints for searching and deleting pet data by microchip IDs.
 ---
 
 ## 📘 Environment Configuration
 
-This project uses environment variables to manage sensitive configuration such as database credentials, API keys, and secret tokens. These variables are loaded using the `dotenv` package.
+Environment variables manage sensitive info like database credentials and API keys. Use the dotenv package.
 
 ### 🔧 Setting Up Environment Variables
 
-1. **Copy the example file** to create your own `.env` file:
-
-   ```bash
-   cp .env.example .env
-   ```
-   
+cp .env.example .env
 
 🧪 Testing
 Each app/package can include its own test suite:
 npm run test
 
-🤝 Contributing
-Fork the repo
-Create a new branch (git checkout -b feature/your-feature)
-Commit your changes (git commit -m 'Add feature')
-Push to the branch (git push origin feature/your-feature)
-Open a Pull Request
-
-
 ⚖️ LESP Commitment
-WhoDoggy is built from the ground up with Legal, Ethical, Social, and Professional (LESP) principles in mind. It includes:
+WhoDoggy is built with Legal, Ethical, Social, and Professional (LESP) principles:
+
+Use of mock data for ethical safeguards
+
+Accessibility-first design (avoiding misuse like scanning guide dogs)
+
+Clear ownership and consent practices for data
 
 Strict use of mock data (for academic and ethical safeguards)
 
-Accessibility-first design (e.g., avoiding misuse for guide dogs)
+## Documentation & Policies
 
-Clear ownership and consent practices for data handling
+- [Accessibility](./docs/ACCESSIBILITY.md)
+- [Privacy Policy](./docs/privacy-policy.md)
+- [LESP](./docs/LESP.md)
+- [Code of Conduct](./docs/CODE_OF_CONDUCT.md)
+- [Data Deletion Policy](./docs/data-deletion-policy.md)
+- [Terms of Use](./legal/TERMS_OF_USE.md)
+
+
+## Related Documents
+
+- [Privacy Policy](./privacy-policy.md)
+- [Data Deletion Policy](./data-deletion-policy.md)
+- [LESP Principles](./LESP.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+
 
 📅 Project Timeline
 Start: April 2025
@@ -149,5 +157,6 @@ BSc (Hons) Computing
 The Open University
 
 📜 License
-This project is developed for academic purposes only and is not licensed for commercial deployment or use.
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
