@@ -1,4 +1,3 @@
-// src/services/microchipService.ts
 export interface MicrochipRecord {
   id: string;
   name: string;
@@ -8,7 +7,6 @@ export interface MicrochipRecord {
   databaseName?: string;
 }
 
-// Example mock DB
 const mockDatabases: Record<string, MicrochipRecord[]> = {
   MockDB1: [
     {
@@ -19,9 +17,8 @@ const mockDatabases: Record<string, MicrochipRecord[]> = {
       lastSeen: '2025-06-30',
       databaseName: 'MockDB1',
     },
-    // more records ...
+    // Add more records if you want
   ],
-  // Add more databases...
 };
 
 export async function getMicrochipData(id: string): Promise<MicrochipRecord[]> {

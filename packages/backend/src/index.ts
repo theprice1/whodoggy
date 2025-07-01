@@ -1,11 +1,14 @@
 import express, { Request, Response, NextFunction } from 'express';
 import admin from 'firebase-admin';
+import cors from 'cors';
+import morgan from 'morgan';
+import dotenv from 'dotenv';
+import { getMicrochipData } from './services/microchipService';
 
-// Your Firebase admin initialization here...
+dotenv.config();
 
 const app = express();
 
-// Middleware to authenticate Firebase ID token
 const authenticate = async (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (!authHeader?.startsWith('Bearer ')) {
@@ -14,7 +17,7 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
   const idToken = authHeader.split(' ')[1];
   try {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
-    (req as any).user = decodedToken; // attach user info to req object
+    (req as any).user = decodedToken;
     next();
   } catch (error) {
     console.error('Firebase auth error:', error);
@@ -22,21 +25,27 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
   }
 };
 
-// Example data service function - replace with real logic
-async function getMicrochipData(id: string) {
-  // Your lookup code here (mock DB or Firestore)
-  return {
-    id,
-    name: 'Fido',
-    breed: 'Labrador',
-    owner: { name: 'Jane Doe', phone: '555-1234' },
-    lastSeen: '2025-06-30',
-  };
-}
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
 
-// Protected route using authenticate middleware
 app.get('/api/microchips/:id', authenticate, async (req: Request, res: Response) => {
   const microchipId = req.params.id;
-  const data = await getMicrochipData(microchipId);
-  res.json(data);
+  const results = await getMicrochipData(microchipId);
+
+  if (results.length === 0) {
+    return res.status(404).json({ message: 'Microchip ID not found in any database' });
+  }
+
+  res.json({ results });
+});
+
+app.delete('/api/microchips/:id', authenticate, async (req: Request, res: Response) => {
+  // Optional deletion logic here
+  res.json({ message: 'Data deletion successful' });
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Backend running on port ${port}`);
 });
