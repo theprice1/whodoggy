@@ -98,6 +98,25 @@ NativeWind: Mobile styling
 PostgreSQL: Backend database
 Prisma: ORM for backend
 
+# WhoDoggy Backend
+
+This is the backend server for the **WhoDoggy** application. It is built using **Node.js** and **Express**, and provides API endpoints for searching and deleting pet data based on microchip IDs.
+
+---
+
+## 📘 Environment Configuration
+
+This project uses environment variables to manage sensitive configuration such as database credentials, API keys, and secret tokens. These variables are loaded using the `dotenv` package.
+
+### 🔧 Setting Up Environment Variables
+
+1. **Copy the example file** to create your own `.env` file:
+
+   ```bash
+   cp .env.example .env
+   ```
+   
+
 🧪 Testing
 Each app/package can include its own test suite:
 npm run test
