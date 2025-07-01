@@ -1,5 +1,5 @@
 {
-  "name": "whodoggy-web",
+  "name": "whodoggy-mobile",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -26,8 +26,3 @@
     "vitest": "^0.34.0"
   }
 }
-// This is the package.json file for the WhoDoggy mobile application.
-// It defines the project name, version, scripts for development, build, and preview, as well as the dependencies and devDependencies required for the project.
-// The dependencies include React, React Native, and Firebase, while the devDependencies include Metro, Babel, ESLint, Prettier, and TypeScript.
-// The scripts include commands for starting the development server, building the application, running tests,
-// linting the code, and formatting it with Prettier.

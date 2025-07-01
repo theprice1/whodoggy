@@ -8,11 +8,13 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node"]
   },
   "include": [
     "**/*.ts",
-    "backend/types/express/index.d.ts"  // adjust this path if needed
+    "backend/types/express/index.d.ts",
+    "scripts/**/*.ts"
   ],
   "exclude": [
     "node_modules",

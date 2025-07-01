@@ -1,15 +1,47 @@
 #!/bin/bash
-# deploy.sh
-# Script to deploy backend and web apps
+set -e  # Exit on error
 
-echo "Deploying backend..."
-cd apps/backend
-npm run build
-# Add deployment command here (e.g., vercel, render, etc.)
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting deployment..."
 
-echo "Deploying web..."
-cd ../web
-npm run build
-# Add deployment command here (e.g., vercel, netlify)
+ROOT_DIR=$(pwd)
 
-echo "Deployment complete."
+deploy_backend() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Deploying backend..."
+  cd "$ROOT_DIR/apps/backend"
+  npm install
+  npm run build
+  # Example: vercel --prod or render deploy commands
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Backend deployment done."
+  cd "$ROOT_DIR"
+}
+
+deploy_web() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Deploying web..."
+  cd "$ROOT_DIR/apps/web"
+  npm install
+  npm run build
+  # Example: netlify deploy --prod or vercel --prod
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Web deployment done."
+  cd "$ROOT_DIR"
+}
+
+if [ "$#" -eq 0 ]; then
+  # Deploy both
+  deploy_backend
+  deploy_web
+else
+  for arg in "$@"
+  do
+    case $arg in
+      backend) deploy_backend ;;
+      web) deploy_web ;;
+      *)
+        echo "Unknown argument: $arg"
+        echo "Usage: ./deploy.sh [backend] [web]"
+        exit 1
+        ;;
+    esac
+  done
+fi
+
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Deployment complete."

@@ -19,6 +19,3 @@
     "typescript": "^5.0.0"
   }
 }
-// This is the package.json file for the WhoDoggy web application.
-// It defines the project name, version, scripts for development, build, and preview, as well as the dependencies and devDependencies required for the project.
-// The dependencies include React, React DOM, and Firebase, while the devDependencies include Vite          

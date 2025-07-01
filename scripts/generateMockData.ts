@@ -1,7 +1,30 @@
 import { faker } from '@faker-js/faker';
 import fs from 'fs';
+import path from 'path';
 
-const TOTAL_ENTRIES = 500;
+interface DogRecord {
+  microchipId: string;
+  dogName: string;
+  breed: string;
+  gender: 'Male' | 'Female';
+  dateOfBirth: string; // ISO date string
+  ownerName: string;
+  ownerPhone: string;
+  ownerEmail: string;
+  ownerCity: string;
+  registeredAt: string;
+  microchipImplantDate: string;
+  registryName: string;
+  vaccinated: boolean;
+  notes: string;
+  lastCheckup: string;
+}
+
+const args = process.argv.slice(2);
+const TOTAL_ENTRIES = args[0] ? parseInt(args[0], 10) : 500;
+const OUTPUT_PATH = args[1] || 'mock_data/dogs.json';
+
+const REGISTRY_COUNT = 22;
 const usedIds = new Set<string>();
 
 function generateMicrochipId() {
@@ -13,20 +36,75 @@ function generateMicrochipId() {
   return id;
 }
 
-const breeds = ['Labrador', 'German Shepherd', 'Staffordshire Bull Terrier', 'Beagle', 'Pug', 'Border Collie'];
+const breeds = [
+  'Labrador', 'German Shepherd', 'Staffordshire Bull Terrier',
+  'Beagle', 'Pug', 'Border Collie',
+];
 
-const records = Array.from({ length: TOTAL_ENTRIES }, () => ({
-  microchipId: generateMicrochipId(),
-  dogName: faker.animal.dog(),
-  breed: faker.helpers.arrayElement(breeds),
-  ownerName: faker.person.fullName(),
-  contact: faker.internet.email(),
-  registeredAt: faker.date.past().toISOString(),
-  registryName: `Registry_${faker.number.int({ min: 1, max: 22 })}`,
-  vaccinated: faker.datatype.boolean(),
-  notes: faker.lorem.sentence(),
-  lastCheckup: faker.date.recent({ days: 365 }).toISOString(),
-}));
+function randomGender(): 'Male' | 'Female' {
+  return faker.helpers.arrayElement(['Male', 'Female']);
+}
 
-fs.writeFileSync('mock_data/dogs.json', JSON.stringify(records, null, 2));
-console.log(`✅ Generated ${TOTAL_ENTRIES} mock records.`);
+function randomDateBetween(start: Date, end: Date): Date {
+  return faker.date.between({ from: start, to: end });
+}
+
+const records: DogRecord[] = [];
+
+const entriesPerRegistry = Math.floor(TOTAL_ENTRIES / REGISTRY_COUNT);
+
+for (let regNum = 1; regNum <= REGISTRY_COUNT; regNum++) {
+  for (let i = 0; i < entriesPerRegistry; i++) {
+    const dob = randomDateBetween(new Date(2010, 0, 1), new Date(2024, 0, 1));
+    const implantDate = randomDateBetween(dob, new Date());
+    records.push({
+      microchipId: generateMicrochipId(),
+      dogName: faker.animal.dog(),
+      breed: faker.helpers.arrayElement(breeds),
+      gender: randomGender(),
+      dateOfBirth: dob.toISOString(),
+      ownerName: faker.person.fullName(),
+      ownerPhone: faker.phone.number(),
+      ownerEmail: faker.internet.email(),
+      ownerCity: faker.address.city(),
+      registeredAt: faker.date.past({ years: 5 }).toISOString(),
+      microchipImplantDate: implantDate.toISOString(),
+      registryName: `Registry_${regNum}`,
+      vaccinated: faker.datatype.boolean(),
+      notes: faker.lorem.sentence(),
+      lastCheckup: faker.date.recent({ days: 365 }).toISOString(),
+    });
+  }
+}
+
+// If any leftover records (due to floor), add randomly to registries
+while (records.length < TOTAL_ENTRIES) {
+  const dob = randomDateBetween(new Date(2010, 0, 1), new Date(2024, 0, 1));
+  const implantDate = randomDateBetween(dob, new Date());
+  records.push({
+    microchipId: generateMicrochipId(),
+    dogName: faker.animal.dog(),
+    breed: faker.helpers.arrayElement(breeds),
+    gender: randomGender(),
+    dateOfBirth: dob.toISOString(),
+    ownerName: faker.person.fullName(),
+    ownerPhone: faker.phone.number(),
+    ownerEmail: faker.internet.email(),
+    ownerCity: faker.address.city(),
+    registeredAt: faker.date.past({ years: 5 }).toISOString(),
+    microchipImplantDate: implantDate.toISOString(),
+    registryName: `Registry_${faker.number.int({ min: 1, max: REGISTRY_COUNT })}`,
+    vaccinated: faker.datatype.boolean(),
+    notes: faker.lorem.sentence(),
+    lastCheckup: faker.date.recent({ days: 365 }).toISOString(),
+  });
+}
+
+// Ensure output directory exists
+const outputDir = path.dirname(OUTPUT_PATH);
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir, { recursive: true });
+}
+
+fs.writeFileSync(OUTPUT_PATH, JSON.stringify(records, null, 2));
+console.log(`✅ Generated ${records.length} mock records to ${OUTPUT_PATH}`);
