@@ -1,60 +1,70 @@
+
 # 🏗️ WhoDoggy? Architecture Overview
 
 This document outlines the structure and interaction of the WhoDoggy? monorepo, which includes mobile, web, and backend applications, along with shared packages and utilities.
 
----
-
-## 📁 Monorepo Structure
-
-WhoDoggy/ ├── apps/ │ ├── mobile/ # React Native app (Expo) │ ├── web/ # React web app (Tailwind) │ └── backend/ # Node.js + Express API ├── packages/ │ ├── ui/ # Shared UI components │ ├── utils/ # Shared utility functions │ └── api-client/ # Shared API logic ├── shared/ # Firebase config, types/interfaces ├── scripts/ # Automation scripts ├── mock-databases/ # JSON files for 22 mock registries ├── legal/ # Legal and ethical documentation ├── LESP/ # Legal, Ethical, Social, and Professional planning ├── docs/ # Additional documentation └── README.md
-
-## 🧩 Folder Descriptions
-
-### `apps/`
-
+📁 Monorepo Structure
+graphql
+Copy code
+WhoDoggy/
+├── apps/
+│   ├── mobile/           # React Native app (Expo)
+│   ├── web/              # React web app (Tailwind CSS)
+│   └── backend/          # Node.js + Express API
+├── packages/
+│   ├── ui/               # Shared UI components
+│   ├── utils/            # Shared utility functions
+│   └── api-client/       # Shared API logic
+├── shared/               # Firebase config, types/interfaces
+├── scripts/              # Automation scripts
+├── mock-databases/       # JSON files for 22 mock registries
+├── legal/                # Legal and ethical documentation
+├── LESP/                 # Legal, Ethical, Social, and Professional planning
+├── docs/                 # Additional documentation
+└── README.md
+🧩 Folder Descriptions
+apps/
 Contains the three main applications:
 
-- **mobile/**: Built with React Native + Expo. Includes QR scanning and Firebase Auth.
-- **web/**: Built with React + Tailwind. Allows manual code entry and dog info lookup.
-- **backend/**: Express server that queries mock databases and handles API requests.
+mobile/: Built with React Native + Expo. Features QR code scanning and Firebase Authentication.
 
-### `packages/`
+web/: Built with React + Tailwind CSS. Provides manual microchip code entry and dog info lookup.
 
-Reusable code shared across apps:
+backend/: Node.js + Express server querying mock databases and handling API requests.
 
-- **ui/**: Common UI components (e.g., buttons, modals).
-- **utils/**: Utility functions (e.g., formatting, validation).
-- **api-client/**: Shared logic for calling backend APIs.
+packages/
+Reusable code shared across the apps:
 
-### `shared/`
+ui/: Common UI components like buttons, modals, and other design elements.
 
-- Firebase configuration and shared TypeScript types/interfaces.
+utils/: Utility functions for formatting, validation, and other helpers.
 
-### `scripts/`
+api-client/: Shared logic for API calls to the backend.
 
-- Automation tools for generating mock data, seeding the database, and deploying apps.
+shared/
+Firebase configuration files and shared TypeScript types/interfaces used across projects.
 
-### `mock-databases/`
+scripts/
+Automation scripts for generating mock data, seeding databases, and deployment tasks.
 
-- JSON files simulating 22 external dog microchip registries.
+mock-databases/
+JSON files simulating 22 external dog microchip registries for development and testing.
 
-### `legal/`, `LESP/`, `docs/`
+legal/, LESP/, docs/
+Documentation related to legal compliance, ethical considerations, social and professional responsibilities, and academic reporting.
 
-- Documentation for legal compliance, ethical design, and academic reporting.
+🔄 Interaction Flow
+Mobile and Web apps authenticate users via Firebase Authentication.
 
----
+Users submit dog microchip codes from the apps to the backend API.
 
-## 🔄 Interaction Flow
+The backend queries the mock-databases/ (or uses caching) to find matching dog records.
 
-1. **Mobile/Web** apps authenticate via Firebase.
-2. They send microchip codes to the **backend**.
-3. The backend queries the **mock-databases/** or caches.
-4. Results are returned to the frontend for display.
+Results are returned to the frontend apps and displayed to users.
 
----
+🧠 Notes
+The entire monorepo is written in TypeScript for consistent type safety.
 
-## 🧠 Notes
+Firebase Authentication is implemented consistently across mobile and web platforms.
 
-- All apps use TypeScript for type safety.
-- Firebase Auth is shared across mobile and web.
-- The backend is modular and testable with mock APIs.
+The backend is modular and structured for easy testing, with mock APIs supporting development.

@@ -137,6 +137,11 @@ Strict use of mock data (for academic and ethical safeguards)
 - [Data Deletion Policy](./docs/data-deletion-policy.md)
 - [Terms of Use](./legal/TERMS_OF_USE.md)
 
+## 📚 Documentation
+
+For detailed information on our approach to accessibility, please see the [Accessibility Design Document](docs/ACCESSIBILITY.md). This outlines how WhoDoggy? ensures inclusivity for users of all abilities across mobile and web platforms.
+
+
 
 ## Related Documents
 
