@@ -20,6 +20,3 @@
     }
   }
 }
-// This is the lerna.json file for the Whodoggy monorepo.
-// It specifies the packages included in the monorepo, the versioning strategy, the npm client to use, and the commands for publishing and bootstrapping the packages.
-// The `ignoreChanges` option in the publish command is used to ignore changes in test files

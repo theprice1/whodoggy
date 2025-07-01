@@ -5,5 +5,3 @@
   "tabWidth": 2,
   "trailingComma": "es5"
 }
-// This configuration file is for Prettier, a code formatter.
-// It specifies the following formatting options:   

@@ -4,10 +4,10 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
   ],
   rules: {
-    semi: ['error', 'always'],
-    quotes: ['error', 'single']
-  }
+    semi: ['error', 'always'],       // Enforce semicolons
+    quotes: ['error', 'single'],     // Enforce single quotes
+  },
 };

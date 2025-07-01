@@ -30,6 +30,3 @@
     "firebase": "^11.9.1"
   }
 }
-// This is the root package.json file for the Whodoggy monorepo.
-// It defines the project name, version, and scripts for development, building, testing, and linting.
-// It also specifies the workspaces for the mobile, web, and backend applications.
