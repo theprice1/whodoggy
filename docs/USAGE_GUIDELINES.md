@@ -8,4 +8,4 @@ This app simulates scanning dog microchips to help identify owners. Please:
 - Do not scan dogs in private property without consent
 - Respect local animal laws (simulated in mock mode)
 
-This project is a simulation.
+This project is a simulation for academic and ethical purposes only.
