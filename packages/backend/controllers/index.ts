@@ -3,9 +3,8 @@ import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 
-import deleteDataController from './controllers/deleteDataController';
-import aggregateSearchRouter from './controllers/aggregateSearchController';
-
+import deleteDataController from './deleteDataController';
+import aggregateSearchRouter from './aggregateSearchController';
 dotenv.config();
 
 const app = express();
