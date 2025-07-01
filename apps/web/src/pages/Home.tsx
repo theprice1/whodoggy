@@ -1,14 +1,13 @@
+// apps/web/src/pages/Home.tsx
 import React from 'react';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold">Welcome to WhoDoggy? Web</h1>
-      <p>Enter a dog microchip code to begin.</p>
-    </div>
+    <main className="p-4">
+      <h1>Welcome to WhoDoggy?</h1>
+      <p>Use the navigation to start scanning or searching microchips.</p>
+    </main>
   );
 };
 
 export default Home;
-// This is the Home component of the React application.
-// It renders a welcome message and a prompt for the user to enter a dog microchip code

@@ -1,27 +1,13 @@
+// apps/web/src/pages/DeveloperDocs.tsx
 import React from 'react';
-export default function DeveloperDocs() {
+
+const DeveloperDocs: React.FC = () => {
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold">Project File Structure</h1>
-      <p>This app follows a monorepo structure:</p>
-      <pre className="text-sm bg-gray-100 p-2 mt-2 rounded">
-        {`
-- backend/
-  - controllers/
-  - routes/
-  - mockDatabases/
-- mobile/
-  - app/screens/
-  - components/
-- web/
-  - src/pages/
-  - src/components/
-- shared/
-  - types.ts
-        `}
-      </pre>
-    </div>
+    <main className="p-4">
+      <h1>Developer Documentation</h1>
+      <p>Technical information and API documentation.</p>
+    </main>
   );
-}
-// This page provides an overview of the project file structure for developers.
-// It is designed to help new developers understand where to find different parts of the codebase.
+};
+
+export default DeveloperDocs;
