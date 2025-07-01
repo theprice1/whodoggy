@@ -1,30 +1,33 @@
 {
-  "name": "whodoggy-mobile",
+  "name": "whodoggy-web",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write .",
+    "test": "vitest"
   },
   "dependencies": {
-    "@types/react": "~18.2.14",
-    "expo": "~51.0.0",
-    "expo-status-bar": "~1.6.0",
-    "firebase": "^10.7.1",
-    "nativewind": "^2.0.11",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-native": "0.74.4",
-    "react-native-gesture-handler": "~2.12.0",
-    "react-native-reanimated": "~3.3.0",
-    "react-native-svg": "13.9.0",
-    "react-native-vision-camera": "^3.3.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "firebase": "^10.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "tailwindcss": "^3.4.17"
-  },
-  "private": true
+    "vite": "^5.0.0",
+    "tailwindcss": "^3.3.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "vitest": "^0.34.0"
+  }
 }
+// This is the package.json file for the WhoDoggy mobile application.
+// It defines the project name, version, scripts for development, build, and preview, as well as the dependencies and devDependencies required for the project.
+// The dependencies include React, React Native, and Firebase, while the devDependencies include Metro, Babel, ESLint, Prettier, and TypeScript.
+// The scripts include commands for starting the development server, building the application, running tests,
+// linting the code, and formatting it with Prettier.

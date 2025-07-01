@@ -6,23 +6,30 @@
   "author": "Anthony Price",
   "license": "MIT",
   "workspaces": [
-    "mobile",
-    "web",
-    "backend"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
-    "start": "lerna run start --stream",
-    "build": "lerna run build --stream",
-    "test": "lerna run test --stream",
+    "dev": "lerna run dev --stream --concurrency 4",
+    "start": "lerna run start --stream --concurrency 4",
+    "build": "lerna run build --stream --concurrency 4",
+    "test": "lerna run test --stream --concurrency 4",
     "sync-readme": "node syncReadme.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prettier": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "lerna bootstrap"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "typescript": "^5.1.6",
+    "eslint": "^8.46.0",
+    "prettier": "^3.0.0"
   },
   "dependencies": {
     "@faker-js/faker": "^9.8.0",
     "firebase": "^11.9.1"
   }
 }
+// This is the root package.json file for the Whodoggy monorepo.
+// It defines the project name, version, and scripts for development, building, testing, and linting.
+// It also specifies the workspaces for the mobile, web, and backend applications.
