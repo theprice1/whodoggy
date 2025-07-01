@@ -1,7 +1,9 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "types": ["nativewind/types"]
+    "types": ["nativewind/types"],
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
   },
   "include": [
     "app.d.ts",
