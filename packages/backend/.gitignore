@@ -1,5 +1,24 @@
-node_modules
-# Keep environment variables out of version control
+# Node modules
+node_modules/
+
+# Environment variables
 .env
 
-/generated/prisma
+# Prisma generated files (if used)
+generated/prisma/
+
+# Build output
+dist/
+
+# Firebase service account credentials (never commit)
+firebase-service-account/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/

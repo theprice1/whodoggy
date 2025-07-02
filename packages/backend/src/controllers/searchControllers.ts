@@ -1,6 +1,6 @@
 // controllers/searchController.ts
 import express, { Request, Response } from 'express';
-import { pool } from '../db';
+import { pool } from '../../db';
 
 // This controller handles search requests for microchips
 // It allows users to search for microchips by their ID

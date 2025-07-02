@@ -1,31 +1,13 @@
-export interface MicrochipRecord {
-  id: string;
-  name: string;
-  breed: string;
-  owner: { name: string; phone: string };
-  lastSeen: string;
-  databaseName?: string;
-}
+import { mockDatabases } from '../mock-dbs/mockDatabases';
 
-const mockDatabases: Record<string, MicrochipRecord[]> = {
-  MockDB1: [
-    {
-      id: '1234567890',
-      name: 'Fido',
-      breed: 'Labrador',
-      owner: { name: 'Jane Doe', phone: '555-1234' },
-      lastSeen: '2025-06-30',
-      databaseName: 'MockDB1',
-    },
-    // Add more records if you want
-  ],
-};
+export async function getMicrochipData(microchipId: string) {
+  // Simulate async database lookups
+  const results = [];
 
-export async function getMicrochipData(id: string): Promise<MicrochipRecord[]> {
-  const results: MicrochipRecord[] = [];
-  for (const dbName in mockDatabases) {
-    const found = mockDatabases[dbName].find(record => record.id === id);
-    if (found) results.push(found);
+  for (const db of mockDatabases) {
+    const record = db.find((entry) => entry.microchipId === microchipId);
+    if (record) results.push(record);
   }
+
   return results;
 }
