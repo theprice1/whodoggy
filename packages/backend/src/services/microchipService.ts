@@ -1,11 +1,10 @@
-import { mockDatabases } from '../mock-dbs/mockDatabases';
+import { mockDatabases, MicrochipRecord } from '../mock-dbs/mockDatabases';
 
-export async function getMicrochipData(microchipId: string) {
-  // Simulate async database lookups
-  const results = [];
+export async function getMicrochipData(id: string): Promise<MicrochipRecord[]> {
+  const results: MicrochipRecord[] = [];
 
-  for (const db of mockDatabases) {
-    const record = db.find((entry) => entry.microchipId === microchipId);
+  for (const db of Object.values(mockDatabases)) {
+    const record = db.find((entry: MicrochipRecord) => entry.id === id);
     if (record) results.push(record);
   }
 

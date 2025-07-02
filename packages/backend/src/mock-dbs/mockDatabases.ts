@@ -1,4 +1,4 @@
-// apps/backend/src/mock-dbs/mockDatabases.ts
+// src/mock-dbs/mockDatabases.ts
 
 export interface MicrochipRecord {
   id: string;
@@ -41,7 +41,7 @@ export const mockDatabases: Record<string, MicrochipRecord[]> = {
     // more records...
   ],
   MockDB3: [
-    // records here
+    // add records here as needed
   ],
-  // add more up to MockDB22...
+  // Add more mock databases up to MockDB22 as required
 };
