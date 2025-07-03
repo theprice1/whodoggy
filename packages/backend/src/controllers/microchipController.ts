@@ -1,14 +1,16 @@
-// apps/backend/src/controllers/microchipController.ts
 import { Request, Response } from 'express';
-import { searchAllDatabases } from '../services/microchipService';
+import { mockDatabases, MicrochipRecord } from '../mock-dbs/mockDatabases';
 
-export const searchMicrochip = (req: Request<{ id: string }>, res: Response) => {
+export const getMicrochipById = (req: Request, res: Response) => {
   const { id } = req.params;
-  const results = searchAllDatabases(id);
 
-  if (results.length === 0) {
-    return res.status(404).json({ message: 'Microchip ID not found' });
+  // Search across all mock databases
+  for (const dbName in mockDatabases) {
+    const record = mockDatabases[dbName].find((rec) => rec.microchipId === id);
+    if (record) {
+      return res.json({ results: [record] });
+    }
   }
 
-  res.json({ results });
+  return res.status(404).json({ message: `Microchip ID ${id} not found` });
 };

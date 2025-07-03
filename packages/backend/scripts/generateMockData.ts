@@ -1,3 +1,5 @@
+// scripts/generateMockDogData.ts
+
 import { faker } from '@faker-js/faker';
 import fs from 'fs';
 import path from 'path';
@@ -7,7 +9,7 @@ interface DogRecord {
   dogName: string;
   breed: string;
   gender: 'Male' | 'Female';
-  dateOfBirth: string; // ISO date string
+  dateOfBirth: string; // ISO string
   ownerName: string;
   ownerPhone: string;
   ownerEmail: string;
@@ -28,7 +30,7 @@ const REGISTRY_COUNT = 22;
 const usedIds = new Set<string>();
 
 function generateMicrochipId() {
-  let id;
+  let id: string;
   do {
     id = faker.number.int({ min: 981000000000000, max: 981099999999999 }).toString();
   } while (usedIds.has(id));
@@ -37,8 +39,12 @@ function generateMicrochipId() {
 }
 
 const breeds = [
-  'Labrador', 'German Shepherd', 'Staffordshire Bull Terrier',
-  'Beagle', 'Pug', 'Border Collie',
+  'Labrador',
+  'German Shepherd',
+  'Staffordshire Bull Terrier',
+  'Beagle',
+  'Pug',
+  'Border Collie',
 ];
 
 function randomGender(): 'Male' | 'Female' {
@@ -50,7 +56,6 @@ function randomDateBetween(start: Date, end: Date): Date {
 }
 
 const records: DogRecord[] = [];
-
 const entriesPerRegistry = Math.floor(TOTAL_ENTRIES / REGISTRY_COUNT);
 
 for (let regNum = 1; regNum <= REGISTRY_COUNT; regNum++) {
@@ -66,7 +71,7 @@ for (let regNum = 1; regNum <= REGISTRY_COUNT; regNum++) {
       ownerName: faker.person.fullName(),
       ownerPhone: faker.phone.number(),
       ownerEmail: faker.internet.email(),
-      ownerCity: faker.address.city(),
+      ownerCity: faker.location.city(),
       registeredAt: faker.date.past({ years: 5 }).toISOString(),
       microchipImplantDate: implantDate.toISOString(),
       registryName: `Registry_${regNum}`,
@@ -77,7 +82,7 @@ for (let regNum = 1; regNum <= REGISTRY_COUNT; regNum++) {
   }
 }
 
-// If any leftover records (due to floor), add randomly to registries
+// Add any leftover records due to rounding
 while (records.length < TOTAL_ENTRIES) {
   const dob = randomDateBetween(new Date(2010, 0, 1), new Date(2024, 0, 1));
   const implantDate = randomDateBetween(dob, new Date());
@@ -90,7 +95,7 @@ while (records.length < TOTAL_ENTRIES) {
     ownerName: faker.person.fullName(),
     ownerPhone: faker.phone.number(),
     ownerEmail: faker.internet.email(),
-    ownerCity: faker.address.city(),
+    ownerCity: faker.location.city(),
     registeredAt: faker.date.past({ years: 5 }).toISOString(),
     microchipImplantDate: implantDate.toISOString(),
     registryName: `Registry_${faker.number.int({ min: 1, max: REGISTRY_COUNT })}`,

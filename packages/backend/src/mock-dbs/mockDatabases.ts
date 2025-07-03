@@ -1,47 +1,45 @@
-// src/mock-dbs/mockDatabases.ts
+import { MicrochipRecord } from './types';
+import fs from 'fs';
+import path from 'path';
 
-export interface MicrochipRecord {
-  id: string;
-  name: string;
-  breed: string;
-  age: number;
-  owner: {
-    name: string;
-    phone: string;
-  };
-  lastSeen: string;
-  databaseName: string;
-}
+// Existing loading of mock data
+const mockDataPath = path.resolve(__dirname, '../../mock_data/dogs.json'); // Adjust the path as necessary
+const rawData = fs.readFileSync(mockDataPath, 'utf-8');
+const allMockRecords: MicrochipRecord[] = JSON.parse(rawData);
 
-// Sample mock DB data for 3 out of 22 databases
+// Group by registryName
+const mockDatabases: Record<string, MicrochipRecord[]> = {};
+allMockRecords.forEach(record => {
+  if (!mockDatabases[record.registryName]) {
+    mockDatabases[record.registryName] = [];
+  }
+  mockDatabases[record.registryName].push(record);
+});
 
-export const mockDatabases: Record<string, MicrochipRecord[]> = {
-  MockDB1: [
-    {
-      id: '1234567890',
-      name: 'Fido',
-      breed: 'Labrador',
-      age: 5,
-      owner: { name: 'Jane Doe', phone: '555-1234' },
-      lastSeen: '2025-06-30',
-      databaseName: 'MockDB1',
-    },
-    // more records...
-  ],
-  MockDB2: [
-    {
-      id: '0987654321',
-      name: 'Rex',
-      breed: 'German Shepherd',
-      age: 3,
-      owner: { name: 'John Smith', phone: '555-5678' },
-      lastSeen: '2025-06-28',
-      databaseName: 'MockDB2',
-    },
-    // more records...
-  ],
-  MockDB3: [
-    // add records here as needed
-  ],
-  // Add more mock databases up to MockDB22 as required
+// Add a fixed test record for unit tests
+const fixedTestRecord: MicrochipRecord = {
+  microchipId: '1234567890',
+  dogName: 'Fido',
+  breed: 'Labrador',
+  gender: 'Male',
+  dateOfBirth: '2018-01-01T00:00:00.000Z',
+  ownerName: 'Test Owner',
+  ownerPhone: '123-456-7890',
+  ownerEmail: 'testowner@example.com',
+  ownerCity: 'Test City',
+  registeredAt: '2019-01-01T00:00:00.000Z',
+  microchipImplantDate: '2018-06-01T00:00:00.000Z',
+  registryName: 'TestRegistry',
+  vaccinated: true,
+  notes: 'Test record for unit tests',
+  lastCheckup: '2024-01-01T00:00:00.000Z',
 };
+
+// Add fixed record to allMockRecords and grouped mockDatabases
+allMockRecords.push(fixedTestRecord);
+if (!mockDatabases[fixedTestRecord.registryName]) {
+  mockDatabases[fixedTestRecord.registryName] = [];
+}
+mockDatabases[fixedTestRecord.registryName].push(fixedTestRecord);
+
+export { MicrochipRecord, mockDatabases, allMockRecords };

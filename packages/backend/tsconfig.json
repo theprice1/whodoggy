@@ -4,6 +4,7 @@
     "module": "CommonJS",               // Node.js default
     "rootDir": "./",
     "outDir": "./dist",                 // compiled JS output
+    "types": ["node", "jest"],              // Node.js types
     "strict": true,                    // enable strict typing
     "esModuleInterop": true,           // allow import of commonjs modules
     "skipLibCheck": true,              // speed up compilation
