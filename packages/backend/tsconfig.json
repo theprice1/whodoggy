@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2020",                 // modern JS target
-    "module": "CommonJS",               // Node.js default
-    "rootDir": "./",
-    "outDir": "./dist",                 // compiled JS output
-    "types": ["node", "jest"],              // Node.js types
-    "strict": true,                    // enable strict typing
-    "esModuleInterop": true,           // allow import of commonjs modules
-    "skipLibCheck": true,              // speed up compilation
-    "forceConsistentCasingInFileNames": true
+    "target": "ES2020",                          // modern JS target
+    "module": "CommonJS",                        // Node.js default
+    "rootDir": "./src",                          // Point to the source directory
+    "outDir": "./dist",                          // compiled JS output
+    "types": ["node", "jest", "express"],        // Include relevant types
+    "strict": true,                              // enable strict typing
+    "esModuleInterop": true,                     // allow import of commonjs modules
+    "skipLibCheck": true,                        // speed up compilation
+    "forceConsistentCasingInFileNames": true     // consistent file name casing
   },
-  "include": ["**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*.ts"],                     // Include all TypeScript files under src
+  "exclude": ["node_modules", "dist"]             // Exclude node_modules and dist folders
 }
