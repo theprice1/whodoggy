@@ -1,5 +1,3 @@
-// scripts/generateMockDogData.ts
-
 import { faker } from '@faker-js/faker';
 import fs from 'fs';
 import path from 'path';
@@ -39,12 +37,16 @@ function generateMicrochipId() {
 }
 
 const breeds = [
-  'Labrador',
+  'Labrador Retriever',
   'German Shepherd',
-  'Staffordshire Bull Terrier',
+  'Golden Retriever',
+  'Bulldog',
   'Beagle',
   'Pug',
   'Border Collie',
+  'French Bulldog',
+  'Dachshund',
+  'Boxer'
 ];
 
 function randomGender(): 'Male' | 'Female' {
@@ -111,5 +113,6 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
+// Write data to the output file
 fs.writeFileSync(OUTPUT_PATH, JSON.stringify(records, null, 2));
 console.log(`✅ Generated ${records.length} mock records to ${OUTPUT_PATH}`);
