@@ -1,14 +1,14 @@
 {
-  "name": "whodoggy-mobile-alt",
+  "name": "whodoggy-mobile",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "expo start",
+    "start": "expo start",
+    "build": "expo build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write .",
-    "test": "vitest"
+    "test": "jest"
   },
   "dependencies": {
     "firebase": "^11.10.0",

@@ -10,14 +10,14 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "lerna run dev --stream --concurrency 4",
-    "start": "lerna run start --stream --concurrency 4",
-    "build": "lerna run build --stream --concurrency 4",
-    "test": "lerna run test --stream --concurrency 4",
+    "dev": "yarn workspace mobile dev --stream --concurrency 4",
+    "start": "yarn workspace mobile start --stream --concurrency 4",
+    "build": "yarn workspace mobile build --stream --concurrency 4",
+    "test": "yarn",
     "sync-readme": "node syncReadme.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write .",
-    "prepare": "lerna bootstrap"
+    "prepare": "yarn install"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.27.1",
@@ -41,6 +41,7 @@
     "firebase": "^11.9.1",
     "firebase-admin": "^13.4.0",
     "nativewind": "^4.1.23",
+    "pg": "^8.16.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-native": "0.80.1",
