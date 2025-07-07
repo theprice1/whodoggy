@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"]
+  "include": ["src", "../mobile/src/screens/Home/QRScannerScreen.tsx"]
 }
 // This is the TypeScript configuration file for the web application.
 // It specifies the compiler options such as target ECMAScript version, module system, JSX transformation

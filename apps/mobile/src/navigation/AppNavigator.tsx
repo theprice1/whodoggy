@@ -4,9 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoginScreen from '../screens/LoginScreen';
-import HomeScreen from '../screens/HomeScreen';
-import QRScannerScreen from '../screens/QRScannerScreen';
-import SearchScreen from '../screens/SearchScreen';
+import HomeScreen from '../screens/Home/HomeScreen';
+import QRScannerScreen from '../screens/Home/QRScannerScreen';
+import SearchScreen from '../screens/Home/SearchScreen';
 import ResultsScreen from '../screens/ResultsScreen';
 
 export type RootStackParamList = {
