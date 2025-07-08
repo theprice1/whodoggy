@@ -1,0 +1,20 @@
+{
+  "name": "whodoggy-openapi",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate": "openapi-typescript ../../specs/registry-api.yaml --output ../../shared/types/registry.d.ts",
+    "watch": "nodemon --watch ../../specs/registry-api.yaml --exec \"npm run generate\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "openapi-typescript": "^7.8.0",
+    "ts-node": "^10.9.2"
+  },
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

@@ -3,6 +3,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import type { Analytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCZOPGI64GyGSfDe_s3ZBRWaKy3mC_k4Yw",
@@ -19,8 +20,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// 🌐 Optional: Initialize Analytics on Web Only
-let analytics: any = null;
+// 🌐 Optional: Initialize Analytics on Web Only with proper typing
+let analytics: Analytics | null = null;
 
 if (typeof window !== "undefined" && "document" in window) {
   import("firebase/analytics").then(({ getAnalytics }) => {

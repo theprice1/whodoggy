@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: WhoDoggy Registry API
+  version: 1.0.0
+paths:
+  /dogs/{microchipId}:
+    get:
+      summary: Get dog details by microchip ID
+      parameters:
+        - in: path
+          name: microchipId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Dog found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dog'
+        '404':
+          description: Dog not found
+
+  /dogs:
+    post:
+      summary: Register a new dog
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DogInput'
+      responses:
+        '201':
+          description: Dog registered
+
+components:
+  schemas:
+    Dog:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        breed:
+          type: string
+        age:
+          type: integer
+        owner:
+          type: string
+
+    DogInput:
+      type: object
+      required:
+        - name
+        - breed
+      properties:
+        name:
+          type: string
+        breed:
+          type: string
+        age:
+          type: integer
+        owner:
+          type: string

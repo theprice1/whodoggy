@@ -1,0 +1,14 @@
+[
+  {
+    "microchipId": "0001",
+    "dogName": "Rex",
+    "breed": "Labrador",
+    "ownerName": "Alice Smith",
+    "contact": "alice@example.com",
+    "registeredAt": "2024-05-12",
+    "registryName": "UK National Registry",
+    "vaccinated": true,
+    "notes": "All good",
+    "lastCheckup": "2025-06-12"
+  }
+]

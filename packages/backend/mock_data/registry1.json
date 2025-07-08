@@ -1,0 +1,14 @@
+[
+  {
+    "microchipId": "REG1-123ABC",
+    "dogName": "Baxter",
+    "breed": "Labrador Retriever",
+    "ownerName": "Jane Doe",
+    "contact": "555-2222",
+    "registeredAt": "2024-06-21T12:00:00Z",
+    "registryName": "registry1",
+    "vaccinated": true,
+    "notes": "Updated chip info.",
+    "lastCheckup": "2025-01-15T09:00:00Z"
+  }
+]

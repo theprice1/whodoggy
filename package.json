@@ -28,6 +28,7 @@
     "babel-jest": "^30.0.4",
     "eslint": "^9.30.1",
     "jsdom": "^26.1.0",
+    "openapi-typescript": "^7.8.0",
     "prettier": "^3.0.0",
     "react-test-renderer": "^18.2.0",
     "typescript": "^5.1.6"
@@ -49,5 +50,19 @@
     "react-native-reanimated": "^3.18.0",
     "react-native-safe-area-context": "^5.5.1",
     "react-native-screens": "^4.11.1"
-  }
+  },
+  "main": ".eslintrc.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theprice1/whodoggy.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/theprice1/whodoggy/issues"
+  },
+  "homepage": "https://github.com/theprice1/whodoggy#readme"
 }

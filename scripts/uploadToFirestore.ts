@@ -3,7 +3,7 @@ import { getFirestore } from 'firebase-admin/firestore';
 import fs from 'fs';
 import path from 'path';
 
-// Define a TypeScript interface for dog records
+// Define DogRecord interface
 interface DogRecord {
   microchipId: string;
   dogName: string;
@@ -19,22 +19,24 @@ interface DogRecord {
 
 // Parse CLI args for data file and collection name
 const args = process.argv.slice(2);
-const dataFileArg = args[0] || '../mock_data/dogs.json';
+// Default to dogs.json inside packages/backend/mock_data folder
+const dataFileArg = args[0] || 'dogs.json';
 const collectionName = args[1] || 'dogs';
 
-const dataFilePath = path.resolve(__dirname, dataFileArg);
+// Build path to mock data inside backend package folder
+const dataFilePath = path.resolve(__dirname, '../packages/backend/mock_data', dataFileArg);
 
-// Read mock data JSON file with type safety
+// Read mock data JSON file
 let data: DogRecord[];
 try {
   data = JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
 } catch (err) {
-  console.error(`❌ Failed to read or parse data file: ${dataFilePath}`);
+  console.error(`❌ Failed to read or parse data file: ${dataFilePath}`, err);
   process.exit(1);
 }
 
-// Path to your Firebase service account key JSON file
-const serviceAccountPath = path.resolve(__dirname, '../firebase-creds.json');
+// Path to your Firebase service account JSON
+const serviceAccountPath = path.resolve(__dirname, '../packages/backend/firebase-service-account/service-account-file.json');
 
 // Initialize Firebase Admin SDK
 initializeApp({
@@ -45,8 +47,8 @@ const db = getFirestore();
 
 async function uploadData() {
   try {
-    const batch = db.batch();
-    const batchSize = 500; // Firestore batch limit
+    const batchSize = 500;
+    let batch = db.batch();
     let batchCounter = 0;
 
     for (let i = 0; i < data.length; i++) {
@@ -55,83 +57,17 @@ async function uploadData() {
       batch.set(docRef, entry);
       batchCounter++;
 
-      // Commit batch every 500 writes or at the end
       if (batchCounter === batchSize || i === data.length - 1) {
         await batch.commit();
-        console.log(`✅ Uploaded batch of ${batchCounter} records (${i + 1}/${data.length})`);
+        batch = db.batch();
         batchCounter = 0;
       }
     }
 
-    console.log(`🎉 Successfully uploaded ${data.length} records to Firestore collection '${collectionName}'.`);
+    console.log(`✅ Uploaded ${data.length} records to Firestore collection "${collectionName}".`);
   } catch (error) {
-    console.error('❌ Error uploading data:', error);
+    console.error('❌ Error uploading data to Firestore:', error);
     process.exit(1);
-  }
-}
-
-uploadData();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-import { getFirestore } from 'firebase-admin';
-import fs from 'fs';
-import path from 'path';
-
-// Load mock data from disk
-const DATA_PATH = path.resolve(__dirname, '../mock_data/dogs.json');
-const data: any[] = JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8'));
-
-// Initialize Firebase Admin SDK with service account
-const serviceAccount: ServiceAccount = require(path.resolve(__dirname, '../firebase-creds.json'));
-
-initializeApp({
-  credential: cert(serviceAccount),
-});
-
-const db = getFirestore();
-
-async function uploadData() {
-  try {
-    const batch = db.batch();
-
-    data.forEach((entry) => {
-      const ref = db.collection('dogs').doc(entry.microchipId);
-      batch.set(ref, entry);
-    });
-
-    await batch.commit();
-    console.log(`✅ Uploaded ${data.length} records to Firestore`);
-  } catch (error) {
-    console.error('Error uploading data:', error);
   }
 }
 
