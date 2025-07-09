@@ -4,10 +4,13 @@ import deleteDataRoutes from './deleteData';
 
 const router = express.Router();
 
-// Routes for managing microchip data
+/**
+ * Mount all route modules
+ *
+ * /api/microchips     → Microchip-related endpoints
+ * /api/deleteData     → Data deletion/testing endpoints
+ */
 router.use('/microchips', microchipRoutes);
-
-// Routes for handling data deletion
 router.use('/deleteData', deleteDataRoutes);
 
 export default router;

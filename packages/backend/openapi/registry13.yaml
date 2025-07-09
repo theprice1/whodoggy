@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Registry 13 API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4113
+paths:
+  /search/{microchipId}:
+    get:
+      summary: Get dog record by microchip ID
+      parameters:
+        - in: path
+          name: microchipId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Dog found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DogRecord'
+        '404':
+          description: Dog not found
+components:
+  schemas:
+    DogRecord:
+      type: object
+      properties:
+        microchipId:
+          type: string
+        dogName:
+          type: string
+        breed:
+          type: string
+        ownerName:
+          type: string
+        contact:
+          type: string
+        registeredAt:
+          type: string
+          format: date-time
+        registryName:
+          type: string
+        vaccinated:
+          type: boolean
+        notes:
+          type: string
+        lastCheckup:
+          type: string
+          format: date-time

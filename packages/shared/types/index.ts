@@ -1,10 +1,16 @@
-// packages/shared/types/index.ts
-export interface MicrochipResult {
-  registry: string;
-  microchip: string;
+// Example shared types
+
+export interface DogRecord {
+  microchipId: string;
+  name: string;
+  breed: string;
+  dateOfBirth?: string;
+  ownerName: string;
+  ownerContact: string;
 }
 
-export interface User {
-  uid: string;
+export interface UserAuthPayload {
+  userId: string;
   email: string;
+  roles: string[];
 }

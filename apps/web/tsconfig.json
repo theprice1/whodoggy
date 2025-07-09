@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2017",
     "module": "esnext",
-    "jsx": "react-jsx",
+    "jsx": "react-native",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@shared/*": ["../../packages/shared/*"]
+    }
   },
-  "include": ["src", "../mobile/src/screens/Home/QRScannerScreen.tsx"]
+  "include": ["src"]
 }
-// This is the TypeScript configuration file for the web application.
-// It specifies the compiler options such as target ECMAScript version, module system, JSX transformation

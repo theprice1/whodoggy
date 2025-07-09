@@ -1,13 +1,17 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "types": ["nativewind/types"],
+    "target": "es2017",
+    "module": "esnext",
+    "jsx": "react-native",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true
+    "baseUrl": "./src",
+    "paths": {
+      "@shared/*": ["../../packages/shared/*"]
+    }
   },
-  "include": [
-    "app.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "include": ["src"]
 }

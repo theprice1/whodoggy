@@ -1,15 +1,21 @@
-// backend/mock-apis/startAllRegistries.ts
-import { createMockRegistry } from './createMockRegistry';
+import { spawn } from 'child_process';
+import path from 'path';
 
-const registries = [
-  'UK Pet Registry', 'ChipSecure', 'VetID Central', 'PetTrace UK', 'CanineID',
-  'AnimalTrackers', 'MicroDog Ltd', 'PetSafe Registry', 'DogID UK', 'PetLink UK',
-  'National Microchip DB', 'SafePaws', 'GuardianChip', 'PupSecure',
-  'Rescue Registry', 'PetGuard', 'K9 Tracker', 'HomePaws', 'BarkID', 'Tag-a-Dog',
-  'DoggoTrack', 'StraySafe'
-];
+const totalRegistries = 22;
+const basePort = 4101;
+const openapiDir = path.resolve(__dirname, '../../openapi');
 
-registries.forEach((name, i) => {
-  const port = 4001 + i;
-  createMockRegistry(name, port);
-});
+for (let i = 1; i <= totalRegistries; i++) {
+  const fileName = `registry${i}.yaml`;
+  const port = basePort + i - 1;
+  const filePath = path.join(openapiDir, fileName);
+
+  const child = spawn('npx', ['@stoplight/prism-cli', 'mock', filePath, `-p`, port.toString()], {
+    stdio: 'inherit',
+    shell: true,
+  });
+
+  child.on('error', (err) => {
+    console.error(`❌ Error starting mock for registry${i}:`, err);
+  });
+}

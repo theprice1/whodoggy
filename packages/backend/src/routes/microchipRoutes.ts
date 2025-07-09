@@ -1,11 +1,14 @@
-// src/routes/microchipRoutes.ts
+// packages/backend/src/routes/microchipRoutes.ts
 
 import express from 'express';
-import { getMicrochipById } from '../controllers/microchipController';
+import { getMicrochipById } from '../controllers/dogController';
 
 const router = express.Router();
 
-// Define the route to get a microchip by ID
+/**
+ * GET /microchips/:id
+ * Route to retrieve a single dog record by microchip ID.
+ */
 router.get('/:id', getMicrochipById);
 
 export default router;
