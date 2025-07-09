@@ -1,8 +1,7 @@
 // src/services/registryService.ts
 
-import fetch from 'node-fetch'; // or use global fetch if Node 18+
+import fetch from 'node-fetch'; // or global fetch if Node 18+
 
-// List all 22 mock registry base URLs here
 const registryUrls = [
   'http://localhost:4101/search/',
   'http://localhost:4102/search/',
@@ -28,7 +27,6 @@ const registryUrls = [
   'http://localhost:4122/search/',
 ];
 
-// Type for the dog record you expect from registries
 export interface DogRecord {
   microchipId: string;
   dogName: string;
@@ -47,7 +45,7 @@ export interface DogRecord {
  * Returns DogRecord if found and valid, otherwise throws.
  */
 async function queryRegistry(url: string, microchipId: string): Promise<DogRecord> {
-  const response = await fetch(`${url}${microchipId}`);
+  const response = await fetch(`${url}${microchipId}`, { timeout: 5000 }); // 5s timeout
 
   if (!response.ok) {
     throw new Error(`Registry ${url} responded with status ${response.status}`);
@@ -55,8 +53,8 @@ async function queryRegistry(url: string, microchipId: string): Promise<DogRecor
 
   const data: DogRecord = await response.json();
 
-  // Validate response (adjust this logic to your real data)
-  if (!data.microchipId || data.microchipId === 'string') {
+  // Validate response: microchipId should be a non-empty string different from default placeholder
+  if (!data.microchipId || data.microchipId === 'string' || data.microchipId.trim() === '') {
     throw new Error(`Registry ${url} returned no valid record`);
   }
 
@@ -68,15 +66,22 @@ async function queryRegistry(url: string, microchipId: string): Promise<DogRecor
  * If none found, returns null.
  */
 export async function queryAllRegistries(microchipId: string): Promise<DogRecord | null> {
-  const promises = registryUrls.map(url => queryRegistry(url, microchipId));
+  const queries = registryUrls.map(url =>
+    queryRegistry(url, microchipId).catch(err => {
+      // Log error but don't fail all queries
+      console.warn(`Failed to fetch from ${url}: ${err.message}`);
+      return null;
+    }),
+  );
 
-  try {
-    // Promise.any resolves as soon as one promise fulfills
-    const firstResult = await Promise.any(promises);
-    return firstResult;
-  } catch (aggregateError) {
-    // If all promises reject, Promise.any throws an AggregateError
-    // You can inspect aggregateError.errors array for details if needed
-    return null;
+  // Wait for all to settle
+  const results = await Promise.all(queries);
+
+  // Return the first non-null valid result
+  for (const result of results) {
+    if (result) {
+      return result;
+    }
   }
+  return null;
 }

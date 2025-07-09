@@ -1,5 +1,7 @@
+// packages/backend/src/middleware/auth.ts
+
 import { Request, Response, NextFunction } from 'express';
-import  admin  from '../services/firebase';
+import admin from '../services/firebase';
 
 export interface AuthenticatedRequest extends Request {
   user?: admin.auth.DecodedIdToken;
@@ -8,7 +10,7 @@ export interface AuthenticatedRequest extends Request {
 export async function authenticate(
   req: AuthenticatedRequest,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) {
   const authHeader = req.headers.authorization;
   if (!authHeader?.startsWith('Bearer ')) {

@@ -1,11 +1,11 @@
+// packages/backend/src/routes/deleteData.ts
+
 import express from 'express';
 import { authenticate } from '../middleware/auth';
+import { deleteMicrochipHandler } from '../controllers/deleteDataController';
 
 const router = express.Router();
 
-router.delete('/:id', authenticate, async (req, res) => {
-  // Implement deletion logic here
-  res.json({ message: 'Data deletion successful' });
-});
+router.delete('/microchips/:id', authenticate, deleteMicrochipHandler);
 
 export default router;

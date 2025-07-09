@@ -1,20 +1,25 @@
-// backend/controllers/deleteDataController.ts
-import express, { Request, Response } from 'express';
+// packages/backend/src/controllers/deleteDataController.ts
 
-const router = express.Router();
+import { Request, Response } from 'express';
+import { deleteMicrochipData } from '../db/deleteMicrochip';
+import { AuthenticatedRequest } from '../middleware/auth';
 
-// Middleware assumes req.user is set by your auth middleware
-router.delete('/microchips/:id', (req: Request, res: Response) => {
-  const userId = (req as any).user?.id; // Cast if needed
+export async function deleteMicrochipHandler(req: AuthenticatedRequest, res: Response) {
+  const userId = req.user?.uid;
+  const microchipId = req.params.id;
 
   if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: User not found in request' });
+    return res.status(401).json({ error: 'Unauthorized: user not authenticated' });
   }
 
-  // Your deletion logic here
-  console.log(`Deleting microchip ${req.params.id} for user ${userId}`);
-
-  res.status(200).json({ message: 'Data deletion successful' });
-});
-
-export default router;
+  try {
+    await deleteMicrochipData(userId, microchipId);
+    res.status(200).json({ message: 'Microchip data deleted successfully' });
+  } catch (error: any) {
+    if (error.message === 'No matching record found or unauthorized') {
+      return res.status(404).json({ error: error.message });
+    }
+    console.error('Error deleting microchip:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}

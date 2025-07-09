@@ -14,7 +14,11 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write .",
     "clean": "rimraf node_modules apps/**/node_modules packages/**/node_modules",
-    "prepare": "yarn install"
+    "prepare": "yarn install",
+
+    "migrate:up": "yarn workspace whodoggy-backend node-pg-migrate up",
+    "migrate:down": "yarn workspace whodoggy-backend node-pg-migrate down",
+    "migrate:reset": "yarn workspace whodoggy-backend node-pg-migrate reset"
   },
   "devDependencies": {
     "rimraf": "^5.0.0",

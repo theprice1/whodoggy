@@ -23,19 +23,39 @@ app.get('/', (_req: Request, res: Response) => {
 // Register microchip-related routes under "/api/microchips"
 app.use('/api/microchips', microchipRoutes);
 
-// Basic error handler middleware (logs and sends error message)
-app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-  console.error('Unexpected error:', err);
-  res.status(err.status || 500).json({ error: err.message || 'Internal Server Error' });
+// Custom error type with optional status code
+interface ErrorWithStatus extends Error {
+  status?: number;
+}
+
+// Basic error handler middleware with proper typings
+app.use((
+  err: unknown,
+  _req: Request,
+  res: Response,
+  _next: NextFunction,
+) => {
+  void _next; // Mark _next as used to avoid eslint no-unused-vars
+
+  const error = err instanceof Error ? err : new Error('Unknown error');
+
+  // Narrow to ErrorWithStatus to access status if present
+  const typedError = error as ErrorWithStatus;
+
+  console.error('Unexpected error:', typedError.message);
+
+  const statusCode = typedError.status ?? 500;
+
+  res.status(statusCode).json({ error: typedError.message || 'Internal Server Error' });
 });
 
-const port = parseInt(process.env.PORT || '3000', 10);
+const port = parseInt(process.env.PORT ?? '3000', 10);
 
 const server = app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-// Graceful shutdown on process termination
+// Graceful shutdown handler
 async function shutdown() {
   console.log('Shutting down server...');
   await shutdownDbPool();
