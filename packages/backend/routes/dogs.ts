@@ -1,16 +1,21 @@
-// routes/dogs.ts
-import express from 'express';
+import { Router } from 'express';
 import {
-  getDogById,
-  createDog,
-  updateDog,
-  deleteDog,
-  getAllDogs
+  getAllDogsHandler,
+  getDogByIdHandler,
+  createDogHandler,
+  updateDogHandler,
+  deleteDogHandler
 } from '../controllers/dogsController';
-const router = express.Router();
-router.get('/', getAllDogs);
-router.get('/:id', getDogById);
-router.post('/', createDog);
-router.put('/:id', updateDog);
-router.delete('/:id', deleteDog);
+
+import { authMiddleware } from '../middleware/authMiddleware';
+import { validateDogInput } from '../middleware/validateInput';
+
+const router = Router();
+
+router.get('/', authMiddleware, getAllDogsHandler);
+router.get('/:id', authMiddleware, getDogByIdHandler);
+router.post('/', authMiddleware, validateDogInput, createDogHandler);
+router.put('/:id', authMiddleware, validateDogInput, updateDogHandler);
+router.delete('/:id', authMiddleware, deleteDogHandler);
+
 export default router;

@@ -1,4 +1,3 @@
-// packages/backend/db.ts
 import { Pool, QueryResult } from 'pg';
 import dotenv from 'dotenv';
 
@@ -11,7 +10,5 @@ const pool = new Pool({
 
 type QueryParams = (string | number | boolean | null)[];
 
-export default {
-  query: (text: string, params?: QueryParams): Promise<QueryResult> =>
-    pool.query(text, params),
-};
+export const query = (text: string, params?: QueryParams): Promise<QueryResult> =>
+  pool.query(text, params);
