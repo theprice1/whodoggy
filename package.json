@@ -4,22 +4,23 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "scripts"
   ],
   "scripts": {
-    "dev": "yarn workspace mobile dev --stream --concurrency 4",
-    "start": "yarn workspace mobile start --stream --concurrency 4",
-    "build": "yarn workspace mobile build --stream --concurrency 4",
-    "test": "yarn workspaces run test",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier --write .",
-    "clean": "rimraf node_modules apps/**/node_modules packages/**/node_modules",
-    "prepare": "yarn install",
+  "dev": "pnpm --filter mobile dev",
+  "start": "pnpm --filter mobile start",
+  "build": "pnpm --filter mobile build",
+  "test": "pnpm -r test",
+  "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+  "format": "prettier --write .",
+  "clean": "rimraf node_modules apps/**/node_modules packages/**/node_modules",
 
-    "migrate:up": "yarn workspace whodoggy-backend node-pg-migrate up",
-    "migrate:down": "yarn workspace whodoggy-backend node-pg-migrate down",
-    "migrate:reset": "yarn workspace whodoggy-backend node-pg-migrate reset"
-  },
+  "migrate:up": "pnpm --filter whodoggy-backend node-pg-migrate up",
+  "migrate:down": "pnpm --filter whodoggy-backend node-pg-migrate down",
+  "migrate:reset": "pnpm --filter whodoggy-backend node-pg-migrate reset"
+},
+
   "devDependencies": {
     "rimraf": "^5.0.0",
     "eslint": "^9.30.1",

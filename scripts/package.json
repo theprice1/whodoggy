@@ -1,0 +1,16 @@
+{
+  "name": "whodoggy-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "generate": "ts-node generateMockData.ts",
+    "seed": "ts-node seedDatabase.ts"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "dotenv": "^16.5.0",
+    "ts-node": "^10.9.1"
+  }
+}

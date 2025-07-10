@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
@@ -58,5 +59,8 @@
   "engines": {
     "node": ">=18"
   },
-  "type": "commonjs"
+  "node-pg-migrate": {
+    "migrations-dir": "packages/backend/migrations",
+    "migrations-language": "esm"
+  }
 }

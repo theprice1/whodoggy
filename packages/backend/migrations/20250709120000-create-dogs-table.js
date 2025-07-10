@@ -1,16 +1,37 @@
-/* eslint-env node */
-
-exports.up = (pgm) => {
-  pgm.createTable('dogs', {
-    id: { type: 'serial', primaryKey: true },
-    microchip_id: { type: 'varchar(255)', notNull: true, unique: true },
-    name: { type: 'varchar(255)', notNull: true },
-    breed: { type: 'varchar(255)' },
-    owner_name: { type: 'varchar(255)' },
-    created_at: { type: 'timestamp', default: pgm.func('current_timestamp'), notNull: true },
+/** @param {import('node-pg-migrate').MigrationBuilder} pgm */
+export async function up(pgm) {
+  await pgm.createTable('dogs', {
+    id: {
+      type: 'uuid',
+      primaryKey: true,
+      default: pgm.func('gen_random_uuid()'),
+    },
+    name: {
+      type: 'text',
+      notNull: true,
+    },
+    microchip_id: {
+      type: 'varchar(20)',
+      notNull: true,
+      unique: true,
+    },
+    breed: {
+      type: 'text',
+    },
+    age: {
+      type: 'integer',
+    },
+    owner_name: {
+      type: 'text',
+    },
+    registered_at: {
+      type: 'timestamp',
+      default: pgm.func('current_timestamp'),
+    },
   });
-};
+}
 
-exports.down = (pgm) => {
-  pgm.dropTable('dogs');
-};
+/** @param {import('node-pg-migrate').MigrationBuilder} pgm */
+export async function down(pgm) {
+  await pgm.dropTable('dogs');
+}
