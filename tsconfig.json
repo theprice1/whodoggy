@@ -2,22 +2,24 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "target": "ES2020",
-    "module": "Node16",
-    "moduleResolution": "node16",
-    "rootDir": ".",             // <-- change this from "./src" to "."
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": ".",
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node"]
+    "types": ["node"],
+    "allowJs": true,
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*.ts",
     "backend/**/*.ts",
     "scripts/**/*.ts",
-    "*.ts"                      // Include .ts files at root like server.ts, prism-runner.ts
-  ],
+    "*.ts"
+, "scripts/seedDatabase.ts"  ],
   "exclude": [
     "node_modules",
     "dist"

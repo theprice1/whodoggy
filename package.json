@@ -1,6 +1,7 @@
 {
   "name": "whodoggy-root",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -8,33 +9,35 @@
     "scripts"
   ],
   "scripts": {
-  "dev": "pnpm --filter mobile dev",
-  "start": "pnpm --filter mobile start",
-  "build": "pnpm --filter mobile build",
-  "test": "pnpm -r test",
-  "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-  "format": "prettier --write .",
-  "clean": "rimraf node_modules apps/**/node_modules packages/**/node_modules",
-
-  "migrate:up": "pnpm --filter whodoggy-backend node-pg-migrate up",
-  "migrate:down": "pnpm --filter whodoggy-backend node-pg-migrate down",
-  "migrate:reset": "pnpm --filter whodoggy-backend node-pg-migrate reset"
-},
-
+    "dev": "pnpm --filter mobile dev",
+    "start": "pnpm --filter mobile start",
+    "build": "pnpm --filter mobile build",
+    "test": "pnpm -r test",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write .",
+    "clean": "pnpm -r exec rimraf dist node_modules build coverage",
+    "migrate:up": "pnpm --filter whodoggy-backend node-pg-migrate up",
+    "migrate:down": "pnpm --filter whodoggy-backend node-pg-migrate down",
+    "migrate:reset": "pnpm --filter whodoggy-backend node-pg-migrate reset",
+    "seed": "pnpm exec tsx scripts/seedDatabase.ts",
+    "upload:firestore": "pnpm exec tsx scripts/uploadToFirestore.ts"
+  },
   "devDependencies": {
-    "rimraf": "^5.0.0",
-    "eslint": "^9.30.1",
-    "prettier": "^3.0.0",
-    "typescript": "^5.1.6",
     "@babel/preset-typescript": "^7.27.1",
-    "babel-jest": "^30.0.4",
     "@testing-library/react-native": "^13.2.0",
     "@types/jest": "^30.0.0",
     "@types/react": "^19.1.8",
     "@types/react-native": "^0.72.8",
+    "babel-jest": "^30.0.4",
+    "eslint": "^9.30.1",
     "jsdom": "^26.1.0",
     "openapi-typescript": "^7.8.0",
-    "react-test-renderer": "^18.2.0"
+    "prettier": "^3.0.0",
+    "react-test-renderer": "^18.2.0",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
     "@faker-js/faker": "^9.8.0",
@@ -53,6 +56,5 @@
     "react-native-reanimated": "^3.18.0",
     "react-native-safe-area-context": "^5.5.1",
     "react-native-screens": "^4.11.1"
-  },
-  "type": "commonjs"
+  }
 }
