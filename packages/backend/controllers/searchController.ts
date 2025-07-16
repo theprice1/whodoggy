@@ -1,22 +1,23 @@
-// src/services/dogService.ts
-import pool from '../../db';  // default import of pool
-import { DogWithDetails } from '../../types'; // adjust path if needed
+import { Request, Response } from 'express';
+import { getDogByMicrochip } from '../services/dogService';
 
-export const findDogByMicrochip = async (
-  microchipId: string
-): Promise<DogWithDetails | null> => {
-  const query = `
-    SELECT d.id AS dog_id, d.name AS dog_name, d.breed, d.age,
-           o.id AS owner_id, o.name AS owner_name, o.phone, o.email,
-           r.id AS registry_id, r.name AS registry_name
-    FROM microchips m
-    JOIN dogs d ON m.dog_id = d.id
-    JOIN owners o ON d.owner_id = o.id
-    JOIN registries r ON m.registry_id = r.id
-    WHERE m.microchip_id = $1
-    LIMIT 1;
-  `;
+export const searchDogByMicrochip = async (req: Request, res: Response) => {
+  const { microchipId } = req.params;
 
-  const { rows } = await pool.query(query, [microchipId]);
-  return rows.length > 0 ? rows[0] as DogWithDetails : null;
+  if (!microchipId || typeof microchipId !== 'string') {
+    return res.status(400).json({ error: 'Microchip ID is required and must be a string' });
+  }
+
+  try {
+    const dogDetails = await getDogByMicrochip(microchipId);
+
+    if (!dogDetails) {
+      return res.status(404).json({ message: 'Dog not found for the given microchip ID' });
+    }
+
+    return res.status(200).json(dogDetails);
+  } catch (error) {
+    console.error('Error in searchDogByMicrochip controller:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
 };

@@ -8,8 +8,6 @@ export interface Registry {
   url: string;
 }
 
-// DB Queries
-
 // Get a single registry by ID
 export const getRegistry = async (id: string): Promise<Registry | null> => {
   try {
@@ -33,25 +31,40 @@ export const getAllRegistriesService = async (): Promise<Registry[]> => {
   }
 };
 
-// External call to a single registry mock server
+// External call to a single registry mock server with timeout support
 export const queryRegistry = async (
   registryUrl: string,
-  microchipId: string
+  microchipId: string,
+  timeoutMs = 5000 // default 5 seconds timeout
 ): Promise<any | null> => {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => {
+    controller.abort();
+  }, timeoutMs);
+
   try {
     const response = await fetch(`${registryUrl}/search/${microchipId}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
-      // Note: fetch in Node.js does not natively support timeout option; you'd need to implement it via AbortController
+      signal: controller.signal,
     });
+
+    clearTimeout(timeout);
+
     if (!response.ok) {
       console.warn(`Registry at ${registryUrl} returned status ${response.status}`);
       return null;
     }
+
     const data = await response.json();
     return data;
   } catch (err: any) {
-    console.warn(`Failed to fetch from registry ${registryUrl}: ${err.message}`);
+    clearTimeout(timeout);
+    if (err.name === 'AbortError') {
+      console.warn(`Request to ${registryUrl} timed out.`);
+    } else {
+      console.warn(`Failed to fetch from registry ${registryUrl}: ${err.message}`);
+    }
     return null;
   }
 };
