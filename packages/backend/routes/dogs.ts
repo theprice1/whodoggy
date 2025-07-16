@@ -4,7 +4,7 @@ import {
   getDogByIdHandler,
   createDogHandler,
   updateDogHandler,
-  deleteDogHandler
+  deleteDogHandler,
 } from '../controllers/dogsController';
 
 import { authMiddleware } from '../middleware/authMiddleware';

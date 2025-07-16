@@ -1,17 +1,22 @@
-import { Request, Response } from 'express';
-import { findDogByMicrochip } from '../services/dogService';
+// src/services/dogService.ts
+import pool from '../../db';  // default import of pool
+import { DogWithDetails } from '../../types'; // adjust path if needed
 
-export const searchMicrochip = async (req: Request, res: Response) => {
-  const { microchip_id } = req.body;
-  if (!microchip_id || typeof microchip_id !== 'string') {
-    return res.status(400).json({ error: 'Invalid microchip_id' });
-  }
-  try {
-    const dog = await findDogByMicrochip(microchip_id);
-    if (!dog) return res.status(404).json({ error: 'Dog not found' });
-    res.json(dog);
-  } catch (error) {
-    console.error('Server error:', error);
-    res.status(500).json({ error: 'Server error' });
-  }
+export const findDogByMicrochip = async (
+  microchipId: string
+): Promise<DogWithDetails | null> => {
+  const query = `
+    SELECT d.id AS dog_id, d.name AS dog_name, d.breed, d.age,
+           o.id AS owner_id, o.name AS owner_name, o.phone, o.email,
+           r.id AS registry_id, r.name AS registry_name
+    FROM microchips m
+    JOIN dogs d ON m.dog_id = d.id
+    JOIN owners o ON d.owner_id = o.id
+    JOIN registries r ON m.registry_id = r.id
+    WHERE m.microchip_id = $1
+    LIMIT 1;
+  `;
+
+  const { rows } = await pool.query(query, [microchipId]);
+  return rows.length > 0 ? rows[0] as DogWithDetails : null;
 };

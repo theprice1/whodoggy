@@ -6,7 +6,10 @@ export const getAllOwners = async (_req: Request, res: Response) => {
   res.json(owners);
 };
 
-export const getOwnerById = async (req: Request<{ id: string }>, res: Response) => {
+export const getOwnerById = async (
+  req: Request<{ id: string }>,
+  res: Response
+) => {
   const owner = await getOwner(req.params.id);
   owner ? res.json(owner) : res.status(404).json({ error: 'Owner not found' });
 };

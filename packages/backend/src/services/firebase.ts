@@ -9,9 +9,7 @@ export function initializeFirebase() {
   const serviceAccountPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
   if (!serviceAccountPath) {
-    throw new Error(
-      'Missing GOOGLE_APPLICATION_CREDENTIALS in .env file.'
-    );
+    throw new Error('Missing GOOGLE_APPLICATION_CREDENTIALS in .env file.');
   }
 
   const absolutePath = path.resolve(__dirname, '../../', serviceAccountPath);

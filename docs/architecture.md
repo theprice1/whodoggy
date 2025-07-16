@@ -1,4 +1,3 @@
-
 # 🏗️ WhoDoggy? Architecture Overview
 
 This document outlines the structure and interaction of the WhoDoggy? monorepo, which includes mobile, web, and backend applications, along with shared packages and utilities.
@@ -8,19 +7,19 @@ graphql
 Copy code
 WhoDoggy/
 ├── apps/
-│   ├── mobile/           # React Native app (Expo)
-│   ├── web/              # React web app (Tailwind CSS)
-│   └── backend/          # Node.js + Express API
+│ ├── mobile/ # React Native app (Expo)
+│ ├── web/ # React web app (Tailwind CSS)
+│ └── backend/ # Node.js + Express API
 ├── packages/
-│   ├── ui/               # Shared UI components
-│   ├── utils/            # Shared utility functions
-│   └── api-client/       # Shared API logic
-├── shared/               # Firebase config, types/interfaces
-├── scripts/              # Automation scripts
-├── mock-databases/       # JSON files for 22 mock registries
-├── legal/                # Legal and ethical documentation
-├── LESP/                 # Legal, Ethical, Social, and Professional planning
-├── docs/                 # Additional documentation
+│ ├── ui/ # Shared UI components
+│ ├── utils/ # Shared utility functions
+│ └── api-client/ # Shared API logic
+├── shared/ # Firebase config, types/interfaces
+├── scripts/ # Automation scripts
+├── mock-databases/ # JSON files for 22 mock registries
+├── legal/ # Legal and ethical documentation
+├── LESP/ # Legal, Ethical, Social, and Professional planning
+├── docs/ # Additional documentation
 └── README.md
 🧩 Folder Descriptions
 apps/

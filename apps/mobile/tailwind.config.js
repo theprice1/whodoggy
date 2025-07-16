@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./App.{js,jsx,ts,tsx}",
-    "./app/**/*.{js,jsx,ts,tsx}",
-    "./screens/**/*.{js,jsx,ts,tsx}",
-    "./components/**/*.{js,jsx,ts,tsx}",
+    './App.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
+    './screens/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     extend: {},
@@ -12,7 +12,7 @@ module.exports = {
   plugins: [],
   future: {
     // These settings are opt-in now, but become default in Tailwind v4.0
-    hoverOnlyWhenSupported: true,  // Improves performance and accessibility
+    hoverOnlyWhenSupported: true, // Improves performance and accessibility
   },
 };
 // Note: The `future` settings are optional and can be removed if not needed.
@@ -25,4 +25,4 @@ module.exports = {
 // yarn add tailwindcss react-native-tailwindcss
 // This configuration will allow you to use Tailwind CSS classes in your React Native components.
 // For more information on configuring Tailwind CSS, visit: https://tailwindcss.com/docs/configuration
-// For more information on using Tailwind CSS with React Native, visit:         
+// For more information on using Tailwind CSS with React Native, visit:

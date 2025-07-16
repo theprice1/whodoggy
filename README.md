@@ -1,28 +1,28 @@
 # 🐾 WhoDoggy?
 
-**WhoDoggy?** is a cross-platform mobile and web app designed to scan QR codes on dog collars, retrieve identity data from multiple mock microchip databases, and provide users with vital pet information — all while respecting privacy, accessibility, and ethical design principles.
+**WhoDoggy?** is a cross-platform mobile and web application designed to scan QR codes on dog collars, retrieve identity data from multiple simulated microchip databases, and provide users with essential pet details — all while respecting privacy, accessibility, and ethical design principles.
 
 ---
 
-## 📱 Platforms
+## 📱 Platforms & Technologies
 
 - **Mobile App**: React Native with Expo + NativeWind
 - **Web App**: React with Tailwind CSS
 - **Backend**: Node.js (Express) with TypeScript
-- **Database**: PostgreSQL (mock data)
+- **Database**: PostgreSQL (mock data via Prisma ORM)
 - **Authentication**: Firebase Authentication
-- **Storage & Firestore**: Firebase (mock/test data)
+- **Storage & Firestore**: Firebase (for mock/test data)
 
 ---
 
-## 🔍 Features
+## 🔍 Key Features
 
 - Scan dog microchip QR codes (mobile only)
-- Authenticate users via Firebase (shared logic across mobile + web)
-- Fetch identity data from 22 mock microchip databases
-- View dog details (e.g., name, breed, contact info)
-- Accessibility-friendly UI and QR scanner
-- LESP safeguards to avoid misuse (e.g., guide dogs)
+- User authentication via Firebase (shared across web & mobile)
+- Query identity data from 22 mock microchip registries
+- View dog info (name, breed, owner contact details)
+- Accessibility-first UI and ethical safeguards (e.g. guide dogs)
+- TM470-aligned LESP documentation and design
 
 ---
 
@@ -31,137 +31,132 @@
 ### 1. Clone the repository
 
 ```bash
-
 git clone https://github.com/your-username/whodoggy.git
 cd whodoggy
+2. Install dependencies (pnpm recommended)
+bash
+Copy code
+pnpm install
+You may also install dependencies individually for:
 
-### 📦 Install Dependencies
+bash
+Copy code
+cd apps/mobile && pnpm install
+cd ../web && pnpm install
+cd ../../packages/backend && pnpm install
+🔧 Firebase Configuration
+Ensure your Firebase credentials are configured:
 
-```bash
-# root folder
-npm install
+bash
+Copy code
+cp .env.example .env
+Firebase setup files:
 
-# mobile app
-cd mobile && npm install
+shared/firebase.ts — Shared client config
 
-# web app
-cd ../web && npm install
+apps/mobile/firebaseConfig.ts — Mobile Firebase config
 
-# backend
-cd ../backend && npm install
+apps/web/firebaseConfig.ts — Web Firebase config
 
-🔧 Firebase Config
-Ensure Firebase config is set up in the following files:
-
-shared/firebase.ts # Universal config
-apps/mobile/firebaseConfig.ts # Mobile import
-apps/web/firebaseConfig.ts # Web import
-
+🧩 Monorepo Structure
+graphql
+Copy code
 WhoDoggy/
 ├── apps/
-│   ├── mobile/             # React Native (Expo) app
-│   │   ├── screens/        # Screens including Login, Scanner
-│   │   ├── components/     # Reusable UI components
-│   │   ├── services/       # Firebase, API, QR logic
-│   │   ├── hooks/          # Custom React hooks
-│   │   └── contexts/       # Global state (e.g., AuthContext)
-│   ├── web/                # React web app
-│   │   ├── src/components/ # Login + shared UI
-│   │   ├── src/pages/      # Route-based views
-│   │   ├── src/hooks/      # Custom hooks
-│   │   ├── src/contexts/   # Context providers
-│   │   ├── src/types/      # TypeScript interfaces
-│   │   └── src/config/     # Firebase, API config
-│   └── backend/            # Express API server
-│       ├── controllers/    # Route logic
-│       ├── routes/         # API endpoints
-│       ├── middleware/     # Auth, error handling
-│       ├── mock-apis/      # Simulated registries
-│       ├── jobs/           # Background tasks
-│       └── tests/          # Unit/integration tests
+│   ├── mobile/             # React Native app (QR scanning, UI)
+│   └── web/                # React web dashboard
 ├── packages/
-│   ├── ui/                 # Shared UI components
-│   ├── utils/              # Shared utility functions
-│   └── api-client/         # Shared API logic
-├── shared/                 # Firebase config, types/interfaces
-├── scripts/                # Mock data generators + upload tools
-├── mock-databases/         # JSON files for 22 mock registries
-├── legal/                  # Legal and ethical documentation
-├── LESP/                   # Legal, Ethical, Social, and Professional planning
-├── docs/                   # Extra documentation
+│   ├── backend/            # Express API server (PostgreSQL + Prisma)
+│   └── shared/             # Shared types, constants, and Firebase config
+├── scripts/                # Mock data generation and sync tools
+│   ├── seed/               # Seed PostgreSQL data
+│   └── test/               # Test scripts (e.g. Firebase upload)
+├── tools/
+│   └── openapi/            # OpenAPI code generation (if used)
+├── docs/                   # TM470 documentation (planning, specs)
+│   └── specs/              # Wireframes, OpenAPI specs
+├── legal/                  # Legal and ethical documents
+├── LESP/                   # Legal, Ethical, Social & Professional planning
 └── README.md               # This file
-
-🧰 Tooling
-Monorepo: Managed manually or with Turborepo
-TypeScript: Across all apps and packages
-Firebase: Auth, analytics, and hosting
-Tailwind CSS: Web styling
-NativeWind: Mobile styling
-PostgreSQL: Backend database
-Prisma: ORM for backend
-
-# WhoDoggy Backend
-
-Backend server for WhoDoggy, built with Node.js and Express, provides API endpoints for searching and deleting pet data by microchip IDs.
----
-
-## 📘 Environment Configuration
-
-Environment variables manage sensitive info like database credentials and API keys. Use the dotenv package.
-
-### 🔧 Setting Up Environment Variables
-
-cp .env.example .env
-
 🧪 Testing
-Each app/package can include its own test suite:
-npm run test
+Each app or package can run tests individually:
 
+bash
+Copy code
+pnpm run test
 ⚖️ LESP Commitment
-WhoDoggy is built with Legal, Ethical, Social, and Professional (LESP) principles:
+WhoDoggy is designed with strong Legal, Ethical, Social, and Professional principles:
 
-Use of mock data for ethical safeguards
+Uses mock data only for ethical safeguards and compliance
 
-Accessibility-first design (avoiding misuse like scanning guide dogs)
+Prioritizes accessibility, e.g., preventing misuse like scanning guide dogs
 
-Clear ownership and consent practices for data
+Documents clear ownership and consent boundaries
 
-Strict use of mock data (for academic and ethical safeguards)
+Includes privacy and deletion policies in docs/ and legal/
 
-## Documentation & Policies
+📘 Documentation
+Full technical and ethical documentation available in the docs/ and legal/ folders:
 
-- [Accessibility](./docs/ACCESSIBILITY.md)
-- [Privacy Policy](./docs/privacy-policy.md)
-- [LESP](./docs/LESP.md)
-- [Code of Conduct](./docs/CODE_OF_CONDUCT.md)
-- [Data Deletion Policy](./docs/data-deletion-policy.md)
-- [Terms of Use](./legal/TERMS_OF_USE.md)
+Accessibility Design
 
-## 📚 Documentation
+LESP Principles
 
-For detailed information on our approach to accessibility, please see the [Accessibility Design Document](docs/ACCESSIBILITY.md). This outlines how WhoDoggy? ensures inclusivity for users of all abilities across mobile and web platforms.
+Privacy Policy
 
+Code of Conduct
 
+Data Deletion Policy
 
-## Related Documents
+Terms of Use
 
-- [Privacy Policy](./privacy-policy.md)
-- [Data Deletion Policy](./data-deletion-policy.md)
-- [LESP Principles](./LESP.md)
-- [Code of Conduct](./CODE_OF_CONDUCT.md)
+🗂 Related Documents
+Also included:
 
+TM470 Planning Timeline (docs/planning.md)
 
-📅 Project Timeline
-Start: April 2025
+Technical Architecture Diagrams (docs/specs/)
 
-Target Deadline: 15th September 2025
+Mock Microchip Registry APIs (scripts/seed/, packages/backend/services/)
 
 🧑‍💻 Author
 Anthony Price
 BSc (Hons) Computing
-The Open University
+The Open University (TM470 Project)
+
+📅 Project Timeline
+Start: April 2025
+
+Deadline: 15th September 2025
 
 📜 License
+This project is licensed under the MIT License.
+See LICENSE for details.
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+yaml
+Copy code
 
+---
+
+### ✅ Summary of Improvements
+
+| Area | Update |
+|------|--------|
+| ✅ Heading consistency | Normalized section headers |
+| ✅ Code blocks | Fixed formatting for shell commands |
+| ✅ Folder structure | Updated based on your actual layout |
+| ✅ Firebase clarity | Listed files to configure |
+| ✅ Repeated links | Removed duplicate “Related Documents” section |
+| ✅ Academic alignment | Ensured phrasing fits TM470 expectations |
+| ✅ Author | Identified you as the author for TM470 recognition |
+
+---
+
+Would you like me to:
+
+- Save this content as a new file for you?
+- Generate README templates for each subfolder now using the same tone?
+- Review your `docs/` content or LESP write-up next?
+
+Let me know what you'd like to do from here.
+```

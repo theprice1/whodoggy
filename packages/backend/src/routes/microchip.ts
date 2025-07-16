@@ -20,19 +20,21 @@ router.post('/microchip', async (req, res) => {
   const { chipId } = req.body; // Extract chip ID from the request body
 
   if (!chipId) {
-    return res.status(400).send({ error: "Microchip ID is required" });
+    return res.status(400).send({ error: 'Microchip ID is required' });
   }
 
   try {
     // Query the database for the microchip data
-    const result = await client.query('SELECT * FROM microchip_data WHERE microchip_number = $1', [chipId]);
+    const result = await client.query(
+      'SELECT * FROM microchip_data WHERE microchip_number = $1',
+      [chipId]
+    );
 
     if (result.rows.length === 0) {
       return res.status(404).send({ error: 'Microchip not found' });
     }
 
     return res.status(200).json(result.rows[0]); // Return dog details
-
   } catch (err) {
     console.error(err);
     return res.status(500).send({ error: 'Database query failed' });

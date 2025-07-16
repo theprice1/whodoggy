@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Button, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  ActivityIndicator,
+} from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useNavigation } from '@react-navigation/native';
 
@@ -11,7 +17,7 @@ export default function QRCodeScannerScreen() {
 
   useEffect(() => {
     (async () => {
-      setLoading(true);  // Show loading indicator while requesting permission
+      setLoading(true); // Show loading indicator while requesting permission
       const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === 'granted');
       setLoading(false); // Hide loading indicator once permission is set
@@ -31,7 +37,12 @@ export default function QRCodeScannerScreen() {
     return (
       <View style={styles.container}>
         <Text>No access to camera. Please enable permissions.</Text>
-        <Button title="Open Settings" onPress={() => {/* logic to open settings */}} />
+        <Button
+          title="Open Settings"
+          onPress={() => {
+            /* logic to open settings */
+          }}
+        />
       </View>
     );
   }

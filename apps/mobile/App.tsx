@@ -4,7 +4,9 @@ import AppNavigator from './src/navigation/AppNavigator'; // Make sure the impor
 
 export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1 }}> {/* Ensuring the app's content is not hidden behind notches or the status bar */}
+    <SafeAreaView style={{ flex: 1 }}>
+      {' '}
+      {/* Ensuring the app's content is not hidden behind notches or the status bar */}
       <StatusBar barStyle="dark-content" />
       <AppNavigator />
     </SafeAreaView>

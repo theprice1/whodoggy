@@ -9,6 +9,7 @@ import searchRoutes from './routes/search';
 import dogsRoutes from './routes/dogs';
 import ownersRoutes from './routes/owners';
 import registriesRoutes from './routes/registries';
+import deleteDataController from './routes/deleteDataController';  // add this import
 
 import { errorHandler } from './middleware/errorHandler';
 
@@ -16,20 +17,17 @@ dotenv.config();
 
 const app = express();
 
-// 🔧 Middleware
 app.use(cors());
-app.use(bodyParser.json()); // parse JSON request bodies
+app.use(bodyParser.json());
 
-// 🔌 API Routes
 app.use('/api/search', searchRoutes);
 app.use('/api/dogs', dogsRoutes);
 app.use('/api/owners', ownersRoutes);
 app.use('/api/registries', registriesRoutes);
+app.use('/api', deleteDataController);  // use the delete route
 
-// 🛑 Error Handling
 app.use(errorHandler);
 
-// 🚀 Start server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Backend server running on port ${port}`);

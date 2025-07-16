@@ -29,12 +29,7 @@ interface ErrorWithStatus extends Error {
 }
 
 // Basic error handler middleware with proper typings
-app.use((
-  err: unknown,
-  _req: Request,
-  res: Response,
-  _next: NextFunction,
-) => {
+app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
   void _next; // Mark _next as used to avoid eslint no-unused-vars
 
   const error = err instanceof Error ? err : new Error('Unknown error');
@@ -46,7 +41,9 @@ app.use((
 
   const statusCode = typedError.status ?? 500;
 
-  res.status(statusCode).json({ error: typedError.message || 'Internal Server Error' });
+  res
+    .status(statusCode)
+    .json({ error: typedError.message || 'Internal Server Error' });
 });
 
 const port = parseInt(process.env.PORT ?? '3000', 10);

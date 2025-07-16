@@ -1,101 +1,102 @@
-# WhoDoggy? Scripts
+# 🛠️ WhoDoggy? Scripts
 
-This folder contains automation and utility scripts used during development and testing of the WhoDoggy? project. These scripts help generate mock data, upload it to Firestore, and deploy the backend.
-
----
-
-## Scripts Overview
-
-| Script                  | Description                                                    | Usage Example                            |
-|-------------------------|----------------------------------------------------------------|-----------------------------------------|
-| `generateMockData.ts`   | Generates realistic mock dog and owner data for testing.       | `ts-node generateMockData.ts --count 100` |
-| `uploadToFirestore.ts`  | Uploads generated mock data JSON files to Firebase Firestore.  | `ts-node uploadToFirestore.ts --collection dogs` |
-| `deploy.sh`             | Bash script to deploy backend and other services (Linux/Mac).  | `./deploy.sh`                           |
+This folder contains automation and utility scripts used during development and testing of the WhoDoggy? project. These scripts help generate mock data, upload it to Firestore, and optionally deploy backend services.
 
 ---
 
-## Prerequisites
+## 📜 Scripts Overview
 
-- Node.js and npm installed
-- `ts-node` installed globally or use via npm scripts
-- Firebase CLI installed for deployment (`deploy.sh`)
-- Environment variables configured (see `.env.example`)
-
----
-
-## Environment Variables
-
-These scripts require environment variables for configuration. Copy `.env.example` to `.env` and fill in the values:
-
-- `FIREBASE_SERVICE_ACCOUNT_PATH`: Path to Firebase service account JSON file
-- `POSTGRES_URI`: Connection string for PostgreSQL database (if applicable)
-- Other keys as needed for API access or configuration
+| Script                 | Description                                                    | Example Usage                                    |
+| ---------------------- | -------------------------------------------------------------- | ------------------------------------------------ |
+| `generateMockData.ts`  | Generates realistic mock dog and owner data for testing.       | `ts-node generateMockData.ts --count 100`        |
+| `uploadToFirestore.ts` | Uploads generated mock JSON files to Firebase Firestore.       | `ts-node uploadToFirestore.ts --collection dogs` |
+| `deploy.sh`            | Bash script to deploy backend and services (Linux/macOS only). | `./deploy.sh`                                    |
 
 ---
 
-## Usage
+## ⚙️ Prerequisites
 
-### Generating Mock Data
+- Node.js (v18+ recommended)
+- [ts-node](https://typestrong.org/ts-node/) installed globally or via dev dependencies
+- Firebase CLI (`npm install -g firebase-tools`)
+- Correct `.env` configuration
+
+---
+
+## 🔐 Environment Variables
+
+These scripts rely on environment variables. Create a local `.env` file by copying the example:
 
 ```bash
+cp .env.example .env
+Required variables:
+
+FIREBASE_SERVICE_ACCOUNT_PATH – Path to your Firebase service account JSON file
+
+POSTGRES_URI – PostgreSQL connection string
+
+Any other keys needed for backend access or authentication
+
+🧪 Usage
+✅ Generating Mock Data
+bash
+Copy code
 ts-node generateMockData.ts --count 500
 Options:
 
---count: Number of mock records to generate (default: 100)
+--count – Number of mock records to generate (default: 100)
 
-Uploading Data to Firestore
+☁️ Uploading Data to Firestore
 bash
 Copy code
 ts-node uploadToFirestore.ts --collection dogs
 Options:
 
---collection: Firestore collection to upload data to (e.g., dogs, owners)
+--collection – Firestore collection to upload data to (e.g., dogs, owners, registries)
 
-Deployment
+🚀 Deployment (Linux/macOS only)
 bash
 Copy code
 ./deploy.sh
-Note: deploy.sh is a bash script and works on Linux/macOS. Windows users may need to use WSL or adapt to PowerShell.
+⚠️ deploy.sh is written for bash. Windows users may need to adapt it for PowerShell or use WSL.
 
-Recommendations & Notes
-Scripts use async/await with proper error handling.
+💡 Recommendations
+Scripts use async/await with structured error handling.
 
-Progress and error messages are logged to the console.
+Console logs provide clear progress and failure messages.
 
-Customize parameters using CLI flags to fit your testing needs.
+Customize parameters with CLI flags to suit testing needs.
 
-Avoid committing .env or sensitive files to version control.
+Avoid committing .env or sensitive credentials to version control.
 
-Consider adding PowerShell equivalents for Windows users.
+Add PowerShell alternatives for Windows support if needed.
 
-Use npm run scripts (defined in package.json) for easier script execution.
+Use npm run aliases (in package.json) to simplify script usage.
 
-Extending Scripts
-If you want to add new scripts:
+🔧 Adding New Scripts
+When adding a new script:
 
-Follow existing coding standards (TypeScript, async/await).
+Use consistent formatting (TypeScript + async/await)
 
-Add descriptive logging and CLI options.
+Support CLI arguments using a parser like yargs
 
-Document new scripts here with usage examples.
+Add helpful logs for success/failure
 
-Troubleshooting
-Ensure environment variables are set and valid.
+Document it here in this README
+
+🧯 Troubleshooting
+Ensure .env is created and filled out correctly.
 
 Check that ts-node and dependencies are installed.
 
-For Firebase-related issues, verify service account permissions.
+Verify Firebase service account permissions if using upload scripts.
 
-Consult logs for detailed error messages.
+Read console logs for specific error output.
 
-Contact
-For questions or help, please contact: support@whodoggy.com
+📬 Contact
+For questions, support, or collaboration:
 
-Generated for WhoDoggy? Project — Anthony Price
-
-yaml
-Copy code
-
----
-
-Would you like me to help create example CLI argument parsing in one of your
+Anthony Price
+BSc (Hons) Computing — The Open University
+📧 support@whodoggy.com
+```

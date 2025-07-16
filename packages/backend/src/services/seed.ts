@@ -8,7 +8,9 @@ async function seedDatabase() {
     console.log(`🚀 Seeding ${NUM_RECORDS} microchip records...`);
 
     for (let i = 0; i < NUM_RECORDS; i++) {
-      const microchip_id = faker.number.int({ min: 985141000000000, max: 985141999999999 }).toString();
+      const microchip_id = faker.number
+        .int({ min: 985141000000000, max: 985141999999999 })
+        .toString();
       const pet_name = faker.animal.dog();
       const species = 'dog';
       const breed = faker.animal.dog(); // same for simplicity
@@ -18,7 +20,7 @@ async function seedDatabase() {
         'ChipSecure Registry',
         'VetID Central',
         'SafePaws Database',
-        'MicroTrack National'
+        'MicroTrack National',
       ]);
       const owner_contact = faker.internet.email();
 
@@ -34,7 +36,7 @@ async function seedDatabase() {
           breed,
           date_registered,
           registry_name,
-          owner_contact
+          owner_contact,
         ]
       );
     }

@@ -3,8 +3,8 @@
 // Use global fetch (Node 18+)
 const microchipId = process.argv[2];
 if (!microchipId) {
-  console.error("❌ Please provide a microchip ID, e.g.:");
-  console.error("   npx ts-node scripts/queryAllRegistries.ts 1234567890");
+  console.error('❌ Please provide a microchip ID, e.g.:');
+  console.error('   npx ts-node scripts/queryAllRegistries.ts 1234567890');
   process.exit(1);
 }
 

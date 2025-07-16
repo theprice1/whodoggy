@@ -1,3 +1,18 @@
+// src/types/types.ts
+
+export interface DogWithDetails {
+  dog_id: string;
+  dog_name: string;
+  breed: string;
+  age: number;
+  owner_id: string;
+  owner_name: string;
+  phone: string;
+  email: string;
+  registry_id: string;
+  registry_name: string;
+}
+
 export interface MicrochipRecord {
   microchipId: string;
   dogName: string;

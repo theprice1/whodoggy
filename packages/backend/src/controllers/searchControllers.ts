@@ -28,7 +28,9 @@ router.post('/search', async (req: Request, res: Response) => {
     return res.status(200).json({ data: result.rows[0] });
   } catch (error) {
     console.error('Search error:', error);
-    return res.status(500).json({ error: 'Server error during microchip search' });
+    return res
+      .status(500)
+      .json({ error: 'Server error during microchip search' });
   }
 });
 

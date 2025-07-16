@@ -32,7 +32,10 @@ export async function createDog(data: Omit<Dog, 'id'>): Promise<Dog> {
 }
 
 // Update dog by ID
-export async function updateDog(id: string, data: Partial<Omit<Dog, 'id'>>): Promise<Dog | null> {
+export async function updateDog(
+  id: string,
+  data: Partial<Omit<Dog, 'id'>>
+): Promise<Dog | null> {
   const fields = [];
   const values = [];
   let idx = 1;

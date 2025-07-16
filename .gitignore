@@ -68,3 +68,15 @@ turbo/
 # TypeScript Cache
 # ========================
 *.tsbuildinfo
+# ========================
+# OpenAPI Tooling
+# ========================
++ tools/openapi/node_modules/
+# ========================
+# Misc. Dev Artifacts
+# ========================
++ *~
++ *.bak
++ *.orig
++ .eslintcache
+

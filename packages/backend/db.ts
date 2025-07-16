@@ -5,10 +5,15 @@ dotenv.config();
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  ssl:
+    process.env.NODE_ENV === 'production'
+      ? { rejectUnauthorized: false }
+      : false,
 });
 
 type QueryParams = (string | number | boolean | null)[];
 
-export const query = (text: string, params?: QueryParams): Promise<QueryResult> =>
-  pool.query(text, params);
+export const query = (
+  text: string,
+  params?: QueryParams
+): Promise<QueryResult> => pool.query(text, params);

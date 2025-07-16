@@ -10,10 +10,14 @@ for (let i = 1; i <= totalRegistries; i++) {
   const port = basePort + i - 1;
   const filePath = path.join(openapiDir, fileName);
 
-  const child = spawn('npx', ['@stoplight/prism-cli', 'mock', filePath, `-p`, port.toString()], {
-    stdio: 'inherit',
-    shell: true,
-  });
+  const child = spawn(
+    'npx',
+    ['@stoplight/prism-cli', 'mock', filePath, `-p`, port.toString()],
+    {
+      stdio: 'inherit',
+      shell: true,
+    }
+  );
 
   child.on('error', (err) => {
     console.error(`❌ Error starting mock for registry${i}:`, err);

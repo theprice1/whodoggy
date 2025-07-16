@@ -4,7 +4,7 @@ import {
   getDogById,
   createDog,
   updateDog,
-  deleteDog
+  deleteDog,
 } from '../services/dogService';
 
 export const getAllDogsHandler = async (_req: Request, res: Response) => {
@@ -26,7 +26,10 @@ export const createDogHandler = async (req: Request, res: Response) => {
 
 export const updateDogHandler = async (req: Request, res: Response) => {
   const updatedDog = await updateDog(req.params.id, req.body);
-  if (!updatedDog) return res.status(404).json({ error: 'Dog not found or no data to update' });
+  if (!updatedDog)
+    return res
+      .status(404)
+      .json({ error: 'Dog not found or no data to update' });
   res.json(updatedDog);
 };
 

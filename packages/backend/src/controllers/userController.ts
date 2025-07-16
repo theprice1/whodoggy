@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';  // Importing types for Express
+import { Request, Response } from 'express'; // Importing types for Express
 
 // Controller function to handle GET /api/users
 export const getUsers = (req: Request, res: Response) => {

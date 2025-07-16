@@ -1,19 +1,11 @@
 {
-  "packages": [
-    "apps/*",
-    "packages/*"
-  ],
+  "packages": ["apps/*", "packages/*"],
   "version": "independent",
   "npmClient": "npm",
   "useWorkspaces": true,
   "command": {
     "publish": {
-      "ignoreChanges": [
-        "**/__tests__/**",
-        "**/*.md",
-        "docs/**",
-        "scripts/**"
-      ]
+      "ignoreChanges": ["**/__tests__/**", "**/*.md", "docs/**", "scripts/**"]
     },
     "bootstrap": {
       "npmClientArgs": ["--no-package-lock"]

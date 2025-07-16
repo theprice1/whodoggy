@@ -24,7 +24,11 @@ const dataFileArg = args[0] || 'dogs.json';
 const collectionName = args[1] || 'dogs';
 
 // Build path to mock data inside backend package folder
-const dataFilePath = path.resolve(__dirname, '../packages/backend/mock_data', dataFileArg);
+const dataFilePath = path.resolve(
+  __dirname,
+  '../packages/backend/mock_data',
+  dataFileArg
+);
 
 // Read mock data JSON file
 let data: DogRecord[];
@@ -36,7 +40,10 @@ try {
 }
 
 // Path to your Firebase service account JSON
-const serviceAccountPath = path.resolve(__dirname, '../packages/backend/firebase-service-account/service-account-file.json');
+const serviceAccountPath = path.resolve(
+  __dirname,
+  '../packages/backend/firebase-service-account/service-account-file.json'
+);
 
 // Initialize Firebase Admin SDK
 initializeApp({
@@ -64,7 +71,9 @@ async function uploadData() {
       }
     }
 
-    console.log(`✅ Uploaded ${data.length} records to Firestore collection "${collectionName}".`);
+    console.log(
+      `✅ Uploaded ${data.length} records to Firestore collection "${collectionName}".`
+    );
   } catch (error) {
     console.error('❌ Error uploading data to Firestore:', error);
     process.exit(1);

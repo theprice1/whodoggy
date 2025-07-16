@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { auth } from "../firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
+import { auth } from '../firebaseConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -12,7 +12,7 @@ export default function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setError(null);
-      alert("Logged in!");
+      alert('Logged in!');
     } catch (e: any) {
       setError(e.message);
     }
@@ -34,10 +34,10 @@ export default function Login() {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <button type="submit">Login</button>
     </form>
   );
 }
 // This is a simple login component for a React web application using Firebase Authentication.
-// It allows users to enter their email and password, and handles login with error handling.    
+// It allows users to enter their email and password, and handles login with error handling.

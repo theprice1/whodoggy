@@ -44,7 +44,10 @@ export interface DogRecord {
  * Query a single registry by microchipId.
  * Returns DogRecord if found and valid, otherwise throws.
  */
-async function queryRegistry(url: string, microchipId: string): Promise<DogRecord> {
+async function queryRegistry(
+  url: string,
+  microchipId: string
+): Promise<DogRecord> {
   const response = await fetch(`${url}${microchipId}`, { timeout: 5000 }); // 5s timeout
 
   if (!response.ok) {
@@ -54,7 +57,11 @@ async function queryRegistry(url: string, microchipId: string): Promise<DogRecor
   const data: DogRecord = await response.json();
 
   // Validate response: microchipId should be a non-empty string different from default placeholder
-  if (!data.microchipId || data.microchipId === 'string' || data.microchipId.trim() === '') {
+  if (
+    !data.microchipId ||
+    data.microchipId === 'string' ||
+    data.microchipId.trim() === ''
+  ) {
     throw new Error(`Registry ${url} returned no valid record`);
   }
 
@@ -65,13 +72,15 @@ async function queryRegistry(url: string, microchipId: string): Promise<DogRecor
  * Query all registries concurrently and return the first successful DogRecord found.
  * If none found, returns null.
  */
-export async function queryAllRegistries(microchipId: string): Promise<DogRecord | null> {
-  const queries = registryUrls.map(url =>
-    queryRegistry(url, microchipId).catch(err => {
+export async function queryAllRegistries(
+  microchipId: string
+): Promise<DogRecord | null> {
+  const queries = registryUrls.map((url) =>
+    queryRegistry(url, microchipId).catch((err) => {
       // Log error but don't fail all queries
       console.warn(`Failed to fetch from ${url}: ${err.message}`);
       return null;
-    }),
+    })
   );
 
   // Wait for all to settle

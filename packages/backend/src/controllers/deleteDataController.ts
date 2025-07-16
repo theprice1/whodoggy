@@ -1,10 +1,10 @@
-// packages/backend/src/controllers/deleteDataController.ts
-
-import { Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import { deleteMicrochipData } from '../db/deleteMicrochip';
 import { AuthenticatedRequest } from '../middleware/auth';
 
-export async function deleteMicrochipHandler(req: AuthenticatedRequest, res: Response) {
+const router = express.Router();
+
+async function deleteMicrochipHandler(req: AuthenticatedRequest, res: Response) {
   const userId = req.user?.uid;
   const microchipId = req.params.id;
 
@@ -23,3 +23,7 @@ export async function deleteMicrochipHandler(req: AuthenticatedRequest, res: Res
     res.status(500).json({ error: 'Internal server error' });
   }
 }
+
+router.delete('/microchip/:id', deleteMicrochipHandler);
+
+export default router;

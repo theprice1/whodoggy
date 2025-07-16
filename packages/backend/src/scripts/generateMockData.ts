@@ -30,7 +30,9 @@ const usedIds = new Set<string>();
 function generateMicrochipId() {
   let id: string;
   do {
-    id = faker.number.int({ min: 981000000000000, max: 981099999999999 }).toString();
+    id = faker.number
+      .int({ min: 981000000000000, max: 981099999999999 })
+      .toString();
   } while (usedIds.has(id));
   usedIds.add(id);
   return id;
@@ -46,7 +48,7 @@ const breeds = [
   'Border Collie',
   'French Bulldog',
   'Dachshund',
-  'Boxer'
+  'Boxer',
 ];
 
 function randomGender(): 'Male' | 'Female' {

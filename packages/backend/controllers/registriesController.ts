@@ -1,6 +1,9 @@
 // controllers/registriesController.ts
 import { Request, Response } from 'express';
-import { getRegistry, getAllRegistriesService } from '../services/registryService';
+import {
+  getRegistry,
+  getAllRegistriesService,
+} from '../services/registryService';
 
 export const getAllRegistries = async (_req: Request, res: Response) => {
   const registries = await getAllRegistriesService();

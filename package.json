@@ -14,6 +14,7 @@
     "build": "pnpm --filter mobile build",
     "test": "pnpm -r test",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write .",
     "clean": "pnpm -r exec rimraf dist node_modules build coverage",
     "migrate:up": "pnpm --filter whodoggy-backend node-pg-migrate up",

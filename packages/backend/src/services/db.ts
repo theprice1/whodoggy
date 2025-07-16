@@ -25,12 +25,12 @@ pool.on('error', (err: Error) => {
 });
 
 // Export for use in other files
-export default pool;
 export { pool };
 
 // Optional direct run: test connection
 if (require.main === module) {
-  pool.query('SELECT NOW()')
+  pool
+    .query('SELECT NOW()')
     .then((res: QueryResult) => {
       console.log('🕒 DB Time:', res.rows[0]);
       process.exit(0);

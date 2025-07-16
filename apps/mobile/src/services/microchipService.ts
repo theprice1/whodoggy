@@ -20,7 +20,9 @@ export interface MicrochipRecord {
   vaccinated: boolean;
 }
 
-export async function fetchMicrochipById(id: string): Promise<MicrochipRecord[]> {
+export async function fetchMicrochipById(
+  id: string
+): Promise<MicrochipRecord[]> {
   try {
     const response = await fetch(`${API_BASE_URL}/microchips/${id}`);
     if (!response.ok) {

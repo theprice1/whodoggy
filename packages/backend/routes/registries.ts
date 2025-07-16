@@ -1,6 +1,9 @@
 // routes/registries.ts
 import express from 'express';
-import { getRegistryById, getAllRegistries } from '../controllers/registriesController';
+import {
+  getRegistryById,
+  getAllRegistries,
+} from '../controllers/registriesController';
 const router = express.Router();
 router.get('/', getAllRegistries);
 router.get('/:id', getRegistryById);

@@ -18,10 +18,8 @@
     "src/**/*.ts",
     "backend/**/*.ts",
     "scripts/**/*.ts",
-    "*.ts"
-, "scripts/seedDatabase.ts"  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+    "*.ts",
+    "scripts/seedDatabase.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
 }

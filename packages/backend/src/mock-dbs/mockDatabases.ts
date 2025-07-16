@@ -9,7 +9,7 @@ const allMockRecords: MicrochipRecord[] = JSON.parse(rawData);
 
 // Group by registryName
 const mockDatabases: Record<string, MicrochipRecord[]> = {};
-allMockRecords.forEach(record => {
+allMockRecords.forEach((record) => {
   if (!mockDatabases[record.registryName]) {
     mockDatabases[record.registryName] = [];
   }

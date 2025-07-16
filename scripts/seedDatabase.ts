@@ -2,13 +2,18 @@ import pgPromise, { ITask } from 'pg-promise';
 import { faker } from '@faker-js/faker';
 
 const pgp = pgPromise();
-const db = pgp(process.env.DATABASE_URL || 'postgresql://postgres:william@localhost:5432/whodoggy');
+const db = pgp(
+  process.env.DATABASE_URL ||
+    'postgresql://postgres:william@localhost:5432/whodoggy'
+);
 
 async function seed() {
   try {
     await db.tx(async (t: ITask<unknown>) => {
       console.log('Truncating tables...');
-      await t.none('TRUNCATE dogs, owners, registries RESTART IDENTITY CASCADE');
+      await t.none(
+        'TRUNCATE dogs, owners, registries RESTART IDENTITY CASCADE'
+      );
 
       const owners = [
         { name: 'John Doe', email: 'john@example.com', phone: '0123456789' },
@@ -28,8 +33,16 @@ async function seed() {
       );
 
       const registries = [
-        { name: 'UK National Registry', base_url: 'https://registry1.example.com', country: 'United Kingdom' },
-        { name: 'EU Pet DB', base_url: 'https://registry2.example.com', country: 'Germany' },
+        {
+          name: 'UK National Registry',
+          base_url: 'https://registry1.example.com',
+          country: 'United Kingdom',
+        },
+        {
+          name: 'EU Pet DB',
+          base_url: 'https://registry2.example.com',
+          country: 'Germany',
+        },
       ];
 
       console.log('Inserting registries...');
@@ -53,8 +66,14 @@ async function seed() {
         const dogName = faker.person.firstName();
         const breed = faker.animal.dog();
         const age = faker.number.int({ min: 1, max: 15 });
-        const ownerIndex = faker.number.int({ min: 0, max: ownerIds.length - 1 });
-        const registryIndex = faker.number.int({ min: 0, max: registryIds.length - 1 });
+        const ownerIndex = faker.number.int({
+          min: 0,
+          max: ownerIds.length - 1,
+        });
+        const registryIndex = faker.number.int({
+          min: 0,
+          max: registryIds.length - 1,
+        });
 
         dogInsertions.push(
           t.none(
