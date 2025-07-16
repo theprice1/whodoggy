@@ -1,60 +1,29 @@
+// packages/backend/services/dogService.ts
 import { query } from '../db';
 
-export type Dog = {
+export interface Dog {
   id: string;
-  microchip_id: string;
   name: string;
-  owner: string;
-  registry: string;
+  breed: string;
+  microchipId: string;
+  ownerId: string;
+  registryId: string;
+}
+
+// Get dog by microchip ID from local DB
+export const getDogByMicrochip = async (microchipId: string): Promise<Dog | null> => {
+  try {
+    const result = await query(
+      'SELECT id, name, breed, microchip_id AS "microchipId", owner_id AS "ownerId", registry_id AS "registryId" FROM dogs WHERE microchip_id = $1',
+      [microchipId]
+    );
+
+    if (result.rows.length === 0) return null;
+    return result.rows[0] as Dog;
+  } catch (err) {
+    console.error('Error fetching dog by microchip:', err);
+    throw err;
+  }
 };
 
-// Fetch all dogs
-export async function getAllDogs(): Promise<Dog[]> {
-  const result = await query('SELECT * FROM dogs');
-  return result.rows;
-}
-
-// Fetch one dog by ID
-export async function getDogById(id: string): Promise<Dog | null> {
-  const result = await query('SELECT * FROM dogs WHERE id = $1', [id]);
-  return result.rows[0] || null;
-}
-
-// Create new dog
-export async function createDog(data: Omit<Dog, 'id'>): Promise<Dog> {
-  const { microchip_id, name, owner, registry } = data;
-  const result = await query(
-    `INSERT INTO dogs (microchip_id, name, owner, registry)
-     VALUES ($1, $2, $3, $4) RETURNING *`,
-    [microchip_id, name, owner, registry]
-  );
-  return result.rows[0];
-}
-
-// Update dog by ID
-export async function updateDog(
-  id: string,
-  data: Partial<Omit<Dog, 'id'>>
-): Promise<Dog | null> {
-  const fields = [];
-  const values = [];
-  let idx = 1;
-
-  for (const key in data) {
-    fields.push(`${key} = $${idx++}`);
-    values.push(data[key as keyof typeof data]);
-  }
-
-  if (fields.length === 0) return null;
-
-  values.push(id);
-  const sql = `UPDATE dogs SET ${fields.join(', ')} WHERE id = $${idx} RETURNING *`;
-  const result = await query(sql, values);
-  return result.rows[0] || null;
-}
-
-// Delete dog by ID
-export async function deleteDog(id: string): Promise<boolean> {
-  const result = await query('DELETE FROM dogs WHERE id = $1', [id]);
-  return result.rowCount > 0;
-}
+// Optional: Add more CRUD operations here as needed

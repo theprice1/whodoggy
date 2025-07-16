@@ -3,12 +3,23 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+if (!process.env.DATABASE_URL) {
+  throw new Error('Missing DATABASE_URL environment variable');
+}
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl:
     process.env.NODE_ENV === 'production'
       ? { rejectUnauthorized: false }
       : false,
+  max: 20,
+  idleTimeoutMillis: 30000,
+});
+
+pool.on('error', (err) => {
+  console.error('Unexpected error on idle client', err);
+  process.exit(-1);
 });
 
 type QueryParams = (string | number | boolean | null)[];
@@ -17,3 +28,13 @@ export const query = (
   text: string,
   params?: QueryParams
 ): Promise<QueryResult> => pool.query(text, params);
+
+export const queryRows = async <T = any>(
+  text: string,
+  params?: QueryParams
+): Promise<T[]> => {
+  const result = await pool.query(text, params);
+  return result.rows;
+};
+
+export { pool };

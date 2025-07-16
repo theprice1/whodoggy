@@ -1,11 +1,23 @@
-// services/ownerService.ts
-import db from '../db';
-export const getOwner = async (id: string) => {
-  const result = await db.query('SELECT * FROM owners WHERE id = $1', [id]);
-  return result.rows[0];
+// packages/backend/services/ownerService.ts
+import { query } from '../db';
+
+export interface Owner {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+}
+
+// Get owner by ID
+export const getOwnerById = async (id: string): Promise<Owner | null> => {
+  try {
+    const result = await query('SELECT id, name, email, phone FROM owners WHERE id = $1', [id]);
+    if (result.rows.length === 0) return null;
+    return result.rows[0] as Owner;
+  } catch (err) {
+    console.error('Error fetching owner by id:', err);
+    throw err;
+  }
 };
 
-export const getAllOwnersService = async () => {
-  const result = await db.query('SELECT * FROM owners');
-  return result.rows;
-};
+// Optional: Add more CRUD operations here as needed
