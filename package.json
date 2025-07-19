@@ -9,7 +9,7 @@
     "scripts"
   ],
   "scripts": {
-    "dev": "pnpm --filter mobile dev",
+    "dev": "pnpm --filter whodoggy-mobile dev",
     "start": "pnpm --filter mobile start",
     "build": "pnpm --filter mobile build",
     "test": "pnpm -r test",

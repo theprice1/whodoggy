@@ -10,8 +10,13 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
     "paths": {
-      "@shared/*": ["../../packages/shared/*"]
+      "@shared/*": [
+        "../../packages/shared/*"
+      ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ],
+  "extends": "expo/tsconfig.base"
 }
