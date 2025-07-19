@@ -1,15 +1,12 @@
-// packages/backend/routes/search.ts
-
 import { Router } from 'express';
-import { searchDogByMicrochip } from '../controllers/searchController';
-import { validateMicrochipId } from '../middleware/validateInput'; // optional, if you have this middleware
-import { authMiddleware } from '../middleware/authMiddleware';
-
+import { searchDogByMicrochip } from '../controllers/searchController.js';
+import { authMiddleware } from '../middleware/authMiddleware.js';
+import { validateSearchInput } from '../middleware/validateInput.js';
 
 const router = Router();
 
 // POST /api/search
-// Middleware order: auth -> validate input -> controller
-router.post('/', authMiddleware, validateMicrochipId, searchDogByMicrochip);
+// Middleware: auth -> validate input -> controller
+router.post('/', authMiddleware, validateSearchInput, searchDogByMicrochip);
 
 export default router;

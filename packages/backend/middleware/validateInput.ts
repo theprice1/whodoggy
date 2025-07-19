@@ -1,9 +1,16 @@
-import { Request, Response, NextFunction } from 'express';
+// validateInput.ts
+import { Request, Response, NextFunction } from "express";
+import { z } from "zod";
 
-export const validateMicrochipId = (req: Request, res: Response, next: NextFunction) => {
-  const { microchipId } = req.body;
-  if (!microchipId || typeof microchipId !== 'string' || microchipId.trim() === '') {
-    return res.status(400).json({ error: 'Invalid or missing microchipId in request body' });
+const microchipSchema = z.object({
+  microchipId: z.string().length(15), // adjust as needed
+});
+
+export const validateSearchInput = (req: Request, res: Response, next: NextFunction) => {
+  try {
+    microchipSchema.parse(req.body);
+    next();
+  } catch (err: any) {
+    res.status(400).json({ error: err.errors });
   }
-  next();
 };
