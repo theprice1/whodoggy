@@ -1,5 +1,4 @@
-// shared/styles/theme.js
-const theme = {
+module.exports = {
   colors: {
     primary: '#4B9CD3',
     secondary: '#FFD700',
@@ -8,27 +7,24 @@ const theme = {
     muted: '#9CA3AF',
   },
   spacing: {
+    // your spacing scale here, e.g.
     px: '1px',
     1: '0.25rem',
     2: '0.5rem',
     3: '0.75rem',
     4: '1rem',
-    5: '1.25rem',
-    6: '1.5rem',
+    // etc.
   },
   borderRadius: {
     sm: '0.125rem',
     DEFAULT: '0.25rem',
-    md: '0.375rem',
     lg: '0.5rem',
+    // etc.
   },
   fontSize: {
-    sm: '0.875rem',
-    base: '1rem',
-    lg: '1.125rem',
-    xl: '1.25rem',
-    '2xl': '1.5rem',
+    sm: ['0.875rem', { lineHeight: '1.25rem' }],
+    base: ['1rem', { lineHeight: '1.5rem' }],
+    lg: ['1.125rem', { lineHeight: '1.75rem' }],
+    // etc.
   },
 };
-
-module.exports = theme;
