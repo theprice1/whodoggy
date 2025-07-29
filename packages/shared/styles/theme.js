@@ -1,4 +1,3 @@
-// shared/styles/theme.js
 const theme = {
   colors: {
     primary: '#4B9CD3',
@@ -31,4 +30,4 @@ const theme = {
   },
 };
 
-module.exports = theme;
+export default theme;

@@ -8,7 +8,8 @@
     "start": "vite preview",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "jest",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "build:css": "tailwindcss -c tailwind.config.mjs -o src/output.css"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
