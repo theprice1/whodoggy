@@ -1,8 +1,12 @@
+// apps/web/postcss.config.js
+
+/** @type {import('postcss').Config} */
 module.exports = {
   plugins: {
+    // Tailwind CSS handles utility-first styling and design tokens
     tailwindcss: {},
+
+    // Autoprefixer adds vendor prefixes automatically for cross-browser support
     autoprefixer: {},
   },
 };
-// This is a PostCSS configuration file that uses Tailwind CSS and Autoprefixer as plugins.
-// It exports an object with a plugins property that includes both Tailwind CSS and Autoprefix

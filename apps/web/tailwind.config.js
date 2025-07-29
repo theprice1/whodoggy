@@ -1,14 +1,20 @@
-/** @type {import('tailwindcss').Config} */
+// packages/web/tailwind.config.js
+const { theme } = require('../../shared/styles/theme');
+
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary: '#3b82f6',   // Customize as needed
-        secondary: '#ef4444',
+        primary: theme.colors.primary,
+        secondary: theme.colors.secondary,
+        background: theme.colors.background,
+        text: theme.colors.text,
+        muted: theme.colors.muted,
       },
+      spacing: theme.spacing,
+      borderRadius: theme.borderRadius,
+      fontSize: theme.fontSize,
     },
   },
   plugins: [],
