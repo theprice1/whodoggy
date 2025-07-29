@@ -1,4 +1,9 @@
 packages:
-  - 'apps/web'
-  - 'apps/mobile'
-  - 'packages/backend'
+  - apps/*
+  - packages/*
+
+ignoredBuiltDependencies:
+  - '@firebase/util'
+  - bcrypt
+  - esbuild
+  - protobufjs
