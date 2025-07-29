@@ -1,9 +1,15 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#3b82f6',   // Customize as needed
+        secondary: '#ef4444',
+      },
+    },
   },
   plugins: [],
 };
-// This is the Tailwind CSS configuration file.
-// It specifies the content paths to scan for class names and extends the default theme.
