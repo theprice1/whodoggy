@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function DogDetailScreen() {
   return (
-    <main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <h1>DogDetailScreen</h1>
+    <main className="flex items-center justify-center h-screen">
+      <h1 className="text-2xl font-bold">DogDetailScreen</h1>
     </main>
   );
 }

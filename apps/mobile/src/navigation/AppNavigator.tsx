@@ -1,36 +1,35 @@
-// apps/mobile/src/navigation/AppNavigator.tsx
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const AuthStack = createNativeStackNavigator();
+const HomeStack = createNativeStackNavigator();
 
-import LoginScreen from '../screens/LoginScreen';
-import HomeScreen from '../screens/Home/HomeScreen';
-import QRScannerScreen from '../screens/Home/QRScannerScreen';
-import SearchScreen from '../screens/Home/SearchScreen';
-import ResultsScreen from '../screens/ResultsScreen';
+function AuthStackScreen() {
+  return (
+    <AuthStack.Navigator>
+      <AuthStack.Screen name="SignIn" component={SignInScreen} />
+      <AuthStack.Screen name="SignUp" component={SignUpScreen} />
+      <AuthStack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+    </AuthStack.Navigator>
+  );
+}
 
-export type RootStackParamList = {
-  Login: undefined;
-  Home: undefined;
-  QRScanner: undefined;
-  Search: undefined;
-  Results: { dogInfo: any } | undefined;
-};
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="QRScanner" component={QRScannerScreen} />
+      <HomeStack.Screen name="DogDetail" component={DogDetailScreen} />
+      <HomeStack.Screen name="Search" component={SearchScreen} />
+      <HomeStack.Screen name="Results" component={ResultsScreen} />
+      {/* Other screens */}
+    </HomeStack.Navigator>
+  );
+}
 
 const AppNavigator = () => {
+  const isLoggedIn = /* check auth status, e.g. from context or redux */
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="QRScanner" component={QRScannerScreen} />
-        <Stack.Screen name="Search" component={SearchScreen} />
-        <Stack.Screen name="Results" component={ResultsScreen} />
-      </Stack.Navigator>
+      {isLoggedIn ? <HomeStackScreen /> : <AuthStackScreen />}
     </NavigationContainer>
   );
 };
-
-export default AppNavigator;
