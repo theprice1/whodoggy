@@ -1,4 +1,4 @@
-// Example shared types
+// packages/shared/types/index.ts
 
 export interface DogRecord {
   microchipId: string;

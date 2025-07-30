@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@shared/*": ["../../packages/shared/*"]
+      "@whodoggy/shared-types": ["../../packages/shared/types"]
     }
   },
   "include": ["src"]
