@@ -1,74 +1,80 @@
-import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  ActivityIndicator,
-} from 'react-native';
+// src/screens/QRScannerScreen.tsx
+
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Button, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import { useNavigation } from '@react-navigation/native';
 
-export default function QRCodeScannerScreen() {
+interface QRScannerScreenProps {
+  navigation: {
+    goBack: () => void;
+    navigate: (screen: string, params?: any) => void;
+  };
+}
+
+const QRScannerScreen: React.FC<QRScannerScreenProps> = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-  const [scanned, setScanned] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false); // New state for loading
-  const navigation = useNavigation();
+  const [scanned, setScanned] = useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     (async () => {
-      setLoading(true); // Show loading indicator while requesting permission
       const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === 'granted');
-      setLoading(false); // Hide loading indicator once permission is set
     })();
   }, []);
 
   const handleBarCodeScanned = ({ data }: { data: string }) => {
     setScanned(true);
-    // Navigate to the SearchMicrochip screen with the scanned microchip ID
-    navigation.navigate('SearchMicrochip', { microchipId: data });
+    Alert.alert('Microchip scanned!', `ID: ${data}`, [
+      {
+        text: 'Search',
+        onPress: () => navigation.navigate('SearchResults', { microchipId: data }),
+      },
+      {
+        text: 'OK',
+        onPress: () => setScanned(false),
+      },
+    ]);
   };
 
   if (hasPermission === null) {
-    return <Text>Requesting camera permission...</Text>;
+    return (
+      <View style={styles.centered}>
+        <Text>Requesting camera permission...</Text>
+      </View>
+    );
   }
+
   if (hasPermission === false) {
     return (
-      <View style={styles.container}>
-        <Text>No access to camera. Please enable permissions.</Text>
-        <Button
-          title="Open Settings"
-          onPress={() => {
-            /* logic to open settings */
-          }}
-        />
+      <View style={styles.centered}>
+        <Text>No access to camera.</Text>
+        <Button title="Go Back" onPress={() => navigation.goBack()} />
       </View>
     );
   }
 
   return (
     <View style={styles.container}>
-      {loading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
-      ) : (
-        <BarCodeScanner
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-          style={StyleSheet.absoluteFillObject}
-        />
-      )}
-
+      <BarCodeScanner
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        style={StyleSheet.absoluteFillObject}
+      />
       {scanned && (
         <Button title="Tap to Scan Again" onPress={() => setScanned(false)} />
       )}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center', // Center the content
-    alignItems: 'center', // Center horizontally
+  },
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
+
+export default QRScannerScreen;

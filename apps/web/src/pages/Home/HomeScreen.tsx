@@ -1,21 +1,35 @@
+// apps/web/src/pages/Home/HomeScreen.tsx
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { Link } from 'react-router-dom';
 
-const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
+const HomeScreen: React.FC = () => {
   return (
-    <View style={{ flex: 1, padding: 16 }}>
-      <Text style={{ fontSize: 24, marginBottom: 16 }}>
+    <main className="min-h-screen flex flex-col items-center justify-center bg-white text-gray-900 p-6">
+      <h1 className="text-4xl font-bold mb-6 text-blue-600">
         Welcome to WhoDoggy?
-      </Text>
-      <Button
-        title="Scan Microchip"
-        onPress={() => navigation.navigate('QRScanner')}
-      />
-      <Button
-        title="Search Microchip"
-        onPress={() => navigation.navigate('Search')}
-      />
-    </View>
+      </h1>
+      <p className="mb-8 max-w-xl text-center">
+        Easily scan or search dog microchips to identify your furry friend.
+      </p>
+      <div className="flex gap-4">
+        <Link
+          to="/search"
+          className="btn btn-primary"
+          aria-label="Search Microchip"
+        >
+          Search Microchip
+        </Link>
+        {/* For web, QR scanning might not be supported, so disable or hide */}
+        <button
+          className="btn btn-secondary opacity-50 cursor-not-allowed"
+          disabled
+          aria-label="Scan Microchip (Mobile Only)"
+          title="Scan Microchip feature available on mobile app only"
+        >
+          Scan Microchip (Mobile Only)
+        </button>
+      </div>
+    </main>
   );
 };
 
