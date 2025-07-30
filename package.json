@@ -6,12 +6,13 @@
   "workspaces": [
     "apps/*",
     "packages/*",
+    "packages/shared/*",
     "scripts"
   ],
   "scripts": {
     "dev": "pnpm --filter whodoggy-mobile dev",
-    "start": "pnpm --filter mobile start",
-    "build": "pnpm --filter mobile build",
+    "start": "pnpm --filter whodoggy-mobile start",
+    "build": "pnpm --filter whodoggy-mobile build",
     "test": "pnpm -r test",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
@@ -20,8 +21,8 @@
     "migrate:up": "pnpm --filter whodoggy-backend node-pg-migrate up",
     "migrate:down": "pnpm --filter whodoggy-backend node-pg-migrate down",
     "migrate:reset": "pnpm --filter whodoggy-backend node-pg-migrate reset",
-    "seed": "pnpm exec tsx scripts/seedDatabase.ts",
-    "upload:firestore": "pnpm exec tsx scripts/uploadToFirestore.ts"
+    "seed": "pnpm --filter whodoggy-backend exec tsx ../../scripts/seedDatabase.ts",
+    "upload:firestore": "pnpm --filter whodoggy-backend exec tsx ../../scripts/uploadToFirestore.ts"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.27.1",
