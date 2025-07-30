@@ -1,4 +1,4 @@
-import type { paths } from '../../../shared/types/registry';
+import type { paths } from '../../../shared/types/registry.ts';
 
 const BASE_URL = 'https://api.whodoggy.com';
 

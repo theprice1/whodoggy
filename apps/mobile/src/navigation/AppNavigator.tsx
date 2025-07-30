@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/Home/HomeScreen';
-import QRScannerScreen from '../screens/Home/QRScannerScreen';
-import SearchScreen from '../screens/Home/SearchScreen';
+import HomeScreen from '../screens/Home/HomeScreen.tsx';
+import QRScannerScreen from '../screens/Home/QRScannerScreen.tsx';
+import SearchScreen from '../screens/Home/SearchScreen.tsx';
 // import SearchResultsScreen from '../screens/SearchResultsScreen'; // Uncomment when implemented
 
 export type RootStackParamList = {

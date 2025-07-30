@@ -1,5 +1,5 @@
 // navigation/ProtectedRoute.tsx
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../hooks/useAuth.ts';
 import { View, Text } from 'react-native';
 
 export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
