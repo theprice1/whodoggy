@@ -1,10 +1,12 @@
 // packages/backend/src/db/index.ts
+
 import pgPromise from 'pg-promise';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const pgp = pgPromise();
+
 const db = pgp({
   host: process.env.DB_HOST || 'localhost',
   port: Number(process.env.DB_PORT) || 5432,
@@ -13,4 +15,6 @@ const db = pgp({
   password: process.env.DB_PASSWORD || '',
 });
 
-export default db;
+// Named exports (recommended for flexibility)
+export { db };
+export const query = db.any.bind(db);

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getDogByMicrochip } from '../services/dogService';
+import { getDogByMicrochip } from '../services/dogService.js';
 
 export const searchDogByMicrochip = async (req: Request, res: Response) => {
   const { microchipId } = req.params;

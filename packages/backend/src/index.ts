@@ -5,7 +5,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import microchipRoutes from './routes/microchipRoutes.ts';
-import { shutdownDbPool } from './db.ts';
+import { shutdownDbPool } from './db.js';
 
 dotenv.config();
 

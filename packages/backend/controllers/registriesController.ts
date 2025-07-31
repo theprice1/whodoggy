@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import {
   getRegistry,
   getAllRegistriesService,
-} from '../services/registryService';
+} from '../services/registryService.js';
 
 export const getAllRegistries = async (_req: Request, res: Response) => {
   const registries = await getAllRegistriesService();

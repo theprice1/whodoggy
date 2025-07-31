@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getOwner, getAllOwnersService } from '../services/ownerService';
+import { getOwner, getAllOwnersService } from '../services/ownerService.js';
 
 export const getAllOwners = async (_req: Request, res: Response) => {
   const owners = await getAllOwnersService();
