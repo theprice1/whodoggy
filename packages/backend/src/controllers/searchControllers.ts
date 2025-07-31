@@ -11,32 +11,39 @@ const searchSchema = z.object({
   }),
 });
 
-router.post('/search', verifyFirebaseToken, async (req: Request, res: Response) => {
-  try {
-    const { microchip_id } = searchSchema.parse(req.body);
+router.post(
+  '/search',
+  verifyFirebaseToken,
+  async (req: Request, res: Response) => {
+    try {
+      const { microchip_id } = searchSchema.parse(req.body);
 
-    const result = await pool.query(
-      'SELECT * FROM microchips WHERE microchip_id = $1',
-      [microchip_id]
-    );
+      const result = await pool.query(
+        'SELECT * FROM microchips WHERE microchip_id = $1',
+        [microchip_id]
+      );
 
-    if (result.rows.length === 0) {
-      return res.status(404).json({ message: 'Microchip not found' });
+      if (result.rows.length === 0) {
+        return res.status(404).json({ message: 'Microchip not found' });
+      }
+
+      return res.status(200).json({ data: result.rows[0] });
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const formattedErrors: { path: string; message: string }[] =
+          error.issues.map((e: ZodIssue) => ({
+            path: e.path.join('.'),
+            message: e.message,
+          }));
+        return res.status(400).json({ errors: formattedErrors });
+      }
+
+      console.error('Search error:', error);
+      return res
+        .status(500)
+        .json({ error: 'Server error during microchip search' });
     }
-
-    return res.status(200).json({ data: result.rows[0] });
-  } catch (error) {
-    if (error instanceof ZodError) {
-      const formattedErrors: { path: string; message: string }[] = error.issues.map((e: ZodIssue) => ({
-        path: e.path.join('.'),
-        message: e.message,
-      }));
-      return res.status(400).json({ errors: formattedErrors });
-    }
-
-    console.error('Search error:', error);
-    return res.status(500).json({ error: 'Server error during microchip search' });
   }
-});
+);
 
 export default router;

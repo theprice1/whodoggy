@@ -12,7 +12,7 @@ for (let i = 1; i <= totalRegistries; i++) {
 
   const child = spawn(
     'npx',
-    ['@stoplight/prism-cli', 'mock', filePath, `-p`, port.toString()],
+    ['@stoplight/prism-cli', 'mock', filePath, '-p', port.toString()],
     {
       stdio: 'inherit',
       shell: true,

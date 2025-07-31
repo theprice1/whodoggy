@@ -19,21 +19,29 @@ router.delete(
     const microchipId = req.params.id;
 
     if (!userId) {
-      return res.status(401).json({ error: 'Unauthorized: user not authenticated' });
+      return res
+        .status(401)
+        .json({ error: 'Unauthorized: user not authenticated' });
     }
 
     if (!microchipId || microchipId.length !== 15) {
-      return res.status(400).json({ error: 'Invalid or missing microchip ID (expected 15 characters)' });
+      return res.status(400).json({
+        error: 'Invalid or missing microchip ID (expected 15 characters)',
+      });
     }
 
     try {
       const deletedCount = await deleteMicrochipData(userId, microchipId); // ✅ ensure this returns a Promise<number>
 
       if (deletedCount === 0) {
-        return res.status(404).json({ error: 'No matching record found or unauthorized' });
+        return res
+          .status(404)
+          .json({ error: 'No matching record found or unauthorized' });
       }
 
-      return res.status(200).json({ message: 'Microchip data deleted successfully' });
+      return res
+        .status(200)
+        .json({ message: 'Microchip data deleted successfully' });
     } catch (error) {
       console.error('Error deleting microchip:', error);
       return res.status(500).json({ error: 'Internal server error' });

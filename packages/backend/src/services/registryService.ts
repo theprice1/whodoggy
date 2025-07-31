@@ -56,7 +56,9 @@ async function queryRegistry(
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      throw new Error(`Registry ${url} responded with status ${response.status}`);
+      throw new Error(
+        `Registry ${url} responded with status ${response.status}`
+      );
     }
 
     const data: DogRecord = await response.json();

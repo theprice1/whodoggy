@@ -1,1 +1,1 @@
-console.log("WhoDoggy backend started");
+console.log('WhoDoggy backend started');

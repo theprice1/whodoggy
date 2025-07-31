@@ -1,5 +1,5 @@
 // src/services/dogService.ts
-import { pool } from '../db.js';  // Use default import for pool
+import { pool } from '../db.js'; // Use default import for pool
 import { DogWithDetails } from '../types/types.js'; // Adjust path to your types file
 
 export const findDogByMicrochip = async (

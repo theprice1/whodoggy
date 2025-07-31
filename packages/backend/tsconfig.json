@@ -1,11 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,      // Allows importing .ts extensions (if needed)
+    "allowImportingTsExtensions": true,        // Allows imports with .ts extensions (NodeNext ESM)
+    "isolatedModules": true,                    // Required for ESM and some tooling
     "target": "ES2020",
-    "module": "NodeNext",                        // Enables ES Modules
-    "moduleResolution": "NodeNext",              // Resolves modules like Node ESM
+    "module": "NodeNext",                       // Use Node-style ESM
+    "moduleResolution": "NodeNext",             // Resolve modules per Node ESM rules
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,
@@ -14,12 +14,16 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
     "paths": {
-      "@shared/*": ["../../shared/*"],           // Shared types/utilities across workspaces
-      "@services/*": ["services/*"],             // Optional: alias for service files
-      "@controllers/*": ["controllers/*"]        // Optional: alias for controller files
+      "@shared/*": ["../../shared/*"],
+      "@services/*": ["services/*"],
+      "@controllers/*": ["controllers/*"]
     },
     "types": ["node", "jest", "express", "pg-promise", "@faker-js/faker"]
   },
-  "include": ["src/**/*.ts", "src/scripts/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/scripts/**/*.ts",
+    "config/**/*"
+  ],
   "exclude": ["node_modules", "dist"]
 }
