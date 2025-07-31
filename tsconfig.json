@@ -12,13 +12,14 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,   // <---- ADD THIS LINE
+    "allowImportingTsExtensions": true,
     "types": ["node"]
   },
   "include": [
     "packages/backend/**/*.ts",
     "scripts/**/*.ts",
-    "*.ts"
+    "*.ts",
+    "eslint.config.js"              // <-- add this line to include the ESLint config
   ],
   "exclude": [
     "node_modules",
