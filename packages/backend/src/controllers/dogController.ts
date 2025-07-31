@@ -1,7 +1,7 @@
 // packages/backend/src/controllers/dogController.ts
 
 import { Request, Response, NextFunction } from 'express';
-import { queryAllRegistries } from '../services/registryService.ts';
+import { queryAllRegistries } from '../services/registryService.js';
 
 /**
  * GET /microchips/:id

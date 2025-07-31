@@ -1,4 +1,4 @@
-import { pool } from './dbHelper.ts';
+import { pool } from './dbHelper.js';
 import { faker } from '@faker-js/faker';
 
 const NUM_RECORDS = 20;
