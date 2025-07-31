@@ -11,7 +11,14 @@
     "baseUrl": "./src",
     "paths": {
       "@shared/*": ["../../packages/shared/*"]
-    }
+    },
+    "allowImportingTsExtensions": true
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
 }

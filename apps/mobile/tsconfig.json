@@ -12,7 +12,15 @@
     "baseUrl": ".",
     "paths": {
       "@whodoggy/shared-types": ["../../packages/shared/types"]
-    }
+    },
+    "allowImportingTsExtensions": true
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*",
+    "app.d.ts",                     // Add specific root-level declaration files if needed
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
 }
