@@ -4,8 +4,8 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import microchipRoutes from './routes/microchipRoutes';
-import { shutdownDbPool } from './db';
+import microchipRoutes from './routes/microchipRoutes.ts';
+import { shutdownDbPool } from './db.ts';
 
 dotenv.config();
 

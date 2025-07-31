@@ -1,8 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "allowImportingTsExtensions": true,       // Enables importing '.ts' files with extension
     "target": "ES2020",
-    "module": "CommonJS",
+    "module": "NodeNext",                      // Required for ESM with .ts extensions
+    "moduleResolution": "NodeNext",            // Matches 'module' for correct resolution
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,

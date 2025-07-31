@@ -1,7 +1,5 @@
 // src/services/registryService.ts
 
-import fetch from 'node-fetch'; // or global fetch if Node 18+
-
 const registryUrls = [
   'http://localhost:4101/search/',
   'http://localhost:4102/search/',
@@ -48,24 +46,35 @@ async function queryRegistry(
   url: string,
   microchipId: string
 ): Promise<DogRecord> {
-  const response = await fetch(`${url}${microchipId}`, { timeout: 5000 }); // 5s timeout
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 seconds timeout
 
-  if (!response.ok) {
-    throw new Error(`Registry ${url} responded with status ${response.status}`);
+  try {
+    const response = await fetch(`${url}${microchipId}`, {
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`Registry ${url} responded with status ${response.status}`);
+    }
+
+    const data: DogRecord = await response.json();
+
+    // Validate response: microchipId should be a non-empty string different from default placeholder
+    if (
+      !data.microchipId ||
+      data.microchipId === 'string' ||
+      data.microchipId.trim() === ''
+    ) {
+      throw new Error(`Registry ${url} returned no valid record`);
+    }
+
+    return data;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    throw error;
   }
-
-  const data: DogRecord = await response.json();
-
-  // Validate response: microchipId should be a non-empty string different from default placeholder
-  if (
-    !data.microchipId ||
-    data.microchipId === 'string' ||
-    data.microchipId.trim() === ''
-  ) {
-    throw new Error(`Registry ${url} returned no valid record`);
-  }
-
-  return data;
 }
 
 /**

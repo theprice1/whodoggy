@@ -8,17 +8,17 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon --watch src --ext ts --exec ts-node --loader ts-node/esm src/index.ts",
+    "dev": "nodemon --watch src --ext ts --exec node --loader ts-node/esm src/index.ts",
     "lint": "eslint . --ext .ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "seed-db": "ts-node --loader ts-node/esm scripts/seedDatabase.ts",
+    "seed-db": "ts-node-esm scripts/seedDatabase.ts",
+    "generate-mock-data": "ts-node-esm scripts/generateMockData.ts",
     "migrate": "node-pg-migrate",
-    "postinstall": "node-pg-migrate up",
-    "generate-mock-data": "ts-node --loader ts-node/esm scripts/generateMockData.ts"
+    "postinstall": "node-pg-migrate up"
   },
   "dependencies": {
     "@faker-js/faker": "^9.9.0",
