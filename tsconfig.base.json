@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2020", // Modern JS features
-    "module": "ESNext", // Use ES modules
-    "lib": ["ESNext", "DOM"], // Include DOM types (for React Native/web)
-    "allowJs": true, // Allow JS files if any
-    "skipLibCheck": true, // Skip type checking for dependencies
-    "strict": true, // Enable all strict type checks
-    "moduleResolution": "node", // Node-style module resolution
-    "esModuleInterop": true, // CommonJS interop
+    "target": "ES2020",
+    "module": "ESNext",              // keep ES modules
+    "lib": ["ESNext", "DOM"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "moduleResolution": "NodeNext", // switch from "node" to "NodeNext"
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true, // Allow importing JSON files
-    "isolatedModules": true, // Support isolated modules (React Native requirement)
-    "noEmit": true // Don't emit output, only type check (usually base config)
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true // add this to enable .js imports in .ts files
   }
 }

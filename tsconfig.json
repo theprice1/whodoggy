@@ -12,6 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,   // <---- ADD THIS LINE
     "types": ["node"]
   },
   "include": [
