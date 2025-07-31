@@ -42,4 +42,5 @@ if (!mockDatabases[fixedTestRecord.registryName]) {
 }
 mockDatabases[fixedTestRecord.registryName].push(fixedTestRecord);
 
-export { MicrochipRecord, mockDatabases, allMockRecords };
+export type { MicrochipRecord };
+export { mockDatabases, allMockRecords, fixedTestRecord };
