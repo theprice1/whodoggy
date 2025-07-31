@@ -10,10 +10,11 @@ export const verifyFirebaseToken = async (
   req: AuthenticatedRequest,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void> => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'No authorization token provided' });
+    res.status(401).json({ error: 'No authorization token provided' });
+    return;
   }
 
   const token = authHeader.split(' ')[1];
@@ -24,6 +25,6 @@ export const verifyFirebaseToken = async (
     next();
   } catch (error) {
     console.error('Firebase token verification failed:', error);
-    return res.status(401).json({ error: 'Invalid or expired token' });
+    res.status(401).json({ error: 'Invalid or expired token' });
   }
 };

@@ -30,3 +30,11 @@ export interface MicrochipRecord {
   notes: string;
   lastCheckup: string;
 }
+
+export interface Owner {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+}
+
