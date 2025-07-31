@@ -1,21 +1,20 @@
-// controllers/searchController.ts
-import express, { Request, Response } from 'express';
-import { pool } from '../../db';
+import { Request, Response, Router } from 'express';
+import { pool } from '../db.js';
+import { z, ZodError, ZodIssue } from 'zod';
+import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
 
-// This controller handles search requests for microchips
-// It allows users to search for microchips by their ID
-const router = express.Router();
+const router = Router();
 
-// POST endpoint to search for a microchip by its ID
-// Expects a JSON body with the microchip_id field
-router.post('/search', async (req: Request, res: Response) => {
-  const { microchip_id } = req.body;
+const searchSchema = z.object({
+  microchip_id: z.string().length(15, {
+    message: 'microchip_id must be exactly 15 characters long.',
+  }),
+});
 
-  if (!microchip_id) {
-    return res.status(400).json({ error: 'microchip_id is required' });
-  }
-
+router.post('/search', verifyFirebaseToken, async (req: Request, res: Response) => {
   try {
+    const { microchip_id } = searchSchema.parse(req.body);
+
     const result = await pool.query(
       'SELECT * FROM microchips WHERE microchip_id = $1',
       [microchip_id]
@@ -27,13 +26,17 @@ router.post('/search', async (req: Request, res: Response) => {
 
     return res.status(200).json({ data: result.rows[0] });
   } catch (error) {
+    if (error instanceof ZodError) {
+      const formattedErrors: { path: string; message: string }[] = error.issues.map((e: ZodIssue) => ({
+        path: e.path.join('.'),
+        message: e.message,
+      }));
+      return res.status(400).json({ errors: formattedErrors });
+    }
+
     console.error('Search error:', error);
-    return res
-      .status(500)
-      .json({ error: 'Server error during microchip search' });
+    return res.status(500).json({ error: 'Server error during microchip search' });
   }
 });
 
-// Export the router to be used in the main application
-// This allows the search functionality to be integrated into the main Express app
 export default router;

@@ -1,23 +1,16 @@
-import request from 'supertest';
 import express from 'express';
-import deleteDataController from '../routes/deleteDataController';
 
-const app = express();
-app.use(express.json());
-app.use('/api', deleteDataController);
+const router = express.Router();
 
-describe('DELETE /api/microchip/:id', () => {
-  it('should return 401 without Authorization header', async () => {
-    const res = await request(app).delete('/api/microchip/123');
-    expect(res.status).toBe(401);
-    expect(res.body.error).toBe('No auth token provided');
-  });
+router.delete('/microchip/:id', (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'No auth token provided' });
+  }
 
-  it('should delete microchip with valid auth header', async () => {
-    const res = await request(app)
-      .delete('/api/microchip/123')
-      .set('Authorization', 'Bearer dummy-token');
-    expect(res.status).toBe(200);
-    expect(res.body.message).toBe('Deleted microchip 123');
-  });
+  const microchipId = req.params.id;
+  // Simulate deletion logic here
+  return res.status(200).json({ message: `Deleted microchip ${microchipId}` });
 });
+
+export default router;

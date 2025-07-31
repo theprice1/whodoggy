@@ -1,4 +1,4 @@
-import { pool } from './db';
+import { pool } from './db.js';
 import { faker } from '@faker-js/faker';
 
 const NUM_RECORDS = 20;
@@ -25,8 +25,8 @@ async function seedDatabase() {
       const owner_contact = faker.internet.email();
 
       await pool.query(
-        `INSERT INTO microchips 
-         (microchip_id, pet_name, species, breed, date_registered, registry_name, owner_contact) 
+        `INSERT INTO microchips
+         (microchip_id, pet_name, species, breed, date_registered, registry_name, owner_contact)
          VALUES ($1, $2, $3, $4, $5, $6, $7)
          ON CONFLICT (microchip_id) DO NOTHING;`,
         [

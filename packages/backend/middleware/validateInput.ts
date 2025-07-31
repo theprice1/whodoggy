@@ -1,16 +1,65 @@
-// validateInput.ts
-import { Request, Response, NextFunction } from "express";
-import { z } from "zod";
+// packages/backend/middleware/validateInput.ts
+import { Request, Response, NextFunction } from 'express';
+import { z, ZodError, ZodIssue } from 'zod';
 
+// Schema to validate microchip search input
 const microchipSchema = z.object({
-  microchipId: z.string().length(15), // adjust as needed
+  microchipId: z.string().length(15, {
+    message: 'Microchip ID must be exactly 15 characters long.',
+  }),
 });
 
-export const validateSearchInput = (req: Request, res: Response, next: NextFunction) => {
+// Schema to validate dog input for create/update
+const dogSchema = z.object({
+  name: z.string().min(1, { message: 'Name is required' }),
+  breed: z.string().min(1, { message: 'Breed is required' }),
+  microchipId: z.string().length(15, {
+    message: 'Microchip ID must be exactly 15 characters long.',
+  }),
+  ownerId: z.string().min(1, { message: 'Owner ID is required' }),
+  registryId: z.string().min(1, { message: 'Registry ID is required' }),
+});
+
+// Middleware to validate microchip search input
+export const validateSearchInput = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     microchipSchema.parse(req.body);
     next();
-  } catch (err: any) {
-    res.status(400).json({ error: err.errors });
+  } catch (error) {
+    if (error instanceof ZodError) {
+      const formattedErrors = error.issues.map((e: ZodIssue) => ({
+        path: e.path.join('.'),
+        message: e.message,
+      }));
+      return res.status(400).json({ errors: formattedErrors });
+    }
+    console.error('Validation error:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+// Middleware to validate dog input (for create/update)
+export const validateDogInput = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    dogSchema.parse(req.body);
+    next();
+  } catch (error) {
+    if (error instanceof ZodError) {
+      const formattedErrors = error.issues.map((e: ZodIssue) => ({
+        path: e.path.join('.'),
+        message: e.message,
+      }));
+      return res.status(400).json({ errors: formattedErrors });
+    }
+    console.error('Validation error:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };

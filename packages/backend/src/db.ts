@@ -1,45 +1,38 @@
-// src/db.ts
-import { Pool, QueryResultRow } from 'pg';
+import { Pool, QueryResult } from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+if (!process.env.DATABASE_URL) {
+  throw new Error('Missing DATABASE_URL environment variable');
+}
 
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : undefined,
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  max: 20,
+  idleTimeoutMillis: 30000,
 });
 
+// Better error logging with stack trace, optional graceful shutdown
 pool.on('error', (err) => {
-  console.error('Unexpected error on idle PostgreSQL client', err);
-  // Optional: Exit process on fatal DB errors
-  process.exit(1);
+  console.error('Unexpected error on idle client', err.stack ?? err);
+  process.exit(1); // exit with failure code
 });
 
-/**
- * Query helper function for PostgreSQL.
- * Reuses pool connections and releases automatically.
- * @param text SQL query text
- * @param params Query parameters array
- * @returns Query rows typed as T[]
- */
-export async function query<T extends QueryResultRow>(
+type QueryParams = Array<string | number | boolean | null>;
+
+export const query = (
   text: string,
-  params?: any[]
-): Promise<T[]> {
-  const client = await pool.connect();
-  try {
-    const result = await client.query<T>(text, params);
-    return result.rows;
-  } finally {
-    client.release();
-  }
-}
+  params?: QueryParams
+): Promise<QueryResult> => pool.query(text, params);
 
-/**
- * Gracefully shutdown DB pool on app termination.
- */
-export async function shutdownDbPool() {
-  await pool.end();
-}
+export const queryRows = async <T = any>(
+  text: string,
+  params?: QueryParams
+): Promise<T[]> => {
+  const result = await pool.query(text, params);
+  return result.rows;
+};
 
-export default pool;
+export { pool };

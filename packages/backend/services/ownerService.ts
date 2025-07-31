@@ -1,5 +1,5 @@
 // packages/backend/services/ownerService.ts
-import { query } from '../db';
+import { query } from '../db.js';
 
 export interface Owner {
   id: string;

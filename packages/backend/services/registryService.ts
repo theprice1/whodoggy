@@ -1,5 +1,5 @@
 // packages/backend/services/registryService.ts
-import { query } from '../db';
+import { query } from '../db.js';
 import fetch from 'node-fetch';
 
 export interface Registry {

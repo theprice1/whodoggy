@@ -2,14 +2,6 @@
 import { Request, Response, NextFunction } from "express";
 import admin from "firebase-admin";
 
-// Uncomment and configure if Firebase Admin SDK is not initialized elsewhere
-// if (!admin.apps.length) {
-//   admin.initializeApp({
-//     credential: admin.credential.applicationDefault(), // or specify a service account
-//   });
-// }
-
-// Extend Request to include decoded Firebase user info
 export interface AuthenticatedRequest extends Request {
   user?: admin.auth.DecodedIdToken;
 }
@@ -24,15 +16,11 @@ export const verifyFirebaseToken = async (
     return res.status(401).json({ error: "No authorization token provided" });
   }
 
-  // Safely extract token after 'Bearer '
-  const token = authHeader.slice(7).trim();
-  if (!token) {
-    return res.status(401).json({ error: "Malformed authorization header" });
-  }
+  const token = authHeader.split(" ")[1];
 
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
-    req.user = decodedToken;
+    req.user = decodedToken; // Attach Firebase user info to request
     next();
   } catch (error) {
     console.error("Firebase token verification failed:", error);
