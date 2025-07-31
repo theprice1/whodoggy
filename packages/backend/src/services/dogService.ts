@@ -1,6 +1,6 @@
 // src/services/dogService.ts
-import { pool } from '../db.js'; // Use default import for pool
-import { DogWithDetails } from '../types/types.js'; // Adjust path to your types file
+import { db } from '../db.js';
+import { DogWithDetails } from '../types/types.js';
 
 export const findDogByMicrochip = async (
   microchipId: string
@@ -17,6 +17,9 @@ export const findDogByMicrochip = async (
     LIMIT 1;
   `;
 
-  const { rows } = await pool.query(query, [microchipId]);
-  return rows.length > 0 ? (rows[0] as DogWithDetails) : null;
+  const result = (await db.oneOrNone(query, [
+    microchipId,
+  ])) as DogWithDetails | null;
+
+  return result;
 };

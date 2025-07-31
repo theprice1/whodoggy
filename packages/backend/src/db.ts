@@ -1,21 +1,11 @@
 import pgPromise from 'pg-promise';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const pgp = pgPromise();
 
-const db = pgp({
-  host: process.env.DB_HOST || 'localhost',
-  port: Number(process.env.DB_PORT) || 5432,
-  database: process.env.DB_NAME || 'whodoggy',
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || '',
+export const db = pgp({
+  host: 'localhost',
+  port: 5432,
+  database: 'whodoggy',
+  user: 'your_username',
+  password: 'your_password',
 });
-
-export { pgp, db };
-export const query = db.any.bind(db);
-
-export async function shutdownDbPool(): Promise<void> {
-  await pgp.end();
-}
