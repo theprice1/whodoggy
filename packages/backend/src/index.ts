@@ -1,10 +1,8 @@
-// src/index.ts
-
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import microchipRoutes from './routes/microchipRoutes.ts';
+import microchipRoutes from './routes/microchipRoutes.js'; // Changed .ts → .js for runtime import
 import { shutdownDbPool } from './db.js';
 
 dotenv.config();
@@ -33,8 +31,6 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
   void _next; // Mark _next as used to avoid eslint no-unused-vars
 
   const error = err instanceof Error ? err : new Error('Unknown error');
-
-  // Narrow to ErrorWithStatus to access status if present
   const typedError = error as ErrorWithStatus;
 
   console.error('Unexpected error:', typedError.message);
@@ -46,7 +42,7 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
     .json({ error: typedError.message || 'Internal Server Error' });
 });
 
-const port = parseInt(process.env.PORT ?? '3000', 10);
+const port = Number(process.env.PORT) || 3000;
 
 const server = app.listen(port, () => {
   console.log(`Server running on port ${port}`);
@@ -54,12 +50,17 @@ const server = app.listen(port, () => {
 
 // Graceful shutdown handler
 async function shutdown() {
-  console.log('Shutting down server...');
-  await shutdownDbPool();
-  server.close(() => {
-    console.log('Server closed');
-    process.exit(0);
-  });
+  try {
+    console.log('Shutting down server...');
+    await shutdownDbPool();
+    server.close(() => {
+      console.log('Server closed');
+      process.exit(0);
+    });
+  } catch (err) {
+    console.error('Error during shutdown:', err);
+    process.exit(1);
+  }
 }
 
 process.on('SIGINT', shutdown);

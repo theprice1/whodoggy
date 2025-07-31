@@ -1,5 +1,3 @@
-// packages/backend/src/db/index.ts
-
 import pgPromise from 'pg-promise';
 import dotenv from 'dotenv';
 
@@ -15,6 +13,12 @@ const db = pgp({
   password: process.env.DB_PASSWORD || '',
 });
 
-// Named exports (recommended for flexibility)
-export { db };
+// Export db and pgp instances
+export { pgp, db };
 export const query = db.any.bind(db);
+
+// Correctly export shutdownDbPool function
+export async function shutdownDbPool() {
+  // pg-promise uses pg's Pool, so you can call pgp.pg.end() or db.$pool.end()
+  await db.$pool.end(); // Proper method to close the pool in pg-promise
+}
