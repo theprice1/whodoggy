@@ -1,14 +1,14 @@
 {
-  "name": "backend",
+  "name": "whodoggy-backend",
   "version": "1.0.0",
   "private": true,
-  "main": "dist/index.js",
   "type": "module",
+  "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
-    "start": "node dist/index.js",
-    "dev": "nodemon --watch src --ext ts --exec node --loader ts-node/esm src/index.ts",
+    "start": "dotenv -e ../../.env -- node dist/index.js",
+    "dev": "dotenv -e ../../.env -- nodemon --watch src --ext ts --exec node --loader ts-node/esm src/index.ts",
     "lint": "eslint . --ext .ts",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -17,8 +17,10 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,js,json}'",
     "seed-db": "ts-node-esm scripts/seedDatabase.ts",
     "generate-mock-data": "ts-node-esm scripts/generateMockData.ts",
-    "migrate": "node-pg-migrate",
-    "postinstall": "node-pg-migrate up -m src/migrations"
+    "migrate": "dotenv -e ../../.env -- node-pg-migrate up -m src/migrations",
+    "migrate:down": "dotenv -e ../../.env -- node-pg-migrate down -m src/migrations",
+    "migrate:status": "dotenv -e ../../.env -- node-pg-migrate status -m src/migrations",
+    "postinstall": "pnpm run migrate"
   },
   "dependencies": {
     "@faker-js/faker": "^9.9.0",
@@ -46,10 +48,10 @@
     "@types/morgan": "^1.9.3",
     "@types/node": "^20.19.4",
     "@types/pg": "^8.15.4",
-    "@types/pg-promise": "^5.4.3",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
+    "dotenv-cli": "^10.0.0",
     "eslint": "^8.57.1",
     "eslint-plugin-prettier": "^4.2.5",
     "jest": "^29.7.0",
@@ -65,7 +67,7 @@
     "node": ">=18"
   },
   "node-pg-migrate": {
-    "migrations-dir": "./migrations",
+    "migrations-dir": "./src/migrations",
     "migrations-language": "esm"
   }
 }

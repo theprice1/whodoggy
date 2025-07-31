@@ -1,22 +1,17 @@
-// 20250709120000-create-dogs-table.cjs
-
 /** @param {import('node-pg-migrate').MigrationBuilder} pgm */
-exports.up = async (pgm) => {
-  await pgm.createTable('dogs', {
+export async function up(pgm) {
+  await pgm.createTable('owners', {
     id: {
       type: 'uuid',
       primaryKey: true,
       default: pgm.func('gen_random_uuid()'),
     },
     name: { type: 'text', notNull: true },
-    microchip_id: { type: 'varchar(20)', notNull: true, unique: true },
-    breed: 'text',
-    age: 'integer',
-    owner_name: 'text',
-    registered_at: { type: 'timestamp', default: pgm.func('current_timestamp') },
+    email: { type: 'text', unique: true },
+    phone: { type: 'text' },
   });
-};
+}
 
-exports.down = async (pgm) => {
-  await pgm.dropTable('dogs');
-};
+export async function down(pgm) {
+  await pgm.dropTable('owners');
+}

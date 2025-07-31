@@ -1,7 +1,5 @@
-// 20250709120000-create-dogs-table.cjs
-
 /** @param {import('node-pg-migrate').MigrationBuilder} pgm */
-exports.up = async (pgm) => {
+export async function up(pgm) {
   await pgm.createTable('dogs', {
     id: {
       type: 'uuid',
@@ -15,8 +13,8 @@ exports.up = async (pgm) => {
     owner_name: 'text',
     registered_at: { type: 'timestamp', default: pgm.func('current_timestamp') },
   });
-};
+}
 
-exports.down = async (pgm) => {
+export async function down(pgm) {
   await pgm.dropTable('dogs');
-};
+}
