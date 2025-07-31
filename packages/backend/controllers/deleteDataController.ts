@@ -1,6 +1,6 @@
 // deleteDataController.ts
 import { Request, Response } from 'express';
-import { deleteMicrochipById } from '../services/microchipService.js'; // Use .ts extension
+import { deleteMicrochipById } from '../services/microchipService.js'; // ✅ Removed .js extension for NodeNext/ESM
 
 export async function deleteMicrochipHandler(req: Request, res: Response) {
   const microchipId = req.params.id;
