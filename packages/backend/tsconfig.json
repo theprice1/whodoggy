@@ -18,7 +18,8 @@
       "@services/*": ["services/*"],
       "@controllers/*": ["controllers/*"]
     },
-    "types": ["node", "jest", "express", "pg-promise", "@faker-js/faker"]
+    "types": ["node", "jest", "express", "pg-promise", "@faker-js/faker"],
+    "noEmit": true
   },
   "include": [
     "src/**/*",

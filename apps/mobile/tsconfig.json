@@ -13,11 +13,12 @@
     "paths": {
       "@whodoggy/shared-types": ["../../packages/shared/types"]
     },
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
   "include": [
     "src/**/*",
-    "app.d.ts",                     // Add specific root-level declaration files if needed
+    "app.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.d.ts"

@@ -12,13 +12,8 @@
     "paths": {
       "@shared/*": ["../../packages/shared/*"]
     },
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "noEmit": true           // <--- Add this line here
   },
-  "include": [
-    "src/**/*",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.d.ts"
-  ],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src"]
 }
