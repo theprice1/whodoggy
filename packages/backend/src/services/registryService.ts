@@ -105,3 +105,12 @@ export async function queryAllRegistries(
   }
   return null;
 }
+
+export async function getRegistry(id: string): Promise<DogRecord | null> {
+  return await queryAllRegistries(id); // Use your existing logic
+}
+
+export async function getAllRegistriesService(): Promise<string[]> {
+  return registryUrls; // Just returns the list
+}
+

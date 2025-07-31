@@ -1,4 +1,4 @@
-import { mockDatabases, MicrochipRecord } from '../mock-dbs/mockDatabases.js';
+import { mockDatabases, MicrochipRecord } from '../mock/mock-dbs/mockDatabases.js';
 
 export async function getMicrochipData(id: string): Promise<MicrochipRecord[]> {
   const results: MicrochipRecord[] = [];
