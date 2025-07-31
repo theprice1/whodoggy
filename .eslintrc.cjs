@@ -2,23 +2,23 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2020, // Modern JS syntax support
-    sourceType: 'module', // ES Modules
-    project: ['./tsconfig.json'], // For type-aware linting (optional)
+    ecmaVersion: 2020,          // Support modern JS syntax
+    sourceType: 'module',       // Enable ES modules
+    project: ['./tsconfig.json'], // Enable type-aware linting
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'prettier'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended', // Ensures ESLint + Prettier compatibility
+    'plugin:prettier/recommended', // Integrates Prettier with ESLint
   ],
   rules: {
     semi: ['error', 'always'],
     quotes: ['error', 'single'],
-    // Add these for better TypeScript support and style consistency:
-    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }], // allow unused args starting with _
-    '@typescript-eslint/explicit-function-return-type': 'off', // Optional strictness
-    '@typescript-eslint/no-explicit-any': 'warn', // Encourage avoiding 'any'
+    '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }], // Ignore unused vars starting with _
+    '@typescript-eslint/explicit-function-return-type': 'off', // Optional, can enable for stricter typing
+    '@typescript-eslint/no-explicit-any': 'warn', // Warn on use of any
+    'prettier/prettier': 'error', // Show prettier formatting issues as errors
   },
   ignorePatterns: [
     'node_modules/',

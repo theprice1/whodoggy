@@ -1,11 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "allowImportingTsExtensions": true,        // Allows imports with .ts extensions (NodeNext ESM)
-    "isolatedModules": true,                    // Required for ESM and some tooling
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
     "target": "ES2020",
-    "module": "NodeNext",                       // Use Node-style ESM
-    "moduleResolution": "NodeNext",             // Resolve modules per Node ESM rules
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,
@@ -23,7 +23,7 @@
   "include": [
     "src/**/*.ts",
     "src/scripts/**/*.ts",
-    "config/**/*"
+    "src/config/**/*"
   ],
   "exclude": ["node_modules", "dist"]
 }
