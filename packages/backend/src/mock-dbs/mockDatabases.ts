@@ -1,4 +1,4 @@
-import { MicrochipRecord } from './types';
+import { MicrochipRecord } from './types.js';
 import fs from 'fs';
 import path from 'path';
 

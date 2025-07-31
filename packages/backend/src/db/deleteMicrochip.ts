@@ -1,6 +1,6 @@
 // packages/backend/src/db/deleteMicrochip.ts
 
-import db from './index';
+import db from './index.js';
 
 export async function deleteMicrochipData(
   userId: string,

@@ -1,4 +1,4 @@
-import db from '../db';
+import db from '../db.js';
 
 export async function findDogByMicrochipId(microchipId: string) {
   const result = await db.query(

@@ -1,7 +1,7 @@
 import { Router, Response } from 'express';
 import { deleteMicrochipData } from '../db/deleteMicrochip.js';
 import { AuthenticatedRequest } from '../middleware/auth.js';
-import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware'; // No extension needed with NodeNext
+import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
 
 const router = Router();
 
@@ -27,7 +27,8 @@ router.delete(
     try {
       const result = await deleteMicrochipData(userId, microchipId);
 
-      if (!result) {
+      // Check if any row was deleted
+      if (!result || result.rowCount === 0) {
         return res.status(404).json({ error: 'No matching record found or unauthorized' });
       }
 
