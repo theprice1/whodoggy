@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
+import { styles } from './HelpCenterScreen.styles.ts';
 
 const HelpCenterScreen = () => {
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, padding: 16 }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 16 }}>Help Center</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.heading}>Help Center</Text>
       <Text>
-        Here you can find answers to frequently asked questions and contact support.
+        Here you can find answers to frequently asked questions and contact
+        support.
       </Text>
       {/* Add FAQ, contact info, or links */}
     </ScrollView>

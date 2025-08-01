@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, ScrollView, StyleSheet } from 'react-native';
+import {
+  Text,
+  TextInput,
+  Button,
+  Alert,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
+
+// Define colors as constants to avoid color literals in styles
+const COLORS = {
+  gray300: '#D1D5DB',
+};
 
 const ProfileScreen = () => {
-  // Example profile state (you might fetch/update from backend or Firebase)
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
   const handleSave = () => {
-    // Replace with real save logic
     Alert.alert('Profile Saved', `Name: ${name}\nEmail: ${email}`);
   };
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 16, flexGrow: 1 }}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Your Profile</Text>
 
       <Text style={styles.label}>Name</Text>
@@ -34,28 +44,37 @@ const ProfileScreen = () => {
         accessibilityLabel="Email input"
       />
 
-      <Button title="Save Profile" onPress={handleSave} accessibilityLabel="Save profile button" />
+      <Button
+        title="Save Profile"
+        onPress={handleSave}
+        accessibilityLabel="Save profile button"
+      />
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    padding: 16,
+  },
+  input: {
+    borderColor: COLORS.gray300,
+    borderRadius: 4,
+    borderWidth: 1,
+    marginBottom: 16,
+    padding: 8,
+  },
+
+  label: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 8,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 24,
-  },
-  label: {
-    marginBottom: 8,
-    fontWeight: '600',
-    fontSize: 16,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#D1D5DB', // gray-300
-    borderRadius: 4,
-    padding: 8,
-    marginBottom: 16,
   },
 });
 

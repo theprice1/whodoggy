@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-interface QRScannerScreenProps {
+type QRScannerScreenProps = {
   navigation: {
     goBack: () => void;
     navigate: (screen: string, params?: any) => void;
   };
-}
+};
 
 const QRScannerScreen: React.FC<QRScannerScreenProps> = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
@@ -27,7 +27,8 @@ const QRScannerScreen: React.FC<QRScannerScreenProps> = ({ navigation }) => {
     Alert.alert('Microchip scanned!', `ID: ${data}`, [
       {
         text: 'Search',
-        onPress: () => navigation.navigate('SearchResults', { microchipId: data }),
+        onPress: () =>
+          navigation.navigate('SearchResults', { microchipId: data }),
       },
       {
         text: 'OK',

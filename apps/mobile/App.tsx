@@ -1,14 +1,19 @@
 import React from 'react';
-import { StatusBar, SafeAreaView } from 'react-native'; // Added SafeAreaView for better UI on notched devices
-import AppNavigator from './src/navigation/AppNavigator'; // Make sure the import path is correct
+import { StatusBar, SafeAreaView, StyleSheet } from 'react-native';
+import AppNavigator from './src/navigation/AppNavigator.js';
 
 export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      {' '}
-      {/* Ensuring the app's content is not hidden behind notches or the status bar */}
+    <SafeAreaView style={styles.container}>
+      {/* Ensures content is not obscured by device notches or status bar */}
       <StatusBar barStyle="dark-content" />
       <AppNavigator />
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

@@ -3,11 +3,11 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-interface HomeScreenProps {
+type HomeScreenProps = {
   navigation: {
     navigate: (screen: string) => void;
   };
-}
+};
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (

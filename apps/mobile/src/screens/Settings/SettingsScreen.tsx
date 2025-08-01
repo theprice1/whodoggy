@@ -1,47 +1,70 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../types/navigation.ts';
+import { colors } from '../../theme/colors.js';
 
-type SettingOption = {
-  title: string;
-  onPress: () => void;
-};
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Settings'>;
 
-const SettingsScreen = ({ navigation }: any) => {
-  // Define the settings options with navigation actions
-  const settingsOptions: SettingOption[] = [
-    { title: 'Profile', onPress: () => navigation.navigate('Profile') },
-    { title: 'Accessibility Options', onPress: () => navigation.navigate('AccessibilityOptions') },
-    { title: 'Privacy Policy', onPress: () => navigation.navigate('PrivacyPolicy') },
-    { title: 'Terms of Use', onPress: () => navigation.navigate('TermsOfUse') },
-    { title: 'About', onPress: () => navigation.navigate('About') },
-  ];
+const SettingsScreen = () => {
+  const navigation = useNavigation<NavigationProp>();
+
+  const handleNavigation = (route: keyof RootStackParamList) => {
+    navigation.navigate(route);
+  };
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 16 }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 24 }}>Settings</Text>
-      {settingsOptions.map(({ title, onPress }) => (
-        <TouchableOpacity
-          key={title}
-          onPress={onPress}
-          style={styles.optionButton}
-          accessibilityRole="button"
-          accessibilityLabel={`Navigate to ${title}`}
-        >
-          <Text style={styles.optionText}>{title}</Text>
-        </TouchableOpacity>
-      ))}
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>Settings</Text>
+
+      <TouchableOpacity
+        style={styles.option}
+        onPress={() => handleNavigation('Profile')}
+      >
+        <Text style={styles.optionText}>Profile</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.option}
+        onPress={() => handleNavigation('Notifications')}
+      >
+        <Text style={styles.optionText}>Notifications</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.option}
+        onPress={() => handleNavigation('Privacy')}
+      >
+        <Text style={styles.optionText}>Privacy</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.option}
+        onPress={() => handleNavigation('Support')}
+      >
+        <Text style={styles.optionText}>Support</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  optionButton: {
+  container: {
+    padding: 16,
+  },
+  option: {
+    borderBottomColor: colors.gray300,
     borderBottomWidth: 1,
-    borderBottomColor: '#D1D5DB', // gray-300
-    paddingVertical: 16,
+    paddingVertical: 12,
   },
   optionText: {
-    fontSize: 18,
+    fontSize: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 24,
   },
 });
 

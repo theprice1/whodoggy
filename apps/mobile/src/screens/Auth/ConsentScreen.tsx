@@ -8,9 +8,12 @@ const ConsentScreen = () => {
       <Text style={styles.text}>
         Please read and accept our privacy policy to continue using the app.
       </Text>
-      <Button title="Accept" onPress={() => {
-        // Handle consent acceptance, e.g. navigation to next screen
-      }} />
+      <Button
+        title="Accept"
+        onPress={() => {
+          // Handle consent acceptance, e.g. navigation to next screen
+        }}
+      />
     </View>
   );
 };

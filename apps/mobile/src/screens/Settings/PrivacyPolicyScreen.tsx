@@ -1,41 +1,66 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, StyleSheet } from 'react-native';
 
 const PrivacyPolicyScreen = () => {
   return (
-    <ScrollView contentContainerStyle={{ padding: 16, flexGrow: 1 }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 24 }}>Privacy Policy</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>Privacy Policy</Text>
 
-      <Text style={{ marginBottom: 16 }}>
-        At WhoDoggy?, we respect your privacy and are committed to protecting your personal data.
+      <Text style={styles.paragraph}>
+        At WhoDoggy?, we respect your privacy and are committed to protecting
+        your personal data.
       </Text>
 
-      <Text style={{ marginBottom: 8, fontWeight: '600' }}>Information We Collect</Text>
-      <Text style={{ marginBottom: 16 }}>
-        We collect only the necessary information, such as microchip IDs and basic dog details, to provide our service. No personal owner data is stored without explicit consent.
+      <Text style={styles.subheading}>Information We Collect</Text>
+      <Text style={styles.paragraph}>
+        We collect only the necessary information, such as microchip IDs and
+        basic dog details, to provide our service. No personal owner data is
+        stored without explicit consent.
       </Text>
 
-      <Text style={{ marginBottom: 8, fontWeight: '600' }}>How We Use Your Information</Text>
-      <Text style={{ marginBottom: 16 }}>
-        Your data is used solely to match and retrieve dog identity information from trusted registries.
+      <Text style={styles.subheading}>How We Use Your Information</Text>
+      <Text style={styles.paragraph}>
+        Your data is used solely to match and retrieve dog identity information
+        from trusted registries.
       </Text>
 
-      <Text style={{ marginBottom: 8, fontWeight: '600' }}>Data Security</Text>
-      <Text style={{ marginBottom: 16 }}>
-        We implement strict security measures to protect your data from unauthorized access.
+      <Text style={styles.subheading}>Data Security</Text>
+      <Text style={styles.paragraph}>
+        We implement strict security measures to protect your data from
+        unauthorized access.
       </Text>
 
-      <Text style={{ marginBottom: 8, fontWeight: '600' }}>Your Rights</Text>
-      <Text style={{ marginBottom: 16 }}>
-        You have the right to access, correct, or delete your personal data. Contact support for any requests.
+      <Text style={styles.subheading}>Your Rights</Text>
+      <Text style={styles.paragraph}>
+        You have the right to access, correct, or delete your personal data.
+        Contact support for any requests.
       </Text>
 
-      <Text style={{ marginBottom: 8, fontWeight: '600' }}>Contact Us</Text>
-      <Text>
+      <Text style={styles.subheading}>Contact Us</Text>
+      <Text style={styles.paragraph}>
         For privacy inquiries, please contact privacy@whodoggy.com.
       </Text>
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    padding: 16,
+  },
+  paragraph: {
+    marginBottom: 16,
+  },
+  subheading: {
+    fontWeight: '600',
+    marginBottom: 8,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 24,
+  },
+});
 
 export default PrivacyPolicyScreen;

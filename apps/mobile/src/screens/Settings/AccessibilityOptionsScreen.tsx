@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, Switch, ScrollView } from 'react-native';
+import { View, Text, Switch, ScrollView, StyleSheet } from 'react-native';
 
 const AccessibilityOptionsScreen = () => {
-  // Example accessibility settings state
   const [largeTextEnabled, setLargeTextEnabled] = useState(false);
   const [highContrastEnabled, setHighContrastEnabled] = useState(false);
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 16, flexGrow: 1 }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 24 }}>Accessibility Options</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.headerText}>Accessibility Options</Text>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <Text style={{ fontSize: 18 }}>Enable Large Text</Text>
+      <View style={styles.optionRow}>
+        <Text style={styles.optionText}>Enable Large Text</Text>
         <Switch
           value={largeTextEnabled}
           onValueChange={setLargeTextEnabled}
@@ -20,8 +19,8 @@ const AccessibilityOptionsScreen = () => {
         />
       </View>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <Text style={{ fontSize: 18 }}>Enable High Contrast</Text>
+      <View style={styles.optionRow}>
+        <Text style={styles.optionText}>Enable High Contrast</Text>
         <Switch
           value={highContrastEnabled}
           onValueChange={setHighContrastEnabled}
@@ -31,9 +30,29 @@ const AccessibilityOptionsScreen = () => {
       </View>
 
       {/* Add more accessibility options as needed */}
-
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    padding: 16,
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 24,
+  },
+  optionRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  optionText: {
+    fontSize: 18,
+  },
+});
 
 export default AccessibilityOptionsScreen;

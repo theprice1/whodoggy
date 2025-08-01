@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, ScrollView } from 'react-native';
+import {
+  Text,
+  TextInput,
+  Button,
+  Alert,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
+
+const colors = {
+  gray300: '#D1D5DB', // Tailwind gray-300
+};
 
 const SubmitFeedbackScreen = () => {
   const [feedback, setFeedback] = useState('');
@@ -15,11 +26,12 @@ const SubmitFeedbackScreen = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 16, flexGrow: 1 }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 24 }}>Submit Feedback</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.headerText}>Submit Feedback</Text>
 
-      <Text style={{ marginBottom: 16 }}>
-        We appreciate your feedback to improve WhoDoggy?. Please share your thoughts below.
+      <Text style={styles.descriptionText}>
+        We appreciate your feedback to improve WhoDoggy?. Please share your
+        thoughts below.
       </Text>
 
       <TextInput
@@ -27,20 +39,41 @@ const SubmitFeedbackScreen = () => {
         onChangeText={setFeedback}
         multiline
         placeholder="Enter your feedback here..."
-        style={{
-          borderWidth: 1,
-          borderColor: '#D1D5DB', // Tailwind gray-300
-          borderRadius: 8,
-          padding: 12,
-          marginBottom: 24,
-          minHeight: 100,
-        }}
+        style={styles.feedbackInput}
         accessibilityLabel="Feedback input"
       />
 
-      <Button title="Submit" onPress={handleSubmit} accessibilityLabel="Submit feedback button" />
+      <Button
+        title="Submit"
+        onPress={handleSubmit}
+        accessibilityLabel="Submit feedback button"
+      />
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    padding: 16,
+  },
+  descriptionText: {
+    marginBottom: 16,
+  },
+  feedbackInput: {
+    borderColor: colors.gray300,
+    borderRadius: 8,
+    borderWidth: 1,
+    marginBottom: 24,
+    minHeight: 100,
+    padding: 12,
+    textAlignVertical: 'top', // aligns multiline text to top on Android
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 24,
+  },
+});
 
 export default SubmitFeedbackScreen;

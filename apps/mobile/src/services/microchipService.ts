@@ -2,7 +2,7 @@
 
 import { API_BASE_URL } from '../config/api';
 
-export interface MicrochipRecord {
+export type MicrochipRecord = {
   microchipId: string;
   dogName: string;
   breed: string;
@@ -18,7 +18,7 @@ export interface MicrochipRecord {
   registeredAt: string;
   registryName: string;
   vaccinated: boolean;
-}
+};
 
 export async function fetchMicrochipById(
   id: string
