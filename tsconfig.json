@@ -13,13 +13,14 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
-    "types": ["node"]
+    "types": ["node", "jest"]   // added jest here for test globals
   },
   "include": [
     "packages/backend/**/*.ts",
     "scripts/**/*.ts",
     "*.ts",
-    "eslint.config.js"              // <-- add this line to include the ESLint config
+    "eslint.config.js",
+    "apps/mobile/src/**/*.{ts,tsx}"
   ],
   "exclude": [
     "node_modules",
