@@ -1,0 +1,3 @@
+# Use Node.js version 20.11.1 for WhoDoggy
+# This ensures consistency across all developer environments and CI pipelines
+20.11.1

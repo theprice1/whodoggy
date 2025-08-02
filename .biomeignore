@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+coverage
+apps/mobile/.expo
+**/__tests__/**
+**/*.test.ts
+**/*.test.tsx
+**/*.stories.tsx

@@ -25,6 +25,6 @@ module.exports = {
     'react-native/no-inline-styles': 'warn',
     'react-native/no-unused-styles': 'warn',
     'react-native/no-color-literals': 'warn',
-    // You can add any WhoDoggy-specific custom rules here
+    // Add WhoDoggy-specific rules here as needed
   },
 };
