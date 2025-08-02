@@ -1,34 +1,24 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "target": "ES2020",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./src",
-    "paths": {
-      "@shared/*": ["../../shared/*"],
-      "@services/*": ["services/*"],
-      "@controllers/*": ["controllers/*"]
-    },
-    "types": ["node", "jest", "express", "pg-promise", "@faker-js/faker"],
-    "noEmit": true
+    "target": "ES2022",                         // Modern JS features for Node 18+
+    "module": "ESNext",                         // Use ES Modules
+    "moduleResolution": "NodeNext",             // Node-style resolution with ESM support
+    "rootDir": "./src",                         // Source code root
+    "outDir": "./dist",                         // Compiled output directory
+    "esModuleInterop": true,                    // Enables compatibility with commonjs modules
+    "forceConsistentCasingInFileNames": true,  // Enforce consistent casing in imports
+    "strict": true,                             // Enable all strict type-checking options
+    "skipLibCheck": true,                       // Skip type checking for node_modules for speed
+    "sourceMap": true,                          // Generate source maps for debugging
+    "resolveJsonModule": true,                   // Allow importing JSON modules
+    "types": ["node"],                          // Include node types
+    "allowJs": true                            // Allow JS files in the project (useful if migrations are JS)
   },
   "include": [
-    "src/**/*",
-    "src/**/*.ts",
-    "src/scripts/**/*.ts",
-    "src/config/**/*",
-    "**/*.d.ts"
+    "src"
   ],
   "exclude": [
+    "src/migrations",
     "node_modules",
     "dist"
   ]

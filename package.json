@@ -36,6 +36,7 @@
     "@typescript-eslint/parser": "^8.38.0",
     "babel-jest": "^30.0.4",
     "biome": "^0.3.3",
+    "dotenv-cli": "^10.0.0",
     "eslint-plugin-react": "^7.37.5",
     "jsdom": "^26.1.0",
     "node-pg-migrate": "^7.0.0",

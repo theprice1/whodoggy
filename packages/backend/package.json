@@ -17,7 +17,7 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,js,json}'",
     "seed-db": "ts-node-esm scripts/seedDatabase.ts",
     "generate-mock-data": "ts-node-esm scripts/generateMockData.ts",
-    "migrate": "dotenv -e ../../.env -- node-pg-migrate up -m src/migrations",
+    "migrate": "dotenv -e ../../.env -- node-pg-migrate up -c ./node-pg-migrate.config.js",
     "migrate:down": "dotenv -e ../../.env -- node-pg-migrate down -m src/migrations",
     "migrate:status": "dotenv -e ../../.env -- node-pg-migrate status -m src/migrations",
     "postinstall": "pnpm run migrate"

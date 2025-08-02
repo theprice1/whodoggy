@@ -1,3 +1,5 @@
+// packages/backend/src/migrations/20250709120000-create-dogs-table.js
+
 /** @param {import('node-pg-migrate').MigrationBuilder} pgm */
 export async function up(pgm) {
   await pgm.createTable('dogs', {
