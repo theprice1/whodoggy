@@ -6,24 +6,25 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'react', 'react-native', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'react-native'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-native/all',
-    'plugin:prettier/recommended',
   ],
   settings: {
     react: { version: 'detect' },
   },
   env: {
-    browser: true,
+    'react-native/react-native': true,
     es2021: true,
     node: true,
   },
   rules: {
     'react-native/no-inline-styles': 'warn',
-    'prettier/prettier': 'warn',
+    'react-native/no-unused-styles': 'warn',
+    'react-native/no-color-literals': 'warn',
+    // You can add any WhoDoggy-specific custom rules here
   },
 };

@@ -1,6 +1,0 @@
-node_modules/
-dist/
-build/
-.expo/
-pnpm-lock.yaml
-packages/backend/jest.config.cjs
