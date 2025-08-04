@@ -1,11 +1,11 @@
 // src/navigation/AppNavigator.tsx
 
-import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/Home/HomeScreen.tsx';
-import QRScannerScreen from '../screens/Home/QRScannerScreen.tsx';
-import SearchScreen from '../screens/Home/SearchScreen.tsx';
-// import SearchResultsScreen from '../screens/SearchResultsScreen'; // Uncomment when implemented
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "../screens/Home/HomeScreen.tsx;";
+import QRScannerScreen from "../screens/Home/QRScannerScreen.tsx;";
+import SearchScreen from "../screens/Home/SearchScreen.tsx;";
+// import SearchResultsScreen from '../screens/SearchResultsScreen'.ts; // Uncomment when implemented
 
 export type RootStackParamList = {
   Home: undefined;
@@ -22,17 +22,17 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ title: 'WhoDoggy?' }}
+        options={{ title: "WhoDoggy?" }}
       />
       <Stack.Screen
         name="QRScanner"
         component={QRScannerScreen}
-        options={{ title: 'Scan Microchip' }}
+        options={{ title: "Scan Microchip" }}
       />
       <Stack.Screen
         name="Search"
         component={SearchScreen}
-        options={{ title: 'Search Microchip' }}
+        options={{ title: "Search Microchip" }}
       />
       {/* <Stack.Screen
         name="SearchResults"

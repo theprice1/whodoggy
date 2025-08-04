@@ -2,8 +2,8 @@
 
 import request from 'supertest';
 import express from 'express';
-import microchipRoutes from '../routes/microchipRoutes.js';
-import { mockAuth } from '../middleware/mockAuth.js';
+import microchipRoutes from '../routes/microchipRoutes.ts';
+import { mockAuth } from '../middleware/mockAuth.ts';
 
 const app = express();
 app.use(express.json());

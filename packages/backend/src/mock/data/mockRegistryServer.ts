@@ -1,5 +1,3 @@
-// packages/backend/mock_data/registries/mockRegistryServer.ts
-
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
@@ -43,8 +41,7 @@ export async function createMockRegistryServer(port: number, dataFileName: strin
   });
 }
 
-// If you want to run this file standalone for testing, uncomment below:
-
-// (async () => {
-//   await createMockRegistryServer(PORT, 'registry1.json');
-// })();
+// Standalone run for testing
+(async () => {
+  await createMockRegistryServer(PORT, 'registry1.json');
+})();

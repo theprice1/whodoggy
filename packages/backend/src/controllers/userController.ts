@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'; // Importing types for Express
 
 // Controller function to handle GET /api/users
-export const getUsers = (req: Request, res: Response) => {
+export const getUsers = (_req: Request, res: Response) => {
   res.status(200).json({ message: 'Fetching all users' });
 };
 

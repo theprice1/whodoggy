@@ -1,5 +1,6 @@
-import express from 'express';
-import axios from 'axios';
+// packages/backend/src/routes/microchip.ts
+
+import express, { Request, Response } from 'express';
 import { Client } from 'pg'; // For PostgreSQL queries
 
 const router = express.Router();
@@ -9,35 +10,36 @@ const client = new Client({
   user: 'postgres',
   host: 'localhost',
   database: 'whodoggy',
-  password: 'password', // Make sure to set this correctly
+  password: 'password', // Update with your actual password or use environment variables
   port: 5432,
 });
 
-client.connect();
+client.connect().catch((err) => {
+  console.error('Failed to connect to PostgreSQL:', err);
+});
 
-// POST request to get dog data by microchip number
-router.post('/microchip', async (req, res) => {
-  const { chipId } = req.body; // Extract chip ID from the request body
+// POST /microchip - Get dog data by microchip number
+router.post('/microchip', async (req: Request, res: Response) => {
+  const { chipId } = req.body;
 
   if (!chipId) {
-    return res.status(400).send({ error: 'Microchip ID is required' });
+    return res.status(400).json({ error: 'Microchip ID is required' });
   }
 
   try {
-    // Query the database for the microchip data
     const result = await client.query(
       'SELECT * FROM microchip_data WHERE microchip_number = $1',
       [chipId]
     );
 
     if (result.rows.length === 0) {
-      return res.status(404).send({ error: 'Microchip not found' });
+      return res.status(404).json({ error: 'Microchip not found' });
     }
 
-    return res.status(200).json(result.rows[0]); // Return dog details
+    return res.status(200).json(result.rows[0]);
   } catch (err) {
-    console.error(err);
-    return res.status(500).send({ error: 'Database query failed' });
+    console.error('Database query error:', err);
+    return res.status(500).json({ error: 'Database query failed' });
   }
 });
 

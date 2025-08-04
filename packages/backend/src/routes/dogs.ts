@@ -1,5 +1,3 @@
-// packages/backend/routes/dogs.ts
-
 import { Router } from 'express';
 import {
   getAllDogsHandler,
@@ -7,18 +5,12 @@ import {
   createDogHandler,
   updateDogHandler,
   deleteDogHandler,
-} from '../controllers/dogsController.js';
+} from '../controllers/dogController.js';
 
-// ✅ Use correct auth middleware (Firebase) from your actual middleware file
-import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
-
-// ✅ ValidateDogInput should match your Zod middleware for dog data
-import { validateDogInput } from '../middleware/validateInput.js';
+import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.ts';
+import { validateDogInput } from '../middleware/validateInput.ts';
 
 const router = Router();
-
-// 🛡️ Auth-protect all endpoints with Firebase token verification
-// ✅ Apply validation only where body data is used (POST/PUT)
 
 router.get('/', verifyFirebaseToken, getAllDogsHandler);
 router.get('/:id', verifyFirebaseToken, getDogByIdHandler);

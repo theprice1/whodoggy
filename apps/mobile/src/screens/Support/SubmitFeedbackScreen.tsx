@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Text,
   TextInput,
@@ -6,23 +6,23 @@ import {
   Alert,
   ScrollView,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
 
 const colors = {
-  gray300: '#D1D5DB', // Tailwind gray-300
+  gray300: "#D1D5DB", // Tailwind gray-300
 };
 
 const SubmitFeedbackScreen = () => {
-  const [feedback, setFeedback] = useState('');
+  const [feedback, setFeedback] = useState("");
 
   const handleSubmit = () => {
     if (!feedback.trim()) {
-      Alert.alert('Error', 'Please enter your feedback before submitting.');
+      Alert.alert("Error", "Please enter your feedback before submitting.");
       return;
     }
     // TODO: Connect to backend or send feedback via API
-    Alert.alert('Thank you!', 'Your feedback has been submitted.');
-    setFeedback('');
+    Alert.alert("Thank you!", "Your feedback has been submitted.");
+    setFeedback("");
   };
 
   return (
@@ -67,11 +67,11 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     minHeight: 100,
     padding: 12,
-    textAlignVertical: 'top', // aligns multiline text to top on Android
+    textAlignVertical: "top", // aligns multiline text to top on Android
   },
   headerText: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 24,
   },
 });

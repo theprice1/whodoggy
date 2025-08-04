@@ -1,5 +1,5 @@
 import 'express';
-import { admin } from '../../services/firebase';
+import { admin } from '../../services/firebase.js';
 
 declare global {
   namespace Express {

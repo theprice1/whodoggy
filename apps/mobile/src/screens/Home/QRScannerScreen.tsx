@@ -1,8 +1,8 @@
 // src/screens/QRScannerScreen.tsx
 
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Alert } from 'react-native';
-import { BarCodeScanner } from 'expo-barcode-scanner';
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Button, Alert } from "react-native";
+import { BarCodeScanner } from "expo-barcode-scanner";
 
 type QRScannerScreenProps = {
   navigation: {
@@ -18,20 +18,20 @@ const QRScannerScreen: React.FC<QRScannerScreenProps> = ({ navigation }) => {
   React.useEffect(() => {
     (async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
+      setHasPermission(status === "granted");
     })();
   }, []);
 
   const handleBarCodeScanned = ({ data }: { data: string }) => {
     setScanned(true);
-    Alert.alert('Microchip scanned!', `ID: ${data}`, [
+    Alert.alert("Microchip scanned!", `ID: ${data}`, [
       {
-        text: 'Search',
+        text: "Search",
         onPress: () =>
-          navigation.navigate('SearchResults', { microchipId: data }),
+          navigation.navigate("SearchResults", { microchipId: data }),
       },
       {
-        text: 'OK',
+        text: "OK",
         onPress: () => setScanned(false),
       },
     ]);
@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
   },
   centered: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

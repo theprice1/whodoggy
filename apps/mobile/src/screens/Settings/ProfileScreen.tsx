@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Text,
   TextInput,
@@ -6,19 +6,19 @@ import {
   Alert,
   ScrollView,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
 
 // Define colors as constants to avoid color literals in styles
 const COLORS = {
-  gray300: '#D1D5DB',
+  gray300: "#D1D5DB",
 };
 
 const ProfileScreen = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSave = () => {
-    Alert.alert('Profile Saved', `Name: ${name}\nEmail: ${email}`);
+    Alert.alert("Profile Saved", `Name: ${name}\nEmail: ${email}`);
   };
 
   return (
@@ -68,12 +68,12 @@ const styles = StyleSheet.create({
 
   label: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     marginBottom: 8,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 24,
   },
 });

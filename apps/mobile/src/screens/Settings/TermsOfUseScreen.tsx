@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScrollView, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { ScrollView, Text, StyleSheet } from "react-native";
 
 const TermsOfUseScreen = () => {
   return (
@@ -54,13 +54,13 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     marginBottom: 8,
     marginTop: 16,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 24,
   },
 });

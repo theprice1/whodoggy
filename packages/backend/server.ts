@@ -7,11 +7,11 @@ import bodyParser from 'body-parser';
 
 import searchRoutes from './routes/search.js';
 import dogsRoutes from './routes/dogs.js';
-import ownersRoutes from './routes/owners.js';
+import ownersRoutes from './src/routes/owners.ts';
 import registriesRoutes from './routes/registries.js';
 import deleteDataController from './routes/deleteDataController.js';
 
-import { errorHandler } from './middleware/errorHandler.js';
+import { errorHandler } from './src/middleware/errorHandler.ts';
 
 dotenv.config();
 

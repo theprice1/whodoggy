@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 const ConsentScreen = () => {
   return (
@@ -21,13 +21,13 @@ const ConsentScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 16,
   },
   title: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: "600",
     marginBottom: 16,
   },
   text: {

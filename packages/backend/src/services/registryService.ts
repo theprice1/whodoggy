@@ -61,7 +61,8 @@ async function queryRegistry(
       );
     }
 
-    const data: DogRecord = await response.json();
+  const data = (await response.json()) as DogRecord;
+
 
     // Validate response: microchipId should be a non-empty string different from default placeholder
     if (

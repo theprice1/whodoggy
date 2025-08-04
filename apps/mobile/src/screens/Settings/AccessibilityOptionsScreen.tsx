@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, Switch, ScrollView, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import { View, Text, Switch, ScrollView, StyleSheet } from "react-native";
 
 const AccessibilityOptionsScreen = () => {
   const [largeTextEnabled, setLargeTextEnabled] = useState(false);
@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 24,
   },
   optionRow: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 16,
   },
   optionText: {

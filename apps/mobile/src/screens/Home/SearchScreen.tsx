@@ -1,6 +1,6 @@
 // src/screens/SearchScreen.tsx
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   View,
   TextInput,
@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Text,
   FlatList,
-} from 'react-native';
+} from "react-native";
 
 type SearchScreenProps = {
   navigation: {
@@ -16,8 +16,10 @@ type SearchScreenProps = {
   };
 };
 
-const SearchScreen: React.FC<SearchScreenProps> = ({ navigation }) => {
-  const [query, setQuery] = useState('');
+const SearchScreen: React.FC<SearchScreenProps> = ({
+  navigation: _navigation,
+}) => {
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState<string[]>([]); // Replace string[] with your data type
 
   const handleSearch = () => {
@@ -64,17 +66,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   title: {
     fontSize: 20,
     marginBottom: 12,
-    color: '#2563eb',
-    fontWeight: '600',
+    color: "#2563eb",
+    fontWeight: "600",
   },
   input: {
     borderWidth: 1,
-    borderColor: '#d1d5db',
+    borderColor: "#d1d5db",
     borderRadius: 8,
     padding: 12,
     marginBottom: 16,
@@ -85,13 +87,13 @@ const styles = StyleSheet.create({
   resultItem: {
     padding: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: "#e5e7eb",
   },
   noResults: {
     marginTop: 20,
-    color: '#6b7280',
-    fontStyle: 'italic',
-    textAlign: 'center',
+    color: "#6b7280",
+    fontStyle: "italic",
+    textAlign: "center",
   },
 });
 

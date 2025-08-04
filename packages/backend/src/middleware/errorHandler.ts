@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Optional: Replace with actual logger (e.g. Sentry, Winston, etc.)
-const logToExternalService = (err: Error, req: Request) => {
+const logToExternalService = (_err: Error, _req: Request) => {
   // Example placeholder for Sentry, LogRocket, etc.
   // Sentry.captureException(err);
   // LogRocket.captureException(err, { extra: { url: req.originalUrl } });
@@ -26,7 +26,7 @@ export const errorHandler = (
   req: Request,
   res: Response,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  next: NextFunction
+  _next: NextFunction
 ) => {
   const isProd = process.env.NODE_ENV === 'production';
 

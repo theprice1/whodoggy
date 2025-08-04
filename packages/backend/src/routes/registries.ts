@@ -3,7 +3,7 @@ import express from 'express';
 import {
   getRegistryById,
   getAllRegistries,
-} from '../controllers/registriesController.js';
+} from '../controllers/registriesController.ts';
 const router = express.Router();
 router.get('/', getAllRegistries);
 router.get('/:id', getRegistryById);

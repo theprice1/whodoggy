@@ -1,6 +1,6 @@
 // packages/backend/src/controllers/ownerController.ts
 import { Request, Response } from 'express';
-import { getOwner, getAllOwnersService } from '../services/ownerService.js'; // ✅ .js for ESM compatibility
+import { getOwner, getAllOwnersService } from '../services/ownerService.ts'; // ✅ .js for ESM compatibility
 
 export const getAllOwners = async (_req: Request, res: Response): Promise<void> => {
   try {

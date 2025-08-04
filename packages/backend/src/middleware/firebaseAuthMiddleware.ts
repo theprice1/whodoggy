@@ -1,9 +1,8 @@
-// packages/backend/middleware/firebaseAuthMiddleware.ts
 import { Request, Response, NextFunction } from 'express';
-import admin from 'firebase-admin';
+import { adminAuth } from '../src/firebase/firebaseAdmin.js'; // Import from your firebaseAdmin.ts with extension
 
 export interface AuthenticatedRequest extends Request {
-  user?: admin.auth.DecodedIdToken;
+  user?: adminAuth.DecodedIdToken;
 }
 
 export const verifyFirebaseToken = async (
@@ -20,7 +19,7 @@ export const verifyFirebaseToken = async (
   const token = authHeader.split(' ')[1];
 
   try {
-    const decodedToken = await admin.auth().verifyIdToken(token);
+    const decodedToken = await adminAuth.verifyIdToken(token);
     req.user = decodedToken; // Attach Firebase user info to request
     next();
   } catch (error) {

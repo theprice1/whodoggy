@@ -2,6 +2,7 @@
 # Node.js Dependencies
 # ========================
 node_modules/
+**/node_modules/
 
 # ========================
 # Environment Variables
@@ -10,6 +11,8 @@ node_modules/
 .env.*
 !.env.example
 !**/.env.example
+apps/web/.env.local
+packages/backend/.env
 
 # ========================
 # Build Output
@@ -17,6 +20,8 @@ node_modules/
 dist/
 build/
 .next/
+**/dist/
+**/build/
 
 # ========================
 # Logs
@@ -68,10 +73,12 @@ turbo/
 # TypeScript Cache
 # ========================
 *.tsbuildinfo
+
 # ========================
 # OpenAPI Tooling
 # ========================
 + tools/openapi/node_modules/
+
 # ========================
 # Misc. Dev Artifacts
 # ========================
@@ -79,4 +86,3 @@ turbo/
 + *.bak
 + *.orig
 + .eslintcache
-
