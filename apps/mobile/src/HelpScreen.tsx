@@ -1,7 +1,7 @@
 // apps/mobile/src/screens/HelpScreen.tsx
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Button } from 'react-native';
-import InfoDialog from '../components/InfoDialog';
+import InfoDialog from '../components/InfoDialog.js';
 
 const HelpScreen = () => {
   const [infoVisible, setInfoVisible] = useState(false);

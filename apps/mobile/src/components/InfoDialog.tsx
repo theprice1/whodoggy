@@ -1,6 +1,14 @@
-// apps/mobile/src/components/InfoDialog.tsx
-import React from 'react';
-import { Modal, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useCallback } from 'react';
+import {
+  Modal,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
 
 type InfoDialogProps = {
   visible: boolean;
@@ -9,20 +17,29 @@ type InfoDialogProps = {
   onClose: () => void;
 };
 
-const InfoDialog: React.FC<InfoDialogProps> = ({ visible, title, message, onClose }) => {
+export const InfoDialog: React.FC<InfoDialogProps> = ({
+  visible,
+  title,
+  message,
+  onClose,
+}) => {
+  const handleClose = useCallback(() => {
+    onClose();
+  }, [onClose]);
+
   return (
     <Modal
       visible={visible}
       animationType="fade"
       transparent
-      onRequestClose={onClose}
+      onRequestClose={handleClose}
     >
       <View style={styles.overlay}>
         <View style={styles.dialog}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.message}>{message}</Text>
 
-          <TouchableOpacity onPress={onClose} style={styles.button}>
+          <TouchableOpacity onPress={handleClose} style={styles.button}>
             <Text style={styles.buttonText}>Close</Text>
           </TouchableOpacity>
         </View>
@@ -31,7 +48,14 @@ const InfoDialog: React.FC<InfoDialogProps> = ({ visible, title, message, onClos
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<{
+  overlay: StyleProp<ViewStyle>;
+  dialog: StyleProp<ViewStyle>;
+  title: StyleProp<TextStyle>;
+  message: StyleProp<TextStyle>;
+  button: StyleProp<ViewStyle>;
+  buttonText: StyleProp<TextStyle>;
+}>({
   overlay: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
