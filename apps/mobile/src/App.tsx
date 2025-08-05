@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar, SafeAreaView, StyleSheet } from 'react-native';
-import AppNavigator from './src/navigation/AppNavigator.js';
+import AppNavigator from './navigation/AppNavigator.tsx';
 
 export default function App() {
   return (

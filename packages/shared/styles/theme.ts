@@ -1,4 +1,36 @@
-const theme = {
+export type Theme = {
+  colors: {
+    primary: string;
+    secondary: string;
+    background: string;
+    text: string;
+    muted: string;
+  };
+  spacing: {
+    px: string;
+    1: string;
+    2: string;
+    3: string;
+    4: string;
+    5: string;
+    6: string;
+  };
+  borderRadius: {
+    sm: string;
+    DEFAULT: string;
+    md: string;
+    lg: string;
+  };
+  fontSize: {
+    sm: string;
+    base: string;
+    lg: string;
+    xl: string;
+    '2xl': string;
+  };
+};
+
+const theme: Theme = {
   colors: {
     primary: '#4B9CD3',
     secondary: '#FFD700',

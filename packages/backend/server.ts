@@ -1,36 +1,36 @@
-// packages/backend/server.ts
-
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 
-import searchRoutes from './routes/search.js';
-import dogsRoutes from './routes/dogs.js';
-import ownersRoutes from './src/routes/owners.ts';
-import registriesRoutes from './routes/registries.js';
-import deleteDataController from './routes/deleteDataController.js';
+import searchRoutes from './src/routes/search.js';
+import dogsRoutes from './src/routes/dogs.js';
+import ownersRoutes from './src/routes/owners.js';
+import registriesRoutes from './src/routes/registries.js';
+import deleteDataRoutes from './src/routes/deleteData.js';
 
-import { errorHandler } from './src/middleware/errorHandler.ts';
+import { errorHandler } from './src/middleware/errorHandler.js';
 
 dotenv.config();
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Register all route handlers
+// API Routes
 app.use('/api/search', searchRoutes);
 app.use('/api/dogs', dogsRoutes);
 app.use('/api/owners', ownersRoutes);
 app.use('/api/registries', registriesRoutes);
-app.use('/api', deleteDataController);
+app.use('/api', deleteDataRoutes);
 
-// Global error handler (must be last)
+// Global error handler
 app.use(errorHandler);
 
+// Server start
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`✅ Backend server running on port ${port}`);
+  console.log(`✅ WhoDoggy backend running on http://localhost:${port}`);
 });

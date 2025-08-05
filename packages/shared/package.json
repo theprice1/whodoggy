@@ -1,0 +1,23 @@
+{
+  "name": "@whodoggy/shared",
+  "version": "1.0.0",
+  "description": "Shared types and utilities for WhoDoggy",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [],
+  "author": "WhoDoggy Team",
+  "license": "MIT",
+  "devDependencies": {
+    "rimraf": "^5.0.10"
+  }
+}

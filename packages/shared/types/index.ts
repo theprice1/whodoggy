@@ -1,16 +1,3 @@
-// packages/shared/types/index.ts
-
-export interface DogRecord {
-  microchipId: string;
-  name: string;
-  breed: string;
-  dateOfBirth?: string;
-  ownerName: string;
-  ownerContact: string;
-}
-
-export interface UserAuthPayload {
-  userId: string;
-  email: string;
-  roles: string[];
-}
+export * from './dog';
+export * from './owner';
+export * from './registry';

@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './index.css';         // ❓ Only keep this if it has unique styles
-import './styles/global.css'; // ✅ Tailwind-based global styles (preferred)
+
+// Import Tailwind CSS global styles (preferred)
+import './styles/global.css';
+
+// If you have any unique CSS outside Tailwind, keep this; otherwise, remove it.
+// import './index.css';
 
 const rootElement = document.getElementById('root');
 

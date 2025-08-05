@@ -1,4 +1,4 @@
-import type { paths } from "../../../shared/types/registry";
+import type { dog } from '@whodoggy/shared/types'; // correct the path to the actual file
 
 const BASE_URL = "https://api.whodoggy.com";
 

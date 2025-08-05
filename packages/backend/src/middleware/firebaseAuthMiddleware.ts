@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import { adminAuth } from '../src/firebase/firebaseAdmin.js'; // Import from your firebaseAdmin.ts with extension
+import { adminAuth } from '../firebase/firebaseAdmin.js';
+import type { auth } from 'firebase-admin';
 
 export interface AuthenticatedRequest extends Request {
-  user?: adminAuth.DecodedIdToken;
+  user?: auth.DecodedIdToken; // Correct usage of type
 }
 
 export const verifyFirebaseToken = async (

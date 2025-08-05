@@ -3,14 +3,14 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  root: path.resolve(__dirname, 'src'), // 🔧 tell Vite where to find index.html
+  root: path.resolve(__dirname, 'src'), // Entry point folder containing index.html
   plugins: [react()],
   css: {
-    postcss: path.resolve(__dirname, 'postcss.config.js'),
+    postcss: path.resolve(__dirname, 'postcss.config.js'), // Explicit postcss config
   },
   resolve: {
     alias: {
-      '@': '/src',
+      '@': path.resolve(__dirname, 'src'), // Use absolute path for alias
     },
   },
   build: {

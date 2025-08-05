@@ -1,13 +1,17 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "declaration": false,
-    "outDir": "./dist",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
+    "composite": true,               // Required for project references
+    "declaration": true,             // Emit .d.ts files
+    "declarationMap": true,          // Emit .d.ts.map files
+    "emitDeclarationOnly": true,     // Only emit declarations, no JS
+    "module": "NodeNext",            // Required for ES module + Node16+ resolution
+    "moduleResolution": "NodeNext",  // Same here
+    "rootDir": "./types",            // Source files directory
+    "outDir": "./dist",              // Output directory for built types
+    "baseUrl": ".",                  // Required for relative paths
+    "verbatimModuleSyntax": true     // Keeps `import type` as-is for ESM compatibility
   },
-  "include": ["styles/theme.ts"]
+  "include": ["types/**/*.ts"],      // Only include source files in `types/`
+  "exclude": ["node_modules", "dist"]
 }

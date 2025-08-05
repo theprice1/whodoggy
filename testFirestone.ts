@@ -1,4 +1,4 @@
-import { db, auth, analytics } from './shared/firebase.js';
+import { db, auth, analytics } from './packages/shared/firebase.ts';
 import { collection, getDocs } from 'firebase/firestore';
 
 async function testFirestore() {

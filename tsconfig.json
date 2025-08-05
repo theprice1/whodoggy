@@ -1,11 +1,11 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "target": "ES2020",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "rootDir": "./",
+    "lib": ["ES2020"],
     "outDir": "dist",
+    "rootDir": "./",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -13,14 +13,17 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
-    "types": ["node", "jest"]   // added jest here for test globals
+    "allowSyntheticDefaultImports": true,
+    "types": ["node", "jest"],
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": [
     "packages/backend/**/*.ts",
+    "apps/mobile/src/**/*.{ts,tsx}",
     "scripts/**/*.ts",
     "*.ts",
-    "eslint.config.js",
-    "apps/mobile/src/**/*.{ts,tsx}"
+    "eslint.config.js"
   ],
   "exclude": [
     "node_modules",

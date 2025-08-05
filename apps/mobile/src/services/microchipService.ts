@@ -1,6 +1,6 @@
 // apps/mobile/src/services/microchipService.ts
 
-import { API_BASE_URL } from "../config/api";
+import { API_BASE_URL } from '../config/api';
 
 export type MicrochipRecord = {
   microchipId: string;
@@ -20,19 +20,25 @@ export type MicrochipRecord = {
   vaccinated: boolean;
 };
 
-export async function fetchMicrochipById(
-  id: string,
-): Promise<MicrochipRecord[]> {
+/**
+ * Fetch microchip records by microchip ID
+ * Returns an array of MicrochipRecord (empty if none found)
+ */
+export async function fetchMicrochipById(id: string): Promise<MicrochipRecord[]> {
   try {
     const response = await fetch(`${API_BASE_URL}/microchips/${id}`);
+
     if (!response.ok) {
-      // handle 404 or other errors
+      // Could check for 404 specifically if you want
       return [];
     }
+
     const data = await response.json();
+
+    // Assuming API returns { results: MicrochipRecord[] }
     return data.results as MicrochipRecord[];
   } catch (error) {
-    console.error("Error fetching microchip data:", error);
+    console.error('Error fetching microchip data:', error);
     return [];
   }
 }

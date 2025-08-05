@@ -1,19 +1,30 @@
+// packages/backend/src/middleware/errorHandler.ts
+
 import { Request, Response, NextFunction } from 'express';
 import fs from 'fs';
 import path from 'path';
 
-// Optional: Replace with actual logger (e.g. Sentry, Winston, etc.)
 const logToExternalService = (_err: Error, _req: Request) => {
-  // Example placeholder for Sentry, LogRocket, etc.
-  // Sentry.captureException(err);
-  // LogRocket.captureException(err, { extra: { url: req.originalUrl } });
+  // Placeholder for logging services (Sentry, etc.)
 };
 
-const logToFile = (err: Error | unknown) => {
-  const logPath = path.resolve(__dirname, '../../logs/error.log');
-  const message = `[${new Date().toISOString()}] ${JSON.stringify(err, Object.getOwnPropertyNames(err))}\n`;
+const logDir = path.resolve(__dirname, '../../logs');
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
+}
 
-  fs.appendFileSync(logPath, message);
+const logPath = path.join(logDir, 'error.log');
+
+const logToFile = (err: unknown) => {
+  const message = `[${new Date().toISOString()}] ${
+    err instanceof Error ? (err.stack || err.message) : String(err)
+  }\n`;
+
+  fs.appendFile(logPath, message, (error) => {
+    if (error) {
+      console.error('Failed to write error log:', error);
+    }
+  });
 };
 
 type HttpError = {
@@ -31,13 +42,13 @@ export const errorHandler = (
   const isProd = process.env.NODE_ENV === 'production';
 
   if (err instanceof Error) {
-    const status = (err as HttpError).status || 500;
+    const typedError = err as HttpError;
+    const status = typedError.status ?? 500;
 
     if (!isProd) {
       console.error(err.stack);
     }
 
-    // Log externally or to file
     logToExternalService(err, req);
     logToFile(err);
 
@@ -46,12 +57,13 @@ export const errorHandler = (
     });
   }
 
-  // Handle unknown errors
   const fallbackMessage = 'Unexpected error';
+
   if (!isProd) {
     console.error('Unknown error', err);
   }
 
   logToFile(err);
+
   return res.status(500).json({ error: isProd ? 'Internal Server Error' : fallbackMessage });
 };

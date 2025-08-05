@@ -1,26 +1,19 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "es2017",
-    "module": "node16",
     "jsx": "react-native",
-    "strict": true,
-    "moduleResolution": "node16",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "noEmit": true,
     "baseUrl": ".",
+    "types": ["node", "vitest"],
     "paths": {
-      "@whodoggy/shared-types": ["../../packages/shared/types"]
-    },
-    "allowImportingTsExtensions": true,
-    "noEmit": true
+      "@whodoggy/shared/*": ["../../packages/shared/*"]
+    }
   },
   "include": [
     "src/**/*",
-    "app.d.ts",        // <--- Ensure this is here explicitly
-    "**/*.ts",
-    "**/*.tsx",
+    "app.d.ts",
     "**/*.d.ts"
   ],
   "exclude": ["node_modules", "dist"]

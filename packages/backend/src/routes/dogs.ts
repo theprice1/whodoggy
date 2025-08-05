@@ -7,8 +7,8 @@ import {
   deleteDogHandler,
 } from '../controllers/dogController.js';
 
-import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.ts';
-import { validateDogInput } from '../middleware/validateInput.ts';
+import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
+import { validateDogInput } from '../middleware/validateInput.js';
 
 const router = Router();
 

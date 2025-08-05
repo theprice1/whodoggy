@@ -2,7 +2,7 @@
 
 import express from 'express';
 import microchipRoutes from './microchipRoutes.js';
-import deleteDataRoutes from './deleteDataController.ts';
+import deleteDataRoutes from './deleteData.ts';
 
 const router = express.Router();
 
