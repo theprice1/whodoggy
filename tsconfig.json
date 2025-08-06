@@ -21,7 +21,7 @@
   "include": [
     "packages/backend/**/*.ts",
     "apps/mobile/src/**/*.{ts,tsx}",
-    "scripts/**/*.ts",
+    "packages/scripts/**/*.ts",
     "*.ts",
     "eslint.config.js"
   ],
