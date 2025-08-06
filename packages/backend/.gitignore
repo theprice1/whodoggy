@@ -1,24 +1,28 @@
-# Node modules
+# Node Modules
 node_modules/
 
-# Environment variables
+# Environment Variables
 .env
 
-# Prisma generated files (if used)
-generated/prisma/
-
-# Build output
+# Build Output
 dist/
 
-# Firebase service account credentials (never commit)
-firebase-service-account/
+# Firebase Service Account Key (DO NOT COMMIT)
+firebase-service-account/service-account-file.json
 
 # Logs
 *.log
+firebase-debug.log
 
-# OS files
+# OS Files
 .DS_Store
 Thumbs.db
 
-# VSCode settings
+# Editor Settings
 .vscode/
+
+# TypeScript Build Info
+*.tsbuildinfo
+
+# Miscellaneous
+.eslintcache

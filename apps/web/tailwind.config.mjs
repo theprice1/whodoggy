@@ -1,4 +1,4 @@
-import theme from '../../packages/shared/styles/theme.js';
+import theme from '../../packages/shared/dist/styles/theme.js';
 
 export default {
   content: [

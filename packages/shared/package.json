@@ -22,10 +22,13 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
-    "rebuild": "pnpm clean && pnpm build",
+    "rebuild": "pnpm run clean && pnpm run build",
     "watch": "tsc -p tsconfig.json --watch"
   },
   "keywords": [
@@ -36,9 +39,12 @@
   ],
   "author": "WhoDoggy Team",
   "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.3.1"
+  },
   "devDependencies": {
     "rimraf": "^5.0.10",
-    "typescript": "^5.4.5"
+    "typescript": "^5.8.3"
   },
   "typesVersions": {
     "*": {

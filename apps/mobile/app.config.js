@@ -1,4 +1,4 @@
-export default {
+module.exports ={
   expo: {
     name: 'WhoDoggy',
     slug: 'whodoggy',
@@ -18,17 +18,24 @@ export default {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
+      bundleIdentifier: "com.thepr1ce1.whodoggy",
     },
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#FFFFFF',
       },
+      package: "com.thepr1ce1.whodoggy"
     },
     web: {
       favicon: './assets/favicon.png',
     },
+
+    // ADD THIS PART:
+    extra: {
+      eas: {
+        projectId: "3f916ac8-7a8c-4e53-aa7f-83c0c023a9e3"
+      }
+    }
   },
 };
-// This configuration file is used by Expo to set up the mobile application.
-// It includes settings for the app's name, version, icon, splash screen, and platform-specific configurations.

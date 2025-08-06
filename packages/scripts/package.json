@@ -8,8 +8,7 @@
     "seed:owners": "tsx src/seedOwners.ts"
   },
   "devDependencies": {
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "tsx": "^3.12.7"
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
   }
 }

@@ -1,3 +1,69 @@
-* text=auto
-# Set the default behavior, in case people don't have core.autocrlf set.
-# This will normalize the line endings in the repository.
+# ========================
+# Normalize line endings to LF for all text files
+# ========================
+* text=auto eol=lf
+
+# ========================
+# Mark known binary files so Git handles them correctly
+# ========================
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.pdf diff=astextplain
+*.mp4 binary
+*.mov binary
+*.zip binary
+*.tar binary
+*.gz binary
+
+# ========================
+# Avoid merge conflicts in lockfiles by using 'union' merge driver
+# ========================
+package-lock.json merge=union
+pnpm-lock.yaml merge=union
+yarn.lock merge=union
+
+# ========================
+# Treat shell scripts as text and normalize line endings
+# ========================
+*.sh text eol=lf
+
+# ========================
+# Ensure Markdown and text files are always treated as text
+# ========================
+*.md text
+*.txt text
+
+# ========================
+# Mark generated files and folders to exclude from GitHub linguist language stats
+# ========================
+docs/openapi/*.yaml linguist-generated
+tools/openapi/* linguist-generated
+
+# ========================
+# Specific overrides for Firebase and environment files
+# ========================
+.env linguist-vendored
+.env.* linguist-vendored
+firebase-service-account/* linguist-vendored
+
+# ========================
+# Treat JSON as text
+# ========================
+*.json text
+
+# ========================
+# Ignore Visual Studio Code workspace settings from language stats
+# ========================
+.vscode/* linguist-vendored
+
+# ========================
+# Lock files and config files (optional)
+# ========================
+*.lock linguist-vendored

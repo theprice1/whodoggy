@@ -1,5 +1,5 @@
 # ========================
-# Node.js Dependencies
+# Node Modules (Monorepo)
 # ========================
 node_modules/
 **/node_modules/
@@ -15,7 +15,7 @@ apps/web/.env.local
 packages/backend/.env
 
 # ========================
-# Build Output
+# Build Outputs
 # ========================
 dist/
 build/
@@ -27,15 +27,16 @@ build/
 # Logs
 # ========================
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
 # ========================
-# Package Manager Lockfiles
+# Package Manager Lockfiles (Optional)
 # ========================
-yarn.lock
-pnpm-lock.yaml
+# Only exclude if lockfile not committed intentionally
+# yarn.lock
+# pnpm-lock.yaml
 
 # ========================
 # OS-Specific Files
@@ -57,12 +58,10 @@ Thumbs.db
 .expo-shared/
 
 # ========================
-# Firebase
+# Firebase (Global)
 # ========================
 .firebase/
-.firebaserc
 firebase-debug.log
-packages/backend/firebase-service-account/service-account-file.json
 
 # ========================
 # Turborepo Cache (Optional)
@@ -70,19 +69,14 @@ packages/backend/firebase-service-account/service-account-file.json
 turbo/
 
 # ========================
-# TypeScript Cache
+# TypeScript
 # ========================
 *.tsbuildinfo
 
 # ========================
-# OpenAPI Tooling
-# ========================
-+ tools/openapi/node_modules/
-
-# ========================
 # Misc. Dev Artifacts
 # ========================
-+ *~
-+ *.bak
-+ *.orig
-+ .eslintcache
+*~
+*.bak
+*.orig
+.eslintcache

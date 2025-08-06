@@ -2,19 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "react-native",
-    "rootDir": "./src",
-    "outDir": "./dist",
     "noEmit": true,
-    "baseUrl": ".",
-    "types": ["node", "vitest"],
-    "paths": {
-      "@whodoggy/shared/*": ["../../packages/shared/*"]
-    }
+    "types": ["react-native"]
   },
-  "include": [
-    "src/**/*",
-    "app.d.ts",
-    "**/*.d.ts"
-  ],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
 }
