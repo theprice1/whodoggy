@@ -18,6 +18,9 @@
     "format": "pnpm exec biome format --write ."
   },
   "dependencies": {
+    "@react-navigation/native": "^7.1.14",
+    "@react-navigation/native-stack": "^7.3.21",
+    "@sentry/react-native": "^4.7.0",
     "expo": "^53.0.19",
     "expo-barcode-scanner": "^13.0.1",
     "nativewind": "^4.1.23",
@@ -27,16 +30,14 @@
     "react-native-reanimated": "^3.18.0",
     "react-native-safe-area-context": "^5.5.1",
     "react-native-screens": "^4.11.1",
-    "@react-navigation/native": "^7.1.14",
-    "@react-navigation/native-stack": "^7.3.21",
-    "@sentry/react-native": "^4.7.0"
+    "sentry-expo": "^7.2.0"
   },
   "devDependencies": {
     "@types/react": "^19.1.8",
     "@types/react-native": "^0.72.8",
+    "@vitest/ui": "^0.34.2",
     "biome": "^0.3.3",
     "typescript": "^5.8.3",
-    "vitest": "^0.34.2",
-    "@vitest/ui": "^0.34.2"
+    "vitest": "^0.34.2"
   }
 }
