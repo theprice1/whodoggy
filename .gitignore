@@ -1,82 +1,51 @@
-# ========================
-# Node Modules (Monorepo)
-# ========================
-node_modules/
+# Node modules (all packages)
 **/node_modules/
 
-# ========================
-# Environment Variables
-# ========================
-.env
-.env.*
-!.env.example
-!**/.env.example
-apps/web/.env.local
-packages/backend/.env
-
-# ========================
-# Build Outputs
-# ========================
-dist/
-build/
-.next/
+# Build output folders (commonly dist, build)
 **/dist/
 **/build/
 
-# ========================
+# Expo / React Native
+.expo/
+.expo-shared/
+ios/Pods/
+ios/build/
+android/.gradle/
+android/app/build/
+
+# Environment variable files (never commit real secrets)
+**/.env
+**/.env.local
+**/.env.*.local
+**/.env.production
+
 # Logs
-# ========================
+*.log
 npm-debug.log*
-pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# ========================
-# Package Manager Lockfiles (Optional)
-# ========================
-# Only exclude if lockfile not committed intentionally
-# yarn.lock
-# pnpm-lock.yaml
-
-# ========================
-# OS-Specific Files
-# ========================
+# Temporary files
 .DS_Store
 Thumbs.db
 
-# ========================
-# IDEs and Editors
-# ========================
+# VSCode settings
 .vscode/
-.idea/
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# Others
 *.swp
+*.swo
 
-# ========================
-# Expo (React Native)
-# ========================
-.expo/
-.expo-shared/
+# Husky
+.husky/_
 
-# ========================
-# Firebase (Global)
-# ========================
-.firebase/
-firebase-debug.log
+# Coverage reports
+coverage/
+**/coverage/
 
-# ========================
-# Turborepo Cache (Optional)
-# ========================
-turbo/
-
-# ========================
-# TypeScript
-# ========================
-*.tsbuildinfo
-
-# ========================
-# Misc. Dev Artifacts
-# ========================
-*~
-*.bak
-*.orig
-.eslintcache
+# JetBrains IDEs
+.idea/

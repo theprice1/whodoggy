@@ -1,28 +1,23 @@
-# Node Modules
+# Node modules
 node_modules/
 
-# Environment Variables
-.env
-
-# Build Output
+# Build output
 dist/
+build/
 
-# Firebase Service Account Key (DO NOT COMMIT)
-firebase-service-account/service-account-file.json
+# Environment variable files
+.env
+.env.local
+.env.*.local
+.env.production
 
 # Logs
 *.log
-firebase-debug.log
 
-# OS Files
-.DS_Store
-Thumbs.db
+# Temporary files
+*.tmp
+*.temp
+*.swp
 
-# Editor Settings
+# IDE settings
 .vscode/
-
-# TypeScript Build Info
-*.tsbuildinfo
-
-# Miscellaneous
-.eslintcache
