@@ -1,9 +1,8 @@
 node_modules/
-android/
-ios/
-.expo/
-.expo-shared/
 dist/
 build/
+logs/
+temp/
+firebase-service-account/
 *.log
 *.tsbuildinfo

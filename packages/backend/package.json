@@ -24,6 +24,7 @@
     "migrate:down": "dotenv -e ../../.env -- node-pg-migrate down -m src/migrations",
     "migrate:status": "dotenv -e ../../.env -- node-pg-migrate status -m src/migrations",
     "upload:firestore": "tsx scripts/uploadToFirestore.ts",
+    "fetchDogs": "node --loader ts-node/esm src/examples/fetchDogs.ts",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
@@ -32,7 +33,7 @@
     "axios": "^1.10.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.1",
     "dotenv-safe": "^9.1.0",
     "express": "^4.18.1",
     "firebase": "^11.9.1",
@@ -45,7 +46,8 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
-    "@types/node": "^20.19.4",
+    "@types/node": "^20.19.6",
+    "@vitest/ui": "^0.34.2",
     "biome": "^0.3.3",
     "dotenv-cli": "^10.0.0",
     "eslint-plugin-prettier": "^4.2.5",
@@ -57,7 +59,6 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
-    "vitest": "^0.34.2",
-    "@vitest/ui": "^0.34.2"
+    "vitest": "^0.34.2"
   }
 }

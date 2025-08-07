@@ -3,18 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "generate": "openapi-typescript ../../specs/registry-api.yaml --output ../../shared/types/registry.d.ts",
-    "watch": "nodemon --watch ../../specs/registry-api.yaml --exec \"npm run generate\""
+    "generate": "openapi-typescript ../../docs/specs/registry-api.yaml --output ../../packages/shared/types/registry.d.ts",
+    "watch": "nodemon --watch ../../docs/specs/registry-api.yaml --exec \"npm run generate\""
   },
   "devDependencies": {
     "@types/node": "^24.0.10",
     "openapi-typescript": "^7.8.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "nodemon": "^3.0.1"
   },
-  "description": "",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
+  "description": "OpenAPI TypeScript type generator for WhoDoggy",
+  "author": "WhoDoggy Team",
   "license": "ISC",
   "type": "commonjs"
 }

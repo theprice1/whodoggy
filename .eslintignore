@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+*.tsbuildinfo
+
+# Logs and debug
+*.log
+
+# IDE config
+.vscode/
+.idea/
+
+# Env files
+.env*
+firebase-debug.log
+
+# Lint-ignore all mobile native folders
+apps/mobile/android/
+apps/mobile/ios/
+apps/mobile/.expo/
+apps/mobile/.expo-shared/
+
+# Lint-ignore backend generated
+packages/backend/logs/
+packages/backend/temp/
+packages/backend/firebase-service-account/
+
+# Ignore Turbo cache if present
+turbo/
+
+# Lint-ignore compiled JS output (optional)
+**/*.js

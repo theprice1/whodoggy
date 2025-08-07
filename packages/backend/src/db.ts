@@ -1,20 +1,25 @@
-// src/db.ts
-import pgPromise from 'pg-promise';
+// packages/backend/src/db.ts
+import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const pgp = pgPromise();
+const connectionString = process.env.DATABASE_URL;
 
-export const db = pgp({
-  host: process.env.DB_HOST || 'localhost',
-  port: Number(process.env.DB_PORT) || 5432,
-  database: process.env.DB_NAME || 'whodoggy',
-  user: process.env.DB_USER || 'your_username',      // Replace with your default username or set env var
-  password: process.env.DB_PASSWORD || 'your_password', // Replace with your default password or set env var
+if (!connectionString) {
+  throw new Error('DATABASE_URL environment variable is not set');
+}
+
+export const pool = new Pool({
+  connectionString,
 });
 
-// Optional: function to close the connection pool gracefully
-export async function shutdownDbPool(): Promise<void> {
-  await pgp.end();
+export async function query(text: string, params?: any[]) {
+  const client = await pool.connect();
+  try {
+    const res = await client.query(text, params);
+    return res;
+  } finally {
+    client.release();
+  }
 }

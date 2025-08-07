@@ -1,0 +1,19 @@
+{
+  "name": "whodoggy-tools",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start:scripts": "ts-node scripts/sync-firebase-postgres.ts",
+    "start:openapi": "npm run --prefix openapi generate"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "firebase-admin": "^13.4.0",
+    "pg": "^8.16.3"
+  }
+}

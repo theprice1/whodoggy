@@ -1,17 +1,16 @@
-# 🔧 OpenAPI Tools
+# WhoDoggy OpenAPI Tooling
 
-This folder contains tools for generating API clients or documentation from the WhoDoggy OpenAPI specification.
+This folder contains scripts and configuration for generating TypeScript types from the OpenAPI spec.
+
+## Scripts
+
+- `generate-types.ts`: Generates `registry.d.ts` types from `registry-api.yaml`.
+- `package.json`: Defines dependencies for OpenAPI tooling.
+- `tsconfig.json`: TypeScript configuration for OpenAPI tools.
 
 ## Usage
 
-Install dependencies:
+Run:
 
 ```bash
-cd tools/openapi
-pnpm install
-Generate clients/docs:
-
-bash
-Copy code
-pnpm run generate
-```
+pnpm --filter whodoggy-tools run start:openapi
