@@ -6,18 +6,17 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "noEmit": false,
     "types": [
       "node",
       "jest"
     ],
-    "moduleResolution": "node16",
+    "moduleResolution": "nodeNext",
     "module": "NodeNext",
     "target": "ES2020",
     "esModuleInterop": true,
     "allowJs": false,
     "resolveJsonModule": true,
-    "strict": true
+    "strict": true,
   },
   "include": [
     "src/**/*.ts",
