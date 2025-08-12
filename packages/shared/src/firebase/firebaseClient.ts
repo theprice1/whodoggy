@@ -3,6 +3,8 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore, connectFirestoreEmulator, enableIndexedDbPersistence } from 'firebase/firestore';
 import { firebaseConfig } from './firebase.config';  // no extension here
 
+declare const __DEV__: boolean;  // <-- Add this declaration here
+
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
 
 const db = getFirestore(app);
@@ -13,7 +15,6 @@ enableIndexedDbPersistence(db).catch((err) => {
   console.warn("Offline persistence unavailable", err);
 });
 
-// Use `declare` only in a .d.ts file, so instead use this to avoid TS errors:
 const isDev = typeof __DEV__ !== 'undefined' && __DEV__;
 
 if (isDev) {
