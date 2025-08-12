@@ -6,7 +6,10 @@
     "declaration": true,
     "sourceMap": true,
     "noEmit": false,
-    "types": ["node", "jest"],
+    "types": [
+      "node",
+      "jest"
+    ],
     "moduleResolution": "NodeNext",
     "module": "NodeNext",
     "target": "ES2020",
@@ -15,6 +18,14 @@
     "resolveJsonModule": true,
     "strict": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "build", "**/*.test.ts", "**/*.spec.ts"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "**/*.test",
+    "**/*.spec"
+  ]
 }

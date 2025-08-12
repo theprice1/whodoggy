@@ -1,6 +1,6 @@
 // src/services/dogService.ts
-import { db } from '../db.js';
-import { DogWithDetails } from '../types/types.js';
+import { db } from '../db.js.js';
+import { DogWithDetails } from '../types/types.js.js';
 
 export const findDogByMicrochip = async (
   microchipId: string

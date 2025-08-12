@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { adminAuth } from '../firebase/firebaseAdmin.js';
+import { adminAuth } from '../firebase/firebaseAdmin.js.js';
 import type { auth } from 'firebase-admin';
 
 export interface AuthenticatedRequest extends Request {

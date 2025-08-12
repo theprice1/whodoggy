@@ -1,7 +1,7 @@
 // apps/mobile/src/services/microchipService.ts
 
 import { DogRecord } from '@whodoggy/shared-types';
-import { MicrochipRecord } from 'src/services/microchipService.ts';
+import { MicrochipRecord } from 'src/services/microchipService';
 
 export async function fetchMicrochipData(
   id: string

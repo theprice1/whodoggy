@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/firebase.ts"; // adjust path as needed
+import { auth } from "../firebase/firebase.js"; // adjust path as needed
 
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);

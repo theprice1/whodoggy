@@ -1,7 +1,7 @@
 // packages/backend/src/middleware/auth.ts
 
 import { Request, Response, NextFunction } from 'express';
-import admin from '../services/firebase.js';
+import admin from '../services/firebase.js.js';
 
 export interface AuthenticatedRequest extends Request {
   user?: admin.auth.DecodedIdToken;

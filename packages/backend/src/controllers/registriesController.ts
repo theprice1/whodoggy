@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import {
   getRegistry,
   getAllRegistriesService,
-} from '../services/registryService.ts'; // ✅ Removed .js for ESM compatibility
+} from '../services/registryService.js'; // ✅ Removed .js for ESM compatibility
 
 export const getAllRegistries = async (_req: Request, res: Response) => {
   const registries = await getAllRegistriesService();

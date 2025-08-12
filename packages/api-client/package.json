@@ -4,13 +4,14 @@
   "description": "API client for WhoDoggy backend",
   "type": "module",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
     "rebuild": "pnpm run clean && pnpm run build",
     "test": "vitest run",
     "lint": "pnpm exec biome lint .",
+    "tsc": "tsc --noEmit",
     "format": "pnpm exec biome format --write ."
   },
   "dependencies": {

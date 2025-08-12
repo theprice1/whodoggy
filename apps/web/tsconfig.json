@@ -2,10 +2,17 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "noEmit": true,
-    "types": ["vite/client"]
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": true,
+    "incremental": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "build"]
+  "include": [
+    "src/**/*",
+    "src/**/*.d"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

@@ -1,4 +1,4 @@
-import { pool } from './client.js';
+import { pool } from './client.js.js';
 
 (async () => {
   try {

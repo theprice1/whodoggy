@@ -1,9 +1,9 @@
 // packages/backend/src/routes/deleteMicrochip.ts
 
 import { Router, Response } from 'express';
-import { deleteMicrochipData } from '../db/deleteMicrochip.ts';
-import { AuthenticatedRequest } from '../middleware/auth.ts';
-import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.ts';
+import { deleteMicrochipData } from '../db/deleteMicrochip.js';
+import { AuthenticatedRequest } from '../middleware/auth.js';
+import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
 
 const router = Router();
 

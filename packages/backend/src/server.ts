@@ -7,8 +7,8 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import microchipRoutes from './routes/microchipRoutes.js'; // Use .js extension at runtime for ESM
-import { shutdownDbPool } from './db.js'; // Make sure this exports a proper async shutdown function
+import microchipRoutes from './routes/microchipRoutes.js.js'; // Use .js extension at runtime for ESM
+import { shutdownDbPool } from './db.js.js'; // Make sure this exports a proper async shutdown function
 
 dotenv.config();
 

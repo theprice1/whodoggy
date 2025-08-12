@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView, Text } from "react-native";
-import { styles } from "./HelpCenterScreen.styles";
+import { styles } from "./HelpCenterScreen.styles.js";
 
 const HelpCenterScreen = () => {
   return (

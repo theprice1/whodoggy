@@ -5,7 +5,7 @@ const config: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   roots: ['<rootDir>/packages', '<rootDir>/apps', '<rootDir>/scripts'],
-  testMatch: ['**/__tests__/**/*.ts', '**/?(*.)+(spec|test).ts'],
+  testMatch: ['**/__tests__/**/*', '**/?(*.)+(spec|test)'],
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
 };
 

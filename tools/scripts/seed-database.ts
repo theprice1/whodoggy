@@ -1,4 +1,4 @@
-import { pool } from '../../packages/backend/src/db';
+import { pool } from '../../packages/backend/src/db.js';
 
 async function seed() {
   try {

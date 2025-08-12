@@ -1,4 +1,4 @@
-import type { dog } from '@whodoggy/shared/types'; // correct the path to the actual file
+import type { paths } from "@whodoggy/shared/src/openapi";
 
 const BASE_URL = "https://api.whodoggy.com";
 

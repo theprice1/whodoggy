@@ -11,20 +11,21 @@
     "clean": "rimraf dist",
     "build": "pnpm run clean && tsc",
     "start": "dotenv -e ../../.env -- node dist/index.js",
-    "dev": "dotenv -e ../../.env -- nodemon --watch src --ext ts --exec node --loader ts-node/esm src/index.ts",
+    "dev": "dotenv -e ../../.env -- nodemon --watch src --ext ts --exec node --loader ts-node/esm src/index",
     "lint": "pnpm exec biome lint .",
     "lint:fix": "pnpm exec biome lint --apply",
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "test:ui": "vitest --ui",
     "format": "pnpm exec biome format --write 'src/**/*.{ts,tsx,js,json}'",
-    "seed-db": "tsx scripts/seedDatabase.ts",
-    "generate-mock-data": "tsx scripts/generateMockData.ts",
+    "seed-db": "tsx scripts/seedDatabase",
+    "generate-mock-data": "tsx scripts/generateMockData",
     "migrate": "dotenv -e ../../.env -- node-pg-migrate up -c ./node-pg-migrate.config.js",
     "migrate:down": "dotenv -e ../../.env -- node-pg-migrate down -m src/migrations",
     "migrate:status": "dotenv -e ../../.env -- node-pg-migrate status -m src/migrations",
-    "upload:firestore": "tsx scripts/uploadToFirestore.ts",
-    "fetchDogs": "node --loader ts-node/esm src/examples/fetchDogs.ts",
+    "upload:firestore": "tsx scripts/uploadToFirestore",
+    "fetchDogs": "node --loader ts-node/esm src/examples/fetchDogs",
+    "tsc": "tsc --noEmit",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
@@ -45,12 +46,17 @@
     "zod": "^4.0.14"
   },
   "devDependencies": {
+    "@eslint/js": "^9.32.0",
     "@types/express": "^4.17.17",
     "@types/node": "^20.19.6",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@typescript-eslint/parser": "^8.39.1",
     "@vitest/ui": "^0.34.2",
     "biome": "^0.3.3",
     "dotenv-cli": "^10.0.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-prettier": "^4.2.5",
+    "globals": "^16.3.0",
     "node-pg-migrate": "^8.0.3",
     "nodemon": "^3.0.2",
     "prettier": "^3.6.2",
@@ -59,6 +65,7 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
+    "typescript-eslint": "^8.39.1",
     "vitest": "^0.34.2"
   }
 }

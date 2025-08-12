@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: WhoDoggy API
+  version: 1.0.0
+  description: API for dog microchip registration and lookup.
+
+servers:
+  - url: https://api.whodoggy.com
+
+paths:
+  /dogs/{microchipId}:
+    get:
+      summary: Get dog details by microchip ID
+      description: Fetches details for a dog using its microchip ID.
+      parameters:
+        - name: microchipId
+          in: path
+          description: The unique microchip ID of the dog
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Dog found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dog"
+        "404":
+          description: Dog not found
+
+  /dogs:
+    post:
+      summary: Register a new dog
+      description: Adds a new dog record to the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DogInput"
+      responses:
+        "201":
+          description: Dog successfully registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dog"
+
+components:
+  schemas:
+    Dog:
+      type: object
+      properties:
+        microchipId:
+          type: string
+          description: Unique microchip identifier
+        name:
+          type: string
+          description: Dog’s name
+        breed:
+          type: string
+          description: Dog’s breed
+        age:
+          type: integer
+          description: Dog’s age in years
+      required:
+        - microchipId
+        - name
+
+    DogInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Dog’s name
+        breed:
+          type: string
+          description: Dog’s breed
+        age:
+          type: integer
+          description: Dog’s age in years
+      required:
+        - name

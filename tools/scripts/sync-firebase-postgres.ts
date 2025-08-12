@@ -1,7 +1,7 @@
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import dotenv from 'dotenv';
-import { pool } from '../../packages/backend/src/db';
+import { pool } from '../../packages/backend/src/db.js';
 
 dotenv.config();
 

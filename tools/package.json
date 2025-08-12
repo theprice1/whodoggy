@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start:scripts": "ts-node scripts/sync-firebase-postgres.ts",
+    "start:scripts": "ts-node scripts/sync-firebase-postgres",
     "start:openapi": "npm run --prefix openapi generate"
   },
   "devDependencies": {

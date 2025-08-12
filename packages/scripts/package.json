@@ -2,10 +2,11 @@
   "name": "@whodoggy/scripts",
   "version": "1.0.0",
   "private": true,
-  "main": "src/index.ts",
+  "main": "src/index",
   "scripts": {
-    "seed:dogs": "tsx src/seedDogs.ts",
-    "seed:owners": "tsx src/seedOwners.ts"
+    "seed:dogs": "tsx src/seedDogs",
+    "tsc": "tsc --noEmit",
+    "seed:owners": "tsx src/seedOwners"
   },
   "devDependencies": {
     "tsx": "^4.20.3",

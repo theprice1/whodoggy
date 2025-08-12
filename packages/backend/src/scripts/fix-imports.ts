@@ -21,7 +21,7 @@ function walkDir(dir: string) {
 
     if (stat.isDirectory()) {
       walkDir(entryPath);
-    } else if (entryPath.endsWith('.ts')) {
+    } else if (entryPath.endsWith('')) {
       fixFile(entryPath);
     }
   });

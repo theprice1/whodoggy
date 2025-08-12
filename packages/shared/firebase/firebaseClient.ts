@@ -1,7 +1,7 @@
 import { initializeApp, getApps } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
-import { firebaseConfig } from './firebase.config';
+import { firebaseConfig } from './firebase.config.js';
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
 

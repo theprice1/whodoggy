@@ -1,4 +1,4 @@
-import { getMicrochipData } from '../services/microchipService.ts';
+import { getMicrochipData } from '../services/microchipService.js';
 
 describe('getMicrochipData', () => {
   it('returns record for valid ID', async () => {

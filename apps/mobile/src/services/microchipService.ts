@@ -1,6 +1,6 @@
 // apps/mobile/src/services/microchipService.ts
 
-import { API_BASE_URL } from '../config/api';
+import { API_BASE_URL } from '../config/api.js';
 
 export type MicrochipRecord = {
   microchipId: string;

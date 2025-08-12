@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAllOwners, getOwnerById } from '../controllers/ownersController.js';
+import { getAllOwners, getOwnerById } from '../controllers/ownersController.js.js';
 
 const router = Router();
 

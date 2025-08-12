@@ -4,8 +4,17 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "jsx": "react-jsx",
-    "types": ["vitest/globals", "node", "jest"],
+    "types": [
+      "vitest/globals",
+      "node",
+      "jest"
+    ],
     "noEmit": true
   },
-  "include": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx"]
+  "include": [
+    "**/*.test",
+    "**/*.test",
+    "**/*.spec",
+    "**/*.spec"
+  ]
 }

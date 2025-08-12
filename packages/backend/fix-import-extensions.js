@@ -13,7 +13,7 @@ async function fixFileImports(filePath) {
       importPath.endsWith('.js') ||
       importPath.endsWith('.json') ||
       importPath.endsWith('.css') ||
-      importPath.endsWith('.ts')
+      importPath.endsWith('')
     ) {
       return match;
     }
@@ -30,7 +30,7 @@ async function walkDir(dir) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       await walkDir(fullPath);
-    } else if (entry.isFile() && fullPath.endsWith('.ts')) {
+    } else if (entry.isFile() && fullPath.endsWith('')) {
       await fixFileImports(fullPath);
     }
   }

@@ -1,4 +1,4 @@
-import { createMockRegistryServer } from './mockRegistryServer.js';
+import { createMockRegistryServer } from './mockRegistryServer.js.js';
 
 const startPort = 4101;
 const numberOfRegistries = 22;

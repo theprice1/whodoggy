@@ -1,9 +1,0 @@
-node_modules/
-android/
-ios/
-.expo/
-.expo-shared/
-dist/
-build/
-*.log
-*.tsbuildinfo

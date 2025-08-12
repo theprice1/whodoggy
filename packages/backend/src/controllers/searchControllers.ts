@@ -1,7 +1,7 @@
 import { Request, Response, Router } from 'express';
-import { db } from '../db.js';
+import { db } from '../db.js.js';
 import { z, ZodError, ZodIssue } from 'zod';
-import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.ts';
+import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
 
 const router = Router();
 

@@ -15,6 +15,7 @@
     "lint:fix": "pnpm exec biome lint --apply",
     "test": "vitest run --environment jsdom",
     "test:watch": "vitest --watch --environment jsdom",
+    "tsc": "tsc --noEmit",
     "format": "pnpm exec biome format --write ."
   },
   "dependencies": {

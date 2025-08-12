@@ -2,7 +2,7 @@ import express from 'express';
 import {
   getRegistryById,
   getAllRegistries,
-} from '../controllers/registriesController.js'; // ✅ ESM requires .js
+} from '../controllers/registriesController.js.js'; // ✅ ESM requires .js
 
 const router = express.Router();
 

@@ -1,8 +1,8 @@
 // apps/web/src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomeScreen from './pages/Home/HomeScreen';
-import SearchPage from './pages/Search/SearchPage';
+import HomeScreen from './pages/Home/HomeScreen.js';
+import SearchPage from './pages/Search/SearchPage.js';
 
 const App: React.FC = () => {
   return (

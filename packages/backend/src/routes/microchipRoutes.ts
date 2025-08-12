@@ -1,7 +1,7 @@
 // packages/backend/src/routes/microchipRoutes.ts
 
 import express from 'express';
-import { getMicrochipById } from '../controllers/microchipController.js';
+import { getMicrochipById } from '../controllers/microchipController.js.js';
 
 const router = express.Router();
 

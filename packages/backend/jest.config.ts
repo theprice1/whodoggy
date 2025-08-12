@@ -6,7 +6,7 @@ const config: Config = {
   transform: {
     '^.+\\.ts$': ['ts-jest', { useESM: true }],
   },
-  extensionsToTreatAsEsm: ['.ts'],
+  extensionsToTreatAsEsm: [''],
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1', // Fixes ESM path issues in imports
   },
@@ -22,7 +22,7 @@ const config: Config = {
   maxWorkers: 1,
 
   // Automatically run setup before tests (adjust path as needed)
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup'],
 
   // Enforce minimum code coverage thresholds globally
   coverageThreshold: {

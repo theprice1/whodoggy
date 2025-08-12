@@ -15,6 +15,7 @@
     "test": "vitest run --environment jsdom",
     "test:watch": "vitest --watch --environment jsdom",
     "format": "pnpm exec biome format --write .",
+    "tsc": "tsc --noEmit",
     "analyze": "vite build -- --analyze"
   },
   "dependencies": {
