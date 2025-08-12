@@ -1,8 +1,3 @@
-// packages/api-client/src/index.ts
-
-/**
- * Public exports for the WhoDoggy API Client
- * This file will be the main entry point when other packages import @whodoggy/api-client
- */
-
-export * from "./client.js.js";
+export * from './client.js'; // Note the .js extension
+export * from '@whodoggy/shared/firebase/firebaseAdmin.js';
+export * from '@whodoggy/shared/openapi.js';

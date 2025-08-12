@@ -4,10 +4,11 @@
   "description": "Shared types and utilities for WhoDoggy",
   "type": "module",
   "main": "./dist/index.js",
-  "types": "./dist/index.d",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
     "./firebase/firebaseAdmin": {
@@ -26,7 +27,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc",
     "clean": "rimraf dist",
     "rebuild": "pnpm run clean && pnpm run build",
     "tsc": "tsc --noEmit",
@@ -44,6 +45,7 @@
     "react": "^18.3.1"
   },
   "devDependencies": {
+    "@types/firebase": "^3.2.3",
     "rimraf": "^5.0.10",
     "typescript": "^5.8.3"
   },
@@ -53,5 +55,8 @@
         "dist/*"
       ]
     }
+  },
+  "dependencies": {
+    "firebase": "^11.10.0"
   }
 }

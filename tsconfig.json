@@ -19,13 +19,13 @@
     "incremental": true,
     "noEmit": true,
     "strict": true,
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node16",
     "module": "NodeNext",
     "target": "ES2020",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".", // Add this to enable path mapping
+    "baseUrl": ".",
     "paths": {
       "@whodoggy/shared/*": [
         "packages/shared/src/*"
