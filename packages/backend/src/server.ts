@@ -1,42 +1,39 @@
-// packages/backend/src/server.ts
+import dotenv from 'dotenv';
 dotenv.config();
-
 
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import dotenv from 'dotenv';
-import microchipRoutes from './routes/microchipRoutes.js'; // Use .js extension at runtime for ESM
-import { shutdownDbPool } from './db.js'; // Make sure this exports a proper async shutdown function
 
-dotenv.config();
+import microchipRoutes from './routes/microchipRoutes.js'; // ESM runtime
+import { shutdownPool } from './db.js'; // ESM runtime
 
 const app = express();
 
-// Security: Remove Express powered header
+// Remove Express powered header for security
 app.disable('x-powered-by');
 
-// Middleware setup
+// Middleware
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 
-// Health check endpoint
+// Health check
 app.get('/', (_req: Request, res: Response) => {
   res.send('WhoDoggy API is running 🚀');
 });
 
-// Mount microchip routes under /api/microchips
+// Mount routes
 app.use('/api/microchips', microchipRoutes);
 
-// Custom error interface with optional HTTP status code
+// Error interface
 interface ErrorWithStatus extends Error {
   status?: number;
 }
 
-// Centralized error handling middleware
+// Centralized error handler
 app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
-  void _next; // Avoid unused var warning
+  void _next;
 
   const error = err instanceof Error ? err : new Error('Unknown error occurred');
   const typedError = error as ErrorWithStatus;
@@ -53,19 +50,15 @@ const server = app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-// Graceful shutdown helper
+// Graceful shutdown
 async function shutdown() {
   try {
     console.log('Shutting down server...');
-
-    if (typeof shutdownDbPool === 'function') {
-      await shutdownDbPool();
+    if (typeof shutdownPool === 'function') {
+      await shutdownPool();
       console.log('Database pool shut down');
-    } else {
-      console.warn('No shutdownDbPool function defined');
     }
 
-    // Close HTTP server and exit process cleanly
     await new Promise<void>((resolve) => {
       server.close(() => {
         console.log('Server closed');
@@ -80,11 +73,11 @@ async function shutdown() {
   }
 }
 
-// Handle OS termination signals for graceful shutdown
+// OS signals
 process.on('SIGINT', shutdown);
 process.on('SIGTERM', shutdown);
 
-// Catch unhandled errors to avoid silent crashes
+// Catch unhandled errors
 process.on('uncaughtException', (err) => {
   console.error('Uncaught Exception:', err);
   shutdown();

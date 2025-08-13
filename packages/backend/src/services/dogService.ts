@@ -1,11 +1,11 @@
-// src/services/dogService.ts
-import { db } from '../db.js.js';
-import { DogWithDetails } from '../types/types.js.js';
+// packages/backend/src/services/dogService.ts
+import { query } from '../db.js';
+import { DogWithDetails } from '../types/types.js';
 
 export const findDogByMicrochip = async (
   microchipId: string
 ): Promise<DogWithDetails | null> => {
-  const query = `
+  const sql = `
     SELECT d.id AS dog_id, d.name AS dog_name, d.breed, d.age,
            o.id AS owner_id, o.name AS owner_name, o.phone, o.email,
            r.id AS registry_id, r.name AS registry_name
@@ -17,9 +17,8 @@ export const findDogByMicrochip = async (
     LIMIT 1;
   `;
 
-  const result = (await db.oneOrNone(query, [
-    microchipId,
-  ])) as DogWithDetails | null;
+  const results = await query<DogWithDetails>(sql, [microchipId]);
 
-  return result;
+  // Return the first result or null if not found
+  return results.length > 0 ? results[0] : null;
 };

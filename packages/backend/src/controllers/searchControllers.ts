@@ -1,9 +1,19 @@
+// packages/backend/src/controllers/searchControllers.ts
 import { Request, Response, Router } from 'express';
-import { db } from '../db.js';
+import { query } from '../db.js'; // Use generic query helper
 import { z, ZodError, ZodIssue } from 'zod';
 import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
 
 const router = Router();
+
+// Dog type for type-safe query
+interface Dog {
+  id: string;
+  name: string;
+  breed: string;
+  age: number;
+  microchip_id: string;
+}
 
 // Zod validation schema
 const searchSchema = z.object({
@@ -20,8 +30,8 @@ router.post(
     try {
       const { microchip_id } = searchSchema.parse(req.body);
 
-      // Query the database using pg-promise
-      const results = await db.any(
+      // Query the database using the new query<T>() helper
+      const results = await query<Dog>(
         'SELECT * FROM dogs WHERE microchip_id = $1 LIMIT 1',
         [microchip_id]
       );
