@@ -5,10 +5,10 @@ import {
   createDogHandler,
   updateDogHandler,
   deleteDogHandler,
-} from '../controllers/dogController.js.js';
+} from '../controllers/dogController.js';
 
-import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js.js';
-import { validateDogInput } from '../middleware/validateInput.js.js';
+import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
+import { validateDogInput } from '../middleware/validateInput.js';
 
 const router = Router();
 

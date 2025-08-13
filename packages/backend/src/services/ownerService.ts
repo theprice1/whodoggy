@@ -1,6 +1,6 @@
 // packages/backend/src/services/ownerService.ts
-import { db } from '../db.js.js';
-import type { Owner } from '../types/types.js.js';
+import { db } from '../db.js';
+import type { Owner } from '../types/types.js';
 
 export const getOwner = async (id: string): Promise<Owner | null> => {
   try {

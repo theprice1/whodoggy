@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import { db } from '../db.js.js';
+import { db } from '../db.js';
 import { z, ZodError, ZodIssue } from 'zod';
 import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
 

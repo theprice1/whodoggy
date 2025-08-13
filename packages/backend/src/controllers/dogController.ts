@@ -1,6 +1,6 @@
 // packages/backend/src/controllers/dogController.ts
 import { Request, Response } from 'express';
-import { db } from '../db.js.js'; // your PostgreSQL client
+import { db } from '../db.js'; // your PostgreSQL client
 
 export async function getAllDogsHandler(_req: Request, res: Response) {
   try {
