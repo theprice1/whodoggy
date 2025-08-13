@@ -1,62 +1,36 @@
 {
   "name": "@whodoggy/shared",
   "version": "1.0.0",
-  "description": "Shared types and utilities for WhoDoggy",
+  "description": "Shared types and utilities for the WhoDoggy project",
+  "private": true,
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    },
-    "./firebase/firebaseAdmin": {
-      "types": "./dist/firebase/firebaseAdmin.d",
-      "default": "./dist/firebase/firebaseAdmin.js"
-    },
-    "./firebase/firebaseClient": {
-      "types": "./dist/firebase/firebaseClient.d",
-      "default": "./dist/firebase/firebaseClient.js"
     }
-  },
-  "files": [
-    "dist"
-  ],
-  "engines": {
-    "node": ">=18"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
-    "rebuild": "pnpm run clean && pnpm run build",
-    "tsc": "tsc --noEmit",
-    "watch": "tsc -p tsconfig.json --watch"
-  },
-  "keywords": [
-    "shared",
-    "types",
-    "firebase",
-    "whodoggy"
-  ],
-  "author": "WhoDoggy Team",
-  "license": "MIT",
-  "peerDependencies": {
-    "react": "^18.3.1"
+    "lint": "biome check ./src",
+    "format": "biome format ./src --write",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/firebase": "^3.2.3",
+    "@biomejs/biome": "^1.9.4",
     "rimraf": "^5.0.10",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/*"
-      ]
-    }
-  },
-  "dependencies": {
-    "firebase": "^11.10.0"
-  }
+  "keywords": [
+    "whodoggy",
+    "shared",
+    "typescript",
+    "utilities",
+    "types"
+  ],
+  "author": "",
+  "license": "MIT"
 }

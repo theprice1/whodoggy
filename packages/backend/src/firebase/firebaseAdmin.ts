@@ -1,4 +1,5 @@
 import admin from 'firebase-admin';
+import type { Auth } from 'firebase-admin/auth';
 
 // Initialize Firebase Admin SDK only once
 if (!admin.apps.length) {
@@ -13,5 +14,6 @@ if (!admin.apps.length) {
   });
 }
 
-export const adminAuth = admin.auth();
+// Explicit type annotation to satisfy TS
+export const adminAuth: Auth = admin.auth();
 export const adminFirestore = admin.firestore();

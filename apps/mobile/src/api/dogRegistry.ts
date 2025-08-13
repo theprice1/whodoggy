@@ -1,4 +1,4 @@
-import type { paths } from "@whodoggy/shared/src/openapi";
+import type { paths } from "@whodoggy/shared/openapi";
 
 const BASE_URL = "https://api.whodoggy.com";
 

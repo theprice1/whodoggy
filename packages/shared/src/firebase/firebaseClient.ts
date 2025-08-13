@@ -1,9 +1,9 @@
 import { initializeApp, getApps } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore, connectFirestoreEmulator, enableIndexedDbPersistence } from 'firebase/firestore';
-import { firebaseConfig } from './firebase.config';  // no extension here
+import { firebaseConfig } from './firebase.config.js';  // <-- include .ts extension
 
-declare const __DEV__: boolean;  // <-- Add this declaration here
+declare const __DEV__: boolean;
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
 

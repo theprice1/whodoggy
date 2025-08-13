@@ -17,6 +17,8 @@
     "allowJs": false,
     "resolveJsonModule": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts",

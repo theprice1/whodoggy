@@ -4,24 +4,29 @@
   "description": "API client for WhoDoggy backend",
   "type": "module",
   "main": "dist/index.js",
-  "types": "dist/index.d",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
+    "build": "tsc -p tsconfig.json",
     "rebuild": "pnpm run clean && pnpm run build",
     "test": "vitest run",
+    "test:watch": "vitest --watch",
     "lint": "pnpm exec biome lint .",
-    "tsc": "tsc --noEmit",
-    "format": "pnpm exec biome format --write ."
+    "lint:fix": "pnpm exec biome lint --apply",
+    "format": "pnpm exec biome format --write .",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "axios": "^1.10.0"
+    "axios": "^1.11.0"
   },
   "devDependencies": {
+    "@vitest/ui": "^0.34.7",
     "biome": "^0.3.3",
-    "rimraf": "^5.0.0",
-    "typescript": "^5.8.3",
-    "vitest": "^0.34.2",
-    "@vitest/ui": "^0.34.2"
+    "rimraf": "^5.0.10",
+    "typescript": "^5.9.2",
+    "vitest": "^0.34.6"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1"
   }
 }
