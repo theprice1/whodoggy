@@ -9,6 +9,8 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "strict": true,
+    "composite": true,
+    "incremental": true,
     "types": [
       "node"
     ]
@@ -20,7 +22,9 @@
     "node_modules",
     "dist",
     "build",
-    "**/*.test",
-    "**/*.spec"
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
   ]
 }

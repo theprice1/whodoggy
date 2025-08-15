@@ -10,16 +10,20 @@
     "composite": true,
     "incremental": true,
     "module": "NodeNext",
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*",
     "src/**/*.d.ts",
-    "src",
-    "src/__tests__"
+    "src/__tests__/**/*"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "build"
   ]
 }

@@ -1,4 +1,4 @@
-export * from './openapi.js';
+export * from './openapi/openapi.js';
 
 // From firebaseAdmin, rename `app` to `adminApp` to avoid conflict
 export { app as adminApp, /* other exports */ } from './firebase/firebaseAdmin.js';
