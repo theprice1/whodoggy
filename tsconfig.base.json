@@ -1,38 +1,46 @@
 {
   "compilerOptions": {
+    /* Target modern Node/React output */
     "target": "ES2020",
+    /* ESM with pnpm monorepo support */
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
+    /* Strictness + compatibility */
     "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "allowJs": false, // Disabled to avoid JS/TS mix issues in a TS project
-    "allowSyntheticDefaultImports": true,
-    "isolatedModules": false, // Set false for Node project references (only true for React/JSX)
-    "noEmit": false, // Allow compilation for project references
+    /* Project references */
+    "composite": true,
+    "incremental": true,
+    /* Build output */
+    "noEmit": false,
+    /* React */
     "jsx": "react-jsx",
+    /* Avoid JS/TS mixing */
+    "allowJs": false,
+    /* Module aliases */
     "baseUrl": ".",
     "paths": {
       "@whodoggy/shared/*": [
-        "packages/shared/dist/*"
+        "packages/shared/src/*"
       ],
       "@whodoggy/shared": [
-        "packages/shared/dist"
+        "packages/shared/src"
       ],
       "@whodoggy/api-client/*": [
-        "packages/api-client/dist/*"
+        "packages/api-client/src/*"
       ],
       "@whodoggy/api-client": [
-        "packages/api-client/dist"
+        "packages/api-client/src"
       ]
     },
+    /* Type roots */
     "types": [
       "node"
-    ],
-    "composite": true,
-    "incremental": true
+    ]
   },
   "include": [
     "packages/**/*",
