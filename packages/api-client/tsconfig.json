@@ -1,19 +1,33 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir": "src",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "noEmit": false,
-    "jsx": "react-jsx",
     "strict": true,
     "composite": true,
     "incremental": true,
+    "esModuleInterop": true,
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      "@whodoggy/shared": [
+        "../../packages/shared/dist"
+      ],
+      "@whodoggy/shared/*": [
+        "../../packages/shared/dist/*"
+      ]
+    }
   },
   "include": [
     "src/**/*"
@@ -23,8 +37,6 @@
     "dist",
     "build",
     "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.spec.ts",
-    "**/*.spec.tsx"
+    "**/*.spec.ts"
   ]
 }

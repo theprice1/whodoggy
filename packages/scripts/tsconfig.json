@@ -6,15 +6,25 @@
     "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir": "src",
-    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true,
+    "composite": true,
+    "incremental": true,
     "esModuleInterop": true,
     "allowJs": false,
-    "strict": true,
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      "@whodoggy/shared/*": [
+        "../../packages/shared/src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*"
@@ -22,6 +32,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "build"
+    "build",
+    "**/*.test.ts",
+    "**/*.spec.ts"
   ]
 }

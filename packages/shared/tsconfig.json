@@ -12,16 +12,25 @@
       "react",
       "react-native"
     ],
+    "paths": {
+      "@whodoggy/shared/*": [
+        "../../packages/shared/src/*"
+      ]
+    },
     "moduleResolution": "NodeNext",
     "module": "NodeNext",
     "target": "ES2020",
     "esModuleInterop": true,
-    "allowJs": false,
+    "allowJs": false, // keep false to avoid old .js in src
     "resolveJsonModule": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "composite": true,
+    "incremental": true,
+    "isolatedModules": false, // ensures correct NodeNext compilation
+    "noEmitOnError": true // prevents generating broken output
   },
   "include": [
     "src/**/*"
@@ -33,6 +42,8 @@
     "**/*.test.ts",
     "**/*.test.tsx",
     "**/*.spec.ts",
-    "**/*.spec.tsx"
+    "**/*.spec.tsx",
+    "**/*.js", // exclude old .js files in src
+    "**/*.js.map"
   ]
 }
