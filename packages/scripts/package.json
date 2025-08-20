@@ -7,7 +7,7 @@
   "scripts": {
     "tsc": "tsc --noEmit",
     "build": "tsc --build",
-    "seed:dogs": "tsx src/seedDogs.ts",
+    "seed:dogs": "tsx src/firebaseSeed.ts",
     "seed:owners": "tsx src/seedOwners.ts",
     "rebuild": "pnpm run build"
   },
