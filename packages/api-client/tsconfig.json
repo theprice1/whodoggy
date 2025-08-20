@@ -22,21 +22,28 @@
     ],
     "paths": {
       "@whodoggy/shared": [
-        "../../packages/shared/dist"
+        "../../packages/shared/src"
       ],
       "@whodoggy/shared/*": [
-        "../../packages/shared/dist/*"
+        "../../packages/shared/src/*"
       ]
     }
   },
   "include": [
     "src/**/*"
   ],
+  "references": [
+    {
+      "path": "../shared"
+    }
+  ],
   "exclude": [
     "node_modules",
     "dist",
     "build",
     "**/*.test.ts",
-    "**/*.spec.ts"
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
   ]
 }

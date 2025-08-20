@@ -1,25 +1,42 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir": "src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true,
+    "composite": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
     "types": [
       "node",
       "jest"
     ],
-    "composite": true,
-    "incremental": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "esModuleInterop": true,
-    "strict": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "paths": {
+      "@shared/*": [
+        "../../packages/shared/dist/*"
+      ]
+    },
+    "noEmitOnError": true
   },
   "include": [
     "src/**/*",
     "src/**/*.d.ts",
     "src/__tests__/**/*"
+  ],
+  "references": [
+    {
+      "path": "../shared"
+    }
   ],
   "exclude": [
     "node_modules",

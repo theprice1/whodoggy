@@ -6,20 +6,36 @@
     "rootDir": "src",
     "composite": true,
     "incremental": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2020",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "types": [
       "node",
-      "jest"
+      "jest",
+      "react",
+      "react-dom"
     ],
     "baseUrl": "src",
     "paths": {
-      "@shared/*": [
-        "../../packages/shared/src/*"
+      "@whodoggy/shared": [
+        "../../packages/shared/dist"
+      ],
+      "@whodoggy/shared/*": [
+        "../../packages/shared/dist/*"
+      ],
+      "@whodoggy/api-client": [
+        "../../packages/api-client/dist"
+      ],
+      "@whodoggy/api-client/*": [
+        "../../packages/api-client/dist/*"
       ]
-    }
+    },
+    "resolveJsonModule": true,
+    "allowJs": false
   },
   "include": [
     "src/**/*",
@@ -28,6 +44,18 @@
   "exclude": [
     "node_modules",
     "dist",
-    "build"
+    "build",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
+  ],
+  "references": [
+    {
+      "path": "../../packages/shared"
+    },
+    {
+      "path": "../../packages/api-client"
+    }
   ]
 }

@@ -17,7 +17,8 @@
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "axios": "^1.11.0"
+    "axios": "^1.11.0",
+    "@whodoggy/shared": "workspace:*"
   },
   "devDependencies": {
     "@vitest/ui": "^0.34.7",

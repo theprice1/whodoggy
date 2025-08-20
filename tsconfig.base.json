@@ -1,36 +1,38 @@
 {
   "compilerOptions": {
-    "target": "ES2020", // Modern JS output for Node & browsers
-    "module": "NodeNext", // ESM support for Node 18+
+    "target": "ES2020",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "esModuleInterop": true, // Allows default imports from CommonJS
-    "skipLibCheck": true, // Skip type checks for node_modules
-    "strict": true, // Enable all strict type-checking options
-    "forceConsistentCasingInFileNames": true, // Prevent file name casing issues
-    "resolveJsonModule": true, // Import JSON files as modules
-    "allowJs": true, // Allow JS files alongside TS
-    "allowSyntheticDefaultImports": true, // Allow default import syntax
-    "isolatedModules": true, // Required for Babel or TS transpile
-    "noEmit": true, // Only type check, no JS output
-    "jsx": "react-jsx", // Supports React 17+ JSX transform
-    "baseUrl": ".", // Base URL for path mapping
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowJs": false, // Disabled to avoid JS/TS mix issues in a TS project
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": false, // Set false for Node project references (only true for React/JSX)
+    "noEmit": false, // Allow compilation for project references
+    "jsx": "react-jsx",
+    "baseUrl": ".",
     "paths": {
       "@whodoggy/shared/*": [
-        "packages/shared/src/*"
+        "packages/shared/dist/*"
       ],
       "@whodoggy/shared": [
-        "packages/shared/src"
+        "packages/shared/dist"
       ],
       "@whodoggy/api-client/*": [
-        "packages/api-client/src/*"
+        "packages/api-client/dist/*"
       ],
       "@whodoggy/api-client": [
-        "packages/api-client/src"
+        "packages/api-client/dist"
       ]
     },
     "types": [
       "node"
-    ] // Node types globally available
+    ],
+    "composite": true,
+    "incremental": true
   },
   "include": [
     "packages/**/*",

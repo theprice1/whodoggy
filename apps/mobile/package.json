@@ -14,7 +14,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check . --apply",
     "typecheck": "tsc --noEmit",
-    "clean": "rimraf .expo dist build node_modules",
+    "clean": "rimraf .expo dist build node_modules || exit 0",
     "test": "jest"
   },
   "dependencies": {

@@ -1,12 +1,14 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "react-native",
+    "jsx": "react-jsx", // use react-jsx for new React/React Native projects
     "outDir": "dist",
     "rootDir": "src",
     "composite": true,
     "incremental": true,
     "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "target": "ES2020",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -19,10 +21,21 @@
     ],
     "baseUrl": "src",
     "paths": {
-      "@shared/*": [
-        "../../packages/shared/src/*"
+      "@whodoggy/shared": [
+        "../../packages/shared/dist"
+      ],
+      "@whodoggy/shared/*": [
+        "../../packages/shared/dist/*"
+      ],
+      "@whodoggy/api-client": [
+        "../../packages/api-client/dist"
+      ],
+      "@whodoggy/api-client/*": [
+        "../../packages/api-client/dist/*"
       ]
-    }
+    },
+    "resolveJsonModule": true,
+    "allowJs": false
   },
   "include": [
     "src/**/*",
@@ -31,6 +44,18 @@
   "exclude": [
     "node_modules",
     "dist",
-    "build"
+    "build",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
+  ],
+  "references": [
+    {
+      "path": "../../packages/shared"
+    },
+    {
+      "path": "../../packages/api-client"
+    }
   ]
 }
