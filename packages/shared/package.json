@@ -19,12 +19,17 @@
     "format": "biome format ./src --write",
     "type-check": "tsc --noEmit"
   },
+  "dependencies": {
+    "firebase": "^11.10.0",
+    "react": "18.2.0",
+    "react-native": "0.74.5"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@types/react": "^18.3.23",
-    "@types/react-native": "^0.73.0",
+    "@types/react": "^18.2.6",
+    "@types/react-native": "^0.73.7",
     "rimraf": "^5.0.10",
-    "typescript": "^5.9.2"
+    "typescript": "^5.2.2"
   },
   "keywords": [
     "whodoggy",
@@ -34,8 +39,5 @@
     "types"
   ],
   "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "firebase": "^11.10.0"
-  }
+  "license": "MIT"
 }
