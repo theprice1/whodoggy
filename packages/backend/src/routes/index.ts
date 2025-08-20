@@ -4,7 +4,7 @@ import express from 'express';
 import microchipRoutes from './microchipRoutes.js';
 import deleteDataRoutes from './deleteData.js';
 
-const router = express.Router();
+const router: express.Router = express.Router();
 
 router.use('/microchips', microchipRoutes);
 router.use('/deleteData', deleteDataRoutes);

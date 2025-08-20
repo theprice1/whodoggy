@@ -2,7 +2,7 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
-const router = express.Router();
+const router: express.Router = express.Router();
 
 // List of registry URLs
 const registryPorts = Array.from({ length: 22 }, (_, i) => 4101 + i);
@@ -21,7 +21,7 @@ router.get('/:microchipId', async (req, res) => {
         const data = await response.json();
         return res.json({ source: url, ...data });
       }
-    } catch (err) {
+    } catch {
       // silently ignore failures — move to next registry
     }
   }

@@ -3,7 +3,7 @@
 import express, { Request, Response } from 'express';
 import { Client } from 'pg'; // For PostgreSQL queries
 
-const router = express.Router();
+const router: express.Router = express.Router();
 
 // PostgreSQL Client Initialization
 const client = new Client({

@@ -1,42 +1,28 @@
 {
-  "name": "@whodoggy/web",
+  "name": "whodoggy-web",
   "version": "1.0.0",
   "private": true,
+  "main": "index.js",
   "type": "module",
-  "engines": {
-    "node": ">=18"
-  },
   "scripts": {
-    "dev": "vite",
-    "build": "pnpm --filter @whodoggy/shared rebuild && tsc && vite build",
-    "start": "node dist/server.js",
-    "lint": "pnpm exec biome lint . && pnpm exec eslint .",
-    "lint:fix": "pnpm exec biome lint --apply . && pnpm exec eslint --fix .",
-    "format": "pnpm exec biome format --write .",
-    "test": "vitest run --environment jsdom",
-    "test:watch": "vitest --watch --environment jsdom",
-    "tsc": "tsc --noEmit",
-    "analyze": "vite build -- --analyze"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "biome check ./src",
+    "format": "biome format ./src --write",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@sentry/react": "^7.120.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "^6.14.1",
-    "tailwindcss": "^4.1.11"
+    "firebase": "^11.10.0",
+    "react-router-dom": "^6.15.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.11",
-    "@vitejs/plugin-react": "^5.0.0",
-    "@vitest/ui": "^0.34.7",
-    "autoprefixer": "^10.4.21",
-    "biome": "^0.3.3",
-    "eslint-plugin-react": "^7.37.5",
-    "postcss": "^8.5.6",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.6",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.14",
-    "vitest": "^0.34.6"
+    "@biomejs/biome": "^1.9.4",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
+    "typescript": "^5.4.8",
+    "vite": "^5.0.0"
   }
 }

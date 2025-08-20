@@ -1,7 +1,7 @@
 import { Router } from 'express'; // Importing Router from Express
 import { getUsers, createUser } from '../controllers/userController.js'; // Importing controller functions
 
-const router = Router();
+const router: Router = Router();
 
 // Define routes for users
 router.get('/', getUsers); // GET /api/users

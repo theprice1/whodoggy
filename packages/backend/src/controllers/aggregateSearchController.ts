@@ -2,7 +2,7 @@
 import express, { Request, Response } from 'express';
 import axios from 'axios';
 
-const router = express.Router();
+const router: express.Router = express.Router();
 
 // Define the expected structure of a registry response
 interface RegistryResponse {

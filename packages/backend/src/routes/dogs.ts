@@ -10,7 +10,7 @@ import {
 import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
 import { validateDogInput } from '../middleware/validateInput.js';
 
-const router = Router();
+const router: Router = Router();
 
 router.get('/', verifyFirebaseToken, getAllDogsHandler);
 router.get('/:id', verifyFirebaseToken, getDogByIdHandler);

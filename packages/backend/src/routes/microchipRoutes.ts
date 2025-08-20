@@ -3,7 +3,7 @@
 import express from 'express';
 import { getMicrochipById } from '../controllers/microchipController.js';
 
-const router = express.Router();
+const router: express.Router = express.Router();
 
 /**
  * GET /microchips/:id

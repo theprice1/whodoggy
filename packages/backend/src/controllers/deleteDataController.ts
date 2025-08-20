@@ -5,7 +5,7 @@ import { deleteMicrochipData } from '../db/deleteMicrochip.js';
 import { AuthenticatedRequest } from '../middleware/auth.js';
 import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
 
-const router = Router();
+const router: Router = Router();
 
 /**
  * DELETE /api/microchip/:id

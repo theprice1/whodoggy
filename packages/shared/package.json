@@ -20,16 +20,14 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "firebase": "^11.10.0",
-    "react": "18.2.0",
-    "react-native": "0.74.5"
+    "firebase": "^11.10.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@types/react": "^18.2.6",
-    "@types/react-native": "^0.73.7",
+    "@types/react": "18.2.0",
+    "@types/react-native": "0.73.0",
     "rimraf": "^5.0.10",
-    "typescript": "^5.2.2"
+    "typescript": "^5.4.8"
   },
   "keywords": [
     "whodoggy",

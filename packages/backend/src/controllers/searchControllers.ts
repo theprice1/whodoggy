@@ -4,7 +4,7 @@ import { query } from '../db.js'; // Use generic query helper
 import { z, ZodError, ZodIssue } from 'zod';
 import { verifyFirebaseToken } from '../middleware/firebaseAuthMiddleware.js';
 
-const router = Router();
+const router: Router = Router();
 
 // Dog type for type-safe query
 interface Dog {

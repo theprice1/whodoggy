@@ -8,7 +8,7 @@ import morgan from 'morgan';
 import microchipRoutes from './routes/microchipRoutes.js'; // ESM runtime
 import { shutdownPool } from './db.js'; // ESM runtime
 
-const app = express();
+const app: express.Application = express();
 
 // Remove Express powered header for security
 app.disable('x-powered-by');
