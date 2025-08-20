@@ -11,7 +11,7 @@
     "rebuild": "pnpm run clean && pnpm run build",
     "test": "vitest run",
     "test:watch": "vitest --watch",
-    "lint": "pnpm exec biome lint .",
+    "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm exec biome lint --apply",
     "format": "pnpm exec biome format --write .",
     "tsc": "tsc --noEmit"
