@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
     "format": "biome format ./src --write",
     "type-check": "tsc --noEmit"
   },

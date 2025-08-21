@@ -1,8 +1,0 @@
-node_modules/
-dist/
-build/
-logs/
-temp/
-firebase-service-account/
-*.log
-*.tsbuildinfo

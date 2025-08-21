@@ -8,7 +8,7 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "biome check ./src",
+    "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
     "format": "biome format ./src --write",
     "type-check": "tsc --noEmit"
   },
