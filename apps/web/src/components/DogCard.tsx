@@ -27,3 +27,4 @@ const DogCard: React.FC<DogCardProps> = ({ name, breed, microchipId, imageUrl, r
 };
 
 export default DogCard;
+

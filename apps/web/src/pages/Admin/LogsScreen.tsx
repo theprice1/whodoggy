@@ -85,3 +85,4 @@ const LogsScreen = () => {
 };
 
 export default LogsScreen;
+

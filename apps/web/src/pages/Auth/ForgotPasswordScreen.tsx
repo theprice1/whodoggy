@@ -7,3 +7,4 @@ export default function ForgotPasswordScreen() {
     </main>
   );
 }
+

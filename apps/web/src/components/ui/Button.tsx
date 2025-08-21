@@ -16,10 +16,11 @@ const Button: React.FC<ButtonProps> = ({
   const variantClasses = variant === "primary" ? "btn-primary" : "btn-secondary";
 
   return (
-    <button className={`${baseClasses} ${variantClasses} ${className}`} {...props}>
+    <button className={`${baseClasses} ${variantClasses} ${className}`} {...props} type="button">
       {children}
     </button>
   );
 };
 
 export default Button;
+

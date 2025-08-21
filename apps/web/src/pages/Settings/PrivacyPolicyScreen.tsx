@@ -59,3 +59,4 @@ const PrivacyPolicyScreen = () => {
 };
 
 export default PrivacyPolicyScreen;
+

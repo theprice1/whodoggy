@@ -62,7 +62,7 @@ const ProfileScreen = () => {
       <button
         onClick={handleSave}
         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
+       type="button">
         Save Changes
       </button>
     </div>
@@ -70,3 +70,4 @@ const ProfileScreen = () => {
 };
 
 export default ProfileScreen;
+

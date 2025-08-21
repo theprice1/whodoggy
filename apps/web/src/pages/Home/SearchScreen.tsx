@@ -49,7 +49,7 @@ const SearchScreen: React.FC = () => {
         style={styles.input}
       />
 
-      <Button title="Search" onPress={onSearch} disabled={loading} />
+      <button title="Search" onPress={onSearch} disabled={loading} / type="button">
 
       {loading && <ActivityIndicator size="large" color="#6200ee" style={{ marginTop: 20 }} />}
 
@@ -114,3 +114,4 @@ const styles = StyleSheet.create({
 });
 
 export default SearchScreen;
+

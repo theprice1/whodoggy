@@ -42,3 +42,4 @@ export default function Login() {
 }
 // This is a simple login component for a React web application using Firebase Authentication.
 // It allows users to enter their email and password, and handles login with error handling.
+

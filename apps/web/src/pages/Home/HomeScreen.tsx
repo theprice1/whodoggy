@@ -19,7 +19,7 @@ const HomeScreen: React.FC = () => {
           disabled
           aria-label="Scan Microchip (Mobile Only)"
           title="Scan Microchip feature available on mobile app only"
-        >
+         type="button">
           Scan Microchip (Mobile Only)
         </button>
       </div>
@@ -28,3 +28,4 @@ const HomeScreen: React.FC = () => {
 };
 
 export default HomeScreen;
+

@@ -42,3 +42,4 @@ const AccessibilityOptionsScreen = () => {
 };
 
 export default AccessibilityOptionsScreen;
+

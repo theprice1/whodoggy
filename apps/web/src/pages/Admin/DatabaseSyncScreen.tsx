@@ -28,7 +28,7 @@ const DatabaseSyncScreen = () => {
         className={`px-4 py-2 rounded text-white ${
           isSyncing ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
         }`}
-      >
+       type="button">
         {isSyncing ? "Syncing..." : "Start Database Sync"}
       </button>
 
@@ -44,3 +44,4 @@ const DatabaseSyncScreen = () => {
 };
 
 export default DatabaseSyncScreen;
+

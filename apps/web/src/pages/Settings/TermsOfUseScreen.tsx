@@ -46,3 +46,4 @@ const TermsOfUseScreen = () => {
 };
 
 export default TermsOfUseScreen;
+

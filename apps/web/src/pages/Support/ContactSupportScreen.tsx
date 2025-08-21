@@ -68,7 +68,7 @@ const ContactSupportScreen = () => {
           <button
             type="submit"
             className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-          >
+           type="button">
             Send Message
           </button>
         </form>
@@ -78,3 +78,4 @@ const ContactSupportScreen = () => {
 };
 
 export default ContactSupportScreen;
+

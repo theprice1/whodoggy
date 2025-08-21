@@ -9,7 +9,7 @@
     "build": "tsc --build",
     "seed:dogs": "tsx src/firebaseSeed.ts",
     "seed:owners": "tsx src/seedOwners.ts",
-    "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
+    "lint": "npx @biomejs/biome lint ./src",
     "rebuild": "pnpm run build"
   },
   "dependencies": {
@@ -22,3 +22,5 @@
     "typescript": "^5.9.2"
   }
 }
+
+

@@ -10,7 +10,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build": "expo build",
-    "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
+    "lint": "npx @biomejs/biome lint ./src",
     "format": "biome format ./src --write",
     "type-check": "tsc --noEmit"
   },
@@ -36,3 +36,5 @@
     "typescript": "^5.4.8"
   }
 }
+
+

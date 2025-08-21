@@ -13,7 +13,7 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-let app;
+let app: FirebaseApp | undefined;
 if (!getApps().length) {
   app = initializeApp(firebaseConfig);
 } else {
@@ -22,3 +22,4 @@ if (!getApps().length) {
 
 export const auth = getAuth(app);
 export const firestore = getFirestore(app);
+

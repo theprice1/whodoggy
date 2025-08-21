@@ -12,7 +12,7 @@
     "build": "pnpm run clean && tsc",
     "start": "dotenv -e ../../.env -- node dist/index.js",
     "dev": "dotenv -e ../../.env -- nodemon --watch src --ext ts --exec node --loader ts-node/esm src/index",
-    "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
+    "lint": "npx @biomejs/biome lint ./src",
     "lint:fix": "pnpm exec biome lint --apply",
     "format": "pnpm exec biome format --write 'src/**/*.{ts,tsx,js,json}'",
     "test": "vitest run",
@@ -79,3 +79,5 @@
     "react": "^18.3.1"
   }
 }
+
+

@@ -22,3 +22,4 @@ if (rootElement) {
     "❌ Root element not found. Make sure there's a div with id='root' in your index.html",
   );
 }
+

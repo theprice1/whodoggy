@@ -63,7 +63,7 @@ const ManageUsersScreen = () => {
                 <td className="py-2">{isActive ? "Yes" : "No"}</td>
                 <td className="py-2">
                   <button
-                    onClick={() => toggleUserActive(id)}
+                    onClick={() = type="button"> toggleUserActive(id)}
                     className={`px-3 py-1 rounded text-white ${
                       isActive ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
                     }`}
@@ -82,3 +82,4 @@ const ManageUsersScreen = () => {
 };
 
 export default ManageUsersScreen;
+

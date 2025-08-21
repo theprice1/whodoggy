@@ -83,9 +83,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.40.0
         version: 8.40.0(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2)
-      biome:
-        specifier: ^0.3.3
-        version: 0.3.3(request@2.88.2)
       eslint:
         specifier: ^9.33.0
         version: 9.33.0(jiti@2.5.1)
@@ -19773,7 +19770,7 @@ snapshots:
 
   rimraf@3.0.2:
     dependencies:
-      glob: 7.1.6
+      glob: 7.2.3
 
   rimraf@5.0.10:
     dependencies:
