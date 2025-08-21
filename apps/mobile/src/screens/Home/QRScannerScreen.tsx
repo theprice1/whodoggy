@@ -7,7 +7,7 @@ import { Alert, Button, StyleSheet, Text, View } from "react-native";
 type QRScannerScreenProps = {
   navigation: {
     goBack: () => void;
-    navigate: (screen: string, params?: any) => void;
+    navigate: (screen: string, params?: Record<string, unknown>) => void;
   };
 };
 

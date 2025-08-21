@@ -14,8 +14,9 @@ export default function Login() {
       await signInWithEmailAndPassword(auth, email, password);
       setError(null);
       alert("Logged in!");
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e: unknown) {
+      if (e instanceof Error)
+        setError(e.message);
     }
   };
 

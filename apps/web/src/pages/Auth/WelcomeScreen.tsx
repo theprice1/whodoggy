@@ -12,7 +12,8 @@ const WelcomeScreen = () => {
       </p>
 
       <button
-        onClick={() = type="button"> navigate("/auth/signin")}
+        type="button"
+        onClick={() => navigate("/auth/signin")}
         className="bg-blue-600 text-white py-2 px-6 rounded mr-4 hover:bg-blue-700"
         aria-label="Go to Sign In"
       >
@@ -20,7 +21,8 @@ const WelcomeScreen = () => {
       </button>
 
       <button
-        onClick={() = type="button"> navigate("/auth/signup")}
+        type="button"
+        onClick={() => navigate("/auth/signup")}
         className="bg-gray-200 text-gray-800 py-2 px-6 rounded hover:bg-gray-300"
         aria-label="Go to Sign Up"
       >

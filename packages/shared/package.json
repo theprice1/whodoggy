@@ -13,7 +13,7 @@
     }
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -b",
     "clean": "rimraf dist",
     "lint": "npx @biomejs/biome lint ./src",
     "format": "biome format ./src --write",
@@ -29,9 +29,13 @@
     "rimraf": "^5.0.10",
     "typescript": "^5.4.8"
   },
-  "keywords": ["whodoggy", "shared", "typescript", "utilities", "types"],
+  "keywords": [
+    "whodoggy",
+    "shared",
+    "typescript",
+    "utilities",
+    "types"
+  ],
   "author": "",
   "license": "MIT"
 }
-
-

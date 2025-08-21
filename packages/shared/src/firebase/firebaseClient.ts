@@ -12,8 +12,8 @@ const firebaseConfig = {
   // Add storageBucket, messagingSenderId, appId if needed
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
+const clientApp = initializeApp(firebaseConfig);
+const clientAuth = getFirestore(clientApp);
+const clientDb = getAuth(clientApp);
 
-export { app, db, auth };
+export { clientApp, clientDb, clientAuth };

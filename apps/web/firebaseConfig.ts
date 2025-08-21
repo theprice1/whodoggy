@@ -4,9 +4,10 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import type { Analytics } from "firebase/analytics";
 
 // Optional: analytics (only on web)
-let analytics: any = null;
+let analytics: Analytics | null = null;
 
 // ✅ Your actual Firebase config
 const firebaseConfig = {

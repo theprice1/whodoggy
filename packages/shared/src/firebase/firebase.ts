@@ -2,8 +2,9 @@
 import { type FirebaseApp, initializeApp } from "firebase/app";
 import { type Auth, getAuth } from "firebase/auth";
 import { type Firestore, getFirestore } from "firebase/firestore";
+import type { Analytics } from "firebase/analytics";
 
-let analytics: any = null;
+let analytics: Analytics | null = null;
 
 // Firebase configuration
 const firebaseConfig = {

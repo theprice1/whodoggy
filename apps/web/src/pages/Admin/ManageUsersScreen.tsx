@@ -63,10 +63,10 @@ const ManageUsersScreen = () => {
                 <td className="py-2">{isActive ? "Yes" : "No"}</td>
                 <td className="py-2">
                   <button
-                    onClick={() = type="button"> toggleUserActive(id)}
-                    className={`px-3 py-1 rounded text-white ${
-                      isActive ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
-                    }`}
+                    type="button"
+                    onClick={() => toggleUserActive(id)}
+                    className={`px-3 py-1 rounded text-white ${isActive ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+                      }`}
                     aria-label={`Toggle active status for ${name}`}
                   >
                     {isActive ? "Deactivate" : "Activate"}

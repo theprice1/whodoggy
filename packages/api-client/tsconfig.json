@@ -1,35 +1,42 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    /* Output + module resolution */
-    "target": "ES2022" /* Modern target (works with Node 18+/TS 5) */,
-    "module": "NodeNext" /* Required for ESM support */,
-    "moduleResolution": "NodeNext" /* Matches "module": "NodeNext" */,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
     "outDir": "dist",
     "rootDir": "src",
-    /* Declarations + source maps */
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    /* Strictness + type checking */
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true /* Faster builds, avoids node_modules noise */,
-    "esModuleInterop": true /* Allows `import x from "cjs"` */,
-    "resolveJsonModule": true /* Enables `import json from "./file.json"` */,
-    "allowJs": false /* Keep only TS */,
-    /* Project references */
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": false,
     "composite": true,
     "incremental": true,
-    /* Types */
-    "types": ["node"],
-    /* Workspace paths */
+    "types": [
+      "node"
+    ],
     "paths": {
-      "@whodoggy/shared": ["../../packages/shared/src"],
-      "@whodoggy/shared/*": ["../../packages/shared/src/*"]
+      "@whodoggy/shared": [
+        "../../packages/shared/src"
+      ],
+      "@whodoggy/shared/*": [
+        "../../packages/shared/src/*"
+      ]
     }
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*"
+  ],
   "references": [
     {
       "path": "../shared"

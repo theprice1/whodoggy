@@ -14,7 +14,7 @@ const DogCard: React.FC<DogCardProps> = ({ name, breed, microchipId, imageUrl, r
       {imageUrl && (
         <img
           src={imageUrl}
-          alt={`${name}'s photo`}
+          alt={name} // Removed "photo" for a11y
           className="w-full h-64 object-cover rounded-xl mb-4"
         />
       )}
