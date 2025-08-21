@@ -1,14 +1,15 @@
-import React, { useCallback } from 'react';
+import type React from "react";
+import { useCallback } from "react";
 import {
   Modal,
-  View,
-  Text,
+  type StyleProp,
   StyleSheet,
+  Text,
+  type TextStyle,
   TouchableOpacity,
-  StyleProp,
-  ViewStyle,
-  TextStyle,
-} from 'react-native';
+  View,
+  type ViewStyle,
+} from "react-native";
 
 type InfoDialogProps = {
   visible: boolean;
@@ -17,23 +18,13 @@ type InfoDialogProps = {
   onClose: () => void;
 };
 
-export const InfoDialog: React.FC<InfoDialogProps> = ({
-  visible,
-  title,
-  message,
-  onClose,
-}) => {
+export const InfoDialog: React.FC<InfoDialogProps> = ({ visible, title, message, onClose }) => {
   const handleClose = useCallback(() => {
     onClose();
   }, [onClose]);
 
   return (
-    <Modal
-      visible={visible}
-      animationType="fade"
-      transparent
-      onRequestClose={handleClose}
-    >
+    <Modal visible={visible} animationType="fade" transparent onRequestClose={handleClose}>
       <View style={styles.overlay}>
         <View style={styles.dialog}>
           <Text style={styles.title}>{title}</Text>
@@ -58,39 +49,39 @@ const styles = StyleSheet.create<{
 }>({
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   dialog: {
-    width: '100%',
+    width: "100%",
     maxWidth: 320,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 10,
     padding: 20,
     elevation: 5,
   },
   title: {
     fontSize: 22,
-    fontWeight: '700',
+    fontWeight: "700",
     marginBottom: 15,
   },
   message: {
     fontSize: 16,
     marginBottom: 25,
-    color: '#444',
+    color: "#444",
   },
   button: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     paddingVertical: 8,
     paddingHorizontal: 16,
-    backgroundColor: '#007AFF',
+    backgroundColor: "#007AFF",
     borderRadius: 6,
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: '600',
+    color: "#fff",
+    fontWeight: "600",
   },
 });
 

@@ -1,41 +1,41 @@
-module.exports ={
+module.exports = {
   expo: {
-    name: 'WhoDoggy',
-    slug: 'whodoggy',
-    version: '1.0.0',
-    sdkVersion: '51.0.0',
-    platforms: ['ios', 'android', 'web'],
-    orientation: 'portrait',
-    icon: './assets/icon.png',
+    name: "WhoDoggy",
+    slug: "whodoggy",
+    version: "1.0.0",
+    sdkVersion: "51.0.0",
+    platforms: ["ios", "android", "web"],
+    orientation: "portrait",
+    icon: "./assets/icon.png",
     splash: {
-      image: './assets/splash.png',
-      resizeMode: 'contain',
-      backgroundColor: '#ffffff',
+      image: "./assets/splash.png",
+      resizeMode: "contain",
+      backgroundColor: "#ffffff",
     },
     updates: {
       fallbackToCacheTimeout: 0,
     },
-    assetBundlePatterns: ['**/*'],
+    assetBundlePatterns: ["**/*"],
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.thepr1ce1.whodoggy",
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: './assets/adaptive-icon.png',
-        backgroundColor: '#FFFFFF',
+        foregroundImage: "./assets/adaptive-icon.png",
+        backgroundColor: "#FFFFFF",
       },
-      package: "com.thepr1ce1.whodoggy"
+      package: "com.thepr1ce1.whodoggy",
     },
     web: {
-      favicon: './assets/favicon.png',
+      favicon: "./assets/favicon.png",
     },
 
     // ADD THIS PART:
     extra: {
       eas: {
-        projectId: "3f916ac8-7a8c-4e53-aa7f-83c0c023a9e3"
-      }
-    }
+        projectId: "3f916ac8-7a8c-4e53-aa7f-83c0c023a9e3",
+      },
+    },
   },
 };

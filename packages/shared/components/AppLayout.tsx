@@ -1,6 +1,6 @@
 // packages/shared/components/AppLayout.tsx
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import type React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { theme } from '../styles/theme.js'.ts;
 
 export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (

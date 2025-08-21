@@ -1,8 +1,8 @@
-module.exports = function (api) {
+module.exports = (api) => {
   api.cache(true);
   return {
-    presets: ['babel-preset-expo'],
-    plugins: ['nativewind/babel'], // ✅ add this
+    presets: ["babel-preset-expo"],
+    plugins: ["nativewind/babel"], // ✅ add this
   };
 };
 // Note: This file is used to configure Babel for the React Native project.

@@ -1,6 +1,6 @@
 // apps/mobile/src/services/microchipService.ts
 
-import { API_BASE_URL } from '../config/api.js';
+import { API_BASE_URL } from "../config/api.js";
 
 export type MicrochipRecord = {
   microchipId: string;
@@ -38,7 +38,7 @@ export async function fetchMicrochipById(id: string): Promise<MicrochipRecord[]>
     // Assuming API returns { results: MicrochipRecord[] }
     return data.results as MicrochipRecord[];
   } catch (error) {
-    console.error('Error fetching microchip data:', error);
+    console.error("Error fetching microchip data:", error);
     return [];
   }
 }

@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-  '/dogs/{microchipId}': {
+  "/dogs/{microchipId}": {
     parameters: {
       query?: never;
       header?: never;
@@ -29,7 +29,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['Dog'];
+            "application/json": components["schemas"]["Dog"];
           };
         };
         /** @description Dog not found */
@@ -49,7 +49,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  '/dogs': {
+  "/dogs": {
     parameters: {
       query?: never;
       header?: never;
@@ -68,7 +68,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['DogInput'];
+          "application/json": components["schemas"]["DogInput"];
         };
       };
       responses: {

@@ -1,5 +1,5 @@
-import { pool } from './dbHelper.js';
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
+import { pool } from "./dbHelper.js";
 
 const NUM_RECORDS = 20;
 
@@ -12,15 +12,15 @@ async function seedDatabase() {
         .int({ min: 985141000000000, max: 985141999999999 })
         .toString();
       const pet_name = faker.animal.dog();
-      const species = 'dog';
+      const species = "dog";
       const breed = faker.animal.dog(); // same for simplicity
       const date_registered = faker.date.past({ years: 3 });
       const registry_name = faker.helpers.arrayElement([
-        'PetTrace UK',
-        'ChipSecure Registry',
-        'VetID Central',
-        'SafePaws Database',
-        'MicroTrack National',
+        "PetTrace UK",
+        "ChipSecure Registry",
+        "VetID Central",
+        "SafePaws Database",
+        "MicroTrack National",
       ]);
       const owner_contact = faker.internet.email();
 
@@ -29,21 +29,13 @@ async function seedDatabase() {
          (microchip_id, pet_name, species, breed, date_registered, registry_name, owner_contact)
          VALUES ($1, $2, $3, $4, $5, $6, $7)
          ON CONFLICT (microchip_id) DO NOTHING;`,
-        [
-          microchip_id,
-          pet_name,
-          species,
-          breed,
-          date_registered,
-          registry_name,
-          owner_contact,
-        ]
+        [microchip_id, pet_name, species, breed, date_registered, registry_name, owner_contact],
       );
     }
 
     console.log(`✅ Successfully inserted ${NUM_RECORDS} mock records.`);
   } catch (err) {
-    console.error('❌ Error seeding database:', err);
+    console.error("❌ Error seeding database:", err);
   } finally {
     await pool.end();
   }

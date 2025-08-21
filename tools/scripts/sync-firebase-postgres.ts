@@ -1,7 +1,7 @@
-import { initializeApp, cert } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
-import dotenv from 'dotenv';
-import { pool } from '../../packages/backend/src/db.js';
+import dotenv from "dotenv";
+import { cert, initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+import { pool } from "../../packages/backend/src/db.js";
 
 dotenv.config();
 
@@ -21,14 +21,14 @@ if (
   !FIREBASE_CLIENT_EMAIL ||
   !FIREBASE_CLIENT_ID
 ) {
-  throw new Error('Missing required Firebase environment variables');
+  throw new Error("Missing required Firebase environment variables");
 }
 
 // Create a partial credentials object **without** 'type'
 const firebaseCredentials = {
   projectId: FIREBASE_PROJECT_ID,
   privateKeyId: FIREBASE_PRIVATE_KEY_ID,
-  privateKey: FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+  privateKey: FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
   clientEmail: FIREBASE_CLIENT_EMAIL,
   clientId: FIREBASE_CLIENT_ID,
   clientX509CertUrl: FIREBASE_CLIENT_X509_CERT_URL,
@@ -43,7 +43,7 @@ const firestore = getFirestore();
 
 async function syncDogs() {
   try {
-    const snapshot = await firestore.collection('dogs').get();
+    const snapshot = await firestore.collection("dogs").get();
 
     for (const doc of snapshot.docs) {
       const dogData = doc.data();
@@ -66,13 +66,13 @@ async function syncDogs() {
           dogData.breed,
           dogData.owner_id,
           dogData.registry_id,
-        ]
+        ],
       );
     }
 
-    console.log('Firebase to PostgreSQL sync complete.');
+    console.log("Firebase to PostgreSQL sync complete.");
   } catch (error) {
-    console.error('Error syncing data:', error);
+    console.error("Error syncing data:", error);
   } finally {
     await pool.end();
   }

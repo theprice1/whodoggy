@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 const ConsentScreen = () => {
   return (

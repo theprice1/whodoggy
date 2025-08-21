@@ -3,8 +3,8 @@
 // Use global fetch (Node 18+)
 const microchipId = process.argv[2];
 if (!microchipId) {
-  console.error('❌ Please provide a microchip ID, e.g.:');
-  console.error('   npx ts-node scripts/queryAllRegistries.ts 1234567890');
+  console.error("❌ Please provide a microchip ID, e.g.:");
+  console.error("   npx ts-node scripts/queryAllRegistries.ts 1234567890");
   process.exit(1);
 }
 
@@ -24,7 +24,7 @@ async function queryRegistries(id: string) {
         console.log(`👤 Owner: ${data.ownerName}`);
         console.log(`📞 Contact: ${data.contact}`);
         console.log(`📍 Registry: ${data.registryName}`);
-        console.log(`💉 Vaccinated: ${data.vaccinated ? 'Yes' : 'No'}`);
+        console.log(`💉 Vaccinated: ${data.vaccinated ? "Yes" : "No"}`);
         console.log(`📝 Notes: ${data.notes}`);
         console.log(`🩺 Last Checkup: ${data.lastCheckup}`);
         return; // Stop after first successful match

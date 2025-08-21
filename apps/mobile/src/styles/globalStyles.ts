@@ -1,6 +1,6 @@
+import { theme } from "@shared/styles/theme";
 // packages/mobile/src/styles/globalStyles.ts
 import { StyleSheet } from "react-native";
-import { theme } from "@shared/styles/theme";
 
 export const globalStyles = StyleSheet.create({
   container: {

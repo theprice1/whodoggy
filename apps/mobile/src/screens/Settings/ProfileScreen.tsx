@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Text,
-  TextInput,
-  Button,
-  Alert,
-  ScrollView,
-  StyleSheet,
-} from "react-native";
+import { Alert, Button, ScrollView, StyleSheet, Text, TextInput } from "react-native";
 
 // Define colors as constants to avoid color literals in styles
 const COLORS = {
@@ -44,11 +37,7 @@ const ProfileScreen = () => {
         accessibilityLabel="Email input"
       />
 
-      <Button
-        title="Save Profile"
-        onPress={handleSave}
-        accessibilityLabel="Save profile button"
-      />
+      <Button title="Save Profile" onPress={handleSave} accessibilityLabel="Save profile button" />
     </ScrollView>
   );
 };

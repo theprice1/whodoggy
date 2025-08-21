@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Text,
-  TextInput,
-  Button,
-  Alert,
-  ScrollView,
-  StyleSheet,
-} from "react-native";
+import { Alert, Button, ScrollView, StyleSheet, Text, TextInput } from "react-native";
 
 const colors = {
   gray300: "#D1D5DB", // Tailwind gray-300
@@ -30,8 +23,7 @@ const SubmitFeedbackScreen = () => {
       <Text style={styles.headerText}>Submit Feedback</Text>
 
       <Text style={styles.descriptionText}>
-        We appreciate your feedback to improve WhoDoggy?. Please share your
-        thoughts below.
+        We appreciate your feedback to improve WhoDoggy?. Please share your thoughts below.
       </Text>
 
       <TextInput
@@ -43,11 +35,7 @@ const SubmitFeedbackScreen = () => {
         accessibilityLabel="Feedback input"
       />
 
-      <Button
-        title="Submit"
-        onPress={handleSubmit}
-        accessibilityLabel="Submit feedback button"
-      />
+      <Button title="Submit" onPress={handleSubmit} accessibilityLabel="Submit feedback button" />
     </ScrollView>
   );
 };

@@ -1,18 +1,18 @@
 // packages/backend/src/controllers/microchipController.ts
-import { Request, Response } from 'express';
+import type { Request, Response } from "express";
 
 // Mock database of microchips — update as needed to match real schema
 const mockMicrochips = [
-  { microchipId: '1', name: 'Dog A', breed: 'Labrador' },
-  { microchipId: '2', name: 'Dog B', breed: 'Beagle' },
+  { microchipId: "1", name: "Dog A", breed: "Labrador" },
+  { microchipId: "2", name: "Dog B", breed: "Beagle" },
 ];
 
 // Controller for getting a microchip by ID
 export async function getMicrochipById(req: Request, res: Response): Promise<void> {
-  const microchipId = (req.params.id || '').trim();
+  const microchipId = (req.params.id || "").trim();
 
   if (!microchipId) {
-    res.status(400).json({ error: 'Microchip ID is required' });
+    res.status(400).json({ error: "Microchip ID is required" });
     return;
   }
 
@@ -20,7 +20,7 @@ export async function getMicrochipById(req: Request, res: Response): Promise<voi
   const microchip = mockMicrochips.find((m) => m.microchipId === microchipId);
 
   if (!microchip) {
-    res.status(404).json({ error: 'Microchip not found' });
+    res.status(404).json({ error: "Microchip not found" });
     return;
   }
 

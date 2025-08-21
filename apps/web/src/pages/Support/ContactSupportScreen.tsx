@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import type React from "react";
+import { useState } from "react";
 
 const ContactSupportScreen = () => {
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // You can hook this into an actual API call
     setSubmitted(true);
-    setEmail('');
-    setSubject('');
-    setMessage('');
+    setEmail("");
+    setSubject("");
+    setMessage("");
   };
 
   return (

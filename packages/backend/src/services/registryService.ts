@@ -1,28 +1,28 @@
 // src/services/registryService.ts
 
 const registryUrls = [
-  'http://localhost:4101/search/',
-  'http://localhost:4102/search/',
-  'http://localhost:4103/search/',
-  'http://localhost:4104/search/',
-  'http://localhost:4105/search/',
-  'http://localhost:4106/search/',
-  'http://localhost:4107/search/',
-  'http://localhost:4108/search/',
-  'http://localhost:4109/search/',
-  'http://localhost:4110/search/',
-  'http://localhost:4111/search/',
-  'http://localhost:4112/search/',
-  'http://localhost:4113/search/',
-  'http://localhost:4114/search/',
-  'http://localhost:4115/search/',
-  'http://localhost:4116/search/',
-  'http://localhost:4117/search/',
-  'http://localhost:4118/search/',
-  'http://localhost:4119/search/',
-  'http://localhost:4120/search/',
-  'http://localhost:4121/search/',
-  'http://localhost:4122/search/',
+  "http://localhost:4101/search/",
+  "http://localhost:4102/search/",
+  "http://localhost:4103/search/",
+  "http://localhost:4104/search/",
+  "http://localhost:4105/search/",
+  "http://localhost:4106/search/",
+  "http://localhost:4107/search/",
+  "http://localhost:4108/search/",
+  "http://localhost:4109/search/",
+  "http://localhost:4110/search/",
+  "http://localhost:4111/search/",
+  "http://localhost:4112/search/",
+  "http://localhost:4113/search/",
+  "http://localhost:4114/search/",
+  "http://localhost:4115/search/",
+  "http://localhost:4116/search/",
+  "http://localhost:4117/search/",
+  "http://localhost:4118/search/",
+  "http://localhost:4119/search/",
+  "http://localhost:4120/search/",
+  "http://localhost:4121/search/",
+  "http://localhost:4122/search/",
 ];
 
 export interface DogRecord {
@@ -42,10 +42,7 @@ export interface DogRecord {
  * Query a single registry by microchipId.
  * Returns DogRecord if found and valid, otherwise throws.
  */
-async function queryRegistry(
-  url: string,
-  microchipId: string
-): Promise<DogRecord> {
+async function queryRegistry(url: string, microchipId: string): Promise<DogRecord> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 seconds timeout
 
@@ -56,20 +53,13 @@ async function queryRegistry(
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      throw new Error(
-        `Registry ${url} responded with status ${response.status}`
-      );
+      throw new Error(`Registry ${url} responded with status ${response.status}`);
     }
 
-  const data = (await response.json()) as DogRecord;
-
+    const data = (await response.json()) as DogRecord;
 
     // Validate response: microchipId should be a non-empty string different from default placeholder
-    if (
-      !data.microchipId ||
-      data.microchipId === 'string' ||
-      data.microchipId.trim() === ''
-    ) {
+    if (!data.microchipId || data.microchipId === "string" || data.microchipId.trim() === "") {
       throw new Error(`Registry ${url} returned no valid record`);
     }
 
@@ -84,15 +74,13 @@ async function queryRegistry(
  * Query all registries concurrently and return the first successful DogRecord found.
  * If none found, returns null.
  */
-export async function queryAllRegistries(
-  microchipId: string
-): Promise<DogRecord | null> {
+export async function queryAllRegistries(microchipId: string): Promise<DogRecord | null> {
   const queries = registryUrls.map((url) =>
     queryRegistry(url, microchipId).catch((err) => {
       // Log error but don't fail all queries
       console.warn(`Failed to fetch from ${url}: ${err.message}`);
       return null;
-    })
+    }),
   );
 
   // Wait for all to settle
@@ -114,4 +102,3 @@ export async function getRegistry(id: string): Promise<DogRecord | null> {
 export async function getAllRegistriesService(): Promise<string[]> {
   return registryUrls; // Just returns the list
 }
-

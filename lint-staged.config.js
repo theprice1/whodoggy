@@ -1,4 +1,3 @@
 module.exports = {
-  "apps/**/src/**/*.{ts,tsx,js,jsx,json,css,md}": ["biome format --write", "biome lint --fix"],
-  "packages/**/src/**/*.{ts,tsx,js,jsx,json,css,md}": ["biome format --write", "biome lint --fix"]
+  "*.{ts,tsx,js,jsx,json,css,scss,md,html,yml,yaml}": ["biome format --write", "biome lint --fix"],
 };

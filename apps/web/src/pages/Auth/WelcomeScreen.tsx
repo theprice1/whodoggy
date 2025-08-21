@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const WelcomeScreen = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const WelcomeScreen = () => {
       </p>
 
       <button
-        onClick={() => navigate('/auth/signin')}
+        onClick={() => navigate("/auth/signin")}
         className="bg-blue-600 text-white py-2 px-6 rounded mr-4 hover:bg-blue-700"
         aria-label="Go to Sign In"
       >
@@ -20,7 +20,7 @@ const WelcomeScreen = () => {
       </button>
 
       <button
-        onClick={() => navigate('/auth/signup')}
+        onClick={() => navigate("/auth/signup")}
         className="bg-gray-200 text-gray-800 py-2 px-6 rounded hover:bg-gray-300"
         aria-label="Go to Sign Up"
       >

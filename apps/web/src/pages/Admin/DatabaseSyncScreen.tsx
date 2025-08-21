@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const DatabaseSyncScreen = () => {
   const [isSyncing, setIsSyncing] = useState(false);
@@ -10,9 +10,9 @@ const DatabaseSyncScreen = () => {
     try {
       // TODO: Replace with actual API call to sync databases
       await new Promise((resolve) => setTimeout(resolve, 2000)); // simulate delay
-      setSyncStatus('Database sync completed successfully.');
+      setSyncStatus("Database sync completed successfully.");
     } catch (error) {
-      setSyncStatus('Error syncing databases. Please try again.');
+      setSyncStatus("Error syncing databases. Please try again.");
     } finally {
       setIsSyncing(false);
     }
@@ -26,14 +26,16 @@ const DatabaseSyncScreen = () => {
         onClick={handleSync}
         disabled={isSyncing}
         className={`px-4 py-2 rounded text-white ${
-          isSyncing ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+          isSyncing ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
         }`}
       >
-        {isSyncing ? 'Syncing...' : 'Start Database Sync'}
+        {isSyncing ? "Syncing..." : "Start Database Sync"}
       </button>
 
       {syncStatus && (
-        <p className={`mt-4 text-lg ${syncStatus.includes('Error') ? 'text-red-600' : 'text-green-600'}`}>
+        <p
+          className={`mt-4 text-lg ${syncStatus.includes("Error") ? "text-red-600" : "text-green-600"}`}
+        >
           {syncStatus}
         </p>
       )}

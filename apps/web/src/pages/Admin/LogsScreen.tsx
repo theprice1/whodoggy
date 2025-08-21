@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 type LogEntry = {
   id: string;
   timestamp: string;
-  level: 'info' | 'warn' | 'error';
+  level: "info" | "warn" | "error";
   message: string;
 };
 
@@ -18,22 +18,22 @@ const LogsScreen = () => {
       await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate delay
       setLogs([
         {
-          id: '1',
-          timestamp: '2025-07-29T10:00:00Z',
-          level: 'info',
-          message: 'System started successfully.',
+          id: "1",
+          timestamp: "2025-07-29T10:00:00Z",
+          level: "info",
+          message: "System started successfully.",
         },
         {
-          id: '2',
-          timestamp: '2025-07-29T10:15:45Z',
-          level: 'warn',
-          message: 'Slow response from microchip registry.',
+          id: "2",
+          timestamp: "2025-07-29T10:15:45Z",
+          level: "warn",
+          message: "Slow response from microchip registry.",
         },
         {
-          id: '3',
-          timestamp: '2025-07-29T10:30:20Z',
-          level: 'error',
-          message: 'Failed to sync database.',
+          id: "3",
+          timestamp: "2025-07-29T10:30:20Z",
+          level: "error",
+          message: "Failed to sync database.",
         },
       ]);
       setLoading(false);
@@ -65,11 +65,11 @@ const LogsScreen = () => {
                 <td className="py-2">{new Date(timestamp).toLocaleString()}</td>
                 <td
                   className={`py-2 font-semibold ${
-                    level === 'error'
-                      ? 'text-red-600'
-                      : level === 'warn'
-                      ? 'text-yellow-600'
-                      : 'text-green-600'
+                    level === "error"
+                      ? "text-red-600"
+                      : level === "warn"
+                        ? "text-yellow-600"
+                        : "text-green-600"
                   }`}
                 >
                   {level.toUpperCase()}

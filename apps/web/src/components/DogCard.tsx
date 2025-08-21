@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from "react";
 
 interface DogCardProps {
   name: string;
@@ -8,13 +8,7 @@ interface DogCardProps {
   registry?: string;
 }
 
-const DogCard: React.FC<DogCardProps> = ({
-  name,
-  breed,
-  microchipId,
-  imageUrl,
-  registry,
-}) => {
+const DogCard: React.FC<DogCardProps> = ({ name, breed, microchipId, imageUrl, registry }) => {
   return (
     <div className="bg-white shadow-md rounded-2xl p-4 w-full max-w-md mx-auto">
       {imageUrl && (
@@ -27,9 +21,7 @@ const DogCard: React.FC<DogCardProps> = ({
       <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
       <p className="text-gray-600">Breed: {breed}</p>
       <p className="text-gray-600">Microchip ID: {microchipId}</p>
-      {registry && (
-        <p className="text-gray-500 text-sm mt-2">Registry: {registry}</p>
-      )}
+      {registry && <p className="text-gray-500 text-sm mt-2">Registry: {registry}</p>}
     </div>
   );
 };

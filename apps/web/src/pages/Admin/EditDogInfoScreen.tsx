@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 type DogInfo = {
   id: string;
@@ -11,11 +11,11 @@ type DogInfo = {
 const EditDogInfoScreen = () => {
   // Example dog info state (in real app, fetch from API)
   const [dogInfo, setDogInfo] = useState<DogInfo>({
-    id: '',
-    name: '',
-    breed: '',
+    id: "",
+    name: "",
+    breed: "",
     age: 0,
-    microchipId: '',
+    microchipId: "",
   });
 
   // Simulate fetching existing dog info
@@ -25,11 +25,11 @@ const EditDogInfoScreen = () => {
       // Simulated fetch delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setDogInfo({
-        id: '123',
-        name: 'Buddy',
-        breed: 'Labrador',
+        id: "123",
+        name: "Buddy",
+        breed: "Labrador",
         age: 5,
-        microchipId: 'ABC123456',
+        microchipId: "ABC123456",
       });
     };
     fetchDogInfo();
@@ -58,7 +58,7 @@ const EditDogInfoScreen = () => {
         id="name"
         type="text"
         value={dogInfo.name}
-        onChange={(e) => handleChange('name', e.target.value)}
+        onChange={(e) => handleChange("name", e.target.value)}
         className="w-full border border-gray-300 rounded p-2 mb-4"
       />
 
@@ -69,7 +69,7 @@ const EditDogInfoScreen = () => {
         id="breed"
         type="text"
         value={dogInfo.breed}
-        onChange={(e) => handleChange('breed', e.target.value)}
+        onChange={(e) => handleChange("breed", e.target.value)}
         className="w-full border border-gray-300 rounded p-2 mb-4"
       />
 
@@ -80,7 +80,7 @@ const EditDogInfoScreen = () => {
         id="age"
         type="number"
         value={dogInfo.age}
-        onChange={(e) => handleChange('age', Number(e.target.value))}
+        onChange={(e) => handleChange("age", Number(e.target.value))}
         className="w-full border border-gray-300 rounded p-2 mb-4"
         min={0}
       />
@@ -92,7 +92,7 @@ const EditDogInfoScreen = () => {
         id="microchipId"
         type="text"
         value={dogInfo.microchipId}
-        onChange={(e) => handleChange('microchipId', e.target.value)}
+        onChange={(e) => handleChange("microchipId", e.target.value)}
         className="w-full border border-gray-300 rounded p-2 mb-6"
       />
 

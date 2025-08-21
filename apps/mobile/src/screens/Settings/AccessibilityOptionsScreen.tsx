@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Switch, ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, Switch, Text, View } from "react-native";
 
 const AccessibilityOptionsScreen = () => {
   const [largeTextEnabled, setLargeTextEnabled] = useState(false);

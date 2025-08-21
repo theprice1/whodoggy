@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { auth } from '../firebaseConfig.js';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import type React from "react";
+import { useState } from "react";
+import { auth } from "../firebaseConfig.js";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -12,7 +13,7 @@ export default function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setError(null);
-      alert('Logged in!');
+      alert("Logged in!");
     } catch (e: any) {
       setError(e.message);
     }
@@ -34,7 +35,7 @@ export default function Login() {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <button type="submit">Login</button>
     </form>
   );

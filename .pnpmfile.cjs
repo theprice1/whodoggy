@@ -7,6 +7,6 @@ module.exports = {
       //   pkg.dependencies['left-pad'] = '^1.3.0';
       // }
       return pkg;
-    }
-  }
+    },
+  },
 };

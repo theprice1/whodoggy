@@ -2,9 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     /* Output + module resolution */
-    "target": "ES2022", /* Modern target (works with Node 18+/TS 5) */
-    "module": "NodeNext", /* Required for ESM support */
-    "moduleResolution": "NodeNext", /* Matches "module": "NodeNext" */
+    "target": "ES2022" /* Modern target (works with Node 18+/TS 5) */,
+    "module": "NodeNext" /* Required for ESM support */,
+    "moduleResolution": "NodeNext" /* Matches "module": "NodeNext" */,
     "outDir": "dist",
     "rootDir": "src",
     /* Declarations + source maps */
@@ -14,30 +14,22 @@
     /* Strictness + type checking */
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true, /* Faster builds, avoids node_modules noise */
-    "esModuleInterop": true, /* Allows `import x from "cjs"` */
-    "resolveJsonModule": true, /* Enables `import json from "./file.json"` */
-    "allowJs": false, /* Keep only TS */
+    "skipLibCheck": true /* Faster builds, avoids node_modules noise */,
+    "esModuleInterop": true /* Allows `import x from "cjs"` */,
+    "resolveJsonModule": true /* Enables `import json from "./file.json"` */,
+    "allowJs": false /* Keep only TS */,
     /* Project references */
     "composite": true,
     "incremental": true,
     /* Types */
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     /* Workspace paths */
     "paths": {
-      "@whodoggy/shared": [
-        "../../packages/shared/src"
-      ],
-      "@whodoggy/shared/*": [
-        "../../packages/shared/src/*"
-      ]
+      "@whodoggy/shared": ["../../packages/shared/src"],
+      "@whodoggy/shared/*": ["../../packages/shared/src/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"],
   "references": [
     {
       "path": "../shared"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 type UserProfile = {
   name: string;
@@ -6,7 +6,7 @@ type UserProfile = {
 };
 
 const ProfileScreen = () => {
-  const [profile, setProfile] = useState<UserProfile>({ name: '', email: '' });
+  const [profile, setProfile] = useState<UserProfile>({ name: "", email: "" });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const ProfileScreen = () => {
     const fetchProfile = async () => {
       // Simulated fetch delay
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      setProfile({ name: 'John Doe', email: 'john.doe@example.com' });
+      setProfile({ name: "John Doe", email: "john.doe@example.com" });
       setLoading(false);
     };
     fetchProfile();
@@ -44,7 +44,7 @@ const ProfileScreen = () => {
         id="name"
         type="text"
         value={profile.name}
-        onChange={(e) => handleChange('name', e.target.value)}
+        onChange={(e) => handleChange("name", e.target.value)}
         className="w-full border border-gray-300 rounded p-2 mb-4"
       />
 
@@ -55,7 +55,7 @@ const ProfileScreen = () => {
         id="email"
         type="email"
         value={profile.email}
-        onChange={(e) => handleChange('email', e.target.value)}
+        onChange={(e) => handleChange("email", e.target.value)}
         className="w-full border border-gray-300 rounded p-2 mb-6"
       />
 

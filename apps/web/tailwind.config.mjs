@@ -1,8 +1,8 @@
-import theme from '../../packages/shared/dist/styles/theme.js.js';
+import theme from "../../packages/shared/dist/styles/theme.js.js";
 
 export default {
   content: [
-    './src/**/*.{js,jsx,ts,tsx}', // Your source files where Tailwind classes are used
+    "./src/**/*.{js,jsx,ts,tsx}", // Your source files where Tailwind classes are used
   ],
   theme: {
     extend: {

@@ -1,14 +1,8 @@
 // src/screens/SearchScreen.tsx
 
-import React, { useState } from "react";
-import {
-  View,
-  TextInput,
-  Button,
-  StyleSheet,
-  Text,
-  FlatList,
-} from "react-native";
+import type React from "react";
+import { useState } from "react";
+import { Button, FlatList, StyleSheet, Text, TextInput, View } from "react-native";
 
 type SearchScreenProps = {
   navigation: {
@@ -16,9 +10,7 @@ type SearchScreenProps = {
   };
 };
 
-const SearchScreen: React.FC<SearchScreenProps> = ({
-  navigation: _navigation,
-}) => {
+const SearchScreen: React.FC<SearchScreenProps> = ({ navigation: _navigation }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<string[]>([]); // Replace string[] with your data type
 
@@ -54,9 +46,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({
             <Text>{item}</Text>
           </View>
         )}
-        ListEmptyComponent={
-          <Text style={styles.noResults}>No results found.</Text>
-        }
+        ListEmptyComponent={<Text style={styles.noResults}>No results found.</Text>}
       />
     </View>
   );

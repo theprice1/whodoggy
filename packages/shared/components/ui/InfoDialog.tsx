@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { View, Text, Modal, Button } from 'react-native';
+import React, { type FC } from "react";
+import { Button, Modal, Text, View } from "react-native";
 
 interface InfoDialogProps {
   visible: boolean;

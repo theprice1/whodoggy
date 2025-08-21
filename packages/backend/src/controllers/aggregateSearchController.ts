@@ -1,6 +1,6 @@
+import axios from "axios";
 // controllers/aggregateSearchController.ts
-import express, { Request, Response } from 'express';
-import axios from 'axios';
+import express, { type Request, type Response } from "express";
 
 const router: express.Router = express.Router();
 
@@ -20,14 +20,14 @@ interface SearchResult {
 // List of all mock registry URLs
 const registryEndpoints = Array.from(
   { length: 22 },
-  (_, i) => `http://localhost:${4001 + i}/search`
+  (_, i) => `http://localhost:${4001 + i}/search`,
 );
 
-router.post('/search', async (req: Request, res: Response) => {
+router.post("/search", async (req: Request, res: Response) => {
   const { microchip_id } = req.body;
 
   if (!microchip_id) {
-    return res.status(400).json({ error: 'microchip_id is required' });
+    return res.status(400).json({ error: "microchip_id is required" });
   }
 
   try {
@@ -46,16 +46,14 @@ router.post('/search', async (req: Request, res: Response) => {
             .catch((error) => {
               resolve({ success: false, error });
             });
-        })
+        }),
     );
     // Execute all search requests in parallel
 
     const results: SearchResult[] = await Promise.all(searchPromises);
 
     // Find the first successful result with a microchip
-    const match = results.find(
-      (result) => result.success && result.data?.microchip
-    );
+    const match = results.find((result) => result.success && result.data?.microchip);
 
     if (match && match.data) {
       return res.status(200).json({
@@ -64,15 +62,11 @@ router.post('/search', async (req: Request, res: Response) => {
         data: match.data.microchip,
       });
     } else {
-      return res
-        .status(404)
-        .json({ found: false, message: 'Microchip not found in any registry' });
+      return res.status(404).json({ found: false, message: "Microchip not found in any registry" });
     }
   } catch (error) {
-    console.error('Aggregator error:', error);
-    return res
-      .status(500)
-      .json({ error: 'Internal server error during aggregation' });
+    console.error("Aggregator error:", error);
+    return res.status(500).json({ error: "Internal server error during aggregation" });
   }
 });
 

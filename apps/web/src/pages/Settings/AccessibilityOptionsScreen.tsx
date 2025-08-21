@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const AccessibilityOptionsScreen = () => {
   const [highContrast, setHighContrast] = useState(false);

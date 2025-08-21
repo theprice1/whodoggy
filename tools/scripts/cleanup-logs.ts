@@ -1,7 +1,7 @@
-import fs from 'fs/promises';
-import path from 'path';
+import path from "path";
+import fs from "fs/promises";
 
-const logsDir = path.resolve(__dirname, '../../logs'); // Adjust path as needed
+const logsDir = path.resolve(__dirname, "../../logs"); // Adjust path as needed
 const maxAgeMs = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 async function cleanupLogs() {
@@ -19,9 +19,9 @@ async function cleanupLogs() {
       }
     }
 
-    console.log('Log cleanup complete.');
+    console.log("Log cleanup complete.");
   } catch (error) {
-    console.error('Error during log cleanup:', error);
+    console.error("Error during log cleanup:", error);
   }
 }
 

@@ -1,15 +1,15 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import bodyParser from 'body-parser';
+import bodyParser from "body-parser";
+import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
 
-import searchRoutes from './src/routes/search.js.js';
-import dogsRoutes from './src/routes/dogs.js.js';
-import ownersRoutes from './src/routes/owners.js.js';
-import registriesRoutes from './src/routes/registries.js.js';
-import deleteDataRoutes from './src/routes/deleteData.js.js';
+import deleteDataRoutes from "./src/routes/deleteData.js.js";
+import dogsRoutes from "./src/routes/dogs.js.js";
+import ownersRoutes from "./src/routes/owners.js.js";
+import registriesRoutes from "./src/routes/registries.js.js";
+import searchRoutes from "./src/routes/search.js.js";
 
-import { errorHandler } from './src/middleware/errorHandler.js.js';
+import { errorHandler } from "./src/middleware/errorHandler.js.js";
 
 dotenv.config();
 
@@ -20,11 +20,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // API Routes
-app.use('/api/search', searchRoutes);
-app.use('/api/dogs', dogsRoutes);
-app.use('/api/owners', ownersRoutes);
-app.use('/api/registries', registriesRoutes);
-app.use('/api', deleteDataRoutes);
+app.use("/api/search", searchRoutes);
+app.use("/api/dogs", dogsRoutes);
+app.use("/api/owners", ownersRoutes);
+app.use("/api/registries", registriesRoutes);
+app.use("/api", deleteDataRoutes);
 
 // Global error handler
 app.use(errorHandler);

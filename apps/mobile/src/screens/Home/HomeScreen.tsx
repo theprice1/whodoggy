@@ -1,7 +1,7 @@
 // src/screens/HomeScreen.tsx
 
-import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import type React from "react";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 type HomeScreenProps = {
   navigation: {
@@ -15,17 +15,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       <Text style={styles.title}>Welcome to WhoDoggy?</Text>
 
       <View style={styles.buttonContainer}>
-        <Button
-          title="Scan Microchip"
-          onPress={() => navigation.navigate("QRScanner")}
-        />
+        <Button title="Scan Microchip" onPress={() => navigation.navigate("QRScanner")} />
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button
-          title="Search Microchip"
-          onPress={() => navigation.navigate("Search")}
-        />
+        <Button title="Search Microchip" onPress={() => navigation.navigate("Search")} />
       </View>
     </View>
   );

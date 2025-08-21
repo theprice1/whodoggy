@@ -4,7 +4,7 @@ export interface MicrochipRecord {
   microchipId: string;
   dogName: string;
   breed: string;
-  gender: 'Male' | 'Female';
+  gender: "Male" | "Female";
   dateOfBirth: string; // ISO date string
   ownerName: string;
   ownerPhone: string;

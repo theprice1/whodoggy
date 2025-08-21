@@ -1,10 +1,8 @@
 // packages/backend/src/services/dogService.ts
-import { query } from '../db.js';
-import { DogWithDetails } from '../types/types.js';
+import { query } from "../db.js";
+import type { DogWithDetails } from "../types/types.js";
 
-export const findDogByMicrochip = async (
-  microchipId: string
-): Promise<DogWithDetails | null> => {
+export const findDogByMicrochip = async (microchipId: string): Promise<DogWithDetails | null> => {
   const sql = `
     SELECT d.id AS dog_id, d.name AS dog_name, d.breed, d.age,
            o.id AS owner_id, o.name AS owner_name, o.phone, o.email,

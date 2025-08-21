@@ -1,12 +1,12 @@
+import dotenv from "dotenv";
 // db.ts
-import { Pool, QueryResult } from 'pg';
-import dotenv from 'dotenv';
+import { Pool, type QueryResult } from "pg";
 
 dotenv.config();
 
 // Validate presence of DATABASE_URL
 if (!process.env.DATABASE_URL) {
-  throw new Error('❌ DATABASE_URL is missing in the .env file');
+  throw new Error("❌ DATABASE_URL is missing in the .env file");
 }
 
 // Initialize PostgreSQL connection pool
@@ -15,12 +15,12 @@ const pool = new Pool({
 });
 
 // Event listeners for visibility and safety
-pool.on('connect', () => {
-  console.log('✅ Connected to PostgreSQL database');
+pool.on("connect", () => {
+  console.log("✅ Connected to PostgreSQL database");
 });
 
-pool.on('error', (err: Error) => {
-  console.error('❌ Unexpected error on idle PostgreSQL client', err);
+pool.on("error", (err: Error) => {
+  console.error("❌ Unexpected error on idle PostgreSQL client", err);
   process.exit(-1);
 });
 
@@ -30,13 +30,13 @@ export { pool };
 // Optional direct run: test connection
 if (require.main === module) {
   pool
-    .query('SELECT NOW()')
+    .query("SELECT NOW()")
     .then((res: QueryResult) => {
-      console.log('🕒 DB Time:', res.rows[0]);
+      console.log("🕒 DB Time:", res.rows[0]);
       process.exit(0);
     })
     .catch((err: Error) => {
-      console.error('❌ Query failed:', err);
+      console.error("❌ Query failed:", err);
       process.exit(1);
     });
 }

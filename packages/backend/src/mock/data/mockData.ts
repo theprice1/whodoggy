@@ -11,18 +11,18 @@ export interface DogInfo {
 
 export const mockDogs: DogInfo[] = [
   {
-    microchipId: '1234567890',
-    dogName: 'Fido',
-    ownerName: 'Alice Smith',
-    breed: 'Labrador',
+    microchipId: "1234567890",
+    dogName: "Fido",
+    ownerName: "Alice Smith",
+    breed: "Labrador",
     age: 5,
     registryId: 1,
   },
   {
-    microchipId: '0987654321',
-    dogName: 'Rex',
-    ownerName: 'Bob Johnson',
-    breed: 'German Shepherd',
+    microchipId: "0987654321",
+    dogName: "Rex",
+    ownerName: "Bob Johnson",
+    breed: "German Shepherd",
     age: 3,
     registryId: 2,
   },

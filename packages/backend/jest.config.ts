@@ -1,17 +1,17 @@
-import type { Config } from 'jest';
+import type { Config } from "jest";
 
 const config: Config = {
-  preset: 'ts-jest/presets/default-esm', // Use ESM preset
-  testEnvironment: 'node',
+  preset: "ts-jest/presets/default-esm", // Use ESM preset
+  testEnvironment: "node",
   transform: {
-    '^.+\\.ts$': ['ts-jest', { useESM: true }],
+    "^.+\\.ts$": ["ts-jest", { useESM: true }],
   },
-  extensionsToTreatAsEsm: [''],
+  extensionsToTreatAsEsm: [""],
   moduleNameMapper: {
-    '^(\\.{1,2}/.*)\\.js$': '$1', // Fixes ESM path issues in imports
+    "^(\\.{1,2}/.*)\\.js$": "$1", // Fixes ESM path issues in imports
   },
   globals: {
-    'ts-jest': {
+    "ts-jest": {
       useESM: true,
     },
   },
@@ -22,7 +22,7 @@ const config: Config = {
   maxWorkers: 1,
 
   // Automatically run setup before tests (adjust path as needed)
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup'],
+  setupFilesAfterEnv: ["<rootDir>/src/__tests__/setup"],
 
   // Enforce minimum code coverage thresholds globally
   coverageThreshold: {

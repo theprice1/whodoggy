@@ -1,6 +1,6 @@
+import { faker } from "@faker-js/faker";
 // packages/scripts/src/seed/seedOwners.ts
 import { prisma } from "../utils/prisma";
-import { faker } from "@faker-js/faker";
 
 export async function seedOwners() {
   console.log("➡️ Seeding owners...");

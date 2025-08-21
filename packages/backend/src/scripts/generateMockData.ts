@@ -1,12 +1,12 @@
-import { faker } from '@faker-js/faker';
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
+import { faker } from "@faker-js/faker";
 
 interface DogRecord {
   microchipId: string;
   dogName: string;
   breed: string;
-  gender: 'Male' | 'Female';
+  gender: "Male" | "Female";
   dateOfBirth: string; // ISO string
   ownerName: string;
   ownerPhone: string;
@@ -21,8 +21,8 @@ interface DogRecord {
 }
 
 const args = process.argv.slice(2);
-const TOTAL_ENTRIES = args[0] ? parseInt(args[0], 10) : 500;
-const OUTPUT_PATH = args[1] || 'mock_data/dogs.json';
+const TOTAL_ENTRIES = args[0] ? Number.parseInt(args[0], 10) : 500;
+const OUTPUT_PATH = args[1] || "mock_data/dogs.json";
 
 const REGISTRY_COUNT = 22;
 const usedIds = new Set<string>();
@@ -30,29 +30,27 @@ const usedIds = new Set<string>();
 function generateMicrochipId() {
   let id: string;
   do {
-    id = faker.number
-      .int({ min: 981000000000000, max: 981099999999999 })
-      .toString();
+    id = faker.number.int({ min: 981000000000000, max: 981099999999999 }).toString();
   } while (usedIds.has(id));
   usedIds.add(id);
   return id;
 }
 
 const breeds = [
-  'Labrador Retriever',
-  'German Shepherd',
-  'Golden Retriever',
-  'Bulldog',
-  'Beagle',
-  'Pug',
-  'Border Collie',
-  'French Bulldog',
-  'Dachshund',
-  'Boxer',
+  "Labrador Retriever",
+  "German Shepherd",
+  "Golden Retriever",
+  "Bulldog",
+  "Beagle",
+  "Pug",
+  "Border Collie",
+  "French Bulldog",
+  "Dachshund",
+  "Boxer",
 ];
 
-function randomGender(): 'Male' | 'Female' {
-  return faker.helpers.arrayElement(['Male', 'Female']);
+function randomGender(): "Male" | "Female" {
+  return faker.helpers.arrayElement(["Male", "Female"]);
 }
 
 function randomDateBetween(start: Date, end: Date): Date {

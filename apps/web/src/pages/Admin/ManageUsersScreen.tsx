@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 type User = {
   id: string;
@@ -18,9 +18,9 @@ const ManageUsersScreen = () => {
       setLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate delay
       setUsers([
-        { id: '1', name: 'Alice', email: 'alice@example.com', role: 'Admin', isActive: true },
-        { id: '2', name: 'Bob', email: 'bob@example.com', role: 'User', isActive: true },
-        { id: '3', name: 'Carol', email: 'carol@example.com', role: 'User', isActive: false },
+        { id: "1", name: "Alice", email: "alice@example.com", role: "Admin", isActive: true },
+        { id: "2", name: "Bob", email: "bob@example.com", role: "User", isActive: true },
+        { id: "3", name: "Carol", email: "carol@example.com", role: "User", isActive: false },
       ]);
       setLoading(false);
     };
@@ -30,9 +30,7 @@ const ManageUsersScreen = () => {
 
   const toggleUserActive = (id: string) => {
     setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        user.id === id ? { ...user, isActive: !user.isActive } : user
-      )
+      prevUsers.map((user) => (user.id === id ? { ...user, isActive: !user.isActive } : user)),
     );
     // TODO: Call API to update user status
   };
@@ -62,16 +60,16 @@ const ManageUsersScreen = () => {
                 <td className="py-2">{name}</td>
                 <td className="py-2">{email}</td>
                 <td className="py-2">{role}</td>
-                <td className="py-2">{isActive ? 'Yes' : 'No'}</td>
+                <td className="py-2">{isActive ? "Yes" : "No"}</td>
                 <td className="py-2">
                   <button
                     onClick={() => toggleUserActive(id)}
                     className={`px-3 py-1 rounded text-white ${
-                      isActive ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700'
+                      isActive ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
                     }`}
                     aria-label={`Toggle active status for ${name}`}
                   >
-                    {isActive ? 'Deactivate' : 'Activate'}
+                    {isActive ? "Deactivate" : "Activate"}
                   </button>
                 </td>
               </tr>

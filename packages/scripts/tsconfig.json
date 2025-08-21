@@ -7,17 +7,11 @@
     "moduleResolution": "NodeNext",
     "composite": true,
     "incremental": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@whodoggy/shared/*": [
-        "../shared/src/*"
-      ]
+      "@whodoggy/shared/*": ["../shared/src/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }

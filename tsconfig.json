@@ -27,9 +27,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@whodoggy/shared/*": [
-        "packages/shared/src/*"
-      ]
+      "@whodoggy/shared/*": ["packages/shared/src/*"]
     }
   },
   "extends": "expo/tsconfig.base"

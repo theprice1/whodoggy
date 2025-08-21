@@ -1,10 +1,10 @@
-import { Pool, QueryResult, QueryResultRow } from 'pg';
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import { Pool, type QueryResult, type QueryResultRow } from "pg";
 
 dotenv.config();
 
 const connectionString = process.env.DATABASE_URL;
-if (!connectionString) throw new Error('DATABASE_URL is not set');
+if (!connectionString) throw new Error("DATABASE_URL is not set");
 
 // PostgreSQL connection pool
 export const pool = new Pool({ connectionString });
@@ -12,7 +12,7 @@ export const pool = new Pool({ connectionString });
 // Generic query helper
 export async function query<T extends QueryResultRow = any>(
   text: string,
-  params?: any[]
+  params?: any[],
 ): Promise<T[]> {
   const client = await pool.connect();
   try {

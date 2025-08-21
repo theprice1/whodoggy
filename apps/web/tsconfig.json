@@ -13,34 +13,18 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "types": [
-      "node",
-      "jest",
-      "react",
-      "react-dom"
-    ],
+    "types": ["node", "jest", "react", "react-dom"],
     "baseUrl": "src",
     "paths": {
-      "@whodoggy/shared": [
-        "../../packages/shared/dist"
-      ],
-      "@whodoggy/shared/*": [
-        "../../packages/shared/dist/*"
-      ],
-      "@whodoggy/api-client": [
-        "../../packages/api-client/dist"
-      ],
-      "@whodoggy/api-client/*": [
-        "../../packages/api-client/dist/*"
-      ]
+      "@whodoggy/shared": ["../../packages/shared/dist"],
+      "@whodoggy/shared/*": ["../../packages/shared/dist/*"],
+      "@whodoggy/api-client": ["../../packages/api-client/dist"],
+      "@whodoggy/api-client/*": ["../../packages/api-client/dist/*"]
     },
     "resolveJsonModule": true,
     "allowJs": false
   },
-  "include": [
-    "src/**/*",
-    "src/**/*.d.ts"
-  ],
+  "include": ["src/**/*", "src/**/*.d.ts"],
   "exclude": [
     "node_modules",
     "dist",

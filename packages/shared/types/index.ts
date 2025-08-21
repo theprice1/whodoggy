@@ -1,3 +1,3 @@
-export * from './dog.js';
-export * from './owner.js';
-export * from './registry.js';
+export * from "./dog.js";
+export * from "./owner.js";
+export * from "./registry.js";

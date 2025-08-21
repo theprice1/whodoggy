@@ -1,15 +1,15 @@
-import dotenv from 'dotenv';
-import { execSync } from 'child_process';
-import pgPromise from 'pg-promise';
+import { execSync } from "child_process";
+import dotenv from "dotenv";
+import pgPromise from "pg-promise";
 
-dotenv.config({ path: '../../.env' }); // Adjust path as needed
+dotenv.config({ path: "../../.env" }); // Adjust path as needed
 
 // Run migrations before tests
 try {
-  console.log('⏳ Running database migrations before tests...');
-  execSync('pnpm run migrate', { stdio: 'inherit' });
+  console.log("⏳ Running database migrations before tests...");
+  execSync("pnpm run migrate", { stdio: "inherit" });
 } catch (error) {
-  console.error('❌ Failed to run migrations:', error);
+  console.error("❌ Failed to run migrations:", error);
   process.exit(1);
 }
 
@@ -27,6 +27,6 @@ try {
 
 // Setup pg-promise DB connection to use in tests if needed
 const pgp = pgPromise();
-const db = pgp(process.env.DATABASE_URL || '');
+const db = pgp(process.env.DATABASE_URL || "");
 
 export { db };

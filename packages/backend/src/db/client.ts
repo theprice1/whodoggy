@@ -1,9 +1,9 @@
-import { Pool } from 'pg';
-import dotenv from 'dotenv';
-import path from 'path';
+import path from "path";
+import dotenv from "dotenv";
+import { Pool } from "pg";
 
 // Always resolve based on this file's actual directory
-dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
+dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
 
 export const pool = new Pool({
   host: process.env.PGHOST,

@@ -1,32 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const HelpCenterScreen = () => {
   const helpTopics = [
     {
-      title: 'Getting Started',
-      description: 'Learn how to create an account and use the app.',
-      link: '/support/help/getting-started',
+      title: "Getting Started",
+      description: "Learn how to create an account and use the app.",
+      link: "/support/help/getting-started",
     },
     {
-      title: 'Scanning a Dog',
-      description: 'How to scan a dog’s microchip and view results.',
-      link: '/support/help/scanning',
+      title: "Scanning a Dog",
+      description: "How to scan a dog’s microchip and view results.",
+      link: "/support/help/scanning",
     },
     {
-      title: 'Managing Your Profile',
-      description: 'Update your contact details and preferences.',
-      link: '/settings/profile',
+      title: "Managing Your Profile",
+      description: "Update your contact details and preferences.",
+      link: "/settings/profile",
     },
     {
-      title: 'Privacy & Security',
-      description: 'Understand how we protect your data.',
-      link: '/settings/privacy-policy',
+      title: "Privacy & Security",
+      description: "Understand how we protect your data.",
+      link: "/settings/privacy-policy",
     },
     {
-      title: 'Contact Support',
-      description: 'Need help? Reach out to our support team.',
-      link: '/support/contact',
+      title: "Contact Support",
+      description: "Need help? Reach out to our support team.",
+      link: "/support/contact",
     },
   ];
 

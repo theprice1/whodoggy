@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../types/navigation.js";
+import React from "react";
+import { ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { colors } from "../../theme/colors.js.js";
+import type { RootStackParamList } from "../../types/navigation.js";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Settings">;
 
@@ -18,31 +18,19 @@ const SettingsScreen = () => {
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Settings</Text>
 
-      <TouchableOpacity
-        style={styles.option}
-        onPress={() => handleNavigation("Profile")}
-      >
+      <TouchableOpacity style={styles.option} onPress={() => handleNavigation("Profile")}>
         <Text style={styles.optionText}>Profile</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.option}
-        onPress={() => handleNavigation("Notifications")}
-      >
+      <TouchableOpacity style={styles.option} onPress={() => handleNavigation("Notifications")}>
         <Text style={styles.optionText}>Notifications</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.option}
-        onPress={() => handleNavigation("Privacy")}
-      >
+      <TouchableOpacity style={styles.option} onPress={() => handleNavigation("Privacy")}>
         <Text style={styles.optionText}>Privacy</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.option}
-        onPress={() => handleNavigation("Support")}
-      >
+      <TouchableOpacity style={styles.option} onPress={() => handleNavigation("Support")}>
         <Text style={styles.optionText}>Support</Text>
       </TouchableOpacity>
     </ScrollView>

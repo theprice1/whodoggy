@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import type React from "react";
+import { useState } from "react";
 
 const SubmitFeedbackScreen = () => {
-  const [feedback, setFeedback] = useState('');
-  const [email, setEmail] = useState('');
+  const [feedback, setFeedback] = useState("");
+  const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // You can replace this with an API call to submit feedback
-    console.log('Feedback submitted:', { email, feedback });
+    console.log("Feedback submitted:", { email, feedback });
     setSubmitted(true);
-    setFeedback('');
-    setEmail('');
+    setFeedback("");
+    setEmail("");
   };
 
   return (
