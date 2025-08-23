@@ -1,5 +1,5 @@
 // packages/api-client/src/owners.ts
-import type { ApiResponse, Owner } from "./types";
+import type { ApiResponse, Owner } from "./types.js";
 
 const BASE_URL = process.env.WHODOGGY_API_URL || "http://localhost:4000/api";
 

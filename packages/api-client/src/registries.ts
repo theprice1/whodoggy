@@ -1,5 +1,5 @@
 // packages/api-client/src/registries.ts
-import type { ApiResponse, Registry } from "./types";
+import type { ApiResponse, Registry } from "./types.js";
 
 const BASE_URL = process.env.WHODOGGY_API_URL || "http://localhost:4000/api";
 

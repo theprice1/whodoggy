@@ -27,10 +27,19 @@
       ],
       "@whodoggy/api-client": [
         "packages/api-client/src"
+      ],
+      "@whodoggy/backend/*": [
+        "packages/backend/src/*"
+      ],
+      "@whodoggy/backend": [
+        "packages/backend/src"
       ]
     },
     "types": [
       "node"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
     ]
   },
   "include": [
