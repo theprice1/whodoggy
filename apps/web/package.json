@@ -13,18 +13,18 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "firebase": "^11.10.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "firebase": "^11.10.0",
+    "react-native-web": "^0.21.1",
     "react-router-dom": "^6.15.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
+    "@types/react-native": "0.73.0",
     "typescript": "^5.4.8",
     "vite": "^5.0.0"
   }
 }
-
-

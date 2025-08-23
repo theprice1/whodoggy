@@ -1,25 +1,20 @@
-import axios from "axios";
-import type React from "react";
-import { useState } from "react";
-import {
-  ActivityIndicator,
-  Alert,
-  Button,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import React, { useState } from "react";
+
+interface SearchResult {
+  name: string;
+  breed: string;
+  owner?: string;
+  [key: string]: any;
+}
 
 const SearchScreen: React.FC = () => {
   const [chipId, setChipId] = useState("");
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<SearchResult | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const onSearch = async () => {
-    if (!chipId.trim()) {
-      Alert.alert("Error", "Please enter a microchip ID.");
+  const handleSearch = async () => {
+    if (!chipId) {
+      alert("Please enter a microchip ID");
       return;
     }
 
@@ -27,91 +22,58 @@ const SearchScreen: React.FC = () => {
     setResult(null);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/search", {
-        microchipId: chipId,
-      }); // Change localhost to your LAN IP if testing on device
-      setResult(response.data);
-    } catch (err: any) {
-      Alert.alert("Search Failed", err.response?.data?.error || "Something went wrong");
+      const response = await fetch("http://localhost:3000/api/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ microchipId: chipId }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+      }
+
+      const data: SearchResult = await response.json();
+      setResult(data);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred";
+      alert(errorMessage);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Search Microchip</Text>
+    <div className="p-4 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Search Microchip</h1>
 
-      <TextInput
-        placeholder="Enter microchip number"
+      <input
+        type="text"
+        placeholder="Enter microchip ID"
         value={chipId}
-        onChangeText={setChipId}
-        style={styles.input}
+        onChange={(e) => setChipId(e.target.value)}
+        className="border p-2 w-full mb-4"
       />
 
-      <button title="Search" onPress={onSearch} disabled={loading} / type="button">
-
-      {loading && <ActivityIndicator size="large" color="#6200ee" style={{ marginTop: 20 }} />}
+      <button
+        onClick={handleSearch}
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+        disabled={loading}
+      >
+        {loading ? "Searching..." : "Search"}
+      </button>
 
       {result && (
-        <View style={styles.resultBox}>
-          <Text style={styles.resultTitle}>Dog Info</Text>
-          <Text>
-            <Text style={styles.label}>Name:</Text> {result.dog?.name}
-          </Text>
-          <Text>
-            <Text style={styles.label}>Breed:</Text> {result.dog?.breed}
-          </Text>
-          <Text>
-            <Text style={styles.label}>Microchip ID:</Text> {result.dog?.microchip_id}
-          </Text>
-          <Text>
-            <Text style={styles.label}>Owner:</Text> {result.owner?.name}
-          </Text>
-          <Text>
-            <Text style={styles.label}>Registry:</Text> {result.registry?.name}
-          </Text>
-        </View>
+        <div className="mt-4 p-4 border rounded bg-gray-50">
+          <p><strong>Name:</strong> {result.name}</p>
+          <p><strong>Breed:</strong> {result.breed}</p>
+          {result.owner && <p><strong>Owner:</strong> {result.owner}</p>}
+        </div>
       )}
-    </ScrollView>
+    </div>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    flexGrow: 1,
-    backgroundColor: "#f9fafb",
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "600",
-    marginBottom: 20,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ddd",
-    padding: 12,
-    borderRadius: 6,
-    marginBottom: 20,
-    backgroundColor: "#fff",
-  },
-  resultBox: {
-    marginTop: 30,
-    backgroundColor: "#fff",
-    padding: 16,
-    borderRadius: 8,
-    elevation: 3,
-  },
-  resultTitle: {
-    fontSize: 18,
-    fontWeight: "500",
-    marginBottom: 8,
-  },
-  label: {
-    fontWeight: "bold",
-  },
-});
-
 export default SearchScreen;
-

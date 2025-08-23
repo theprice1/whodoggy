@@ -14,6 +14,9 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "allowJs": false,
+    "isolatedModules": true, // Helps with React & NodeNext
+    "strictNullChecks": true, // Ensures safer null/undefined handling
+    "strictFunctionTypes": true, // Safer function type assignments
     "baseUrl": ".",
     "paths": {
       "@whodoggy/shared/*": [
@@ -26,18 +29,19 @@
         "packages/api-client/src/*"
       ],
       "@whodoggy/api-client": [
-        "packages/api-client/src"
+        "packages/api-client/src/index.ts"
       ],
       "@whodoggy/backend/*": [
         "packages/backend/src/*"
       ],
       "@whodoggy/backend": [
-        "packages/backend/src"
+        "packages/backend/src/index.ts"
       ]
     },
     "types": [
-      "node"
-    ],
+      "node",
+      "jest"
+    ], // Add 'jest' if running tests
     "typeRoots": [
       "./node_modules/@types"
     ]
