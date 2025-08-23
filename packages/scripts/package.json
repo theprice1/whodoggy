@@ -6,7 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "tsc": "tsc --noEmit",
-    "build": "tsc --build",
+    "build": "tsc -b",
+    "clean": "rimraf dist",
     "seed:dogs": "tsx src/firebaseSeed.ts",
     "seed:owners": "tsx src/seedOwners.ts",
     "lint": "npx @biomejs/biome lint ./src",
@@ -22,5 +23,3 @@
     "typescript": "^5.9.2"
   }
 }
-
-

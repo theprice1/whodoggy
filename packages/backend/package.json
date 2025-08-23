@@ -11,7 +11,7 @@
     "clean": "rimraf dist",
     "build": "pnpm run clean && tsc",
     "start": "dotenv -e ../../.env -- node dist/index.js",
-    "dev": "dotenv -e ../../.env -- nodemon --watch src --ext ts --exec node --loader ts-node/esm src/index",
+    "dev": "cross-env DOTENV_CONFIG_PATH=../../.env nodemon --watch src --ext ts --exec ts-node-esm src/index.ts",
     "lint": "npx @biomejs/biome lint ./src",
     "lint:fix": "pnpm exec biome lint --apply",
     "format": "pnpm exec biome format --write 'src/**/*.{ts,tsx,js,json}'",
@@ -21,6 +21,10 @@
     "coverage": "vitest run --coverage",
     "seed-db": "tsx scripts/seedDatabase",
     "generate-mock-data": "tsx scripts/generateMockData",
+    "prisma:generate": "prisma generate --schema=./prisma/schema.prisma",
+    "prisma:push": "prisma db push --schema=./prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema=./prisma/schema.prisma",
+    "prisma:studio": "prisma studio --schema=./prisma/schema.prisma",
     "migrate": "dotenv -e ../../.env -- node-pg-migrate up -c ./node-pg-migrate.config.js",
     "migrate:down": "dotenv -e ../../.env -- node-pg-migrate down -m src/migrations",
     "migrate:status": "dotenv -e ../../.env -- node-pg-migrate status -m src/migrations",
@@ -60,6 +64,7 @@
     "@typescript-eslint/parser": "^8.39.1",
     "@vitest/ui": "^0.34.7",
     "biome": "^0.3.3",
+    "cross-env": "^10.0.0",
     "dotenv-cli": "^10.0.0",
     "eslint": "^8.57.1",
     "eslint-plugin-prettier": "^4.2.5",
@@ -79,5 +84,3 @@
     "react": "^18.3.1"
   }
 }
-
-

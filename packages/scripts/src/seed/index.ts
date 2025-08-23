@@ -1,7 +1,7 @@
 // packages/scripts/src/seed/index.ts
-import { seedDogs } from "./seedDogs";
-import { seedOwners } from "./seedOwners";
-import { seedRegistries } from "./seedRegistries";
+import { seedDogs } from "./seedDogs.js";
+import { seedOwners } from "./seedOwners.js";
+import { seedRegistries } from "./seedRegistries.js";
 
 async function main() {
   console.log("🌱 Starting WhoDoggy database seed...");

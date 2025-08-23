@@ -1,11 +1,12 @@
-import { adminDb } from "@whodoggy/shared/firebase/firebaseAdmin";
+// Update the import path if the module is local and not published
+import { adminDb } from "@whodoggy/shared";
 
 const dogs = [
   { id: "001", name: "Rex", breed: "Labrador", microchipId: "123ABC" },
   { id: "002", name: "Bella", breed: "Collie", microchipId: "456DEF" },
 ];
 
-async function seedDogs() {
+export async function seedDogs() {
   const batch = adminDb.batch();
   const dogsCol = adminDb.collection("dogs");
   for (const dog of dogs) {
