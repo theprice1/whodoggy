@@ -11,7 +11,7 @@
     "clean": "rimraf dist",
     "build": "pnpm run clean && tsc",
     "start": "dotenv -e ../../.env -- node dist/index.js",
-    "dev": "cross-env DOTENV_CONFIG_PATH=../../.env nodemon --watch src --ext ts --exec ts-node-esm src/index.ts",
+    "dev": "cross-env DOTENV_CONFIG_PATH=../../.env nodemon --watch src --ext ts,js --exec \"node --loader ts-node/esm src/index.ts\"",
     "lint": "npx @biomejs/biome lint ./src",
     "lint:fix": "pnpm exec biome lint --apply",
     "format": "pnpm exec biome format --write 'src/**/*.{ts,tsx,js,json}'",
@@ -48,6 +48,10 @@
     "morgan": "^1.10.1",
     "pg": "^8.16.3",
     "rimraf": "^5.0.10",
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "nodemon": "3.1.10",
     "zod": "^4.0.17"
   },
   "devDependencies": {

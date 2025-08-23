@@ -3,13 +3,13 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 
-import deleteDataRoutes from "./src/routes/deleteData.js.js";
-import dogsRoutes from "./src/routes/dogs.js.js";
-import ownersRoutes from "./src/routes/owners.js.js";
-import registriesRoutes from "./src/routes/registries.js.js";
-import searchRoutes from "./src/routes/search.js.js";
+import deleteDataRoutes from "./src/routes/deleteData.js";
+import dogsRoutes from "./src/routes/dogs.js";
+import ownersRoutes from "./src/routes/owners.js";
+import registriesRoutes from "./src/routes/registries.js";
+import searchRoutes from "./src/routes/search.js";
 
-import { errorHandler } from "./src/middleware/errorHandler.js.js";
+import { errorHandler } from "./src/middleware/errorHandler.js";
 
 dotenv.config();
 

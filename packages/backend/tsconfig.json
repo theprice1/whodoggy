@@ -1,33 +1,44 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "module": "NodeNext", // ✅ Keep this
+    "moduleResolution": "NodeNext", // ✅ Required for Node ESM
     "outDir": "dist",
     "rootDir": "src",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "strict": true,
-    "composite": true,
-    "incremental": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node", "jest"],
+    "types": [
+      "node",
+      "jest"
+    ],
     "paths": {
-      "@shared/*": ["../../packages/shared/dist/*"]
+      "@shared/*": [
+        "../../packages/shared/dist/*"
+      ]
     },
     "noEmitOnError": true
   },
-  "include": ["src/**/*", "src/**/*.d.ts", "src/__tests__/**/*"],
+  "include": [
+    "src/**/*",
+    "src/**/*.d.ts",
+    "src/__tests__/**/*"
+  ],
   "references": [
     {
       "path": "../shared"
     }
   ],
-  "exclude": ["node_modules", "dist", "build"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+  ]
 }
