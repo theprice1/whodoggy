@@ -5,31 +5,21 @@
     "rootDir": "src",
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
-    "types": ["node", "jest"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ES2020",
-    "esModuleInterop": true,
-    "allowJs": false,
-    "resolveJsonModule": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
     "composite": true,
-    "incremental": true,
-    "noEmitOnError": true
+    "types": [
+      "react",
+      "react-native",
+      "node"
+    ],
+    "incremental": true
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "dist",
-    "build",
     "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
-    "**/*.js",
-    "**/*.js.map"
+    "**/*.spec.ts"
   ]
 }

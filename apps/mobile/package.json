@@ -6,35 +6,34 @@
   "type": "module",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run --android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
-    "build": "expo build",
+    "build": "expo export",
     "lint": "npx @biomejs/biome lint ./src",
     "format": "biome format ./src --write",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@react-navigation/native": "^6.1.7",
+    "@react-navigation/native": "^7.1.17",
     "@react-navigation/native-stack": "^7.3.25",
     "expo": "~53.0.0",
     "expo-status-bar": "~1.6.0",
+    "@expo/metro-config": "0.20.17",
     "firebase": "^11.10.0",
     "react": "18.2.0",
-    "react-native": "0.74.5",
+    "react-native": "0.72.3",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-screens": "4.14.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@types/react": "18.2.0",
+    "@expo/cli": "^0.24.20",
+    "@types/react": "18.2.79",
     "@types/react-native": "0.73.0",
     "eslint": "^9.33.0",
     "eslint-config-expo": "^9.2.0",
     "eslint-plugin-react-native": "^5.0.0",
-    "expo-cli": "^6.3.10",
     "typescript": "^5.4.8"
   }
 }
-
-

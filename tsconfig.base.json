@@ -14,9 +14,9 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "allowJs": false,
-    "isolatedModules": true, // Helps with React & NodeNext
-    "strictNullChecks": true, // Ensures safer null/undefined handling
-    "strictFunctionTypes": true, // Safer function type assignments
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
     "baseUrl": ".",
     "paths": {
       "@whodoggy/shared/*": [
@@ -38,10 +38,6 @@
         "packages/backend/src/index.ts"
       ]
     },
-    "types": [
-      "node",
-      "jest"
-    ], // Add 'jest' if running tests
     "typeRoots": [
       "./node_modules/@types"
     ]

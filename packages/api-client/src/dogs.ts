@@ -1,5 +1,5 @@
 // packages/api-client/src/dogs.ts
-import type { ApiResponse, Dog } from "./types.js";
+import type { ApiResponse, Dog } from "./types";
 
 const BASE_URL = process.env.WHODOGGY_API_URL || "http://localhost:4000/api";
 

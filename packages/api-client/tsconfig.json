@@ -16,6 +16,10 @@
     "types": [
       "node"
     ],
+    "typeRoots": [
+      "node_modules/@types",
+      "./node_modules/@types"
+    ],
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
@@ -24,7 +28,6 @@
     "resolveJsonModule": true,
     "composite": true,
     "incremental": true,
-    "allowImportingTsExtensions": true,
     "moduleSuffixes": [
       ".ts",
       ".js"
@@ -39,6 +42,7 @@
     }
   },
   "include": [
+    "src",
     "src/**/*"
   ],
   "references": [
