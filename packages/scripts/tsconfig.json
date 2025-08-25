@@ -18,7 +18,8 @@
     "skipLibCheck": true,
     "incremental": true,
     "types": [
-      "node"
+      "node",
+      "vitest/globals"
     ],
     "baseUrl": ".",
     "paths": {
@@ -28,6 +29,7 @@
     }
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "tests"
   ]
 }

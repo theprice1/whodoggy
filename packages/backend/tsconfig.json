@@ -2,8 +2,8 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2022",
-    "module": "NodeNext", // ✅ Keep this
-    "moduleResolution": "NodeNext", // ✅ Required for Node ESM
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir": "src",
     "declaration": true,
@@ -17,19 +17,22 @@
     "resolveJsonModule": true,
     "types": [
       "node",
-      "jest"
     ],
     "paths": {
-      "@shared/*": [
-        "../../packages/shared/dist/*"
+      "@whodoggy/shared": [
+        "../../packages/shared/src"
+      ],
+      "@whodoggy/shared/*": [
+        "../../packages/shared/src/*"
       ]
     },
     "noEmitOnError": true
   },
   "include": [
-    "src/**/*",
+    "src",
+    "src/**/*.ts",
     "src/**/*.d.ts",
-    "src/__tests__/**/*"
+    "tests"
   ],
   "references": [
     {
@@ -39,6 +42,9 @@
   "exclude": [
     "node_modules",
     "dist",
-    "build"
+    "build",
+    "src/__tests__/**/*",
+    "**/*.test.ts",
+    "**/*.spec.ts"
   ]
 }
