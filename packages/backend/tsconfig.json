@@ -6,6 +6,14 @@
     "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir": "src",
+    "noEmit": false,
+    "jsx": "preserve",
+    "types": [
+      "node",
+      "fs-extra",
+      "pg",
+      "vitest"
+    ],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -15,9 +23,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": [
-      "node",
-    ],
     "paths": {
       "@whodoggy/shared": [
         "../../packages/shared/src"
@@ -30,6 +35,7 @@
   },
   "include": [
     "src",
+    "src/**/*",
     "src/**/*.ts",
     "src/**/*.d.ts",
     "tests"

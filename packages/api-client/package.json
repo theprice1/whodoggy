@@ -6,14 +6,14 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist node_modules/.cache",
+    "build": "tsc -b",
     "rebuild": "pnpm run clean && pnpm run build",
     "test": "vitest run",
     "test:watch": "vitest --watch",
     "lint": "npx @biomejs/biome lint ./src",
     "lint:fix": "pnpm exec biome lint --apply",
-    "format": "pnpm exec biome format --write .",
+    "format": "biome format .src --write .",
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
@@ -21,16 +21,19 @@
     "axios": "^1.11.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^24.3.0",
+    "@types/node": "^20.4.2",
     "@types/pg": "^8.15.5",
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.7",
     "@types/react-native": "0.73.0",
     "@vitest/ui": "^0.34.7",
     "biome": "^0.3.3",
+    "react": "^19.1.1",
+    "react-native": "0.72.3",
     "rimraf": "^5.0.10",
-    "typescript": "^5.9.2",
+    "typescript": "^5.2.0",
     "vitest": "^0.34.6"
   },
   "peerDependencies": {

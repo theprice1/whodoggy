@@ -6,20 +6,41 @@
     "declaration": true,
     "declarationMap": true,
     "composite": true,
-    "types": [
-      "react",
-      "react-native",
-      "node"
+    "incremental": true,
+    "strict": true,
+    "module": "NodeNext",
+    "noEmit": false,
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "lib": [
+      "ES2022"
     ],
-    "incremental": true
+    "types": [
+      "node",
+      "vitest",
+    ],
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@whodoggy/shared/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
-    "src/**/*"
+    "src",
+    "tests",
+    "src/**/*",
+    "tests/**/*"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ]
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ],
+  "references": []
 }

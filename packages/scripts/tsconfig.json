@@ -5,31 +5,46 @@
     "rootDir": "src",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "target": "es2022",
+    "target": "ES2022",
     "lib": [
-      "ES2022",
-      "DOM"
+      "ES2022"
     ],
     "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "types": [
+      "node",
+      "fs-extra",
+      "vitest"
+    ],
     "composite": true,
+    "incremental": true,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "incremental": true,
-    "types": [
-      "node",
-      "vitest/globals"
-    ],
+    "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
       "@whodoggy/shared/*": [
         "../shared/src/*"
       ]
-    }
+    },
+    "noEmitOnError": true
   },
   "include": [
     "src/**/*",
-    "tests"
+    "tests/**/*"
+  ],
+  "references": [
+    {
+      "path": "../shared"
+    }
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
   ]
 }

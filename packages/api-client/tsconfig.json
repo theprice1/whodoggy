@@ -5,8 +5,7 @@
     "moduleResolution": "NodeNext",
     "target": "ES2022",
     "lib": [
-      "ES2022",
-      "DOM"
+      "ES2022"
     ],
     "outDir": "dist",
     "rootDir": "src",
@@ -32,10 +31,14 @@
       "@whodoggy/shared/*": [
         "../../packages/shared/src/*"
       ]
-    }
+    },
+    "types": [
+      "node",
+      "vitest"
+    ],
+    "noEmitOnError": true
   },
   "include": [
-    "src",
     "src/**/*"
   ],
   "references": [
@@ -48,8 +51,6 @@
     "dist",
     "build",
     "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.spec.ts",
-    "**/*.spec.tsx"
+    "**/*.spec.ts"
   ]
 }

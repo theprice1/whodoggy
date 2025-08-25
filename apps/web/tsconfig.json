@@ -1,61 +1,41 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
     "outDir": "dist",
     "rootDir": "src",
-    "composite": true,
-    "incremental": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "target": "ES2020",
-    "strict": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "types": [
-      "jest",
-      "react",
-      "react-dom"
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM"
     ],
-    "baseUrl": "src",
-    "paths": {
-      "@whodoggy/shared": [
-        "../../packages/shared/src"
-      ],
-      "@whodoggy/shared/*": [
-        "../../packages/shared/src/*"
-      ],
-      "@whodoggy/api-client": [
-        "../../packages/api-client/src"
-      ],
-      "@whodoggy/api-client/*": [
-        "../../packages/api-client/src/*"
-      ]
-    },
+    "declaration": true,
+    "types": [
+      "node",
+      "fs-extra",
+    ],
+    "composite": true,
+    "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
-    "allowJs": false
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@whodoggy/shared/*": [
+        "../shared/src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*",
-    "src/**/*.d.ts"
+    "tests"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "build",
     "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.spec.ts",
-    "**/*.spec.tsx"
-  ],
-  "references": [
-    {
-      "path": "../../packages/shared"
-    },
-    {
-      "path": "../../packages/api-client"
-    }
+    "**/*.spec.ts"
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@whodoggy/scripts",
+  "name": "whodoggy-scripts",
   "version": "1.0.0",
   "private": true,
   "type": "module",

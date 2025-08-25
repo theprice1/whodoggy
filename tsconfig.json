@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.base.json",
   "files": [],
   "references": [
     {
@@ -12,23 +13,15 @@
     },
     {
       "path": "./packages/shared"
+    },
+    {
+      "path": "./packages/api-client"
     }
   ],
   "compilerOptions": {
     "composite": true,
     "incremental": true,
     "noEmit": true,
-    "strict": true,
-    "moduleResolution": "node16",
-    "module": "NodeNext",
-    "target": "ES2020",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "@whodoggy/shared/*": ["packages/shared/src/*"]
-    }
-  },
-  "extends": "expo/tsconfig.base"
+    "strict": true
+  }
 }
