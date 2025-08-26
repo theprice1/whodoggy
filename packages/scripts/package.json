@@ -7,11 +7,14 @@
   "scripts": {
     "tsc": "tsc --noEmit",
     "build": "tsc -b",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist node_modules/.cache",
+    "clean:workspace": "pnpm -r run clean",
     "seed:dogs": "tsx src/firebaseSeed.ts",
     "seed:owners": "tsx src/seedOwners.ts",
     "lint": "npx @biomejs/biome lint ./src",
-    "rebuild": "pnpm run build"
+    "rebuild": "pnpm run build",
+    "test": "vitest run --config tsconfig.test.json",
+    "test:watch": "vitest --watch --config tsconfig.test.json"
   },
   "dependencies": {
     "@prisma/client": "^6.14.0",

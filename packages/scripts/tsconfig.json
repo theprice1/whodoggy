@@ -15,7 +15,6 @@
     "types": [
       "node",
       "fs-extra",
-      "vitest"
     ],
     "composite": true,
     "incremental": true,
@@ -45,6 +44,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "build"
+    "build",
+    "**/*.test.ts",
+    "**/*.spec.ts"
   ]
 }

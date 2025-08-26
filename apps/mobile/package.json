@@ -14,8 +14,9 @@
     "format": "biome format ./src --write",
     "type-check": "tsc --noEmit",
     "clean": "rimraf .expo dist node_modules/.cache",
-    "test": "vitest run --reporter verbose",
-    "test:watch": "vitest"
+    "clean:workspace": "pnpm -r run clean",
+    "test": "vitest run --config tsconfig.test.json",
+    "test:watch": "vitest --watch --config tsconfig.test.json"
   },
   "dependencies": {
     "@react-navigation/native": "^7.1.17",

@@ -1,11 +1,15 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "jsx": "react-jsx",
-    "types": ["vitest/globals", "node", "jest"],
-    "noEmit": true
+    "types": [
+      "node",
+      "vitest"
+    ]
   },
-  "include": ["**/*.test", "**/*.test", "**/*.spec", "**/*.spec"]
+  "include": [
+    "packages/**/src/**/*.test.ts",
+    "packages/**/src/**/*.spec.ts",
+    "apps/**/src/**/*.test.ts",
+    "apps/**/src/**/*.spec.ts"
+  ]
 }

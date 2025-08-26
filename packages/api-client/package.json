@@ -7,13 +7,14 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf dist node_modules/.cache",
+    "clean:workspace": "pnpm -r run clean",
     "build": "tsc -b",
     "rebuild": "pnpm run clean && pnpm run build",
-    "test": "vitest run",
-    "test:watch": "vitest --watch",
-    "lint": "npx @biomejs/biome lint ./src",
+    "test": "vitest run --config tsconfig.test.json",
+    "test:watch": "vitest --watch --config tsconfig.test.json",
+    "lint": "pnpm exec biome lint ./src",
     "lint:fix": "pnpm exec biome lint --apply",
-    "format": "biome format .src --write .",
+    "format": "pnpm exec biome format ./src --write",
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/node": "^24.3.0",
+    "@types/fs-extra": "^11.0.4",
     "@vitest/ui": "^0.34.7",
     "biome": "^0.3.3",
     "rimraf": "^5.0.10",
