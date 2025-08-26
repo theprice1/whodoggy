@@ -4,11 +4,14 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "node",
-    include: ["src/**/*.test"],
-    setupFiles: ["src/__tests__/setup"],
+    include: ["src/**/*.test.ts", "src/**/*.test.js"],
+    setupFiles: ["src/__tests__/setup.ts"],
     coverage: {
       reporter: ["text", "json", "html"],
-      // remove unsupported thresholds like functions, branches, statements
     },
+    // Use the test-specific TypeScript config
+    typecheck: {
+      tsconfig: './tsconfig.test.json'
+    }
   },
 });

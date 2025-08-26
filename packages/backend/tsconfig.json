@@ -12,7 +12,6 @@
       "node",
       "fs-extra",
       "pg",
-      "vitest"
     ],
     "declaration": true,
     "declarationMap": true,

@@ -19,6 +19,12 @@ export const verifyFirebaseToken = async (
 
   const token = authHeader.split(" ")[1];
 
+  // Add null check for the token
+  if (!token) {
+    res.status(401).json({ error: "Invalid authorization token format" });
+    return;
+  }
+
   try {
     const decodedToken = await adminAuth.verifyIdToken(token);
     req.user = decodedToken; // Attach Firebase user info to request

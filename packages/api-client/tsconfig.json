@@ -34,7 +34,6 @@
     },
     "types": [
       "node",
-      "vitest"
     ],
     "noEmitOnError": true
   },

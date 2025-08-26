@@ -13,6 +13,9 @@ export async function authenticate(req: AuthenticatedRequest, res: Response, nex
     return res.status(401).json({ error: "Unauthorized" });
   }
   const idToken = authHeader.split(" ")[1];
+  if (!idToken) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
   try {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     req.user = decodedToken;

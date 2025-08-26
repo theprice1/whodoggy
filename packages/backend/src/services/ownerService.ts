@@ -7,7 +7,7 @@ export const getOwner = async (id: string): Promise<Owner | null> => {
     const results = await query<Owner>("SELECT id, name, email, phone FROM owners WHERE id = $1", [
       id,
     ]);
-    return results.length > 0 ? results[0] : null;
+    return results.length > 0 ? (results[0] ?? null) : null;
   } catch (err) {
     console.error("Error fetching owner by id:", err);
     throw err;

@@ -8,6 +8,10 @@ export const getAllRegistries = async (_req: Request, res: Response) => {
 };
 
 export const getRegistryById = async (req: Request, res: Response) => {
-  const registry = await getRegistry(req.params.id);
+  const { id } = req.params;
+  if (typeof id !== "string") {
+    return res.status(400).json({ error: "Registry ID is required" });
+  }
+  const registry = await getRegistry(id);
   registry ? res.json(registry) : res.status(404).json({ error: "Registry not found" });
 };

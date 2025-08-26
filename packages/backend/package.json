@@ -83,7 +83,7 @@
     "tsx": "^4.20.4",
     "typescript": "^5.2.0",
     "typescript-eslint": "^8.39.1",
-    "vitest": "^0.34.0"
+    "vitest": "^0.34.6"
   },
   "peerDependencies": {
     "react": "^18.3.1"

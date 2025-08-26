@@ -18,5 +18,6 @@ export const findDogByMicrochip = async (microchipId: string): Promise<DogWithDe
   const results = await query<DogWithDetails>(sql, [microchipId]);
 
   // Return the first result or null if not found
-  return results.length > 0 ? results[0] : null;
+  // Use nullish coalescing to convert undefined to null
+  return results.length > 0 ? (results[0] ?? null) : null;
 };
