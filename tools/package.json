@@ -8,8 +8,8 @@
     "clean:workspace": "pnpm -r run clean",
     "start:scripts": "ts-node scripts/sync-firebase-postgres",
     "start:openapi": "npm run --prefix openapi generate",
-    "test": "vitest run --config tsconfig.test.json",
-    "test:watch": "vitest --watch --config tsconfig.test.json"
+    "test": "vitest run",
+    "test:watch": "vitest --watch"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",

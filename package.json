@@ -6,7 +6,8 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-    "scripts"
+    "scripts",
+    "tools/*"
   ],
   "engines": {
     "node": ">=18"
@@ -23,8 +24,8 @@
     "type-check": "pnpm -r run type-check",
     "check": "npx @biomejs/biome check ./packages ./apps",
     "lint:workspace": "pnpm -r run lint",
-    "test": "vitest run --config tsconfig.test.json",
-    "test:watch": "vitest --watch --config tsconfig.test.json",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
     "clean": "rimraf dist node_modules/.cache",
     "clean:workspace": "pnpm -r run clean",
     "migrate:up": "pnpm --filter @whodoggy/backend run migrate",
@@ -61,6 +62,7 @@
     "react-dom": "^18.3.1",
     "rimraf": "^5.0.0",
     "ts-jest": "^29.4.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.8",
     "typescript-eslint": "^8.40.0",
     "vitest": "^0.34.6"

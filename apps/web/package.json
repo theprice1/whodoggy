@@ -13,8 +13,8 @@
     "type-check": "tsc --noEmit",
     "clean": "rimraf dist node_modules/.cache .vite",
     "clean:workspace": "pnpm -r run clean",
-    "test": "vitest run --config tsconfig.test.json",
-    "test:watch": "vitest --watch --config tsconfig.test.json"
+    "test": "vitest run",
+    "test:watch": "vitest --watch"
   },
   "dependencies": {
     "firebase": "^11.10.0",
