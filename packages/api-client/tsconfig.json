@@ -1,16 +1,16 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "target": "ES2022",
     "lib": [
       "ES2022"
     ],
     "outDir": "dist",
     "rootDir": "src",
-    "declaration": true,
-    "declarationMap": true,
+    "declaration": false,
+    "declarationMap": false,
     "sourceMap": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -26,15 +26,14 @@
     ],
     "paths": {
       "@whodoggy/shared": [
-        "../../packages/shared/src"
+        "../../packages/shared/src",
+        "../../packages/shared/dist"
       ],
       "@whodoggy/shared/*": [
-        "../../packages/shared/src/*"
+        "../../packages/shared/src/*",
+        "../../packages/shared/dist/*"
       ]
     },
-    "types": [
-      "node",
-    ],
     "noEmitOnError": true
   },
   "include": [
@@ -42,7 +41,7 @@
   ],
   "references": [
     {
-      "path": "../shared"
+      "path": "../../packages/shared"
     }
   ],
   "exclude": [
