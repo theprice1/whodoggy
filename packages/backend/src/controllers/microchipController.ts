@@ -1,13 +1,7 @@
 // packages/backend/src/controllers/microchipController.ts
 import type { Request, Response } from "express";
+import { query } from "../db";
 
-// Mock database of microchips — update as needed to match real schema
-const mockMicrochips = [
-  { microchipId: "1", name: "Dog A", breed: "Labrador" },
-  { microchipId: "2", name: "Dog B", breed: "Beagle" },
-];
-
-// Controller for getting a microchip by ID
 export async function getMicrochipById(req: Request, res: Response): Promise<void> {
   const microchipId = (req.params.id || "").trim();
 
@@ -16,13 +10,17 @@ export async function getMicrochipById(req: Request, res: Response): Promise<voi
     return;
   }
 
-  // Simulate async operation (e.g., DB lookup or external API call)
-  const microchip = mockMicrochips.find((m) => m.microchipId === microchipId);
+  try {
+    const rows = await query("SELECT * FROM dogs WHERE microchip_id = $1 LIMIT 1", [microchipId]);
 
-  if (!microchip) {
-    res.status(404).json({ error: "Microchip not found" });
-    return;
+    if (rows.length === 0) {
+      res.status(404).json({ error: "Microchip not found" });
+      return;
+    }
+
+    res.status(200).json(rows[0]);
+  } catch (err) {
+    console.error("DB query error:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
-
-  res.status(200).json(microchip);
 }
