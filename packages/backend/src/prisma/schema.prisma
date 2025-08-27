@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Registry {
+  id       Int    @id @default(autoincrement())
+  name     String @unique
+  country  String
+  contact  String
+  dogs     Dog[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("registries")
+}
+
+model Dog {
+  id         Int      @id @default(autoincrement())
+  microchipId String  @unique
+  name       String
+  breed      String?
+  age        Int
+  gender     String
+  ownerName  String
+  ownerEmail String
+  ownerPhone String
+  address    String
+  registryId Int
+  registry   Registry @relation(fields: [registryId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("dogs")
+}

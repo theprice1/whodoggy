@@ -1,0 +1,72 @@
+import { prisma } from "./prismaClient.js";
+
+async function main() {
+  console.log("Seeding registries...");
+
+  const registriesData = [
+    { name: "Global Microchips", country: "USA", contact: "contact@globalmicrochips.com" },
+    { name: "EuroPet Registry", country: "Germany", contact: "info@europet.de" },
+    { name: "Canine Connect", country: "UK", contact: "support@canineconnect.co.uk" },
+    { name: "Dog ID International", country: "France", contact: "contact@dogid.fr" },
+    { name: "PetSafe Registry", country: "Canada", contact: "registry@petsafe.ca" },
+    { name: "Microchip World", country: "Australia", contact: "info@microchipworld.au" },
+    { name: "AnimalTrack", country: "Netherlands", contact: "support@animaltrack.nl" },
+    { name: "PetLink Global", country: "USA", contact: "hello@petlinkglobal.com" },
+    { name: "Fido Registry", country: "UK", contact: "contact@fidoregistry.co.uk" },
+    { name: "PawPrints", country: "France", contact: "info@pawprints.fr" },
+    { name: "DogID UK", country: "UK", contact: "support@dogid.uk" },
+    { name: "PetID Germany", country: "Germany", contact: "contact@petid.de" },
+    { name: "Global Paw Registry", country: "USA", contact: "hello@globalpaw.com" },
+    { name: "Canine ID Network", country: "Canada", contact: "info@canineid.ca" },
+    { name: "Pet Passport Registry", country: "Australia", contact: "contact@petpassport.au" },
+    { name: "DogSafe", country: "Netherlands", contact: "support@dogsafe.nl" },
+    { name: "ID My Dog", country: "UK", contact: "info@idmydog.co.uk" },
+    { name: "Pet Tracker Intl", country: "USA", contact: "hello@pettracker.com" },
+    { name: "Microchip Solutions", country: "Germany", contact: "contact@microchipsolutions.de" },
+    { name: "DogRegistry Europe", country: "France", contact: "support@dogregistry.fr" },
+    { name: "Global PetID", country: "Canada", contact: "info@globalpetid.ca" },
+    { name: "PawSecure", country: "Australia", contact: "contact@pawsecure.au" }
+  ];
+
+  const registries = [];
+  for (const data of registriesData) {
+    const registry = await prisma.registry.create({ data });
+    registries.push(registry);
+  }
+
+  console.log("Seeding dogs...");
+
+  for (let i = 1; i <= 500; i++) {
+    const registry = registries[Math.floor(Math.random() * registries.length)];
+
+    if (!registry) {
+      throw new Error("Registry not found while seeding dogs");
+    }
+
+    await prisma.dog.create({
+      data: {
+        microchipId: `MC-${100000 + i}`,
+        name: `Dog${i}`,
+        breed: `Breed${(i % 20) + 1}`,
+        age: Math.floor(Math.random() * 15) + 1,
+        gender: i % 2 === 0 ? "Male" : "Female",
+        ownerName: `Owner${i}`,
+        ownerEmail: `owner${i}@example.com`,
+        ownerPhone: `+100000000${i}`,
+        address: `${i} Dog Street, PetCity`,
+        registryId: registry.id
+      }
+    });
+  }
+
+  console.log("Seeding completed!");
+}
+
+main()
+  .catch((error) => {
+    console.error("Seeding failed:", error);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
