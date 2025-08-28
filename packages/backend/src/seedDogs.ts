@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url"; // <-- ESM replacement for __dirname
-import { pool } from "./db";
+import { pool } from "./db.js";
 
 // Get __dirname equivalent in ESM
 const __filename = fileURLToPath(import.meta.url);
