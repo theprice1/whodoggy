@@ -1,56 +1,72 @@
-// packages/backend/src/controllers/searchControllers.ts
-import { type Request, type Response, Router } from "express";
-import { ZodError, type ZodIssue, z } from "zod";
-import { query } from "../db.js"; // Use generic query helper
-import { verifyFirebaseToken } from "../middleware/firebaseAuthMiddleware.js";
+// src/controllers/searchControllers.ts
+import type { Request, Response } from 'express';
+import { prisma } from "../db.js";
 
-const router: Router = Router();
-
-// Dog type for type-safe query
-interface Dog {
-  id: string;
-  name: string;
-  breed: string;
-  age: number;
-  microchip_id: string;
-}
-
-// Zod validation schema
-const searchSchema = z.object({
-  microchip_id: z.string().length(15, {
-    message: "microchip_id must be exactly 15 characters long.",
-  }),
-});
-
-// POST /search endpoint
-router.post("/search", verifyFirebaseToken, async (req: Request, res: Response) => {
+export const searchDogs = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { microchip_id } = searchSchema.parse(req.body);
+    const { q, registryId, breed, gender } = req.query;
 
-    // Query the database using the new query<T>() helper
-    const results = await query<Dog>("SELECT * FROM dogs WHERE microchip_id = $1 LIMIT 1", [
-      microchip_id,
-    ]);
-
-    if (results.length === 0) {
-      return res.status(404).json({ message: "Microchip not found" });
+    if (!q && !registryId && !breed && !gender) {
+      res.status(400).json({ error: 'At least one search parameter is required' });
+      return;
     }
 
-    return res.status(200).json({ data: results[0] });
-  } catch (error) {
-    if (error instanceof ZodError) {
-      const formattedErrors: { path: string; message: string }[] = error.issues.map(
-        (e: ZodIssue) => ({
-          path: e.path.join("."),
-          message: e.message,
-        }),
+    // Build the where clause dynamically
+    const where: any = {};
+    const orConditions: any[] = [];
+
+    // General search query
+    if (q && typeof q === 'string') {
+      orConditions.push(
+        { name: { contains: q, mode: 'insensitive' } },
+        { breed: { contains: q, mode: 'insensitive' } },
+        { microchipId: { contains: q, mode: 'insensitive' } },
+        { ownerName: { contains: q, mode: 'insensitive' } },
+        { ownerEmail: { contains: q, mode: 'insensitive' } },
+        { ownerPhone: { contains: q, mode: 'insensitive' } }
       );
-      return res.status(400).json({ errors: formattedErrors });
     }
 
-    console.error("Search error:", error);
-    return res.status(500).json({ error: "Server error during microchip search" });
-  }
-});
+    // Filter by registry
+    if (registryId && typeof registryId === 'string') {
+      const parsedRegistryId = parseInt(registryId, 10);
+      if (!isNaN(parsedRegistryId)) {
+        where.registryId = parsedRegistryId;
+      }
+    }
 
-export default router;
+    // Filter by breed
+    if (breed && typeof breed === 'string') {
+      where.breed = { contains: breed, mode: 'insensitive' };
+    }
+
+    // Filter by gender
+    if (gender && typeof gender === 'string') {
+      where.gender = gender;
+    }
+
+    // Add OR conditions if they exist
+    if (orConditions.length > 0) {
+      where.OR = orConditions;
+    }
+
+    const dogs = await prisma.dog.findMany({
+      where,
+      include: {
+        registry: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    res.json({
+      dogs,
+      total: dogs.length,
+      query: { q, registryId, breed, gender },
+    });
+  } catch (error) {
+    console.error('Error searching dogs:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};

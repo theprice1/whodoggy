@@ -1,36 +1,32 @@
-import express from "express";
-import type { Request, Response } from "express";
-import { dogService } from "../services/dogService.js";
+// src/routes/dogs.ts
+import express from 'express';
+import {
+  getDogs,
+  getDogById,
+  getDogByMicrochipId,
+  createDog,
+  updateDog,
+  deleteDog,
+} from '../controllers/dogController.js';
 
-const router: express.Router = express.Router();
+const router = express.Router();
 
-router.get("/:id", async (req: Request, res: Response) => {
-  try {
-    const id = req.params.id;
-    if (!id) {
-      return res.status(400).json({ error: "Dog ID is required" });
-    }
-    const dog = await dogService.getDogById(id);
-    if (!dog) {
-      return res.status(404).json({ error: "Dog not found" });
-    }
-    res.json(dog);
-  } catch (err) {
-    res.status(500).json({ error: "Server error" });
-  }
-});
+// GET /dogs - Get all dogs (with optional search and filter)
+router.get('/', getDogs);
 
-router.post("/", async (req: Request, res: Response) => {
-  try {
-    const dogData = req.body;
-    if (!dogData || !dogData.name) {
-      return res.status(400).json({ error: "Dog data incomplete" });
-    }
-    const dog = await dogService.createDog(dogData);
-    res.status(201).json(dog);
-  } catch (err) {
-    res.status(500).json({ error: "Server error" });
-  }
-});
+// GET /dogs/:id - Get dog by ID
+router.get('/:id', getDogById);
 
-export { router as dogsRouter };
+// GET /dogs/microchip/:microchipId - Get dog by microchip ID
+router.get('/microchip/:microchipId', getDogByMicrochipId);
+
+// POST /dogs - Create a new dog
+router.post('/', createDog);
+
+// PUT /dogs/:id - Update a dog
+router.put('/:id', updateDog);
+
+// DELETE /dogs/:id - Delete a dog
+router.delete('/:id', deleteDog);
+
+export default router;

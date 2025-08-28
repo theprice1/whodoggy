@@ -1,26 +1,33 @@
-// packages/backend/src/controllers/microchipController.ts
-import type { Request, Response } from "express";
-import { query } from "../db";
+// src/controllers/microchipController.ts
+import type { Request, Response } from 'express';
+import { prisma } from "../db.js";
 
-export async function getMicrochipById(req: Request, res: Response): Promise<void> {
-  const microchipId = (req.params.id || "").trim();
-
-  if (!microchipId) {
-    res.status(400).json({ error: "Microchip ID is required" });
-    return;
-  }
-
+export const getMicrochipById = async (req: Request, res: Response): Promise<void> => {
   try {
-    const rows = await query("SELECT * FROM dogs WHERE microchip_id = $1 LIMIT 1", [microchipId]);
+    const { microchipId } = req.params;
 
-    if (rows.length === 0) {
-      res.status(404).json({ error: "Microchip not found" });
+    if (!microchipId) {
+      res.status(400).json({ error: 'Microchip ID is required' });
       return;
     }
 
-    res.status(200).json(rows[0]);
-  } catch (err) {
-    console.error("DB query error:", err);
-    res.status(500).json({ error: "Internal server error" });
+    const dog = await prisma.dog.findUnique({
+      where: {
+        microchipId,
+      },
+      include: {
+        registry: true,
+      },
+    });
+
+    if (!dog) {
+      res.status(404).json({ error: 'Dog with this microchip ID not found' });
+      return;
+    }
+
+    res.json(dog);
+  } catch (error) {
+    console.error('Error fetching dog by microchip ID:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
-}
+};

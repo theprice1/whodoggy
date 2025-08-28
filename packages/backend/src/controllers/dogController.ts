@@ -1,68 +1,223 @@
-import type { Request, Response, NextFunction } from "express";
-import * as dogService from "../services/dogService.js";
+// src/controllers/dogController.ts
+import type { Request, Response } from 'express';
+import * as dogService from '../services/dogService.js';
 
-// Get all dogs
-export const getAllDogsHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const getDogs = async (req: Request, res: Response): Promise<void> => {
   try {
-    const dogs = await dogService.getAllDogs();
+    const { search, registryId } = req.query;
+
+    let dogs;
+
+    if (search && typeof search === 'string') {
+      dogs = await dogService.searchDogs(search);
+    } else if (registryId && typeof registryId === 'string') {
+      const parsedRegistryId = parseInt(registryId, 10);
+      if (!isNaN(parsedRegistryId)) {
+        dogs = await dogService.getDogsByRegistry(parsedRegistryId);
+      } else {
+        dogs = await dogService.getAllDogs();
+      }
+    } else {
+      dogs = await dogService.getAllDogs();
+    }
+
     res.json(dogs);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    console.error('Error in getDogs:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-// Get dog by ID
-export const getDogByIdHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const getDogById = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    if (!id) return res.status(400).json({ error: "Dog ID is required" });
 
-    const dog = await dogService.getDogById(id);
-    if (!dog) return res.status(404).json({ error: "Dog not found" });
+    if (!id) {
+      res.status(400).json({ error: 'Dog ID is required' });
+      return;
+    }
+
+    const parsedId = parseInt(id, 10);
+
+    if (isNaN(parsedId)) {
+      res.status(400).json({ error: 'Invalid dog ID' });
+      return;
+    }
+
+    const dog = await dogService.getDogById(parsedId);
+
+    if (!dog) {
+      res.status(404).json({ error: 'Dog not found' });
+      return;
+    }
 
     res.json(dog);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    console.error('Error in getDogById:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-// Create dog
-export const createDogHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const getDogByMicrochipId = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { name, breed, age, ownerId } = req.body;
-    const dog = await dogService.createDog({ name, breed, age, ownerId });
+    const { microchipId } = req.params;
+
+    if (!microchipId) {
+      res.status(400).json({ error: 'Microchip ID is required' });
+      return;
+    }
+
+    const dog = await dogService.getDogByMicrochipId(microchipId);
+
+    if (!dog) {
+      res.status(404).json({ error: 'Dog not found' });
+      return;
+    }
+
+    res.json(dog);
+  } catch (error) {
+    console.error('Error in getDogByMicrochipId:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+export const createDog = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const {
+      microchipId,
+      name,
+      breed,
+      age,
+      gender,
+      ownerName,
+      ownerEmail,
+      ownerPhone,
+      address,
+      registryId
+    } = req.body;
+
+    // Validate required fields
+    if (!microchipId || !name || age === undefined || !gender || !ownerName || !ownerEmail || !ownerPhone || !address || registryId === undefined) {
+      res.status(400).json({
+        error: 'Missing required fields: microchipId, name, age, gender, ownerName, ownerEmail, ownerPhone, address, registryId'
+      });
+      return;
+    }
+
+    // Parse and validate numeric fields
+    const parsedAge = typeof age === 'string' ? parseInt(age, 10) : age;
+    const parsedRegistryId = typeof registryId === 'string' ? parseInt(registryId, 10) : registryId;
+
+    if (isNaN(parsedAge) || isNaN(parsedRegistryId)) {
+      res.status(400).json({
+        error: 'Age and registryId must be valid numbers'
+      });
+      return;
+    }
+
+    const dog = await dogService.createDog({
+      microchipId,
+      name,
+      breed,
+      age: parsedAge,
+      gender,
+      ownerName,
+      ownerEmail,
+      ownerPhone,
+      address,
+      registryId: parsedRegistryId
+    });
+
     res.status(201).json(dog);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    console.error('Error in createDog:', error);
+
+    if (error instanceof Error) {
+      if (error.message.includes('already exists') || error.message.includes('not found')) {
+        res.status(400).json({ error: error.message });
+        return;
+      }
+    }
+
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-// Update dog
-export const updateDogHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const updateDog = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    if (!id) return res.status(400).json({ error: "Dog ID is required" });
 
-    const dog = await dogService.updateDog(id, req.body);
-    if (!dog) return res.status(404).json({ error: "Dog not found or could not update" });
+    if (!id) {
+      res.status(400).json({ error: 'Dog ID is required' });
+      return;
+    }
+
+    const parsedId = parseInt(id, 10);
+
+    if (isNaN(parsedId)) {
+      res.status(400).json({ error: 'Invalid dog ID' });
+      return;
+    }
+
+    // Convert string numbers to integers if present and valid
+    const updateData: any = { ...req.body };
+    if (updateData.age && typeof updateData.age === 'string') {
+      const parsedAge = parseInt(updateData.age, 10);
+      updateData.age = isNaN(parsedAge) ? updateData.age : parsedAge;
+    }
+    if (updateData.registryId && typeof updateData.registryId === 'string') {
+      const parsedRegistryId = parseInt(updateData.registryId, 10);
+      updateData.registryId = isNaN(parsedRegistryId) ? updateData.registryId : parsedRegistryId;
+    }
+
+    const dog = await dogService.updateDog(parsedId, updateData);
+
+    if (!dog) {
+      res.status(404).json({ error: 'Dog not found' });
+      return;
+    }
 
     res.json(dog);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    console.error('Error in updateDog:', error);
+
+    if (error instanceof Error) {
+      if (error.message.includes('already exists') || error.message.includes('not found')) {
+        res.status(400).json({ error: error.message });
+        return;
+      }
+    }
+
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-// Delete dog
-export const deleteDogHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const deleteDog = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    if (!id) return res.status(400).json({ error: "Dog ID is required" });
 
-    const dog = await dogService.deleteDog(id);
-    if (!dog) return res.status(404).json({ error: "Dog not found or could not delete" });
+    if (!id) {
+      res.status(400).json({ error: 'Dog ID is required' });
+      return;
+    }
 
-    res.json({ message: "Dog deleted successfully" });
-  } catch (err) {
-    next(err);
+    const parsedId = parseInt(id, 10);
+
+    if (isNaN(parsedId)) {
+      res.status(400).json({ error: 'Invalid dog ID' });
+      return;
+    }
+
+    const dog = await dogService.deleteDog(parsedId);
+
+    if (!dog) {
+      res.status(404).json({ error: 'Dog not found' });
+      return;
+    }
+
+    res.json({ message: 'Dog deleted successfully', dog });
+  } catch (error) {
+    console.error('Error in deleteDog:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };

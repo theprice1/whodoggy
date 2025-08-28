@@ -1,6 +1,6 @@
 // packages/backend/src/routes/microchipRoutes.ts
 import { Router } from "express";
-import { getMicrochipById } from "../controllers/microchipController";
+import { getMicrochipById } from "../controllers/microchipController.js";
 
 const router = Router();
 
