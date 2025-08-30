@@ -1,13 +1,34 @@
 // packages/backend/src/services/ownerService.ts
-import { query } from "../db.js";
+import { prisma } from "../db.js";
 import type { Owner } from "../types/types.js";
 
 export const getOwner = async (id: string): Promise<Owner | null> => {
   try {
-    const results = await query<Owner>("SELECT id, name, email, phone FROM owners WHERE id = $1", [
-      id,
-    ]);
-    return results.length > 0 ? (results[0] ?? null) : null;
+    // Since there's no Owner model, we'll search for owners in Dog records
+    const dog = await prisma.dog.findFirst({
+      where: {
+        OR: [
+          { ownerEmail: id },
+          { ownerPhone: id },
+          { ownerName: { contains: id, mode: 'insensitive' } }
+        ]
+      },
+      select: {
+        ownerName: true,
+        ownerEmail: true,
+        ownerPhone: true,
+      },
+    });
+
+    if (!dog) return null;
+
+    // Transform to Owner interface
+    return {
+      id: dog.ownerEmail, // Use email as ID since no separate owner model
+      name: dog.ownerName,
+      email: dog.ownerEmail,
+      phone: dog.ownerPhone,
+    };
   } catch (err) {
     console.error("Error fetching owner by id:", err);
     throw err;
@@ -16,8 +37,21 @@ export const getOwner = async (id: string): Promise<Owner | null> => {
 
 export const getAllOwnersService = async (): Promise<Owner[]> => {
   try {
-    const results = await query<Owner>("SELECT id, name, email, phone FROM owners");
-    return results;
+    // Get unique owners from dogs table
+    const uniqueOwners = await prisma.dog.groupBy({
+      by: ['ownerName', 'ownerEmail', 'ownerPhone'],
+      _count: {
+        ownerEmail: true,
+      },
+    });
+
+    // Transform to Owner interface
+    return uniqueOwners.map(owner => ({
+      id: owner.ownerEmail,
+      name: owner.ownerName,
+      email: owner.ownerEmail,
+      phone: owner.ownerPhone,
+    }));
   } catch (err) {
     console.error("Error fetching all owners:", err);
     throw err;

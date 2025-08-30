@@ -24,11 +24,28 @@ const app: FirebaseApp = initializeApp(firebaseConfig);
 const auth: Auth = getAuth(app);
 const db: Firestore = getFirestore(app);
 
-// Web-only analytics
-if (typeof window !== "undefined" && "document" in window) {
+// Environment-safe browser detection
+const isBrowser = (() => {
+  try {
+    return typeof globalThis !== 'undefined' &&
+      'window' in globalThis &&
+      'document' in globalThis;
+  } catch {
+    return false;
+  }
+})();
+
+// Web-only analytics with safe environment detection
+if (isBrowser) {
   import("firebase/analytics").then(({ getAnalytics }) => {
-    analytics = getAnalytics(app);
-    console.log("Firebase Analytics initialized");
+    try {
+      analytics = getAnalytics(app);
+      console.log("Firebase Analytics initialized");
+    } catch (error) {
+      console.warn("Failed to initialize Firebase Analytics:", error);
+    }
+  }).catch((error) => {
+    console.warn("Failed to load Firebase Analytics module:", error);
   });
 }
 

@@ -9,7 +9,7 @@ import {
   deleteDog,
 } from '../controllers/dogController.js';
 
-const router = express.Router();
+const router: express.Router = express.Router();
 
 // GET /dogs - Get all dogs (with optional search and filter)
 router.get('/', getDogs);

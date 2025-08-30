@@ -7,11 +7,13 @@ dotenv.config();
 
 const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_CREDENTIALS_JSON as string);
 
-const app: App = getApps().length
-  ? getApps()[0]
+// Get existing apps or initialize new one
+const existingApps = getApps();
+const app: App = existingApps.length > 0 && existingApps[0]
+  ? existingApps[0]
   : initializeApp({
-      credential: cert(serviceAccount),
-    });
+    credential: cert(serviceAccount),
+  });
 
 const adminDb: Firestore = getFirestore(app);
 const adminAuth: Auth = getAuth(app);

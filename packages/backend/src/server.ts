@@ -1,5 +1,5 @@
 import express from "express";
-import { dogsRouter } from "./routes/dogs.js";
+import dogsRouter from "./routes/dogs.js";
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;

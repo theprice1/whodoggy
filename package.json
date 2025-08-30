@@ -15,7 +15,10 @@
   "scripts": {
     "dev": "pnpm --filter @whodoggy/mobile dev",
     "dev:web": "pnpm run build:shared && pnpm --filter @whodoggy/web dev",
-    "start": "pnpm --filter @whodoggy/mobile start",
+    "start": "concurrently \"pnpm backend\" \"pnpm web\" \"pnpm mobile\"",
+    "backend": "pnpm --filter @whodoggy/backend start",
+    "web": "pnpm --filter @whodoggy/web dev",
+    "mobile": "pnpm --filter @whodoggy/mobile start",
     "build": "pnpm -r run clean",
     "build:shared": "pnpm --filter @whodoggy/shared rebuild",
     "lint": "pnpm -r run lint",

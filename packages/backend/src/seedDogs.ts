@@ -1,61 +1,63 @@
+// packages/backend/src/seedDogs.ts - TEMPORARY FIX
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url"; // <-- ESM replacement for __dirname
-import { pool } from "./db.js";
+import { fileURLToPath } from "url";
+import { prisma } from "./db.js";
 
-// Get __dirname equivalent in ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function seedDogs() {
-  const filePath = path.join(__dirname, "dogs.json"); // now works in ESM
+  const filePath = path.join(__dirname, "dogs.json");
   const data = fs.readFileSync(filePath, "utf-8");
   const dogs = JSON.parse(data);
 
   console.log(`Seeding ${dogs.length} dogs...`);
 
-  const client = await pool.connect();
   try {
-    await client.query("BEGIN");
+    // First, ensure we have at least one registry
+    const registry = await prisma.registry.upsert({
+      where: { name: "Default Registry" },
+      update: {},
+      create: {
+        name: "Default Registry",
+        country: "Unknown",
+        contact: "contact@example.com"
+      }
+    });
 
-    const insertQuery = `
-      INSERT INTO dogs (
-        microchip_id, dog_name, breed, gender, date_of_birth, owner_name,
-        owner_phone, owner_email, owner_city, registered_at, microchip_implant_date,
-        registry_name, vaccinated, notes, last_checkup
-      ) VALUES
-      ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)
-      ON CONFLICT (microchip_id) DO NOTHING
-    `;
+    await prisma.$transaction(async (tx) => {
+      for (const dog of dogs) {
+        // Calculate age from dateOfBirth
+        const age = dog.dateOfBirth ?
+          new Date().getFullYear() - new Date(dog.dateOfBirth).getFullYear() :
+          5;
 
-    for (const dog of dogs) {
-      await client.query(insertQuery, [
-        dog.microchipId,
-        dog.dogName,
-        dog.breed,
-        dog.gender,
-        dog.dateOfBirth,
-        dog.ownerName,
-        dog.ownerPhone,
-        dog.ownerEmail,
-        dog.ownerCity,
-        dog.registeredAt,
-        dog.microchipImplantDate,
-        dog.registryName,
-        dog.vaccinated,
-        dog.notes,
-        dog.lastCheckup,
-      ]);
-    }
+        await tx.dog.upsert({
+          where: { microchipId: dog.microchipId },
+          update: {},
+          create: {
+            microchipId: dog.microchipId,
+            name: dog.dogName, // JSON uses 'dogName', schema expects 'name'
+            breed: dog.breed || null,
+            age: age,
+            gender: dog.gender,
+            ownerName: dog.ownerName,
+            ownerEmail: dog.ownerEmail,
+            ownerPhone: dog.ownerPhone,
+            address: dog.ownerCity,
+            registryId: registry.id,
+          },
+        });
+      }
+    });
 
-    await client.query("COMMIT");
     console.log("Seeding completed!");
   } catch (err) {
-    await client.query("ROLLBACK");
     console.error("Error seeding dogs:", err);
+    throw err;
   } finally {
-    client.release();
-    await pool.end();
+    await prisma.$disconnect();
   }
 }
 

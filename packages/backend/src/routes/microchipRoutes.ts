@@ -2,7 +2,7 @@
 import { Router } from "express";
 import { getMicrochipById } from "../controllers/microchipController.js";
 
-const router = Router();
+const router: Router = Router();
 
 router.get("/:id", getMicrochipById);
 

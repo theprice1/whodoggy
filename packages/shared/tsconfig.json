@@ -1,26 +1,30 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "dist",
     "rootDir": "src",
-    "declaration": true,
-    "declarationMap": true,
-    "composite": true,
-    "incremental": true,
-    "strict": true,
-    "module": "NodeNext",
-    "noEmit": false,
-    "moduleResolution": "NodeNext",
-    "target": "ES2022",
     "lib": [
-      "ES2022"
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
     ],
     "types": [
       "node",
     ],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true,
+    "composite": true,
+    "incremental": true,
+    "noEmit": false,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {

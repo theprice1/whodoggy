@@ -1,11 +1,12 @@
 {
-  "name": "whodoggy-web",
+  "name": "@whodoggy/web",
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "vite",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "npx @biomejs/biome lint ./src",
