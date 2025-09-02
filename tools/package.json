@@ -8,6 +8,7 @@
     "clean:workspace": "pnpm -r run clean",
     "start:scripts": "ts-node scripts/sync-firebase-postgres",
     "start:openapi": "npm run --prefix openapi generate",
+    "lint": "npx @biomejs/biome lint ./src",
     "test": "vitest run",
     "test:watch": "vitest --watch"
   },

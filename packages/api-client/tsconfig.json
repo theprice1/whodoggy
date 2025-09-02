@@ -1,44 +1,21 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "lib": [
-      "ES2022"
-    ],
-    "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "composite": true,
     "declaration": true,
-    "declarationMap": false,
-    "sourceMap": true,
-    "noEmitOnError": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "../../node_modules/@types"
-    ],
-    "paths": {
-      "@whodoggy/shared": [
-        "../../packages/shared/src",
-        "../../packages/shared/dist"
-      ],
-      "@whodoggy/shared/*": [
-        "../../packages/shared/src/*",
-        "../../packages/shared/dist/*"
-      ]
-    }
+    "declarationMap": true,
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "src/**/*"
   ],
   "references": [
     {
-      "path": "../../packages/shared"
+      "path": "../shared"
     }
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build",
-    "**/*.test.ts",
-    "**/*.spec.ts"
   ]
 }

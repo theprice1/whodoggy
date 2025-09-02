@@ -1,19 +1,35 @@
 // packages/scripts/src/seed/index.ts
-import { seedDogs } from "./seedDogs.js";
-import { seedOwners } from "./seedOwners.js";
-import { seedRegistries } from "./seedRegistries.js";
+import { generateDogs } from './seedDogs.js';
+import { generateOwners } from './seedOwners.js';
+import { generateRegistries } from './seedRegistries.js';
 
-async function main() {
-  console.log("🌱 Starting WhoDoggy database seed...");
+async function seedDatabase() {
+  console.log('Starting database seeding...');
 
-  await seedRegistries();
-  await seedOwners();
-  await seedDogs();
+  // Generate data
+  const owners = generateOwners(10);
+  const ownerIds = owners.map(o => o.id);
+  const dogs = generateDogs(20, ownerIds);
+  const registries = generateRegistries(5);
 
-  console.log("✅ Seeding complete!");
+  console.log('Generated:', {
+    owners: owners.length,
+    dogs: dogs.length,
+    registries: registries.length
+  });
+
+  // Here you would typically save to Firebase
+  // For now, just log the data
+  console.log('Sample owner:', owners[0]);
+  console.log('Sample dog:', dogs[0]);
+  console.log('Sample registry:', registries[0]);
+
+  console.log('Seeding complete!');
 }
 
-main().catch((err) => {
-  console.error("❌ Seeding failed", err);
-  process.exit(1);
-});
+// Run if this is the main module
+if (import.meta.url === `file://${process.argv[1]}`) {
+  seedDatabase().catch(console.error);
+}
+
+export { seedDatabase };

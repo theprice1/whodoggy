@@ -1,20 +1,32 @@
-// Update the import path if the module is local and not published
-import { adminDb } from "@whodoggy/shared";
+// packages/scripts/src/seed/seedDogs.ts
+import { faker } from '@faker-js/faker';
 
-const dogs = [
-  { id: "001", name: "Rex", breed: "Labrador", microchipId: "123ABC" },
-  { id: "002", name: "Bella", breed: "Collie", microchipId: "456DEF" },
-];
-
-export async function seedDogs() {
-  const batch = adminDb.batch();
-  const dogsCol = adminDb.collection("dogs");
-  for (const dog of dogs) {
-    const ref = dogsCol.doc(dog.id);
-    batch.set(ref, dog);
-  }
-  await batch.commit();
-  console.log("Seeded dogs collection!");
+// Define types locally to avoid circular dependency
+interface Dog {
+  id: string;
+  name: string;
+  breed: string;
+  ownerId: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-seedDogs().catch(console.error);
+export function generateDogs(count: number, ownerIds: string[]): Dog[] {
+  const dogs: Dog[] = [];
+
+  for (let i = 0; i < count; i++) {
+    dogs.push({
+      id: faker.string.uuid(),
+      name: faker.person.firstName(),
+      breed: faker.helpers.arrayElement([
+        'Labrador', 'German Shepherd', 'Golden Retriever',
+        'Bulldog', 'Beagle', 'Poodle', 'Rottweiler'
+      ]),
+      ownerId: faker.helpers.arrayElement(ownerIds),
+      createdAt: faker.date.past(),
+      updatedAt: new Date()
+    });
+  }
+
+  return dogs;
+}

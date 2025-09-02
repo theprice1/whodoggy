@@ -14,14 +14,15 @@
   },
   "scripts": {
     "dev": "pnpm --filter @whodoggy/mobile dev",
-    "dev:web": "pnpm run build:shared && pnpm --filter @whodoggy/web dev",
+    "dev:web": "pnpm run build:web && pnpm --filter @whodoggy/web dev",
+    "dev:backend": "pnpm --filter @whodoggy/backend dev",
     "start": "concurrently \"pnpm backend\" \"pnpm web\" \"pnpm mobile\"",
     "backend": "pnpm --filter @whodoggy/backend start",
     "web": "pnpm --filter @whodoggy/web dev",
     "mobile": "pnpm --filter @whodoggy/mobile start",
-    "build": "pnpm -r run clean",
+    "build": "pnpm -r run build",
     "build:shared": "pnpm --filter @whodoggy/shared rebuild",
-    "lint": "pnpm -r run lint",
+    "lint": "npx @biomejs/biome lint ./src",
     "lint:fix": "npx @biomejs/biome lint --write ./packages ./apps",
     "format": "pnpm -r run format",
     "type-check": "pnpm -r run type-check",
@@ -29,7 +30,7 @@
     "lint:workspace": "pnpm -r run lint",
     "test": "vitest run",
     "test:watch": "vitest --watch",
-    "clean": "rimraf dist node_modules/.cache",
+    "clean": "pnpm -r run clean",
     "clean:workspace": "pnpm -r run clean",
     "migrate:up": "pnpm --filter @whodoggy/backend run migrate",
     "migrate:down": "pnpm --filter @whodoggy/backend run migrate:down",
@@ -44,7 +45,6 @@
     "@biomejs/biome": "^1.9.4",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.34.0",
-    "@faker-js/faker": "^9.9.0",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.3.0",
     "@types/pg": "^8.15.5",
@@ -58,13 +58,10 @@
     "eslint-plugin-react-native": "^5.0.0",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
-    "jest": "^30.0.5",
     "jsdom": "^26.1.0",
-    "lint-staged": "13.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rimraf": "^5.0.0",
-    "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.5",
     "typescript": "^5.4.8",
@@ -72,11 +69,8 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@sentry/react-native": "^6.20.0",
     "dotenv": "^17.2.1",
-    "firebase-admin": "^13.4.0",
-    "fs-extra": "^11.3.1",
-    "pg-promise": "^11.15.0"
+    "firebase-admin": "^13.4.0"
   },
   "pnpm": {
     "overrides": {

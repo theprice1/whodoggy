@@ -1,51 +1,21 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ES2022",
-    "lib": [
-      "ES2022"
-    ],
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "types": [
-      "node",
-      "fs-extra",
-    ],
+    "rootDir": "./src",
+    "outDir": "./dist",
     "composite": true,
-    "incremental": true,
-    "verbatimModuleSyntax": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "@whodoggy/shared/*": [
-        "../shared/src/*"
-      ]
-    },
-    "noEmitOnError": true
+    "declaration": true,
+    "declarationMap": true
   },
   "include": [
-    "src/**/*",
-    "tests/**/*"
+    "src/**/*"
   ],
   "references": [
     {
       "path": "../shared"
+    },
+    {
+      "path": "../backend"
     }
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build",
-    "**/*.test.ts",
-    "**/*.spec.ts"
   ]
 }

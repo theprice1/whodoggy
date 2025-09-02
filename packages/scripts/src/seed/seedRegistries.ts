@@ -1,25 +1,37 @@
-import { faker } from "@faker-js/faker";
 // packages/scripts/src/seed/seedRegistries.ts
-import { prisma } from "@whodoggy/backend";
+import { faker } from '@faker-js/faker';
 
-export async function seedRegistries() {
-  console.log("➡️ Seeding registries...");
+// Define types locally to avoid circular dependency
+interface Registry {
+  id: string;
+  name: string;
+  url: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-  const registries = [
-    { name: "UK National Dog Registry", country: "UK" },
-    { name: "US Microchip Database", country: "USA" },
-    { name: "EU Pet Records", country: "EU" },
+export function generateRegistries(count: number): Registry[] {
+  const registries: Registry[] = [];
+
+  const registryNames = [
+    'American Kennel Club',
+    'United Kennel Club',
+    'Canadian Kennel Club',
+    'The Kennel Club (UK)',
+    'Federation Cynologique Internationale'
   ];
 
-  for (const registry of registries) {
-    await prisma.registry.create({
-      data: {
-        name: registry.name,
-        country: registry.country,
-        contactEmail: faker.internet.email(),
-      },
+  for (let i = 0; i < Math.min(count, registryNames.length); i++) {
+    registries.push({
+      id: faker.string.uuid(),
+      name: registryNames[i] || `Registry ${i + 1}`,
+      url: faker.internet.url(),
+      description: faker.lorem.sentence(),
+      createdAt: faker.date.past(),
+      updatedAt: new Date()
     });
   }
 
-  console.log("✅ Registries seeded");
+  return registries;
 }

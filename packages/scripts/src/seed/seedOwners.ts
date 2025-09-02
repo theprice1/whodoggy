@@ -1,30 +1,29 @@
-import { faker } from "@faker-js/faker";
-import { prisma } from "@whodoggy/backend";
+// packages/scripts/src/seed/seedOwners.ts
+import { faker } from '@faker-js/faker';
 
-export async function seedOwners() {
-  console.log("➡️ Seeding dogs with owner info...");
+// Define types locally to avoid circular dependency
+interface Owner {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-  // First, make sure you have registries to reference
-  const registry = await prisma.registry.findFirst();
-  if (!registry) {
-    throw new Error("No registries found. Seed registries first.");
-  }
+export function generateOwners(count: number): Owner[] {
+  const owners: Owner[] = [];
 
-  for (let i = 0; i < 10; i++) {
-    await prisma.dog.create({
-      data: {
-        microchipId: faker.string.alphanumeric(8).toUpperCase(),
-        name: faker.person.firstName(),
-        breed: faker.helpers.arrayElement(['Labrador', 'Golden Retriever', 'German Shepherd', 'Bulldog']),
-        age: faker.number.int({ min: 1, max: 15 }),
-        gender: faker.helpers.arrayElement(['Male', 'Female']),
-        ownerName: faker.person.fullName(),
-        ownerEmail: faker.internet.email(),
-        ownerPhone: faker.phone.number(),
-        address: faker.location.streetAddress(),
-        registryId: registry.id,
-      },
+  for (let i = 0; i < count; i++) {
+    owners.push({
+      id: faker.string.uuid(),
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
+      phone: faker.phone.number(),
+      createdAt: faker.date.past(),
+      updatedAt: new Date()
     });
   }
-  console.log("✅ Dogs with owner info seeded");
+
+  return owners;
 }

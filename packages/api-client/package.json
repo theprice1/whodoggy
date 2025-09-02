@@ -12,7 +12,7 @@
     "rebuild": "pnpm run clean && pnpm run build",
     "test": "vitest run",
     "test:watch": "vitest --watch",
-    "lint": "pnpm exec biome lint ./src",
+    "lint": "npx @biomejs/biome lint ./src",
     "lint:fix": "pnpm exec biome lint --apply",
     "format": "pnpm exec biome format ./src --write",
     "tsc": "tsc --noEmit"
