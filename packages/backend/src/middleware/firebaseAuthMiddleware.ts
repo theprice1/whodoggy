@@ -1,9 +1,11 @@
 import type { NextFunction, Request, Response } from "express";
 import type { auth } from "firebase-admin";
-import { adminAuth } from "../firebase/firebaseAdmin.js";
+import admin from "../firebase/firebaseAdmin.js";
+
+const adminAuth = admin.auth();
 
 export interface AuthenticatedRequest extends Request {
-  user?: auth.DecodedIdToken; // Correct usage of type
+  user?: auth.DecodedIdToken;
 }
 
 export const verifyFirebaseToken = async (
@@ -19,7 +21,6 @@ export const verifyFirebaseToken = async (
 
   const token = authHeader.split(" ")[1];
 
-  // Add null check for the token
   if (!token) {
     res.status(401).json({ error: "Invalid authorization token format" });
     return;
@@ -27,7 +28,7 @@ export const verifyFirebaseToken = async (
 
   try {
     const decodedToken = await adminAuth.verifyIdToken(token);
-    req.user = decodedToken; // Attach Firebase user info to request
+    req.user = decodedToken;
     next();
   } catch (error) {
     console.error("Firebase token verification failed:", error);

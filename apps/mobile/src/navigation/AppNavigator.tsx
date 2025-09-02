@@ -1,41 +1,34 @@
-// src/navigation/AppNavigator.tsx
-
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import type React from "react";
-import HomeScreen from "../screens/Home/HomeScreen.js";
-import QRScannerScreen from "../screens/Home/QRScannerScreen.js";
-import SearchScreen from "../screens/Home/SearchScreen.js";
-// import SearchResultsScreen from '../screens/SearchResultsScreen.js'.ts; // Uncomment when implemented
+import { useAuth } from "../hooks/useAuth";
+import AuthNavigator from "./AuthNavigator";
+import HomeNavigator from "./HomeNavigator";
 
 export type RootStackParamList = {
-  Home: undefined;
-  QRScanner: undefined;
-  Search: undefined;
-  // SearchResults: { results: any }; // Define params if needed
+  Auth: undefined;
+  Main: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator: React.FC = () => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return null; // Replace with SplashScreen if you have one
+  }
+
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreen} options={{ title: "WhoDoggy?" }} />
-      <Stack.Screen
-        name="QRScanner"
-        component={QRScannerScreen}
-        options={{ title: "Scan Microchip" }}
-      />
-      <Stack.Screen
-        name="Search"
-        component={SearchScreen}
-        options={{ title: "Search Microchip" }}
-      />
-      {/* <Stack.Screen
-        name="SearchResults"
-        component={SearchResultsScreen}
-        options={{ title: 'Search Results' }}
-      /> */}
-    </Stack.Navigator>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {!user ? (
+          <Stack.Screen name="Auth" component={AuthNavigator} />
+        ) : (
+          <Stack.Screen name="Main" component={HomeNavigator} />
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

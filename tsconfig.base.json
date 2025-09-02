@@ -41,7 +41,8 @@
       ]
     },
     "typeRoots": [
-      "./node_modules/@types"
+      "./node_modules/@types",
+      "packages/api-client/node_modules/@types"
     ]
   },
   "include": [

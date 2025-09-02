@@ -13,7 +13,7 @@ const firebaseConfig = {
 };
 
 const clientApp = initializeApp(firebaseConfig);
-const clientAuth = getFirestore(clientApp);
-const clientDb = getAuth(clientApp);
+const clientAuth = getAuth(clientApp);  // Fixed: was getFirestore
+const clientDb = getFirestore(clientApp);  // Fixed: was getAuth
 
 export { clientApp, clientDb, clientAuth };

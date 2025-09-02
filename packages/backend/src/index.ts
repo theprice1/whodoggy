@@ -1,4 +1,3 @@
-// Entry point for WhoDoggy backend
+export { prisma } from './prisma/prismaClient.js';
 import './server.js';
-
 console.log('WhoDoggy backend started successfully');

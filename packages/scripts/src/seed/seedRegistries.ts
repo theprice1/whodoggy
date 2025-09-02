@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 // packages/scripts/src/seed/seedRegistries.ts
-import { prisma } from "../utils/prisma.js";
+import { prisma } from "@whodoggy/backend";
 
 export async function seedRegistries() {
   console.log("➡️ Seeding registries...");
@@ -14,10 +14,9 @@ export async function seedRegistries() {
   for (const registry of registries) {
     await prisma.registry.create({
       data: {
-        id: faker.string.uuid(),
         name: registry.name,
         country: registry.country,
-        contactEmail: faker.internet.email({ provider: "registry.com" }),
+        contactEmail: faker.internet.email(),
       },
     });
   }

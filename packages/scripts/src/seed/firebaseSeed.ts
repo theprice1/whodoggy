@@ -1,4 +1,4 @@
-import { adminDb } from "./firebaseAdmin";
+import { adminDb } from "./firebaseAdmin.js";
 
 const dogs = [
   { id: "123ABC", name: "Rex", breed: "Labrador", age: 5 },
