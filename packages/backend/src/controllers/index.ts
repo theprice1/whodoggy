@@ -7,7 +7,7 @@ import aggregateSearchRouter from "./aggregateSearchController.js";
 import deleteDataController from "./deleteDataController.js";
 dotenv.config();
 
-const app = express();
+const _app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -17,11 +17,11 @@ app.use("/api", deleteDataController);
 app.use("/api", aggregateSearchRouter);
 
 app.get("/", (_req, res) => {
-  res.send("WhoDoggy Backend API");
+	res.send("WhoDoggy Backend API");
 });
 
-const PORT = process.env.PORT || 3000;
+const _PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Backend server running on port ${PORT}`);
+	console.log(`Backend server running on port ${PORT}`);
 });

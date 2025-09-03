@@ -1,8 +1,17 @@
+# Biome Ignore File for WhoDoggy Project
+
+# Node modules
 node_modules
+
+# Build outputs
 dist
 build
 coverage
+
+# Expo cache for mobile app
 apps/mobile/.expo
+
+# Test files
 **/__tests__/**
 **/*.test.ts
 **/*.test.tsx

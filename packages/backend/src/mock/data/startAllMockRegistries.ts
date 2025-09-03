@@ -1,10 +1,10 @@
-import { createMockRegistryServer } from "./mockRegistryServer.js";
+import { createMockRegistryServer } from "...";
 
-const startPort = 4101;
-const numberOfRegistries = 22;
+const _startPort = 4101;
+const _numberOfRegistries = 22;
 
-for (let i = 0; i < numberOfRegistries; i++) {
-  const port = startPort + i;
-  const dataFileName = `registry${i + 1}.json`; // define this BEFORE use
-  createMockRegistryServer(port, dataFileName); // now TypeScript is happy
+for (let _i = 0; i < numberOfRegistries; i++) {
+	const _port = startPort + i;
+	const _dataFileName = `registry${i + 1}.json`; // define this BEFORE use
+	createMockRegistryServer(port, dataFileName); // now TypeScript is happy
 }

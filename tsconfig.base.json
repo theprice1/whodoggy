@@ -1,58 +1,38 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "strict": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "composite": true,
-    "incremental": true,
-    "noEmit": false,
-    "jsx": "react-jsx",
-    "allowJs": false,
-    "isolatedModules": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noUncheckedIndexedAccess": true,
-    "verbatimModuleSyntax": true,
-    "baseUrl": ".",
-    "paths": {
-      "@whodoggy/shared/*": [
-        "packages/shared/src/*"
-      ],
-      "@whodoggy/shared": [
-        "packages/shared/src/index.ts"
-      ],
-      "@whodoggy/api-client/*": [
-        "packages/api-client/src/*"
-      ],
-      "@whodoggy/api-client": [
-        "packages/api-client/src/index.ts"
-      ],
-      "@whodoggy/backend/*": [
-        "packages/backend/src/*"
-      ],
-      "@whodoggy/backend": [
-        "packages/backend/src/index.ts"
-      ]
-    },
-    "typeRoots": [
-      "./node_modules/@types",
-      "packages/api-client/node_modules/@types"
-    ]
-  },
-  "include": [
-    "packages/**/*",
-    "apps/**/*",
-    "scripts/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build"
-  ]
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"strict": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"composite": true,
+		"incremental": true,
+		"noEmit": false,
+		"jsx": "react-jsx",
+		"allowJs": false,
+		"isolatedModules": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"noUncheckedIndexedAccess": true,
+		"verbatimModuleSyntax": true,
+		"baseUrl": ".",
+		"paths": {
+			"@whodoggy/shared/*": ["packages/shared/src/*"],
+			"@whodoggy/shared": ["packages/shared/src/index.ts"],
+			"@whodoggy/api-client/*": ["packages/api-client/src/*"],
+			"@whodoggy/api-client": ["packages/api-client/src/index.ts"],
+			"@whodoggy/backend/*": ["packages/backend/src/*"],
+			"@whodoggy/backend": ["packages/backend/src/index.ts"]
+		},
+		"typeRoots": [
+			"./node_modules/@types",
+			"packages/api-client/node_modules/@types"
+		]
+	},
+	"include": ["packages/**/*", "apps/**/*", "scripts/**/*"],
+	"exclude": ["node_modules", "dist", "build"]
 }

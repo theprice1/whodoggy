@@ -1,32 +1,32 @@
 {
-  "name": "@whodoggy/scripts",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "main": "dist/index.js",
-  "scripts": {
-    "tsc": "tsc --noEmit",
-    "build": "tsc -b",
-    "clean": "rimraf dist node_modules/.cache",
-    "clean:workspace": "pnpm -r run clean",
-    "seed": "tsx src/seed/index.ts",
-    "seed:dogs": "tsx src/seed/seedDogs.ts",
-    "seed:owners": "tsx src/seed/seedOwners.ts",
-    "seed:registries": "tsx src/seed/seedRegistries.ts",
-    "lint": "npx @biomejs/biome lint ./src",
-    "rebuild": "pnpm run build",
-    "test": "vitest run",
-    "test:watch": "vitest --watch"
-  },
-  "dependencies": {
-    "@whodoggy/backend": "workspace:*",
-    "@whodoggy/shared": "workspace:*"
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^9.9.0",
-    "@types/node": "^20.19.11",
-    "tsx": "^4.20.4",
-    "typescript": "^5.9.2",
-    "vitest": "^0.34.6"
-  }
+	"name": "@whodoggy/scripts",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"main": "dist/index.js",
+	"scripts": {
+		"tsc": "tsc --noEmit",
+		"build": "tsc -b",
+		"clean": "rimraf dist node_modules/.cache",
+		"clean:workspace": "pnpm -r run clean",
+		"seed": "tsx src/seed/index.ts",
+		"seed:dogs": "tsx src/seed/seedDogs.ts",
+		"seed:owners": "tsx src/seed/seedOwners.ts",
+		"seed:registries": "tsx src/seed/seedRegistries.ts",
+		"lint": "npx @biomejs/biome lint ./src",
+		"rebuild": "pnpm run build",
+		"test": "vitest run",
+		"test:watch": "vitest --watch"
+	},
+	"dependencies": {
+		"@whodoggy/backend": "workspace:*",
+		"@whodoggy/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"@faker-js/faker": "^9.9.0",
+		"@types/node": "^20.19.11",
+		"tsx": "^4.20.4",
+		"typescript": "^5.9.2",
+		"vitest": "^0.34.6"
+	}
 }

@@ -1,24 +1,31 @@
-import admin from 'firebase-admin';
+import admin from "firebase-admin";
 
 // Initialize Firebase Admin with JSON credentials
 try {
-  if (!process.env.FIREBASE_ADMIN_CREDENTIALS_JSON) {
-    throw new Error('FIREBASE_ADMIN_CREDENTIALS_JSON environment variable is not set');
-  }
+	if (!process.env.FIREBASE_ADMIN_CREDENTIALS_JSON) {
+		throw new Error(
+			"FIREBASE_ADMIN_CREDENTIALS_JSON environment variable is not set",
+		);
+	}
 
-  const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_CREDENTIALS_JSON);
+	const _serviceAccount = JSON.parse(
+		process.env.FIREBASE_ADMIN_CREDENTIALS_JSON,
+	);
 
-  if (!admin.apps.length) {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount)
-    });
-    console.log('Firebase Admin initialized successfully');
-  }
+	if (!admin.apps.length) {
+		admin.initializeApp({
+			credential: admin.credential.cert(serviceAccount),
+		});
+		console.log("Firebase Admin initialized successfully");
+	}
 } catch (error: unknown) {
-  const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-  console.error('Firebase initialization error:', errorMessage);
-  console.error('Make sure FIREBASE_ADMIN_CREDENTIALS_JSON is properly set in your .env file');
-  process.exit(1);
+	const _errorMessage =
+		error instanceof Error ? error.message : "Unknown error occurred";
+	console.error("Firebase initialization error:", errorMessage);
+	console.error(
+		"Make sure FIREBASE_ADMIN_CREDENTIALS_JSON is properly set in your .env file",
+	);
+	process.exit(1);
 }
 
 export default admin;

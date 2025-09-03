@@ -6,25 +6,25 @@ import admin from "firebase-admin";
 dotenv.config();
 
 export function initializeFirebase() {
-  const serviceAccountPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+	const _serviceAccountPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
-  if (!serviceAccountPath) {
-    throw new Error("Missing GOOGLE_APPLICATION_CREDENTIALS in .env file.");
-  }
+	if (!serviceAccountPath) {
+		throw new Error("Missing GOOGLE_APPLICATION_CREDENTIALS in .env file.");
+	}
 
-  const absolutePath = path.resolve(__dirname, "../../", serviceAccountPath);
+	const _absolutePath = path.resolve(__dirname, "../../", serviceAccountPath);
 
-  if (!fs.existsSync(absolutePath)) {
-    throw new Error(`Service account file not found at path: ${absolutePath}`);
-  }
+	if (!fs.existsSync(absolutePath)) {
+		throw new Error(`Service account file not found at path: ${absolutePath}`);
+	}
 
-  const serviceAccount = require(absolutePath);
+	const _serviceAccount = require(absolutePath);
 
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  });
+	admin.initializeApp({
+		credential: admin.credential.cert(serviceAccount),
+	});
 
-  console.log("[Firebase] Initialized successfully.");
+	console.log("[Firebase] Initialized successfully.");
 }
 
 export default admin;

@@ -1,49 +1,31 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "outDir": "dist",
-    "rootDir": "src",
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "types": [
-      "node",
-    ],
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "strict": true,
-    "composite": true,
-    "incremental": true,
-    "noEmit": false,
-    "verbatimModuleSyntax": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "@whodoggy/shared/*": [
-        "src/*"
-      ]
-    }
-  },
-  "include": [
-    "src",
-    "tests",
-    "src/**/*",
-    "tests/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ],
-  "references": []
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"outDir": "dist",
+		"rootDir": "src",
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"types": ["node"],
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"strict": true,
+		"composite": true,
+		"incremental": true,
+		"noEmit": false,
+		"verbatimModuleSyntax": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"paths": {
+			"@whodoggy/shared/*": ["src/*"]
+		}
+	},
+	"include": ["src", "tests", "src/**/*", "tests/**/*"],
+	"exclude": ["node_modules", "dist", "**/*.spec.ts", "**/*.test.ts"],
+	"references": []
 }

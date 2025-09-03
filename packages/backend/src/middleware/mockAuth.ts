@@ -2,7 +2,7 @@
 
 import type { NextFunction, Request, Response } from "express";
 
-export const mockAuth = (req: Request, _res: Response, next: NextFunction) => {
-  (req as any).user = { uid: "test-user" }; // fake user for testing
-  next();
+export const _mockAuth = (req: Request, _res: Response, next: NextFunction) => {
+	(req as any).user = { uid: "test-user" }; // fake user for testing
+	next();
 };

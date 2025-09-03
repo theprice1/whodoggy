@@ -1,58 +1,58 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, Switch, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Switch, Text, View } from "...";
 
-const AccessibilityOptionsScreen = () => {
-  const [largeTextEnabled, setLargeTextEnabled] = useState(false);
-  const [highContrastEnabled, setHighContrastEnabled] = useState(false);
+const _AccessibilityOptionsScreen = () => {
+	const [largeTextEnabled, setLargeTextEnabled] = useState(false);
+	const [highContrastEnabled, setHighContrastEnabled] = useState(false);
 
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.headerText}>Accessibility Options</Text>
+	return (
+		<ScrollView contentContainerStyle={styles.container}>
+			<Text style={styles.headerText}>Accessibility Options</Text>
 
-      <View style={styles.optionRow}>
-        <Text style={styles.optionText}>Enable Large Text</Text>
-        <Switch
-          value={largeTextEnabled}
-          onValueChange={setLargeTextEnabled}
-          accessibilityLabel="Toggle large text"
-          accessibilityHint="Turns on larger font size for better readability"
-        />
-      </View>
+			<View style={styles.optionRow}>
+				<Text style={styles.optionText}>Enable Large Text</Text>
+				<Switch
+					value={largeTextEnabled}
+					onValueChange={setLargeTextEnabled}
+					accessibilityLabel="Toggle large text"
+					accessibilityHint="Turns on larger font size for better readability"
+				/>
+			</View>
 
-      <View style={styles.optionRow}>
-        <Text style={styles.optionText}>Enable High Contrast</Text>
-        <Switch
-          value={highContrastEnabled}
-          onValueChange={setHighContrastEnabled}
-          accessibilityLabel="Toggle high contrast mode"
-          accessibilityHint="Enhances contrast for better visibility"
-        />
-      </View>
+			<View style={styles.optionRow}>
+				<Text style={styles.optionText}>Enable High Contrast</Text>
+				<Switch
+					value={highContrastEnabled}
+					onValueChange={setHighContrastEnabled}
+					accessibilityLabel="Toggle high contrast mode"
+					accessibilityHint="Enhances contrast for better visibility"
+				/>
+			</View>
 
-      {/* Add more accessibility options as needed */}
-    </ScrollView>
-  );
+			{/* Add more accessibility options as needed */}
+		</ScrollView>
+	);
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    padding: 16,
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 24,
-  },
-  optionRow: {
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 16,
-  },
-  optionText: {
-    fontSize: 18,
-  },
+const _styles = StyleSheet.create({
+	container: {
+		flexGrow: 1,
+		padding: 16,
+	},
+	headerText: {
+		fontSize: 24,
+		fontWeight: "bold",
+		marginBottom: 24,
+	},
+	optionRow: {
+		alignItems: "center",
+		flexDirection: "row",
+		justifyContent: "space-between",
+		marginBottom: 16,
+	},
+	optionText: {
+		fontSize: 18,
+	},
 });
 
 export default AccessibilityOptionsScreen;

@@ -1,12 +1,11 @@
 // packages/backend/vitest.config.ts
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  test: {
-    globals: true,
-    environment: 'node',
-    include: ['**/*.test.{ts,tsx,js,jsx}', '**/*.spec.{ts,tsx,js,jsx}'],
-    exclude: ['node_modules', 'dist']
-  }
+	test: {
+		globals: true,
+		environment: "node",
+		include: ["**/*.test.{ts,tsx,js,jsx}", "**/*.spec.{ts,tsx,js,jsx}"],
+		exclude: ["node_modules", "dist"],
+	},
 });
-

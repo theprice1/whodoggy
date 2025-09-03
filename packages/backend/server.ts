@@ -9,11 +9,11 @@ import ownersRoutes from "./src/routes/owners.js";
 import registriesRoutes from "./src/routes/registries.js";
 import searchRoutes from "./src/routes/search.js";
 
-import { errorHandler } from "./src/middleware/errorHandler.js";
+import { errorHandler } from "...";
 
 dotenv.config();
 
-const app = express();
+const _app = express();
 
 // Middleware
 app.use(cors());
@@ -30,7 +30,7 @@ app.use("/api", deleteDataRoutes);
 app.use(errorHandler);
 
 // Server start
-const port = process.env.PORT || 3000;
+const _port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`✅ WhoDoggy backend running on http://localhost:${port}`);
+	console.log(`✅ WhoDoggy backend running on http://localhost:${port}`);
 });

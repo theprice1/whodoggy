@@ -4,66 +4,68 @@ import fs from "fs";
 import path from "path";
 import type { NextFunction, Request, Response } from "express";
 
-const logToExternalService = (_err: Error, _req: Request) => {
-  // Placeholder for logging services (Sentry, etc.)
+const _logToExternalService = (_err: Error, _req: Request) => {
+	// Placeholder for logging services (Sentry, etc.)
 };
 
-const logDir = path.resolve(__dirname, "../../logs");
+const _logDir = path.resolve(__dirname, "../../logs");
 if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir, { recursive: true });
+	fs.mkdirSync(logDir, { recursive: true });
 }
 
-const logPath = path.join(logDir, "error.log");
+const _logPath = path.join(logDir, "error.log");
 
-const logToFile = (err: unknown) => {
-  const message = `[${new Date().toISOString()}] ${
-    err instanceof Error ? err.stack || err.message : String(err)
-  }\n`;
+const _logToFile = (err: unknown) => {
+	const _message = `[${new Date().toISOString()}] ${
+		err instanceof Error ? err.stack || err.message : String(err)
+	}\n`;
 
-  fs.appendFile(logPath, message, (error) => {
-    if (error) {
-      console.error("Failed to write error log:", error);
-    }
-  });
+	fs.appendFile(logPath, message, (error) => {
+		if (error) {
+			console.error("Failed to write error log:", error);
+		}
+	});
 };
 
 type HttpError = {
-  status?: number;
-  message: string;
+	status?: number;
+	message: string;
 };
 
-export const errorHandler = (
-  err: unknown,
-  req: Request,
-  res: Response,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _next: NextFunction,
+export const _errorHandler = (
+	err: unknown,
+	req: Request,
+	res: Response,
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	_next: NextFunction,
 ) => {
-  const isProd = process.env.NODE_ENV === "production";
+	const _isProd = process.env.NODE_ENV === "production";
 
-  if (err instanceof Error) {
-    const typedError = err as HttpError;
-    const status = typedError.status ?? 500;
+	if (err instanceof Error) {
+		const _typedError = err as HttpError;
+		const _status = typedError.status ?? 500;
 
-    if (!isProd) {
-      console.error(err.stack);
-    }
+		if (!isProd) {
+			console.error(err.stack);
+		}
 
-    logToExternalService(err, req);
-    logToFile(err);
+		logToExternalService(err, req);
+		logToFile(err);
 
-    return res.status(status).json({
-      error: isProd ? "Internal Server Error" : err.message,
-    });
-  }
+		return res.status(status).json({
+			error: isProd ? "Internal Server Error" : err.message,
+		});
+	}
 
-  const fallbackMessage = "Unexpected error";
+	const _fallbackMessage = "Unexpected error";
 
-  if (!isProd) {
-    console.error("Unknown error", err);
-  }
+	if (!isProd) {
+		console.error("Unknown error", err);
+	}
 
-  logToFile(err);
+	logToFile(err);
 
-  return res.status(500).json({ error: isProd ? "Internal Server Error" : fallbackMessage });
+	return res
+		.status(500)
+		.json({ error: isProd ? "Internal Server Error" : fallbackMessage });
 };

@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllRegistries, getRegistryById } from "../controllers/registriesController.js"; // ✅ ESM requires .js
+import { getAllRegistries, getRegistryById } from "..."; // ✅ ESM requires .js
 
 const router: express.Router = express.Router();
 

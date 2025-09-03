@@ -1,42 +1,26 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "noEmit": false,
-    "outDir": "dist",
-    "rootDir": "src",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ES2022",
-    "lib": [
-      "ES2022",
-      "DOM"
-    ],
-    "declaration": true,
-    "types": [
-      "node",
-      "fs-extra",
-    ],
-    "composite": true,
-    "verbatimModuleSyntax": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@whodoggy/shared/*": [
-        "../shared/src/*"
-      ]
-    }
-  },
-  "include": [
-    "src/**/*",
-    "tests"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ]
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"noEmit": false,
+		"outDir": "dist",
+		"rootDir": "src",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"target": "ES2022",
+		"lib": ["ES2022", "DOM"],
+		"declaration": true,
+		"types": ["node", "fs-extra"],
+		"composite": true,
+		"verbatimModuleSyntax": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"incremental": true,
+		"baseUrl": ".",
+		"paths": {
+			"@whodoggy/shared/*": ["../shared/src/*"]
+		}
+	},
+	"include": ["src/**/*", "tests"],
+	"exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
 }

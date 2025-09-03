@@ -2,7 +2,7 @@
 
 import express from "express";
 import deleteMicrochipHandler from "../controllers/deleteDataController.js"; // ✅ Assuming default export
-import { authenticate } from "../middleware/auth.js"; // ✅ Use .js for ESM compatibility
+import { authenticate } from "..."; // ✅ Use .js for ESM compatibility
 
 const router: express.Router = express.Router();
 

@@ -1,25 +1,25 @@
 // src/__tests__/microchipRoutes.test.ts
 
-import request from 'supertest';
-import express from 'express';
-import microchipRoutes from '../routes/microchipRoutes.js';
-import { mockAuth } from '../middleware/mockAuth.js';
+import request from "supertest";
+import express from "express";
+import microchipRoutes from "../routes/microchipRoutes.js";
+import { mockAuth } from "...";
 
-const app = express();
+const _app = express();
 app.use(express.json());
 
 // Use mockAuth instead of real authenticate middleware during tests
-app.use('/api/microchips', mockAuth, microchipRoutes);
+app.use("/api/microchips", mockAuth, microchipRoutes);
 
-describe('GET /api/microchips/:id', () => {
-  it('returns 200 and microchip data for valid ID', async () => {
-    const response = await request(app).get('/api/microchips/1234567890');
-    expect(response.status).toBe(200);
-    expect(response.body.results[0]).toHaveProperty('dogName', 'Fido');
-  });
+describe("GET /api/microchips/:id", () => {
+	it("returns 200 and microchip data for valid ID", async () => {
+		const _response = await request(app).get("/api/microchips/1234567890");
+		expect(response.status).toBe(200);
+		expect(response.body.results[0]).toHaveProperty("dogName", "Fido");
+	});
 
-  it('returns 404 for invalid ID', async () => {
-    const response = await request(app).get('/api/microchips/nonexistent');
-    expect(response.status).toBe(404);
-  });
+	it("returns 404 for invalid ID", async () => {
+		const _response = await request(app).get("/api/microchips/nonexistent");
+		expect(response.status).toBe(404);
+	});
 });

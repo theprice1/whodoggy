@@ -1,57 +1,65 @@
 // packages/backend/middleware/validateInput.ts
 import type { NextFunction, Request, Response } from "express";
-import { ZodError, type ZodIssue, z } from "zod";
+import { ZodError, type ZodIssue, z } from "...";
 
 // Schema to validate microchip search input
-const microchipSchema = z.object({
-  microchipId: z.string().length(15, {
-    message: "Microchip ID must be exactly 15 characters long.",
-  }),
+const _microchipSchema = z.object({
+	microchipId: z.string().length(15, {
+		message: "Microchip ID must be exactly 15 characters long.",
+	}),
 });
 
 // Schema to validate dog input for create/update
-const dogSchema = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
-  breed: z.string().min(1, { message: "Breed is required" }),
-  microchipId: z.string().length(15, {
-    message: "Microchip ID must be exactly 15 characters long.",
-  }),
-  ownerId: z.string().min(1, { message: "Owner ID is required" }),
-  registryId: z.string().min(1, { message: "Registry ID is required" }),
+const _dogSchema = z.object({
+	name: z.string().min(1, { message: "Name is required" }),
+	breed: z.string().min(1, { message: "Breed is required" }),
+	microchipId: z.string().length(15, {
+		message: "Microchip ID must be exactly 15 characters long.",
+	}),
+	ownerId: z.string().min(1, { message: "Owner ID is required" }),
+	registryId: z.string().min(1, { message: "Registry ID is required" }),
 });
 
 // Middleware to validate microchip search input
-export const validateSearchInput = (req: Request, res: Response, next: NextFunction) => {
-  try {
-    microchipSchema.parse(req.body);
-    next();
-  } catch (error) {
-    if (error instanceof ZodError) {
-      const formattedErrors = error.issues.map((e: ZodIssue) => ({
-        path: e.path.join("."),
-        message: e.message,
-      }));
-      return res.status(400).json({ errors: formattedErrors });
-    }
-    console.error("Validation error:", error);
-    return res.status(500).json({ error: "Internal Server Error" });
-  }
+export const _validateSearchInput = (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	try {
+		microchipSchema.parse(req.body);
+		next();
+	} catch (error) {
+		if (error instanceof ZodError) {
+			const _formattedErrors = error.issues.map((e: ZodIssue) => ({
+				path: e.path.join("."),
+				message: e.message,
+			}));
+			return res.status(400).json({ errors: formattedErrors });
+		}
+		console.error("Validation error:", error);
+		return res.status(500).json({ error: "Internal Server Error" });
+	}
 };
 
 // Middleware to validate dog input (for create/update)
-export const validateDogInput = (req: Request, res: Response, next: NextFunction) => {
-  try {
-    dogSchema.parse(req.body);
-    next();
-  } catch (error) {
-    if (error instanceof ZodError) {
-      const formattedErrors = error.issues.map((e: ZodIssue) => ({
-        path: e.path.join("."),
-        message: e.message,
-      }));
-      return res.status(400).json({ errors: formattedErrors });
-    }
-    console.error("Validation error:", error);
-    return res.status(500).json({ error: "Internal Server Error" });
-  }
+export const _validateDogInput = (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	try {
+		dogSchema.parse(req.body);
+		next();
+	} catch (error) {
+		if (error instanceof ZodError) {
+			const _formattedErrors = error.issues.map((e: ZodIssue) => ({
+				path: e.path.join("."),
+				message: e.message,
+			}));
+			return res.status(400).json({ errors: formattedErrors });
+		}
+		console.error("Validation error:", error);
+		return res.status(500).json({ error: "Internal Server Error" });
+	}
 };

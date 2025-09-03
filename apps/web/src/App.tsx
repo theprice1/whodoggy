@@ -1,19 +1,18 @@
 // apps/web/src/App.tsx
 import type React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "...";
 import HomeScreen from "./pages/Home/HomeScreen.js";
 import SearchPage from "./pages/Search/SearchPage.js";
 
 const App: React.FC = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/search" element={<SearchPage />} />
-      </Routes>
-    </Router>
-  );
+	return (
+		<Router>
+			<Routes>
+				<Route path="/" element={<HomeScreen />} />
+				<Route path="/search" element={<SearchPage />} />
+			</Routes>
+		</Router>
+	);
 };
 
 export default App;
-

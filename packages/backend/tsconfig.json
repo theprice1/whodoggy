@@ -1,55 +1,41 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "outDir": "dist",
-    "rootDir": "src",
-    "noEmit": false,
-    "jsx": "preserve",
-    "types": [
-      "node",
-      "fs-extra",
-      "pg",
-    ],
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "strict": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "@whodoggy/shared": [
-        "../../packages/shared/src"
-      ],
-      "@whodoggy/shared/*": [
-        "../../packages/shared/src/*"
-      ]
-    },
-    "noEmitOnError": true
-  },
-  "include": [
-    "src",
-    "src/**/*",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "tests"
-  ],
-  "references": [
-    {
-      "path": "../shared"
-    }
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build",
-    "src/__tests__/**/*",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ]
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"outDir": "dist",
+		"rootDir": "src",
+		"noEmit": false,
+		"jsx": "preserve",
+		"types": ["node", "fs-extra", "pg"],
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"paths": {
+			"@whodoggy/shared": ["../../packages/shared/src"],
+			"@whodoggy/shared/*": ["../../packages/shared/src/*"]
+		},
+		"noEmitOnError": true
+	},
+	"include": ["src", "src/**/*", "src/**/*.ts", "src/**/*.d.ts", "tests"],
+	"references": [
+		{
+			"path": "../shared"
+		}
+	],
+	"exclude": [
+		"node_modules",
+		"dist",
+		"build",
+		"src/__tests__/**/*",
+		"**/*.test.ts",
+		"**/*.spec.ts"
+	]
 }
