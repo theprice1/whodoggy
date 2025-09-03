@@ -19,4 +19,21 @@ config.resolver.nodeModulesPaths = [
 // Force Metro to resolve workspace packages
 config.resolver.disableHierarchicalLookup = true;
 
+// Explicitly set the project root
+config.projectRoot = projectRoot;
+
+// Set the entry point
+config.server = {
+  ...config.server,
+  enhanceMiddleware: (middleware) => {
+    return (req, res, next) => {
+      // Fix the entry point resolution
+      if (req.url === '/index.bundle') {
+        req.url = '/index.bundle';
+      }
+      return middleware(req, res, next);
+    };
+  },
+};
+
 module.exports = config;
