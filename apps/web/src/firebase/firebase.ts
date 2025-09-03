@@ -1,6 +1,7 @@
 // apps/web/src/firebase/firebase.ts
 
 import { getApps, initializeApp } from "firebase/app";
+import type { FirebaseApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -13,13 +14,18 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-let app: FirebaseApp | undefined;
-if (!getApps().length) {
+const existingApps = getApps();
+let app: FirebaseApp;
+if (!existingApps.length) {
   app = initializeApp(firebaseConfig);
 } else {
-  app = getApps()[0];
+  app = existingApps[0]!; // Non-null assertion since we checked length
 }
 
 export const auth = getAuth(app);
 export const firestore = getFirestore(app);
+
+
+
+
 

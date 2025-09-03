@@ -3,10 +3,11 @@ module.exports = {
     name: "WhoDoggy",
     slug: "whodoggy",
     version: "1.0.0",
-    sdkVersion: "51.0.0",
-    platforms: ["ios", "android", "web"],
+    // Removed sdkVersion - not needed in modern Expo
+    platforms: ["ios", "android"],
     orientation: "portrait",
     icon: "./assets/icon.png",
+    userInterfaceStyle: "automatic",
     splash: {
       image: "./assets/splash.png",
       resizeMode: "contain",
@@ -28,10 +29,15 @@ module.exports = {
       package: "com.thepr1ce1.whodoggy",
     },
     web: {
+      bundler: "metro",
       favicon: "./assets/favicon.png",
     },
-
-    // ADD THIS PART:
+    plugins: [
+      "expo-router"
+    ],
+    experiments: {
+      typedRoutes: true,
+    },
     extra: {
       eas: {
         projectId: "3f916ac8-7a8c-4e53-aa7f-83c0c023a9e3",

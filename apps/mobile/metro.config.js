@@ -1,4 +1,4 @@
-// apps/mobile/metro.config.cjs
+// apps/mobile/metro.config.js
 const { getDefaultConfig } = require('expo/metro-config');
 const path = require('path');
 
@@ -15,25 +15,5 @@ config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, 'node_modules'),
   path.resolve(workspaceRoot, 'node_modules'),
 ];
-
-// Force Metro to resolve workspace packages
-config.resolver.disableHierarchicalLookup = true;
-
-// Explicitly set the project root
-config.projectRoot = projectRoot;
-
-// Set the entry point
-config.server = {
-  ...config.server,
-  enhanceMiddleware: (middleware) => {
-    return (req, res, next) => {
-      // Fix the entry point resolution
-      if (req.url === '/index.bundle') {
-        req.url = '/index.bundle';
-      }
-      return middleware(req, res, next);
-    };
-  },
-};
 
 module.exports = config;

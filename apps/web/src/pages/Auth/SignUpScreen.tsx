@@ -67,8 +67,7 @@ const SignUpScreen = () => {
         <button
           type="submit"
           className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-          aria-label="Sign up button"
-         type="button">
+          aria-label="Sign up button">
           Sign Up
         </button>
       </form>
@@ -77,4 +76,5 @@ const SignUpScreen = () => {
 };
 
 export default SignUpScreen;
+
 

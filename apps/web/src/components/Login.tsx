@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import type React from "react";
 import { useState } from "react";
-import { auth } from "../firebaseConfig.js";
+import { auth } from "../firebase/firebase.js";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -43,4 +43,6 @@ export default function Login() {
 }
 // This is a simple login component for a React web application using Firebase Authentication.
 // It allows users to enter their email and password, and handles login with error handling.
+
+
 
