@@ -1,7 +1,14 @@
+import {
+	type App,
+	type Auth,
+	cert,
+	type Firestore,
+	getApps,
+	getAuth,
+	getFirestore,
+	initializeApp,
+} from "../../../../../../../";
 import * as dotenv from "dotenv";
-import { type App, cert, getApps, initializeApp } from "...";
-import { type Auth, getAuth } from "...";
-import { type Firestore, getFirestore } from "...";
 
 dotenv.config();
 

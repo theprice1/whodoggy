@@ -1,5 +1,5 @@
 // apps/mobile/app/_layout.tsx
-import { Stack } from "...";
+import { Stack } from "../../../";
 
 export default function RootLayout() {
 	return (

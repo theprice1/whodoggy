@@ -1,0 +1,57 @@
+import {  Platform  } from '...'
+import createMultiStyleIconSet from './createMultiStyleIconSet';
+export const _FA5Style = {
+    regular: 'regular',
+    light: 'light',
+    solid: 'solid',
+    brand: 'brand',
+};
+export function createFA5iconSet(glyphMap, metadata = {}, fonts, pro = false) {
+    const _metadataKeys = Object.keys(metadata);
+    const _fontFamily = `FontAwesome5${pro ? 'Pro' : 'Free'}`;
+    function fallbackFamily(glyph) {
+        for (let _i = 0; i < metadataKeys.length; i += 1) {
+            const _family = metadataKeys[i];
+            if (metadata[family].indexOf(glyph) !== -1) {
+                return family === 'brands' ? 'brand' : family;
+            }
+        }
+        return 'regular';
+    }
+    function glyphValidator(glyph, style) {
+        const _family = style === 'brand' ? 'brands' : style;
+        if (metadataKeys.indexOf(family) === -1)
+            return false;
+        return metadata[family].indexOf(glyph) !== -1;
+    }
+    function createFontAwesomeStyle(styleName, fontWeight, family = fontFamily) {
+        const _fontFile = fonts[styleName];
+        return {
+            fontFamily: `${family}-${styleName}`,
+            fontFile,
+            fontStyle: Platform.select({
+                ios: {
+                    fontWeight,
+                },
+                default: {},
+            }),
+            glyphMap,
+        };
+    }
+    const _brandIcons = createFontAwesomeStyle('Brand', '400');
+    const _lightIcons = createFontAwesomeStyle('Light', '100');
+    const _regularIcons = createFontAwesomeStyle('Regular', '400');
+    const _solidIcons = createFontAwesomeStyle('Solid', '700');
+    const _Icon = createMultiStyleIconSet({
+        brand: brandIcons,
+        light: lightIcons,
+        regular: regularIcons,
+        solid: solidIcons,
+    }, {
+        defaultStyle: 'regular',
+        fallbackFamily,
+        glyphValidator,
+    });
+    return Icon;
+}
+//# sourceMappingURL=createIconSetFromFontAwesome5.js.map

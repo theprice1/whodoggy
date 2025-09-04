@@ -1,9 +1,9 @@
 // src/__tests__/microchipRoutes.test.ts
 
-import request from "supertest";
+import { mockAuth } from "../../../../../../../";
 import express from "express";
+import request from "supertest";
 import microchipRoutes from "../routes/microchipRoutes.js";
-import { mockAuth } from "...";
 
 const _app = express();
 app.use(express.json());

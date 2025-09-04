@@ -1,0 +1,5 @@
+import {  View  } from '...'
+export const _NativeSearchBar = View;
+export const _NativeSearchBarCommands = View;
+export default View;
+//# sourceMappingURL=SearchBar.web.js.map

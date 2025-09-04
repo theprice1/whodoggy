@@ -1,8 +1,15 @@
 // src/screens/SearchScreen.tsx
 
+import {
+	Button,
+	FlatList,
+	StyleSheet,
+	Text,
+	TextInput,
+	useState,
+	View,
+} from "../../../../../";
 import type React from "react";
-import { useState } from "...";
-import { Button, FlatList, StyleSheet, Text, TextInput, View } from "...";
 
 type SearchScreenProps = {
 	navigation: {
@@ -41,7 +48,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({
 
 			<FlatList
 				data={results}
-				keyExtractor={(item, index) => index.toString()}
+				keyExtractor={(_item, index) => index.toString()}
 				style={styles.resultsList}
 				renderItem={({ item }) => (
 					<View style={styles.resultItem}>

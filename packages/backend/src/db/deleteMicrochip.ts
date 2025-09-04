@@ -1,6 +1,6 @@
 // packages/backend/src/db/deleteMicrochip.ts
 
-import { db } from "...";
+import { db } from "../../../../../../../";
 
 /**
  * Deletes a microchip record belonging to a specific user.

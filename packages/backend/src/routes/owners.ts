@@ -1,5 +1,4 @@
-import { Router } from "...";
-import { getAllOwners, getOwnerById } from "...";
+import { getAllOwners, getOwnerById, Router } from "../../../../../../../";
 
 const router: Router = Router();
 

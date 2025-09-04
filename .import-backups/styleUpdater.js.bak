@@ -1,0 +1,62 @@
+'use strict';
+
+import {  isFabric  } from '...'
+import updateProps from '../UpdateProps';
+const _IS_FABRIC = isFabric();
+function createViewDescriptorPaper(screenId) {
+  'worklet';
+
+  return {
+    tag: screenId,
+    name: 'RCTView'
+  };
+}
+function createViewDescriptorFabric(screenId) {
+  'worklet';
+
+  return {
+    shadowNodeWrapper: screenId
+  };
+}
+const _createViewDescriptor = IS_FABRIC ? createViewDescriptorFabric : createViewDescriptorPaper;
+function applyStyleForTopScreen(screenTransitionConfig, event) {
+  'worklet';
+
+  const {
+    screenDimensions,
+    topScreenId,
+    screenTransition
+  } = screenTransitionConfig;
+  const {
+    topScreenStyle: computeTopScreenStyle
+  } = screenTransition;
+  const _topScreenStyle = computeTopScreenStyle(event, screenDimensions);
+  const _topScreenDescriptor = {
+    value: [createViewDescriptor(topScreenId)]
+  };
+  updateProps(topScreenDescriptor, topScreenStyle, undefined);
+}
+export function applyStyleForBelowTopScreen(screenTransitionConfig, event) {
+  'worklet';
+
+  const {
+    screenDimensions,
+    belowTopScreenId,
+    screenTransition
+  } = screenTransitionConfig;
+  const {
+    belowTopScreenStyle: computeBelowTopScreenStyle
+  } = screenTransition;
+  const _belowTopScreenStyle = computeBelowTopScreenStyle(event, screenDimensions);
+  const _belowTopScreenDescriptor = {
+    value: [createViewDescriptor(belowTopScreenId)]
+  };
+  updateProps(belowTopScreenDescriptor, belowTopScreenStyle, undefined);
+}
+export function applyStyle(screenTransitionConfig, event) {
+  'worklet';
+
+  applyStyleForTopScreen(screenTransitionConfig, event);
+  applyStyleForBelowTopScreen(screenTransitionConfig, event);
+}
+//# sourceMappingURL=styleUpdater.js.map

@@ -1,5 +1,3 @@
-import type React from "react";
-import { useCallback } from "...";
 import {
 	Modal,
 	type StyleProp,
@@ -7,9 +5,11 @@ import {
 	Text,
 	type TextStyle,
 	TouchableOpacity,
+	useCallback,
 	View,
 	type ViewStyle,
-} from "...";
+} from "../../../../";
+import type React from "react";
 
 type InfoDialogProps = {
 	visible: boolean;

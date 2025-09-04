@@ -1,11 +1,11 @@
 // apps/mobile/metro.config.js
 const { getDefaultConfig } = require("expo/metro-config");
-const _path = require("node:path");
+const path = require("node:path");
 
-const _projectRoot = __dirname;
-const _workspaceRoot = path.resolve(projectRoot, "../..");
+const projectRoot = __dirname;
+const workspaceRoot = path.resolve(projectRoot, "../..");
 
-const _config = getDefaultConfig(projectRoot);
+const config = getDefaultConfig(projectRoot);
 
 // Watch all files within the monorepo
 config.watchFolders = [workspaceRoot];
@@ -17,3 +17,4 @@ config.resolver.nodeModulesPaths = [
 ];
 
 module.exports = config;
+

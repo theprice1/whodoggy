@@ -1,9 +1,7 @@
 // shared/firebase.ts
 
 // Firebase core and services
-import { initializeApp } from "...";
-import { getAuth } from "...";
-import { getFirestore } from "...";
+import { getAuth, getFirestore, initializeApp } from "../../";
 import type { Analytics } from "firebase/analytics";
 
 // Optional: analytics (only on web)
@@ -36,6 +34,6 @@ if (typeof window !== "undefined" && "document" in window) {
 }
 
 // 🚀 Export everything you need
-export { app, auth, db, analytics };
+export { type app, type auth, type db, analytics };
 // This file initializes Firebase with the provided configuration and exports the necessary services.
 // It includes Firebase Authentication, Firestore, and optional Analytics for web applications.

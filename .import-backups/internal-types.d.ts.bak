@@ -1,0 +1,7 @@
+import {  Span  } from '...'
+import {  FastifyReply  } from '...'
+import {  spanRequestSymbol  } from '...'
+export type PluginFastifyReply = FastifyReply & {
+    [spanRequestSymbol]?: Span[];
+};
+//# sourceMappingURL=internal-types.d.ts.map

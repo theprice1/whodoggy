@@ -1,5 +1,6 @@
 // debug-firebase.js
 import dotenv from "dotenv";
+
 dotenv.config();
 
 console.log("=== Firebase Credentials Debug ===");

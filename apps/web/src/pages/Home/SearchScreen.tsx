@@ -1,5 +1,5 @@
+import { useState } from "../../../../../";
 import type React from "react";
-import { useState } from "...";
 
 interface SearchResult {
 	name: string;

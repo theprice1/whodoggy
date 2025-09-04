@@ -49,7 +49,7 @@ function fixFile(filePath) {
   // 4. Remove unused imports (simple heuristic: import { x } ...; if x not in content)
   content = content.replace(/import\s+{([^}]+)}\s+from\s+['"][^'"]+['"];?/g, (m, names) => {
     const used = names.split(',').filter((n) => content.includes(n.trim()));
-    return used.length ? `import { ${used.join(', ')} } from '...'` : '';
+    return used.length ? `import { ${used.join(', ')} } from "/"` : '';
   });
 
   // 5. Button missing type → type="button"
@@ -73,3 +73,4 @@ workspaceDirs.forEach((dir) => {
 });
 
 console.log('✅ Biome auto-fix completed!');
+

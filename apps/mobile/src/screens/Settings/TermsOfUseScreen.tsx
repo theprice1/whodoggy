@@ -1,5 +1,4 @@
-import React from "react";
-import { ScrollView, StyleSheet, Text } from "...";
+import { ScrollView, StyleSheet, Text } from "../../../../../";
 
 const _TermsOfUseScreen = () => {
 	return (

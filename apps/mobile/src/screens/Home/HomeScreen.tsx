@@ -1,7 +1,7 @@
 // src/screens/HomeScreen.tsx
 
+import { Button, StyleSheet, Text, View } from "../../../../../";
 import type React from "react";
-import { Button, StyleSheet, Text, View } from "...";
 
 type HomeScreenProps = {
 	navigation: {

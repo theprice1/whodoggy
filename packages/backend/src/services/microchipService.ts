@@ -1,4 +1,4 @@
-import { type MicrochipRecord, mockDatabases } from "...";
+import { type MicrochipRecord, mockDatabases } from "../../../../../../../";
 
 export async function getMicrochipData(id: string): Promise<MicrochipRecord[]> {
 	const results: MicrochipRecord[] = [];

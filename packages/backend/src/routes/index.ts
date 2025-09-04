@@ -1,8 +1,8 @@
 // packages/backend/src/routes/index.ts
 import express from "express";
 import deleteDataRoutes from "./deleteData.js";
-import microchipRoutes from "./microchipRoutes.js";
 import dogsRoutes from "./dogs.js";
+import microchipRoutes from "./microchipRoutes.js";
 
 const router: express.Router = express.Router();
 

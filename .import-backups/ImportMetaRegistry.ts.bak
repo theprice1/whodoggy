@@ -1,0 +1,14 @@
+// Copyright 2015-present 650 Industries. All rights reserved.
+
+import {  getBundleUrl  } from '...'
+
+/**
+ * Registry to handle import.meta functionality for React Native environment
+ * Similar to how it works in the web, but adapted for the RN context
+ * https://github.com/wintercg/import-meta-registry
+ */
+export const _ImportMetaRegistry = {
+  get url() {
+    return getBundleUrl();
+  },
+};

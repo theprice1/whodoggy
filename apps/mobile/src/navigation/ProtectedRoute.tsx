@@ -1,6 +1,5 @@
-import { Text } from "...";
 // navigation/ProtectedRoute.tsx
-import { useAuth } from "...";
+import { Text, useAuth } from "../../../../";
 
 export const _ProtectedRoute = ({
 	children,

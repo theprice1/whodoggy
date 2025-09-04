@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import type { MicrochipRecord } from "./types.js";
 
 // Existing loading of mock data
@@ -13,7 +13,7 @@ allMockRecords.forEach((record) => {
 	if (!mockDatabases[record.registryName]) {
 		mockDatabases[record.registryName] = [];
 	}
-	mockDatabases[record.registryName]!.push(record);
+	mockDatabases[record.registryName]?.push(record);
 });
 
 // Add a fixed test record for unit tests
@@ -40,7 +40,7 @@ allMockRecords.push(fixedTestRecord);
 if (!mockDatabases[fixedTestRecord.registryName]) {
 	mockDatabases[fixedTestRecord.registryName] = [];
 }
-mockDatabases[fixedTestRecord.registryName]!.push(fixedTestRecord);
+mockDatabases[fixedTestRecord.registryName]?.push(fixedTestRecord);
 
 export type { MicrochipRecord };
 export { mockDatabases, allMockRecords, fixedTestRecord };

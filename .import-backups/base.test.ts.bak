@@ -1,0 +1,7 @@
+import {  expect,  test  } from '...'
+import * as z from "zod/v4";
+
+test("test this binding", () => {
+  const _parse = z.string().parse;
+  expect(parse("asdf")).toBe("asdf");
+});

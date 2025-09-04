@@ -1,7 +1,5 @@
+import { getAuth, getFirestore, initializeApp } from "../../../../../../../";
 import * as dotenv from "dotenv";
-import { initializeApp } from "...";
-import { getAuth } from "...";
-import { getFirestore } from "...";
 
 dotenv.config();
 
@@ -16,4 +14,4 @@ const _clientApp = initializeApp(firebaseConfig);
 const _clientAuth = getAuth(clientApp); // Fixed: was getFirestore
 const _clientDb = getFirestore(clientApp); // Fixed: was getAuth
 
-export { clientApp, clientDb, clientAuth };
+export type { clientApp, clientDb, clientAuth };

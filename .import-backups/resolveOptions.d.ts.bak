@@ -1,0 +1,2 @@
+import {  JsTransformOptions  } from '...'
+export declare function shouldMinify(options: Pick<JsTransformOptions, 'unstable_transformProfile' | 'customTransformOptions' | 'minify'>): boolean;

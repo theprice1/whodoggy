@@ -1,6 +1,7 @@
 // apps/web/src/pages/Home/HomeScreen.tsx
+
+import { Link } from "../../../../../";
 import type React from "react";
-import { Link } from "...";
 
 const HomeScreen: React.FC = () => {
 	return (

@@ -1,6 +1,7 @@
 // packages/backend/middleware/validateInput.ts
+
+import { ZodError, type ZodIssue, z } from "../../../../../../../";
 import type { NextFunction, Request, Response } from "express";
-import { ZodError, type ZodIssue, z } from "...";
 
 // Schema to validate microchip search input
 const _microchipSchema = z.object({

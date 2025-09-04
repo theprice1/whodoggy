@@ -1,7 +1,7 @@
 // packages/backend/src/routes/microchip.ts
 
+import { Client } from "../../../../../../../"; // For PostgreSQL queries
 import express, { type Request, type Response } from "express";
-import { Client } from "..."; // For PostgreSQL queries
 
 const router: express.Router = express.Router();
 

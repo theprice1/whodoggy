@@ -1,13 +1,14 @@
 // src/routes/dogs.ts
-import express from "express";
+
 import {
-	getDogs,
+	createDog,
+	deleteDog,
 	getDogById,
 	getDogByMicrochipId,
-	createDog,
+	getDogs,
 	updateDog,
-	deleteDog,
-} from "...";
+} from "../../../../../../../";
+import express from "express";
 
 const router: express.Router = express.Router();
 

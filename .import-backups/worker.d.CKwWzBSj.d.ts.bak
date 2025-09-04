@@ -1,0 +1,8 @@
+import {  MessagePort  } from '...'
+import {  C as ContextRPC  } from '...'
+
+interface WorkerContext extends ContextRPC {
+	port: MessagePort;
+}
+
+export type { WorkerContext as W };

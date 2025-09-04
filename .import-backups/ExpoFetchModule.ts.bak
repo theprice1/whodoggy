@@ -1,0 +1,3 @@
+import {  requireNativeModule  } from '...'
+
+export const _ExpoFetchModule = requireNativeModule('ExpoFetchModule');

@@ -1,7 +1,12 @@
 // packages/shared/src/firebase/firebase.ts
-import { type FirebaseApp, initializeApp } from "...";
-import { type Auth, getAuth } from "...";
-import { type Firestore, getFirestore } from "...";
+import {
+	type Auth,
+	type FirebaseApp,
+	type Firestore,
+	getAuth,
+	getFirestore,
+	initializeApp,
+} from "../../../../../../../";
 import type { Analytics } from "firebase/analytics";
 
 let analytics: Analytics | null = null;

@@ -1,0 +1,4 @@
+import {  requireNativeViewManager  } from '...'
+const _ExpoBarCodeScannerView = requireNativeViewManager('ExpoBarCodeScanner');
+export default ExpoBarCodeScannerView;
+//# sourceMappingURL=ExpoBarCodeScannerView.js.map

@@ -1,4 +1,4 @@
-import { createMockRegistryServer } from "...";
+import { createMockRegistryServer } from "../../../../../../../../";
 
 const _startPort = 4101;
 const _numberOfRegistries = 22;

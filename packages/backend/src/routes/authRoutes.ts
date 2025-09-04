@@ -1,5 +1,5 @@
+import { login, signup } from "../../../../../../../";
 import express from "express";
-import { login, signup } from "...";
 
 const router: express.Router = express.Router();
 

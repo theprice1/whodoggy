@@ -1,7 +1,5 @@
-import { signInWithEmailAndPassword } from "...";
+import { auth, signInWithEmailAndPassword, useState } from "../../../../";
 import type React from "react";
-import { useState } from "...";
-import { auth } from "...";
 
 export default function Login() {
 	const [email, setEmail] = useState("");

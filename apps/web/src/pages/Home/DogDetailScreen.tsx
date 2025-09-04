@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function DogDetailScreen() {
 	return (
 		<main className="flex items-center justify-center h-screen">

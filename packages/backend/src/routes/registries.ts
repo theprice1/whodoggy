@@ -1,5 +1,5 @@
+import { getAllRegistries, getRegistryById } from "../../../../../../../"; // ✅ ESM requires .js
 import express from "express";
-import { getAllRegistries, getRegistryById } from "..."; // ✅ ESM requires .js
 
 const router: express.Router = express.Router();
 

@@ -5,6 +5,7 @@ import morgan from "morgan";
 
 import aggregateSearchRouter from "./aggregateSearchController.js";
 import deleteDataController from "./deleteDataController.js";
+
 dotenv.config();
 
 const _app = express();

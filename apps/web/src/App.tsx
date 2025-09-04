@@ -1,6 +1,7 @@
 // apps/web/src/App.tsx
+
+import { Route, BrowserRouter as Router, Routes } from "../../../";
 import type React from "react";
-import { Route, BrowserRouter as Router, Routes } from "...";
 import HomeScreen from "./pages/Home/HomeScreen.js";
 import SearchPage from "./pages/Search/SearchPage.js";
 

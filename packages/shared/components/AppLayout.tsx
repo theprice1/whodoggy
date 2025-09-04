@@ -1,7 +1,7 @@
 // packages/shared/components/AppLayout.tsx
+
+import { StyleSheet, theme, View } from "../../../../../../";
 import type React from "react";
-import { StyleSheet, View } from "...";
-import { theme } from "...";
 
 export const AppLayout: React.FC<{ children: React.ReactNode }> = ({
 	children,

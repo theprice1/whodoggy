@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { faker } from "...";
+import { faker } from "../../../../../../../";
+import fs from "node:fs";
+import path from "node:path";
 
 interface DogRecord {
 	microchipId: string;

@@ -1,6 +1,6 @@
 // packages/backend/src/scripts/runMigrations.ts
-import { spawn } from "...";
-import path from "path";
+import { spawn } from "../../../../../../../";
+import path from "node:path";
 import dotenv from "dotenv";
 
 dotenv.config({ path: path.resolve(__dirname, "../../../.env") });

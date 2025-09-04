@@ -1,0 +1,80 @@
+import Benchmark from "benchmark";
+
+import {  z  } from '...'
+
+const _doubleSuite = new Benchmark.Suite("z.union: double");
+const _manySuite = new Benchmark.Suite("z.union: many");
+
+const _aSchema = z.object({
+  type: z.literal("a"),
+});
+const _objA = {
+  type: "a",
+};
+
+const _bSchema = z.object({
+  type: z.literal("b"),
+});
+const _objB = {
+  type: "b",
+};
+
+const _cSchema = z.object({
+  type: z.literal("c"),
+});
+const _objC = {
+  type: "c",
+};
+
+const _dSchema = z.object({
+  type: z.literal("d"),
+});
+
+const _double = z.union([aSchema, bSchema]);
+const _many = z.union([aSchema, bSchema, cSchema, dSchema]);
+
+doubleSuite
+  .add("valid: a", () => {
+    double.parse(objA);
+  })
+  .add("valid: b", () => {
+    double.parse(objB);
+  })
+  .add("invalid: null", () => {
+    try {
+      double.parse(null);
+    } catch (_err) {}
+  })
+  .add("invalid: wrong shape", () => {
+    try {
+      double.parse(objC);
+    } catch (_err) {}
+  })
+  .on("cycle", (e: Benchmark.Event) => {
+    console.log(`${(doubleSuite as any).name}: ${e.target}`);
+  });
+
+manySuite
+  .add("valid: a", () => {
+    many.parse(objA);
+  })
+  .add("valid: c", () => {
+    many.parse(objC);
+  })
+  .add("invalid: null", () => {
+    try {
+      many.parse(null);
+    } catch (_err) {}
+  })
+  .add("invalid: wrong shape", () => {
+    try {
+      many.parse({ type: "unknown" });
+    } catch (_err) {}
+  })
+  .on("cycle", (e: Benchmark.Event) => {
+    console.log(`${(manySuite as any).name}: ${e.target}`);
+  });
+
+export default {
+  suites: [doubleSuite, manySuite],
+};

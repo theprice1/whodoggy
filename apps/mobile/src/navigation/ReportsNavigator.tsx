@@ -1,5 +1,5 @@
+import { createNativeStackNavigator } from "../../../../";
 import type React from "react";
-import { createNativeStackNavigator } from "...";
 import ReportFoundDogScreen from "../screens/Reports/ReportFoundDogScreen";
 
 export type ReportsStackParamList = {

@@ -1,6 +1,10 @@
-import { type User, onAuthStateChanged } from "...";
-import { useEffect, useState } from "...";
-import { auth } from "..."; // adjust path as needed
+import {
+	auth,
+	onAuthStateChanged,
+	type User,
+	useEffect,
+	useState,
+} from "../../../../"; // adjust path as needed
 
 export function useAuth() {
 	const [user, setUser] = useState<User | null>(null);

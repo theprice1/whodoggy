@@ -1,8 +1,14 @@
 // src/screens/QRScannerScreen.tsx
 
-import { BarCodeScanner } from "...";
+import {
+	Alert,
+	BarCodeScanner,
+	Button,
+	StyleSheet,
+	Text,
+	View,
+} from "../../../../../";
 import React, { useState } from "react";
-import { Alert, Button, StyleSheet, Text, View } from "...";
 
 type QRScannerScreenProps = {
 	navigation: {

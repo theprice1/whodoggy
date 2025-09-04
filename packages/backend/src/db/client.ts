@@ -1,6 +1,6 @@
-import path from "path";
+import { Pool } from "../../../../../../../";
+import path from "node:path";
 import dotenv from "dotenv";
-import { Pool } from "...";
 
 // Always resolve based on this file's actual directory
 dotenv.config({ path: path.resolve(__dirname, "../../../.env") });

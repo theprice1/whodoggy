@@ -1,40 +1,49 @@
 {
-	"extends": "../../tsconfig.base.json",
-	"compilerOptions": {
-		"jsx": "react-native",
-		"outDir": "dist",
-		"rootDir": ".",
-		"composite": false,
-		"noEmit": true,
-		"moduleResolution": "NodeNext",
-		"module": "NodeNext",
-		"target": "ES2022",
-		"types": [],
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"skipLibCheck": true,
-		"baseUrl": ".",
-		"paths": {
-			"@whodoggy/shared/*": ["../packages/shared/dist/*"]
-		},
-		"resolveJsonModule": true,
-		"allowJs": false
-	},
-	"include": ["src/**/*", "app/**/*", "App.tsx", "index.tsx"],
-	"exclude": [
-		"node_modules",
-		"dist",
-		"build",
-		".expo",
-		"**/*.test.ts",
-		"**/*.test.tsx",
-		"**/*.spec.ts",
-		"**/*.spec.tsx"
-	],
-	"references": [
-		{
-			"path": "../../packages/shared"
-		}
-	]
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "outDir": "dist",
+    "rootDir": ".",
+    "composite": false,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "ES2022",
+    "types": [],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@whodoggy/shared/*": [
+        "../packages/shared/dist/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "src/**/*",
+    "app/**/*",
+    "App.tsx",
+    "index.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    ".expo",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
+  ],
+  "references": [
+    {
+      "path": "../../packages/shared"
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-import { defineConfig } from "...";
+import { defineConfig } from "../../../../../";
 
 export default defineConfig({
 	test: {

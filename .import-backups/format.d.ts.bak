@@ -1,0 +1,3 @@
+import {   PredefinedFormats   } from '...'
+export declare const PredefinedFormatToCheckFunction: Readonly<Record<PredefinedFormats, (name: string) => boolean>>;
+//# sourceMappingURL=format.d.ts.map

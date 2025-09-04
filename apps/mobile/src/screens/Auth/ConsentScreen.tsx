@@ -1,5 +1,4 @@
-import React from "react";
-import { Button, StyleSheet, Text, View } from "...";
+import { Button, StyleSheet, Text, View } from "../../../../../";
 
 const _ConsentScreen = () => {
 	return (

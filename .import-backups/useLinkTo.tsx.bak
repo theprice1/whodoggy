@@ -1,0 +1,31 @@
+import {  NavigationContainerRefContext  } from '...'
+import * as React from 'react';
+
+import {  useLinkBuilder  } from '...'
+
+/**
+ * Helper to navigate to a screen using a href based on the linking options.
+ *
+ * @returns function that receives the href to navigate to.
+ */
+export function useLinkTo() {
+  const _navigation = React.useContext(NavigationContainerRefContext);
+  const { buildAction } = useLinkBuilder();
+
+  const _linkTo = React.useCallback(
+    (href: string) => {
+      if (navigation === undefined) {
+        throw new Error(
+          "Couldn't find a navigation object. Is your component inside NavigationContainer?"
+        );
+      }
+
+      const _action = buildAction(href);
+
+      navigation.dispatch(action);
+    },
+    [buildAction, navigation]
+  );
+
+  return linkTo;
+}

@@ -1,5 +1,5 @@
 // src/__tests__/setup.ts
-import { execSync } from "...";
+import { execSync } from "../../../../../../../";
 
 // Run migrations and seed DB before tests (optional, adapt as needed)
 beforeAll(() => {

@@ -1,5 +1,5 @@
-import React, { type FC } from "react";
-import { Button, Modal, Text, View } from "...";
+import { Button, Modal, Text, View } from "../../../../../../../";
+import type { FC } from "react";
 
 interface InfoDialogProps {
 	visible: boolean;

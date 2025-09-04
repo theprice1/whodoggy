@@ -14,7 +14,7 @@ const _db = pgp({
 });
 
 // Export db and pgp instances
-export { pgp, db };
+export type { pgp, db };
 export const _query = db.any.bind(db);
 
 // Correctly export shutdownDbPool function

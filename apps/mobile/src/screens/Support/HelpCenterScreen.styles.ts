@@ -1,4 +1,4 @@
-import { StyleSheet } from "...";
+import { StyleSheet } from "../../../../../";
 
 export const _styles = StyleSheet.create({
 	container: {

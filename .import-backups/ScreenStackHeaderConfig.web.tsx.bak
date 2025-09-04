@@ -1,0 +1,39 @@
+import {  Image,  ImageProps,  View,  ViewProps  } from '...'
+import React from 'react';
+import { 
+  HeaderSubviewTypes, 
+  ScreenStackHeaderConfigProps, 
+  SearchBarProps, 
+ } from '...'
+
+export const _ScreenStackHeaderBackButtonImage = (
+  props: ImageProps
+): JSX.Element => (
+  <View>
+    <Image resizeMode="center" fadeDuration={0} {...props} />
+  </View>
+);
+
+export const _ScreenStackHeaderRightView = (
+  props: React.PropsWithChildren<ViewProps>
+): JSX.Element => <View {...props} />;
+
+export const _ScreenStackHeaderLeftView = (
+  props: React.PropsWithChildren<ViewProps>
+): JSX.Element => <View {...props} />;
+
+export const _ScreenStackHeaderCenterView = (
+  props: React.PropsWithChildren<ViewProps>
+): JSX.Element => <View {...props} />;
+
+export const _ScreenStackHeaderSearchBarView = (
+  props: React.PropsWithChildren<Omit<SearchBarProps, 'ref'>>
+): JSX.Element => <View {...props} />;
+
+export const _ScreenStackHeaderConfig = (
+  props: React.PropsWithChildren<ScreenStackHeaderConfigProps>
+): JSX.Element => <View {...props} />;
+
+export const ScreenStackHeaderSubview: React.ComponentType<
+  React.PropsWithChildren<ViewProps & { type?: HeaderSubviewTypes }>
+> = View;

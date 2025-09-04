@@ -1,5 +1,5 @@
+import { createNativeStackNavigator } from "../../../../";
 import type React from "react";
-import { createNativeStackNavigator } from "...";
 import ScanHistoryScreen from "../screens/History/ScanHistoryScreen";
 
 export type HistoryStackParamList = {

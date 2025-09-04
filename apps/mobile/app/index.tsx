@@ -1,5 +1,5 @@
 // apps/mobile/app/index.tsx
-import { Text, View, StyleSheet } from "...";
+import { StyleSheet, Text, View } from "../../../";
 
 export default function Home() {
 	return (

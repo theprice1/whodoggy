@@ -1,5 +1,5 @@
-import { spawn } from "...";
-import path from "path";
+import { spawn } from "../../../../../../../../";
+import path from "node:path";
 
 const _totalRegistries = 22;
 const _basePort = 4101;

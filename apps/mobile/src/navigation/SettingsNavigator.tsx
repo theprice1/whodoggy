@@ -1,10 +1,10 @@
+import { createNativeStackNavigator } from "../../../../";
 import type React from "react";
-import { createNativeStackNavigator } from "...";
-import SettingsScreen from "../screens/Settings/SettingsScreen";
-import ProfileScreen from "../screens/Settings/ProfileScreen";
-import AccessibilityOptionsScreen from "../screens/Settings/AccessibilityOptionsScreen";
 import AboutScreen from "../screens/Settings/AboutScreen";
+import AccessibilityOptionsScreen from "../screens/Settings/AccessibilityOptionsScreen";
 import PrivacyPolicyScreen from "../screens/Settings/PrivacyPolicyScreen";
+import ProfileScreen from "../screens/Settings/ProfileScreen";
+import SettingsScreen from "../screens/Settings/SettingsScreen";
 import TermsOfUseScreen from "../screens/Settings/TermsOfUseScreen";
 
 export type SettingsStackParamList = {

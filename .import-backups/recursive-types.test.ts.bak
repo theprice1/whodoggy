@@ -1,0 +1,275 @@
+import {  expect,  expectTypeOf,  test  } from '...'
+import {  z  } from '...'
+
+test("recursion with z.lazy", () => {
+  const _data = {
+    name: "I",
+    subcategories: [
+      {
+        name: "A",
+        subcategories: [
+          {
+            name: "1",
+            subcategories: [
+              {
+                name: "a",
+                subcategories: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+
+  const _Category = z.object({
+    name: z.string(),
+    get subcategories(): z.ZodMiniOptional<z.ZodMiniArray<typeof Category>> {
+      return z.optional(z.array(Category));
+    },
+  });
+  Category.parse(data);
+
+  type Category = z.infer<typeof Category>;
+  interface _Category {
+    name: string;
+    subcategories?: _Category[];
+  }
+  expectTypeOf<Category>().toEqualTypeOf<_Category>();
+});
+
+test("recursion involving union type", () => {
+  const _data = {
+    value: 1,
+    next: {
+      value: 2,
+      next: {
+        value: 3,
+        next: {
+          value: 4,
+          next: null,
+        },
+      },
+    },
+  };
+
+  const _LL = z.object({
+    value: z.number(),
+    get next(): z.ZodMiniNullable<typeof LL> {
+      return z.nullable(LL);
+    },
+  });
+
+  LL.parse(data);
+  type LL = z.infer<typeof LL>;
+  type _LL = {
+    value: number;
+    next: _LL | null;
+  };
+  expectTypeOf<LL>().toEqualTypeOf<_LL>();
+});
+
+test("mutual recursion - native", () => {
+  const _Alazy = z.object({
+    val: z.number(),
+    get b() {
+      return z.optional(Blazy);
+    },
+  });
+
+  const _Blazy = z.object({
+    val: z.number(),
+    get a() {
+      return z.optional(Alazy);
+    },
+  });
+  const _testData = {
+    val: 1,
+    b: {
+      val: 5,
+      a: {
+        val: 3,
+        b: {
+          val: 4,
+          a: {
+            val: 2,
+            b: {
+              val: 1,
+            },
+          },
+        },
+      },
+    },
+  };
+
+  Alazy.parse(testData);
+  Blazy.parse(testData.b);
+
+  type Alazy = z.infer<typeof Alazy>;
+  type Blazy = z.infer<typeof Blazy>;
+  interface _Alazy {
+    val: number;
+    b?: _Blazy | undefined;
+  }
+  interface _Blazy {
+    val: number;
+    a?: _Alazy | undefined;
+  }
+  expectTypeOf<Alazy>().toEqualTypeOf<_Alazy>();
+  expectTypeOf<Blazy>().toEqualTypeOf<_Blazy>();
+
+  expect(() => Alazy.parse({ val: "asdf" })).toThrow();
+});
+
+test("pick and omit with getter", () => {
+  const _Category = z.strictObject({
+    name: z.string(),
+    get subcategories() {
+      return z.array(Category);
+    },
+  });
+
+  type Category = z.infer<typeof Category>;
+  interface _Category {
+    name: string;
+    subcategories: _Category[];
+  }
+  expectTypeOf<Category>().toEqualTypeOf<_Category>();
+
+  const _PickedCategory = z.pick(Category, { name: true });
+  const _OmittedCategory = z.omit(Category, { subcategories: true });
+  type PickedCategory = z.infer<typeof PickedCategory>;
+  type OmittedCategory = z.infer<typeof OmittedCategory>;
+  interface _PickedCategory {
+    name: string;
+  }
+  interface _OmittedCategory {
+    name: string;
+  }
+  expectTypeOf<PickedCategory>().toEqualTypeOf<_PickedCategory>();
+  expectTypeOf<OmittedCategory>().toEqualTypeOf<_OmittedCategory>();
+
+  const _picked = { name: "test" };
+  const _omitted = { name: "test" };
+
+  PickedCategory.parse(picked);
+  OmittedCategory.parse(omitted);
+
+  expect(() => PickedCategory.parse({ name: "test", subcategories: [] })).toThrow();
+  expect(() => OmittedCategory.parse({ name: "test", subcategories: [] })).toThrow();
+});
+
+test("deferred self-recursion", () => {
+  const _Feature = z.object({
+    title: z.string(),
+    get features(): z.ZodMiniOptional<z.ZodMiniArray<typeof Feature>> {
+      return z.optional(z.array(Feature)); //.optional();
+    },
+  });
+  type Feature = z.infer<typeof Feature>;
+
+  const _Output = z.object({
+    id: z.int(), //.nonnegative(),
+    name: z.string(),
+    features: z.array(Feature), //.array(), // <—
+  });
+
+  type Output = z.output<typeof Output>;
+
+  type _Feature = {
+    title: string;
+    features?: _Feature[] | undefined;
+  };
+
+  type _Output = {
+    id: number;
+    name: string;
+    features: _Feature[];
+  };
+
+  expectTypeOf<Feature>().toEqualTypeOf<_Feature>();
+  expectTypeOf<Output>().toEqualTypeOf<_Output>();
+});
+
+test("recursion compatibility", () => {
+  // array
+  const _A = z.object({
+    get subcategories() {
+      return z.array(A);
+    },
+  });
+  // tuple
+  const _B = z.object({
+    get subcategories() {
+      return z.tuple([B, B]);
+    },
+  });
+  // object
+  const _C = z.object({
+    get subcategories() {
+      return z.object({
+        subcategories: C,
+      });
+    },
+  });
+  // union
+  const _D = z.object({
+    get subcategories() {
+      return z.union([D, z.string()]);
+    },
+  });
+  // intersection
+  const _E = z.object({
+    get subcategories() {
+      return z.intersection(E, E);
+    },
+  });
+  // record
+  const _F = z.object({
+    get subcategories() {
+      return z.record(z.string(), F);
+    },
+  });
+  // map
+  const _G = z.object({
+    get subcategories() {
+      return z.map(z.string(), G);
+    },
+  });
+  // set
+  const _H = z.object({
+    get subcategories() {
+      return z.set(H);
+    },
+  });
+  // optional
+  const _I = z.object({
+    get subcategories() {
+      return z.optional(I);
+    },
+  });
+  // nullable
+  const _J = z.object({
+    get subcategories() {
+      return z.nullable(J);
+    },
+  });
+  // optional
+  const _L = z.object({
+    get subcategories() {
+      return z.optional(L);
+    },
+  });
+  // nullable
+  const _M = z.object({
+    get subcategories() {
+      return z.nullable(M);
+    },
+  });
+  // nonoptional
+  const _N = z.object({
+    get subcategories() {
+      return z.nonoptional(N);
+    },
+  });
+});

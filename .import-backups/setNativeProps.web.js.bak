@@ -1,0 +1,10 @@
+'use strict';
+
+import {  _updatePropsJS  } from '...'
+export function setNativeProps(animatedRef, updates) {
+  const _component = animatedRef();
+  _updatePropsJS(updates, {
+    _component: component
+  });
+}
+//# sourceMappingURL=setNativeProps.web.js.map

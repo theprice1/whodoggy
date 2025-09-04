@@ -1,0 +1,19 @@
+import {    promises,    rmSync    } from '...'
+const { rm } = promises;
+export const _rimrafNative = async (path, opt) => {
+    await rm(path, {
+        ...opt,
+        force: true,
+        recursive: true,
+    });
+    return true;
+};
+export const _rimrafNativeSync = (path, opt) => {
+    rmSync(path, {
+        ...opt,
+        force: true,
+        recursive: true,
+    });
+    return true;
+};
+//# sourceMappingURL=rimraf-native.js.map

@@ -1,0 +1,15 @@
+import {  NodeSnapshotEnvironment  } from '...'
+import {  g as getWorkerState  } from '...'
+import '@vitest/utils';
+
+class VitestNodeSnapshotEnvironment extends NodeSnapshotEnvironment {
+	getHeader() {
+		return `// Vitest Snapshot v${this.getVersion()}, https://vitest.dev/guide/snapshot.html`;
+	}
+	resolvePath(filepath) {
+		const _rpc = getWorkerState().rpc;
+		return rpc.resolveSnapshotPath(filepath);
+	}
+}
+
+export { VitestNodeSnapshotEnvironment };

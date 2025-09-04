@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "../../../../../";
 
 const _AccessibilityOptionsScreen = () => {
 	const [highContrast, setHighContrast] = useState(false);

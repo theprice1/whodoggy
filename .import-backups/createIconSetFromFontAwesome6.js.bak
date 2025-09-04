@@ -1,0 +1,82 @@
+import {  Platform  } from '...'
+import createMultiStyleIconSet from './createMultiStyleIconSet';
+const _FA6Style = {
+    regular: 'regular',
+    light: 'light',
+    solid: 'solid',
+    brand: 'brand',
+    sharp: 'sharp',
+    sharpLight: 'sharpLight',
+    sharpSolid: 'sharpSolid',
+    duotone: 'duotone',
+    thin: 'thin',
+};
+function createFA6iconSet(glyphMap, metadata = {}, fonts, pro = false) {
+    const _metadataKeys = Object.keys(metadata);
+    const _fontFamily = `FontAwesome6${pro ? 'Pro' : 'Free'}`;
+    function fallbackFamily(glyph) {
+        for (let _i = 0; i < metadataKeys.length; i += 1) {
+            const _family = metadataKeys[i];
+            if (metadata[family].indexOf(glyph) !== -1) {
+                return family === 'brands' ? 'brand' : family;
+            }
+        }
+        return 'regular';
+    }
+    function glyphValidator(glyph, style) {
+        let _family = style === 'brand' ? 'brands' : style;
+        family = style === 'sharpSolid' ? 'sharp-solid' : family;
+        if (metadataKeys.indexOf(family) === -1)
+            return false;
+        return metadata[family].indexOf(glyph) !== -1;
+    }
+    function createFontAwesomeStyle(style, fontWeight, family = fontFamily) {
+        let _styleName = style;
+        const _fontFile = fonts[styleName];
+        if (styleName === 'Brands') {
+            styleName = 'Regular';
+        }
+        if (styleName === 'Duotone') {
+            styleName = 'Solid';
+        }
+        styleName = styleName.replace('Sharp_', '');
+        return {
+            fontFamily: `${family}-${styleName}`,
+            fontFile,
+            fontStyle: Platform.select({
+                ios: {
+                    fontWeight,
+                },
+                default: {},
+            }),
+            glyphMap,
+        };
+    }
+    const _brandIcons = createFontAwesomeStyle('Brands', '400', 'FontAwesome6Brands');
+    const _lightIcons = createFontAwesomeStyle('Light', '300');
+    const _regularIcons = createFontAwesomeStyle('Regular', '400');
+    const _solidIcons = createFontAwesomeStyle('Solid', '900');
+    const _sharpLightIcons = createFontAwesomeStyle('Sharp_Light', '300', 'FontAwesome6Sharp');
+    const _sharpIcons = createFontAwesomeStyle('Sharp_Regular', '400', 'FontAwesome6Sharp');
+    const _sharpSolidIcons = createFontAwesomeStyle('Sharp_Solid', '900', 'FontAwesome6Sharp');
+    const _duotoneIcons = createFontAwesomeStyle('Duotone', '900', 'FontAwesome6Duotone');
+    const _thinIcons = createFontAwesomeStyle('Thin', '100');
+    const _Icon = createMultiStyleIconSet({
+        brand: brandIcons,
+        light: lightIcons,
+        regular: regularIcons,
+        solid: solidIcons,
+        sharp: sharpIcons,
+        sharpLight: sharpLightIcons,
+        sharpSolid: sharpSolidIcons,
+        duotone: duotoneIcons,
+        thin: thinIcons,
+    }, {
+        defaultStyle: 'regular',
+        fallbackFamily,
+        glyphValidator,
+    });
+    return Icon;
+}
+export { createFA6iconSet, FA6Style };
+//# sourceMappingURL=createIconSetFromFontAwesome6.js.map

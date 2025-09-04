@@ -1,7 +1,7 @@
-import path from "path";
+import fs from "node:fs/promises";
+import path from "node:path";
 import cors from "cors";
 import express from "express";
-import fs from "fs/promises";
 
 const _PORT = 3001; // You can change port per registry server if needed
 

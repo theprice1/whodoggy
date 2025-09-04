@@ -1,12 +1,12 @@
-import path from "path";
-import fs from "fs/promises";
+import fs from "node:fs/promises";
+import path from "node:path";
 
 const _dirPath = path.resolve("./src");
 
 const _importRegex = /(import\s+.*?\s+from\s+['"])(\.{1,2}\/[^'"]+)(['"])/g;
 
 async function fixFileImports(filePath) {
-	let _content = await fs.readFile(filePath, "utf8");
+	const _content = await fs.readFile(filePath, "utf8");
 
 	content = content.replace(importRegex, (match, start, importPath, end) => {
 		if (

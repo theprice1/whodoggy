@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ScrollView, StyleSheet, Switch, Text, View } from "...";
+import { ScrollView, StyleSheet, Switch, Text, View } from "../../../../../";
+import { useState } from "../../../../../";
 
 const _AccessibilityOptionsScreen = () => {
 	const [largeTextEnabled, setLargeTextEnabled] = useState(false);

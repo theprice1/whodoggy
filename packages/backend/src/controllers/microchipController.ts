@@ -1,6 +1,7 @@
 // src/controllers/microchipController.ts
+
+import { prisma } from "../../../../../../../";
 import type { Request, Response } from "express";
-import { prisma } from "...";
 
 export const _getMicrochipById = async (
 	req: Request,

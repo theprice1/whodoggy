@@ -1,0 +1,10 @@
+'use strict';
+
+import {  View  } from '...'
+import {  createAnimatedComponent  } from '...'
+
+// Since createAnimatedComponent return type is ComponentClass that has the props of the argument,
+// but not things like NativeMethods, etc. we need to add them manually by extending the type.
+
+export const _AnimatedView = createAnimatedComponent(View);
+//# sourceMappingURL=View.js.map

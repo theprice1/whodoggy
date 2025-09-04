@@ -1,6 +1,7 @@
 // packages/backend/src/controllers/ownerController.ts
+
+import { getAllOwnersService, getOwner } from "../../../../../../../"; // ✅ .js for ESM compatibility
 import type { Request, Response } from "express";
-import { getAllOwnersService, getOwner } from "..."; // ✅ .js for ESM compatibility
 
 export const _getAllOwners = async (
 	_req: Request,

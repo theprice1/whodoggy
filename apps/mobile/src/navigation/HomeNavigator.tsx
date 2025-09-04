@@ -1,44 +1,49 @@
-import type React from "react";
-import { createNativeStackNavigator } from "...";
+import { createStackNavigator } from "@react-navigation/stack";
+import DogDetailScreen from "../screens/Home/DogDetailScreen";
 import HomeScreen from "../screens/Home/HomeScreen";
 import QRScannerScreen from "../screens/Home/QRScannerScreen";
-import SearchScreen from "../screens/Home/SearchScreen";
 import SearchResultsScreen from "../screens/Home/SearchResultsScreen";
-import DogDetailScreen from "../screens/Home/DogDetailScreen";
+import SearchScreen from "../screens/Home/SearchScreen";
 import SettingsNavigator from "./SettingsNavigator";
-import ReportsNavigator from "./ReportsNavigator";
-import HistoryNavigator from "./HistoryNavigator";
 
-export type HomeStackParamList = {
+// Define proper types for your search results
+interface DogResult {
+	id: string;
+	name: string;
+	breed: string;
+	owner?: string;
+	microchipId?: string;
+	// Add other properties as needed
+}
+
+export type RootStackParamList = {
 	Home: undefined;
 	QRScanner: undefined;
 	Search: undefined;
-	SearchResults: { results?: any };
+	SearchResults: { results?: DogResult[] };
 	DogDetail: { dogId: string };
 	SettingsStack: undefined;
-	ReportsStack: undefined;
-	HistoryStack: undefined;
 };
 
-const _Stack = createNativeStackNavigator<HomeStackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
-const HomeNavigator: React.FC = () => {
+export default function HomeNavigator() {
 	return (
 		<Stack.Navigator initialRouteName="Home">
 			<Stack.Screen
 				name="Home"
 				component={HomeScreen}
-				options={{ title: "WhoDoggy?" }}
+				options={{ title: "WhoDoggy" }}
 			/>
 			<Stack.Screen
 				name="QRScanner"
 				component={QRScannerScreen}
-				options={{ title: "Scan Microchip" }}
+				options={{ title: "Scan QR Code" }}
 			/>
 			<Stack.Screen
 				name="Search"
 				component={SearchScreen}
-				options={{ title: "Search Microchip" }}
+				options={{ title: "Search" }}
 			/>
 			<Stack.Screen
 				name="SearchResults"
@@ -55,18 +60,6 @@ const HomeNavigator: React.FC = () => {
 				component={SettingsNavigator}
 				options={{ headerShown: false }}
 			/>
-			<Stack.Screen
-				name="ReportsStack"
-				component={ReportsNavigator}
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="HistoryStack"
-				component={HistoryNavigator}
-				options={{ headerShown: false }}
-			/>
 		</Stack.Navigator>
 	);
-};
-
-export default HomeNavigator;
+}

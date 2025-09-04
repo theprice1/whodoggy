@@ -1,0 +1,3 @@
+import {  NativeModules  } from '...'
+
+export default NativeModules.DevLoadingView;

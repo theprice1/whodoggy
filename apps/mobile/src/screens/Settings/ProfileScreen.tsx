@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import { Alert, Button, ScrollView, StyleSheet, Text, TextInput } from "...";
+import {
+	Alert,
+	Button,
+	ScrollView,
+	StyleSheet,
+	Text,
+	TextInput,
+} from "../../../../../";
+import { useState } from "../../../../../";
 
 // Define colors as constants to avoid color literals in styles
 const _COLORS = {

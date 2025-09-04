@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "../../../../../";
 
 const _DatabaseSyncScreen = () => {
 	const [isSyncing, setIsSyncing] = useState(false);
@@ -11,7 +11,7 @@ const _DatabaseSyncScreen = () => {
 			// TODO: Replace with actual API call to sync databases
 			await new Promise((resolve) => setTimeout(resolve, 2000)); // simulate delay
 			setSyncStatus("Database sync completed successfully.");
-		} catch (error) {
+		} catch (_error) {
 			setSyncStatus("Error syncing databases. Please try again.");
 		} finally {
 			setIsSyncing(false);

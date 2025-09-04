@@ -1,6 +1,6 @@
-import dotenv from "dotenv";
 // db.ts
-import { Pool, type QueryResult } from "...";
+import { Pool, type QueryResult } from "../../../../../../../";
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -25,7 +25,7 @@ pool.on("error", (err: Error) => {
 });
 
 // Export for use in other files
-export { pool };
+export type { pool };
 
 // Optional direct run: test connection
 if (require.main === module) {

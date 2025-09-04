@@ -1,6 +1,7 @@
 // src/controllers/registriesController.ts
+
+import { getAllRegistriesService, getRegistry } from "../../../../../../../"; // ✅ Removed .js for ESM compatibility
 import type { Request, Response } from "express";
-import { getAllRegistriesService, getRegistry } from "..."; // ✅ Removed .js for ESM compatibility
 
 export const _getAllRegistries = async (_req: Request, res: Response) => {
 	const _registries = await getAllRegistriesService();

@@ -1,0 +1,106 @@
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
+'use strict';
+
+import {  processColorsInProps  } from '...'
+import {  _updatePropsJS  } from '...'
+import {  isFabric,  isJest,  shouldBeUseWeb  } from '...'
+import {  runOnUIImmediately  } from '...'
+let updateProps;
+if (shouldBeUseWeb()) {
+  updateProps = (_, updates, maybeViewRef, isAnimatedProps) => {
+    'worklet';
+
+    if (maybeViewRef) {
+      maybeViewRef.items.forEach((item, _index) => {
+        _updatePropsJS(updates, item, isAnimatedProps);
+      });
+    }
+  };
+} else {
+  updateProps = (viewDescriptors, updates) => {
+    'worklet';
+
+    processColorsInProps(updates);
+    global.UpdatePropsManager.update(viewDescriptors, updates);
+  };
+}
+export const _updatePropsJestWrapper = (viewDescriptors, updates, maybeViewRef, animatedStyle, adapters) => {
+  adapters.forEach(adapter => {
+    adapter(updates);
+  });
+  animatedStyle.current.value = {
+    ...animatedStyle.current.value,
+    ...updates
+  };
+  updateProps(viewDescriptors, updates, maybeViewRef);
+};
+export default updateProps;
+const _createUpdatePropsManager = isFabric() ? () => {
+  'worklet';
+
+  // Fabric
+  const _operations = [];
+  return {
+    update(viewDescriptors, updates) {
+      viewDescriptors.value.forEach(viewDescriptor => {
+        operations.push({
+          shadowNodeWrapper: viewDescriptor.shadowNodeWrapper,
+          updates
+        });
+        if (operations.length === 1) {
+          queueMicrotask(this.flush);
+        }
+      });
+    },
+    flush() {
+      global._updatePropsFabric(operations);
+      operations.length = 0;
+    }
+  };
+} : () => {
+  'worklet';
+
+  // Paper
+  const _operations = [];
+  return {
+    update(viewDescriptors, updates) {
+      viewDescriptors.value.forEach(viewDescriptor => {
+        operations.push({
+          tag: viewDescriptor.tag,
+          name: viewDescriptor.name || 'RCTView',
+          updates
+        });
+        if (operations.length === 1) {
+          queueMicrotask(this.flush);
+        }
+      });
+    },
+    flush() {
+      global._updatePropsPaper(operations);
+      operations.length = 0;
+    }
+  };
+};
+if (shouldBeUseWeb()) {
+  const _maybeThrowError = () => {
+    // Jest attempts to access a property of this object to check if it is a Jest mock
+    // so we can't throw an error in the getter.
+    if (!isJest()) {
+      throw new Error('[Reanimated] `UpdatePropsManager` is not available on non-native platform.');
+    }
+  };
+  global.UpdatePropsManager = new Proxy({}, {
+    get: maybeThrowError,
+    set: () => {
+      maybeThrowError();
+      return false;
+    }
+  });
+} else {
+  runOnUIImmediately(() => {
+    'worklet';
+
+    global.UpdatePropsManager = createUpdatePropsManager();
+  })();
+}
+//# sourceMappingURL=UpdateProps.js.map

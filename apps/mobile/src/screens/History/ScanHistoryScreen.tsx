@@ -1,5 +1,4 @@
-import React from "react";
-import { StyleSheet, Text, View } from "...";
+import { StyleSheet, Text, View } from "../../../../../";
 
 export default function ScanHistoryScreen() {
 	return (

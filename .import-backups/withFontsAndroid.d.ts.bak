@@ -1,0 +1,2 @@
+import {  ConfigPlugin  } from '...'
+export declare const withFontsAndroid: ConfigPlugin<string[]>;

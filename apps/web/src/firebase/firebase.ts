@@ -1,9 +1,7 @@
 // apps/web/src/firebase/firebase.ts
 
-import { getApps, initializeApp } from "...";
+import { getApps, getAuth, getFirestore, initializeApp } from "../../../../";
 import type { FirebaseApp } from "firebase/app";
-import { getAuth } from "...";
-import { getFirestore } from "...";
 
 const _firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,

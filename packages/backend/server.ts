@@ -1,15 +1,13 @@
+import { errorHandler } from "../../../../../";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-
 import deleteDataRoutes from "./src/routes/deleteData.js";
 import dogsRoutes from "./src/routes/dogs.js";
 import ownersRoutes from "./src/routes/owners.js";
 import registriesRoutes from "./src/routes/registries.js";
 import searchRoutes from "./src/routes/search.js";
-
-import { errorHandler } from "...";
 
 dotenv.config();
 

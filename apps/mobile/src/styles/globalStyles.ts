@@ -1,6 +1,5 @@
-import { theme } from "...";
 // packages/mobile/src/styles/globalStyles.ts
-import { StyleSheet } from "...";
+import { StyleSheet, theme } from "../../../../";
 
 export const _globalStyles = StyleSheet.create({
 	container: {

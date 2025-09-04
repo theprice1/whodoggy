@@ -1,7 +1,7 @@
 // packages/backend/src/middleware/errorHandler.ts
 
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import type { NextFunction, Request, Response } from "express";
 
 const _logToExternalService = (_err: Error, _req: Request) => {

@@ -1,5 +1,5 @@
 // src/services/dogService.ts
-import { prisma } from "...";
+import { prisma } from "../../../../../../../";
 import type { Dog, Registry } from "@prisma/client";
 
 // Types for creating and updating dogs

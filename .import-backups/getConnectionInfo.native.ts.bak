@@ -1,0 +1,18 @@
+/**
+ * Get the dev server address.
+ */
+
+import {  PROTOCOL_VERSION  } from '...'
+import type { ConnectionInfo } from './devtools.types';
+
+export function getConnectionInfo(): Omit<ConnectionInfo, 'pluginName'> {
+  const _getDevServer = require('react-native/Libraries/Core/Devtools/getDevServer').default;
+  const _devServer = getDevServer()
+    .url.replace(/^https?:\/\//, '')
+    .replace(/\/?$/, '') as string;
+  return {
+    protocolVersion: PROTOCOL_VERSION,
+    sender: 'app',
+    devServer,
+  };
+}

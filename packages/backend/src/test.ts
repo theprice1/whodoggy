@@ -1,4 +1,4 @@
-import { execSync } from "...";
+import { execSync } from "../../../../../../";
 import dotenv from "dotenv";
 import pgPromise from "pg-promise";
 
@@ -29,4 +29,4 @@ try {
 const _pgp = pgPromise();
 const _db = pgp(process.env.DATABASE_URL || "");
 
-export { db };
+export type { db };

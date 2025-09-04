@@ -1,6 +1,4 @@
-import React from "react";
-import { ScrollView, Text } from "...";
-import { styles } from "...";
+import { ScrollView, styles, Text } from "../../../../../";
 
 const _HelpCenterScreen = () => {
 	return (

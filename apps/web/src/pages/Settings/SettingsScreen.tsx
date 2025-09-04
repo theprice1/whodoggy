@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "...";
+import { Link } from "../../../../../";
 
 const _SettingsScreen = () => {
 	return (

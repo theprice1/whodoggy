@@ -1,0 +1,3 @@
+import {  Linking  } from '...'
+export default Linking;
+//# sourceMappingURL=ExpoLinking.d.ts.map

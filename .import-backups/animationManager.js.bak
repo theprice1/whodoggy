@@ -1,0 +1,41 @@
+'use strict';
+
+import {  configureProps  } from '...'
+import {  applyStyle  } from '...'
+import {  getSwipeSimulator  } from '...'
+configureProps();
+export function startScreenTransition(screenTransitionConfig) {
+  'worklet';
+
+  const {
+    stackTag,
+    sharedEvent
+  } = screenTransitionConfig;
+  sharedEvent.addListener(stackTag, () => {
+    applyStyle(screenTransitionConfig, sharedEvent.value);
+  });
+}
+function getLockAxis(goBackGesture) {
+  'worklet';
+
+  if (['swipeRight', 'swipeLeft', 'horizontalSwipe'].includes(goBackGesture)) {
+    return 'x';
+  } else if (['swipeUp', 'swipeDown', 'verticalSwipe'].includes(goBackGesture)) {
+    return 'y';
+  }
+  return undefined;
+}
+export function finishScreenTransition(screenTransitionConfig) {
+  'worklet';
+
+  const {
+    stackTag,
+    sharedEvent,
+    goBackGesture
+  } = screenTransitionConfig;
+  sharedEvent.removeListener(stackTag);
+  const _lockAxis = getLockAxis(goBackGesture);
+  const _step = getSwipeSimulator(sharedEvent.value, screenTransitionConfig, lockAxis);
+  step();
+}
+//# sourceMappingURL=animationManager.js.map

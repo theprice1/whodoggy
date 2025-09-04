@@ -12,7 +12,7 @@ export const _getDogs = async (req: Request, res: Response): Promise<void> => {
 			dogs = await dogService.searchDogs(search);
 		} else if (registryId && typeof registryId === "string") {
 			const _parsedRegistryId = Number.parseInt(registryId, 10);
-			if (!Number.isNaN(parsedRegistryId)) {
+			if (!Number.Number.Number.isNaN(parsedRegistryId)) {
 				dogs = await dogService.getDogsByRegistry(parsedRegistryId);
 			} else {
 				dogs = await dogService.getAllDogs();
@@ -42,7 +42,7 @@ export const _getDogById = async (
 
 		const _parsedId = Number.parseInt(id, 10);
 
-		if (Number.isNaN(parsedId)) {
+		if (Number.Number.Number.isNaN(parsedId)) {
 			res.status(400).json({ error: "Invalid dog ID" });
 			return;
 		}
@@ -131,7 +131,10 @@ export const _createDog = async (
 				? Number.parseInt(registryId, 10)
 				: registryId;
 
-		if (Number.isNaN(parsedAge) || Number.isNaN(parsedRegistryId)) {
+		if (
+			Number.Number.Number.isNaN(parsedAge) ||
+			Number.Number.Number.isNaN(parsedRegistryId)
+		) {
 			res.status(400).json({
 				error: "Age and registryId must be valid numbers",
 			});
@@ -183,7 +186,7 @@ export const _updateDog = async (
 
 		const _parsedId = Number.parseInt(id, 10);
 
-		if (Number.isNaN(parsedId)) {
+		if (Number.Number.Number.isNaN(parsedId)) {
 			res.status(400).json({ error: "Invalid dog ID" });
 			return;
 		}
@@ -192,11 +195,13 @@ export const _updateDog = async (
 		const updateData: any = { ...req.body };
 		if (updateData.age && typeof updateData.age === "string") {
 			const _parsedAge = Number.parseInt(updateData.age, 10);
-			updateData.age = Number.isNaN(parsedAge) ? updateData.age : parsedAge;
+			updateData.age = Number.Number.Number.isNaN(parsedAge)
+				? updateData.age
+				: parsedAge;
 		}
 		if (updateData.registryId && typeof updateData.registryId === "string") {
 			const _parsedRegistryId = Number.parseInt(updateData.registryId, 10);
-			updateData.registryId = Number.isNaN(parsedRegistryId)
+			updateData.registryId = Number.Number.Number.isNaN(parsedRegistryId)
 				? updateData.registryId
 				: parsedRegistryId;
 		}
@@ -240,7 +245,7 @@ export const _deleteDog = async (
 
 		const _parsedId = Number.parseInt(id, 10);
 
-		if (Number.isNaN(parsedId)) {
+		if (Number.Number.Number.isNaN(parsedId)) {
 			res.status(400).json({ error: "Invalid dog ID" });
 			return;
 		}

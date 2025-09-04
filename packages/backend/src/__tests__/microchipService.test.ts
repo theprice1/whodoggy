@@ -1,4 +1,4 @@
-import { getMicrochipData } from "...";
+import { getMicrochipData } from "../../../../../../../";
 
 describe("getMicrochipData", () => {
 	it("returns record for valid ID", async () => {

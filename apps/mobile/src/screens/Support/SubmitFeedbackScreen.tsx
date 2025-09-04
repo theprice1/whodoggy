@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import { Alert, Button, ScrollView, StyleSheet, Text, TextInput } from "...";
+import {
+	Alert,
+	Button,
+	ScrollView,
+	StyleSheet,
+	Text,
+	TextInput,
+} from "../../../../../";
+import { useState } from "../../../../../";
 
 const _colors = {
 	gray300: "#D1D5DB", // Tailwind gray-300

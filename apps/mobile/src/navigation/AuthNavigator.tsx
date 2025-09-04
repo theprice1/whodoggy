@@ -1,10 +1,10 @@
+import { createNativeStackNavigator } from "../../../../";
 import type React from "react";
-import { createNativeStackNavigator } from "...";
-import WelcomeScreen from "../screens/Auth/WelcomeScreen";
-import SignInScreen from "../screens/Auth/SignInScreen";
-import SignUpScreen from "../screens/Auth/SignUpScreen";
 import ConsentScreen from "../screens/Auth/ConsentScreen";
 import ForgotPasswordScreen from "../screens/Auth/ForgotPasswordScreen";
+import SignInScreen from "../screens/Auth/SignInScreen";
+import SignUpScreen from "../screens/Auth/SignUpScreen";
+import WelcomeScreen from "../screens/Auth/WelcomeScreen";
 
 export type AuthStackParamList = {
 	Welcome: undefined;

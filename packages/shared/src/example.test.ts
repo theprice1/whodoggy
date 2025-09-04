@@ -1,4 +1,4 @@
-import { describe, it, expect } from "...";
+import { describe, expect, it } from "../../../../../../";
 
 describe("Example test", () => {
 	it("should work", () => {

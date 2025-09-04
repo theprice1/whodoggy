@@ -1,6 +1,6 @@
 // apps/web/src/pages/Search/SearchPage.tsx
-import React from "react";
-import { Link } from "...";
+
+import { Link } from "../../../../../";
 
 const _SearchPage = () => (
 	<div className="p-4">

@@ -1,6 +1,6 @@
 // packages/backend/src/scripts/checkMigrations.ts
-import { spawn } from "...";
-import path from "path";
+import { spawn } from "../../../../../../../";
+import path from "node:path";
 import dotenv from "dotenv";
 
 // Load env from root

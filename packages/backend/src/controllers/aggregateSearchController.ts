@@ -57,7 +57,7 @@ router.post("/search", async (req: Request, res: Response) => {
 			(result) => result.success && result.data?.microchip,
 		);
 
-		if (match && match.data) {
+		if (match?.data) {
 			return res.status(200).json({
 				found: true,
 				registry: match.data.registry,

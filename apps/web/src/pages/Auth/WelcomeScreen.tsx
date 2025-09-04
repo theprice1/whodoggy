@@ -1,5 +1,4 @@
-import React from "react";
-import { useNavigate } from "...";
+import { useNavigate } from "../../../../../";
 
 const _WelcomeScreen = () => {
 	const _navigate = useNavigate();

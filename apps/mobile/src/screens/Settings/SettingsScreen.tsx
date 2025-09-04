@@ -1,8 +1,12 @@
-import { useNavigation } from "...";
+import {
+	colors,
+	ScrollView,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	useNavigation,
+} from "../../../../../";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity } from "...";
-import { colors } from "...";
 import type { RootStackParamList } from "../../types/navigation.js";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Settings">;

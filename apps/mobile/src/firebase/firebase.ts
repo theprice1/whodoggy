@@ -1,8 +1,6 @@
 // apps/mobile/src/firebase/firebase.ts
 
-import { getApps, initializeApp } from "...";
-import { getAuth } from "...";
-import { getFirestore } from "...";
+import { getApps, getAuth, getFirestore, initializeApp } from "../../../../";
 
 const _firebaseConfig = {
 	apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,

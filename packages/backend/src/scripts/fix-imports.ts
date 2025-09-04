@@ -1,6 +1,6 @@
 // scripts/fix-imports.ts
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 const _targetDir = path.resolve("packages/backend");
 const _EXTENSION_FIX = /\.js(['"])/g;

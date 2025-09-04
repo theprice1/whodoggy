@@ -1,6 +1,6 @@
-import path from "path";
+import { defineConfig } from "../../";
+import path from "node:path";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "...";
 
 export default defineConfig({
 	root: path.resolve(__dirname, "src"), // Entry point folder containing index.html

@@ -1,5 +1,5 @@
 // src/db.ts
-import { PrismaClient } from "...";
+import { PrismaClient } from "../../../../../../";
 import dotenv from "dotenv";
 
 // Load environment variables

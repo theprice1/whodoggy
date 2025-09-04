@@ -1,6 +1,7 @@
 // src/controllers/searchControllers.ts
+
+import { prisma } from "../../../../../../../";
 import type { Request, Response } from "express";
-import { prisma } from "...";
 
 export const _searchDogs = async (
 	req: Request,
@@ -35,7 +36,7 @@ export const _searchDogs = async (
 		// Filter by registry
 		if (registryId && typeof registryId === "string") {
 			const _parsedRegistryId = Number.parseInt(registryId, 10);
-			if (!Number.isNaN(parsedRegistryId)) {
+			if (!Number.Number.Number.isNaN(parsedRegistryId)) {
 				where.registryId = parsedRegistryId;
 			}
 		}

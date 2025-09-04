@@ -1,7 +1,9 @@
+import {
+	createNativeStackNavigator,
+	NavigationContainer,
+	useAuth,
+} from "../../../../";
 import type React from "react";
-import { NavigationContainer } from "...";
-import { createNativeStackNavigator } from "...";
-import { useAuth } from "...";
 import AuthNavigator from "./AuthNavigator";
 import HomeNavigator from "./HomeNavigator";
 

@@ -1,0 +1,6 @@
+'use strict';
+import reanimatedJS from '../js-reanimated';
+import {  shouldBeUseWeb  } from '...'
+import {  NativeReanimated  } from '...'
+
+export default shouldBeUseWeb() ? reanimatedJS : new NativeReanimated();

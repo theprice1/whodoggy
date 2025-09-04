@@ -1,6 +1,5 @@
 // packages/backend/src/routes/microchipRoutes.ts
-import { Router } from "...";
-import { getMicrochipById } from "...";
+import { getMicrochipById, Router } from "../../../../../../../";
 
 const router: Router = Router();
 

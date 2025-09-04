@@ -1,4 +1,4 @@
-import { PrismaClient } from "...";
+import { PrismaClient } from "../../../../../../../";
 
 declare global {
 	// Prevent multiple instances of Prisma Client in development

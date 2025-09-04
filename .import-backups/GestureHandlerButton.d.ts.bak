@@ -1,0 +1,4 @@
+import {  HostComponent  } from '...'
+import {  RawButtonProps  } from '...'
+declare const _default: HostComponent<RawButtonProps>;
+export default _default;
