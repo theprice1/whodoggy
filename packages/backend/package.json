@@ -52,6 +52,8 @@
 		"zod": "^4.0.17"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.24.0",
+		"@babel/preset-env": "^7.24.0",
 		"@biomejs/biome": "^2.2.2",
 		"@types/cors": "^2.8.17",
 		"@types/express": "^4.17.23",
@@ -71,7 +73,7 @@
 		"ts-node": "^10.9.2",
 		"tsx": "^4.20.5",
 		"typescript": "^5.9.2",
-		"vitest": "^3.2.4"
+		"vitest": "3.2.4"
 	},
 	"prisma": {
 		"schema": "src/prisma/schema.prisma"
