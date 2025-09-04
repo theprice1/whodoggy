@@ -1,31 +1,12 @@
-import {
-	type App,
-	type Auth,
-	cert,
-	type Firestore,
-	getApps,
-	getAuth,
-	getFirestore,
-	initializeApp,
-} from "../../../../../../../";
-import * as dotenv from "dotenv";
+// Firebase Admin SDK
+import { initializeApp, cert, getApps } from "firebase-admin/app";
+import { getAuth } from "firebase-admin/auth";
+import { getFirestore } from "firebase-admin/firestore";
+import serviceAccount from '../../../../backend/firebase/serviceAccountKey.json';
 
-dotenv.config();
+// Initialize app only once
+const app = getApps().length === 0 ? initializeApp({ credential: cert(serviceAccount) }) : undefined;
 
-const _serviceAccount = JSON.parse(
-	process.env.FIREBASE_ADMIN_CREDENTIALS_JSON as string,
-);
-
-// Get existing apps or initialize new one
-const _existingApps = getApps();
-const app: App =
-	existingApps.length > 0 && existingApps[0]
-		? existingApps[0]
-		: initializeApp({
-				credential: cert(serviceAccount),
-			});
-
-const adminDb: Firestore = getFirestore(app);
-const adminAuth: Auth = getAuth(app);
-
-export { app, adminDb, adminAuth };
+// Exports
+export const adminAuth = getAuth();
+export const adminDb = getFirestore();
