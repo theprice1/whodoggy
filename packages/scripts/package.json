@@ -19,13 +19,21 @@
 		"test:watch": "vitest --watch"
 	},
 	"dependencies": {
+		"@expo/metro-config": "0.17.5",
 		"@whodoggy/backend": "workspace:*",
-		"@whodoggy/shared": "workspace:*"
+		"@whodoggy/shared": "workspace:*",
+		"expo": "51.0.28",
+		"nativewind": "^4.1.23",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-native": "0.74.5",
+		"tailwindcss": "^4.1.12"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.24.0",
 		"@babel/preset-env": "^7.24.0",
 		"@faker-js/faker": "^9.9.0",
+		"@react-native/babel-preset": "^0.81.1",
 		"@types/node": "^20.19.11",
 		"tsx": "^4.20.4",
 		"typescript": "^5.9.2",

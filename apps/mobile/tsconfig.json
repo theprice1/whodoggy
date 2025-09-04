@@ -9,7 +9,9 @@
     "moduleResolution": "node",
     "module": "esnext",
     "target": "ES2022",
-    "types": [],
+    "types": [
+      "nativewind/types"
+    ],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -29,7 +31,8 @@
     "src/**/*",
     "app/**/*",
     "App.tsx",
-    "index.tsx"
+    "index.tsx",
+    "./global.d.ts"
   ],
   "exclude": [
     "node_modules",
