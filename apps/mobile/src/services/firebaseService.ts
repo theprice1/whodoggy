@@ -1,6 +1,7 @@
-import { collection, db, getDocs } from "../../../../";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 export async function fetchMockDogs() {
-	const _snapshot = await getDocs(collection(db, "dogs"));
-	return snapshot.docs.map((doc) => doc.data());
+  const snapshot = await getDocs(collection(db, "dogs"));
+  return snapshot.docs.map(doc => doc.data());
 }

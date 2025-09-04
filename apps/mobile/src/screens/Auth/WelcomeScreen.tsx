@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View } from "../../../../../";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function WelcomeScreen() {
-	return (
-		<View style={styles.container}>
-			<Text>WelcomeScreen</Text>
-		</View>
-	);
+  return (
+    <View style={styles.container}>
+      <Text>WelcomeScreen</Text>
+    </View>
+  );
 }
 
-const _styles = StyleSheet.create({
-	container: { flex: 1, justifyContent: "center", alignItems: "center" },
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: "center", alignItems: "center" },
 });

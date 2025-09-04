@@ -1,10 +1,10 @@
 // Export OpenAPI client
-
+export * from "./hooks/useAuth.js";
 // Firebase Admin SDK exports
 export {
-	adminAuth,
-	adminDb,
-	app as adminApp,
+  adminAuth,
+  adminDb,
+  app as adminApp,
 } from "./firebase/firebaseAdmin.js";
 // Optionally export everything else from client SDK
 export * from "./firebase/firebaseClient.js";

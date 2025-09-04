@@ -1,12 +1,13 @@
 // navigation/ProtectedRoute.tsx
-import { Text, useAuth } from "../../../../";
+import { Text } from "react-native";
+import { useAuth } from "@whodoggy/shared"
 
 export const _ProtectedRoute = ({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) => {
-	const { user } = useAuth();
-	if (!user) return <Text>You must log in to continue.</Text>;
-	return <>{children}</>;
+  const { user } = useAuth();
+  if (!user) return <Text>You must log in to continue.</Text>;
+  return <>{children}</>;
 };
