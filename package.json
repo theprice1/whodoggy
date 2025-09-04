@@ -10,7 +10,8 @@
     "tools/*"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=18.15.0",
+    "pnpm": ">=8"
   },
   "scripts": {
     "dev": "pnpm --filter @whodoggy/mobile dev",
@@ -21,7 +22,10 @@
     "web": "pnpm --filter @whodoggy/web dev",
     "mobile": "pnpm --filter @whodoggy/mobile start",
     "build": "pnpm -r run build",
-    "build:shared": "pnpm --filter @whodoggy/shared rebuild",
+    "build:shared": "pnpm --filter @whodoggy/shared build",
+    "build:backend": "pnpm --filter @whodoggy/backend build",
+    "build:web": "pnpm --filter @whodoggy/web build",
+    "build:mobile": "pnpm --filter @whodoggy/mobile build",
     "lint": "pnpm -r eslint . --ext .ts,.tsx,.js,.jsx",
     "lint:fix": "biome lint --write ./apps ./packages",
     "format:write": "pnpm biome format --write ./apps ./packages",
@@ -31,7 +35,7 @@
     "test": "pnpm -r vitest run",
     "test:watch": "vitest --watch",
     "check:all": "pnpm run format:check && pnpm run lint && pnpm run tsc:check && pnpm run test",
-    "clean": "pnpm -r run clean",
+    "clean": "rimraf ./node_modules ./apps/*/dist ./packages/*/dist build coverage .turbo",
     "clean:workspace": "pnpm -r run clean",
     "migrate:up": "pnpm --filter @whodoggy/backend run migrate",
     "migrate:down": "pnpm --filter @whodoggy/backend run migrate:down",
@@ -51,8 +55,8 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.3.0",
     "@types/pg": "^8.15.5",
-    "@types/react": "^18.2.79",
-    "@types/react-dom": "^18.3.7",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^8.40.0",
     "@typescript-eslint/parser": "^8.40.0",
     "eslint": "^9.34.0",
@@ -62,19 +66,17 @@
     "globals": "^16.3.0",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "rimraf": "^5.0.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.5",
     "typescript": "5.8.2",
-    "typescript-eslint": "^8.40.0",
     "vitest": "^3.2.4"
   },
   "dependencies": {
     "dotenv": "^17.2.1",
     "firebase-admin": "^13.4.0",
     "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-native": "0.72.10"
   },
   "pnpm": {

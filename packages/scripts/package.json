@@ -1,42 +1,41 @@
 {
-	"name": "@whodoggy/scripts",
-	"version": "1.0.0",
-	"private": true,
-	"type": "module",
-	"main": "dist/index.js",
-	"scripts": {
-		"tsc": "tsc --noEmit",
-		"build": "tsc -b",
-		"clean": "rimraf dist node_modules/.cache",
-		"clean:workspace": "pnpm -r run clean",
-		"seed": "tsx src/seed/index.ts",
-		"seed:dogs": "tsx src/seed/seedDogs.ts",
-		"seed:owners": "tsx src/seed/seedOwners.ts",
-		"seed:registries": "tsx src/seed/seedRegistries.ts",
-		"lint": "npx @biomejs/biome lint ./src",
-		"rebuild": "pnpm run build",
-		"test": "vitest run",
-		"test:watch": "vitest --watch"
-	},
-	"dependencies": {
-		"@expo/metro-config": "0.17.5",
-		"@whodoggy/backend": "workspace:*",
-		"@whodoggy/shared": "workspace:*",
-		"expo": "51.0.28",
-		"nativewind": "^4.1.23",
-		"react": "18.2.0",
-		"react-dom": "18.2.0",
-		"react-native": "0.74.5",
-		"tailwindcss": "^4.1.12"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.24.0",
-		"@babel/preset-env": "^7.24.0",
-		"@faker-js/faker": "^9.9.0",
-		"@react-native/babel-preset": "^0.81.1",
-		"@types/node": "^20.19.11",
-		"tsx": "^4.20.4",
-		"typescript": "^5.9.2",
-		"vitest": "^3.2.4"
-	}
+  "name": "@whodoggy/scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "tsc": "tsc --noEmit",
+    "build": "tsc -b",
+    "clean": "rimraf dist node_modules/.cache",
+    "clean:workspace": "pnpm -r run clean",
+    "seed": "tsx src/seed/index.ts",
+    "seed:all": "pnpm run seed:dogs && pnpm run seed:owners && pnpm run seed:registries",
+    "seed:dogs": "tsx src/seed/seedDogs.ts",
+    "seed:owners": "tsx src/seed/seedOwners.ts",
+    "seed:registries": "tsx src/seed/seedRegistries.ts",
+    "lint": "npx @biomejs/biome lint ./src",
+    "lint:fix": "npx @biomejs/biome lint ./src --apply",
+    "rebuild": "pnpm run build",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "axios": "^1.11.0",
+    "dotenv": "^16.6.1",
+    "dotenv-safe": "^9.1.0",
+    "@whodoggy/backend": "workspace:*",
+    "@whodoggy/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.11",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
 }
