@@ -1,33 +1,35 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",
+    "moduleResolution": "node",
     "jsx": "react-jsx",
-    "outDir": "dist",
-    "rootDir": ".",
     "composite": false,
     "noEmit": true,
-    "moduleResolution": "node",
-    "module": "esnext",
-    "target": "ES2022",
+    "allowJs": false,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "strict": true,
     "types": [
       "node",
       "nativewind/types"
     ],
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@whodoggy/shared/*": [
-        "../packages/shared/dist/*",
         "../../packages/shared/src/*"
+      ],
+      "@whodoggy/shared": [
+        "../../packages/shared/src/index.ts"
+      ],
+      "@whodoggy/api-client/*": [
+        "../../packages/api-client/src/*"
+      ],
+      "@whodoggy/api-client": [
+        "../../packages/api-client/src/index.ts"
       ]
-    },
-    "resolveJsonModule": true,
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "isolatedModules": true
+    }
   },
   "include": [
     "src/**/*",
@@ -41,14 +43,15 @@
     "dist",
     "build",
     ".expo",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.spec.ts",
-    "**/*.spec.tsx"
+    "**/*.test.*",
+    "**/*.spec.*"
   ],
   "references": [
     {
       "path": "../../packages/shared"
+    },
+    {
+      "path": "../../packages/api-client"
     }
   ]
 }

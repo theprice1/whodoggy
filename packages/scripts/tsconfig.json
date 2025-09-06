@@ -1,19 +1,53 @@
 {
-	"extends": "../../tsconfig.json",
-	"compilerOptions": {
-		"rootDir": "./src",
-		"outDir": "./dist",
-		"composite": true,
-		"declaration": true,
-		"declarationMap": true
-	},
-	"include": ["src/**/*"],
-	"references": [
-		{
-			"path": "../shared"
-		},
-		{
-			"path": "../backend"
-		}
-	]
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": [
+      "es2022"
+    ],
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": true,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": true,
+    "verbatimModuleSyntax": true,
+    "types": [
+      "node"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@whodoggy/shared/*": [
+        "../../packages/shared/src/*"
+      ],
+      "@whodoggy/shared": [
+        "../../packages/shared/src/index.ts"
+      ],
+      "@whodoggy/backend/*": [
+        "../../packages/backend/src/*"
+      ],
+      "@whodoggy/backend": [
+        "../../packages/backend/src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.*",
+    "**/*.spec.*"
+  ],
+  "references": [
+    {
+      "path": "../../packages/shared"
+    },
+    {
+      "path": "../../packages/backend"
+    }
+  ]
 }

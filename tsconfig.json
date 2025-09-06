@@ -1,26 +1,35 @@
 {
-	"extends": "./tsconfig.base.json",
-	"files": [],
-	"references": [
-		{
-			"path": "./apps/web"
-		},
-		{
-			"path": "./packages/backend"
-		},
-		{
-			"path": "./packages/shared"
-		},
-		{
-			"path": "./packages/api-client"
-		}
-	],
-	"compilerOptions": {
-		"composite": true,
-		"incremental": true,
-		"noEmit": true,
-		"strict": true,
-		"skipLibCheck": true,
-		"types": []
-	}
+    "extends": "./tsconfig.base.json",
+    "files": [],
+    "references": [
+        {
+            "path": "./apps/mobile"
+        },
+        {
+            "path": "./apps/web"
+        },
+        {
+            "path": "./packages/shared"
+        },
+        {
+            "path": "./packages/api-client"
+        },
+        {
+            "path": "./packages/backend"
+        },
+        {
+            "path": "./tools/scripts"
+        },
+        {
+            "path": "./tools/openapi"
+        }
+    ],
+    "compilerOptions": {
+        "composite": true,
+        "incremental": true,
+        "noEmit": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "types": []
+    }
 }

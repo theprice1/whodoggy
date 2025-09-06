@@ -3,66 +3,37 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "main": "index.js",
-  "exports": {
-    ".": "./index.js"
-  },
-  "engines": {
-    "node": ">=20.0.0"
-  },
-  "files": [
-    "dist",
-    "src"
-  ],
   "scripts": {
-    "start": "vite",
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "npx @biomejs/biome lint ./src",
-    "lint:fix": "npx @biomejs/biome lint ./src --fix",
-    "format": "biome format ./src --write",
-    "type-check": "tsc --noEmit",
-    "clean": "rimraf dist node_modules/.cache .vite",
-    "clean:workspace": "pnpm -r run clean",
+    "clean": "rimraf dist node_modules/.cache",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest --watch",
-    "tsc": "tsc --build",
-    "precommit": "pnpm lint && pnpm test",
-    "prepush": "pnpm build"
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "expo": "51.0.28",
-    "@expo/metro-config": "0.17.5",
-    "firebase": "^11.10.0",
-    "nativewind": "^4.1.23",
+    "@whodoggy/api-client": "workspace:*",
+    "@whodoggy/shared": "workspace:*",
+    "firebase": "^10.14.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.74.5",
-    "react-native-web": "^0.21.1",
-    "react-router-dom": "^6.15.0"
-  },
-  "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0"
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
-    "@biomejs/biome": "^1.9.4",
-    "@react-native/babel-preset": "^0.81.1",
-    "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4.1.12",
-    "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^24.3.0",
-    "@types/react": "18.2.79",
-    "@types/react-dom": "18.2.0",
-    "@vitejs/plugin-react": "^5.0.1",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.12",
-    "typescript": "^5.4.8",
-    "vite": "^5.0.0",
-    "vitest": "^3.2.4"
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.0"
   }
 }

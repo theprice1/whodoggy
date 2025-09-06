@@ -1,52 +1,43 @@
 {
   "name": "@whodoggy/api-client",
   "version": "1.0.0",
-  "description": "API client for WhoDoggy backend",
+  "private": true,
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "dev": "tsup --watch",
     "clean": "rimraf dist node_modules/.cache",
-    "clean:workspace": "pnpm -r run clean",
-    "build": "tsc -b",
-    "rebuild": "pnpm run clean && pnpm run build",
-    "prepare": "pnpm run build",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest --watch",
-    "lint": "pnpm exec biome lint",
-    "lint:fix": "pnpm exec biome lint --apply",
-    "format": "pnpm exec biome format --write",
-    "tsc": "tsc --noEmit"
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "axios": "^1.11.0",
-    "@whodoggy/shared": "workspace:*"
-  },
-  "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0",
-    "react-native": ">=0.74.5"
+    "@whodoggy/shared": "workspace:*",
+    "axios": "^1.7.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
-    "@biomejs/biome": "^1.9.4",
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^24.3.0",
-    "@types/pg": "^8.15.5",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
-    "@vitest/ui": "^0.34.7",
-    "biome": "^0.3.3",
+    "@types/node": "^20.11.0",
     "rimraf": "^5.0.10",
-    "typescript": "^5.2.0",
-    "vitest": "^3.2.4"
-  },
-  "engines": {
-    "node": ">=20.0.0",
-    "pnpm": ">=10.0.0"
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.0"
   }
 }

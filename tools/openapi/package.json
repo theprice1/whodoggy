@@ -1,51 +1,19 @@
 {
-  "name": "whodoggy-openapi",
+  "name": "@whodoggy/openapi",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "OpenAPI TypeScript type generator for WhoDoggy",
-  "author": "WhoDoggy Team",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "files": [
-    "dist",
-    "src"
-  ],
   "scripts": {
-    "generate": "openapi-typescript ../../docs/specs/registry-api.yaml --output ../../packages/shared/src/openapi",
+    "generate": "openapi-typescript ../../docs/specs/registry-api.yaml --output ../../packages/shared/src/types/openapi.ts",
     "watch": "nodemon --watch ../../docs/specs/registry-api.yaml --exec \"pnpm run generate\"",
-    "build": "tsc -p tsconfig.json",
-    "clean": "rimraf dist",
-    "lint": "npx @biomejs/biome lint ./src",
-    "format": "npx @biomejs/biome format ./src --write",
-    "type-check": "tsc --noEmit",
-    "prepublishOnly": "pnpm run build && pnpm run type-check"
+    "clean": "rimraf node_modules/.cache",
+    "lint": "biome check .",
+    "format": "biome format --write ."
   },
   "devDependencies": {
-    "@types/node": "^24.0.10",
-    "nodemon": "^3.0.1",
-    "openapi-typescript": "^7.9.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "@biomejs/biome": "^1.9.4",
-    "rimraf": "^5.0.10"
-  },
-  "engines": {
-    "node": ">=20.0.0",
-    "pnpm": ">=10.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/your-org/whodoggy.git"
-  },
-  "bugs": {
-    "url": "https://github.com/your-org/whodoggy/issues"
-  },
-  "homepage": "https://github.com/your-org/whodoggy",
-  "keywords": [
-    "whodoggy",
-    "openapi",
-    "typescript",
-    "generator"
-  ]
+    "nodemon": "^3.1.9",
+    "openapi-typescript": "^7.9.3",
+    "rimraf": "^5.0.10",
+    "typescript": "^5.6.3"
+  }
 }
