@@ -1,13 +1,13 @@
 // src/routes/dogs.ts
 
 import {
-	createDog,
-	deleteDog,
-	getDogById,
-	getDogByMicrochipId,
-	getDogs,
-	updateDog,
-} from "../../../../../../../";
+  _createDog as createDog,
+  _deleteDog as deleteDog,
+  _getDogById as getDogById,
+  _getDogByMicrochipId as getDogByMicrochipId,
+  _getDogs as getDogs,
+  _updateDog as updateDog,
+} from "../controllers/dogController.js";
 import express from "express";
 
 const router: express.Router = express.Router();

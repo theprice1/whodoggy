@@ -1,5 +1,5 @@
 // packages/backend/src/services/ownerService.ts
-import { prisma } from "../../../../../../../";
+import { prisma } from "../../prisma/prismaClient.js";
 import type { Owner } from "../types/types.js";
 
 export const _getOwner = async (id: string): Promise<Owner | null> => {
@@ -57,3 +57,4 @@ export const _getAllOwnersService = async (): Promise<Owner[]> => {
 		throw err;
 	}
 };
+

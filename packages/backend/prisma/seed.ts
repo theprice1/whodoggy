@@ -1,9 +1,9 @@
-import { prisma } from "../../../../../../../";
+import { prisma } from "./prismaClient.js";
 
 async function main() {
 	console.log("Seeding registries...");
 
-	const _registriesData = [
+	const registriesData = [
 		{
 			name: "Global Microchips",
 			country: "USA",
@@ -92,15 +92,15 @@ async function main() {
 		},
 	];
 
-	const _registries = [];
+	const registries = [];
 	for (const data of registriesData) {
-		const _registry = await prisma.registry.create({ data });
+		const registry = await prisma.registry.create({ data });
 		registries.push(registry);
 	}
 
 	console.log("Seeding dogs...");
 
-	for (let _i = 1; i <= 500; i++) {
+	for (let i = 1; i <= 500; i++) {
 		const _registry = registries[Math.floor(Math.random() * registries.length)];
 
 		if (!registry) {
@@ -134,3 +134,7 @@ main()
 	.finally(async () => {
 		await prisma.$disconnect();
 	});
+
+
+
+

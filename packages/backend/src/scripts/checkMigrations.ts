@@ -1,5 +1,5 @@
 // packages/backend/src/scripts/checkMigrations.ts
-import { spawn } from "../../../../../../../";
+import { spawn } from "child_process";
 import path from "node:path";
 import dotenv from "dotenv";
 
@@ -29,3 +29,5 @@ const _run = () => {
 };
 
 run();
+
+

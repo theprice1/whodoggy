@@ -1,5 +1,5 @@
 // db.ts
-import { Pool, type QueryResult } from "../../../../../../../";
+import { Pool, type QueryResult } from "pg";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -42,3 +42,4 @@ if (require.main === module) {
 }
 // This code initializes a PostgreSQL connection pool using the pg library.
 // It reads the connection string from an environment variable, sets up event listeners for connection success and
+

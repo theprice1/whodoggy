@@ -1,4 +1,4 @@
-import { faker } from "../../../../../../../";
+import { faker } from "@faker-js/faker";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -20,12 +20,12 @@ interface DogRecord {
 	lastCheckup: string;
 }
 
-const _args = process.argv.slice(2);
-const _TOTAL_ENTRIES = args[0] ? Number.parseInt(args[0], 10) : 500;
-const _OUTPUT_PATH = args[1] || "mock_data/dogs.json";
+const args = process.argv.slice(2);
+const TOTAL_ENTRIES = args[0] ? Number.parseInt(args[0], 10) : 500;
+const OUTPUT_PATH = args[1] || "mock_data/dogs.json";
 
 const _REGISTRY_COUNT = 22;
-const _usedIds = new Set<string>();
+const usedIds = new Set<string>();
 
 function generateMicrochipId() {
 	let id: string;
@@ -38,7 +38,7 @@ function generateMicrochipId() {
 	return id;
 }
 
-const _breeds = [
+const breeds = [
 	"Labrador Retriever",
 	"German Shepherd",
 	"Golden Retriever",
@@ -62,8 +62,8 @@ function randomDateBetween(start: Date, end: Date): Date {
 const records: DogRecord[] = [];
 const _entriesPerRegistry = Math.floor(TOTAL_ENTRIES / REGISTRY_COUNT);
 
-for (let _regNum = 1; regNum <= REGISTRY_COUNT; regNum++) {
-	for (let _i = 0; i < entriesPerRegistry; i++) {
+for (let regNum = 1; regNum <= REGISTRY_COUNT; regNum++) {
+	for (let i = 0; i < entriesPerRegistry; i++) {
 		const _dob = randomDateBetween(new Date(2010, 0, 1), new Date(2024, 0, 1));
 		const _implantDate = randomDateBetween(dob, new Date());
 		records.push({
@@ -110,7 +110,7 @@ while (records.length < TOTAL_ENTRIES) {
 }
 
 // Ensure output directory exists
-const _outputDir = path.dirname(OUTPUT_PATH);
+const outputDir = path.dirname(OUTPUT_PATH);
 if (!fs.existsSync(outputDir)) {
 	fs.mkdirSync(outputDir, { recursive: true });
 }
@@ -118,3 +118,7 @@ if (!fs.existsSync(outputDir)) {
 // Write data to the output file
 fs.writeFileSync(OUTPUT_PATH, JSON.stringify(records, null, 2));
 console.log(`✅ Generated ${records.length} mock records to ${OUTPUT_PATH}`);
+
+
+
+

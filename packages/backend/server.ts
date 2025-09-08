@@ -1,4 +1,4 @@
-import { errorHandler } from "../../../../../";
+import { _errorHandler } from "./src/middleware/errorHandler.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -11,7 +11,7 @@ import searchRoutes from "./src/routes/search.js";
 
 dotenv.config();
 
-const _app = express();
+const app = express();
 
 // Middleware
 app.use(cors());
@@ -25,10 +25,10 @@ app.use("/api/registries", registriesRoutes);
 app.use("/api", deleteDataRoutes);
 
 // Global error handler
-app.use(errorHandler);
+app.use(_errorHandler);
 
 // Server start
-const _port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-	console.log(`✅ WhoDoggy backend running on http://localhost:${port}`);
+  console.log(`✅ WhoDoggy backend running on http://localhost:${port}`);
 });
