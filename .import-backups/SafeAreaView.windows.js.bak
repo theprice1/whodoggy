@@ -1,3 +1,0 @@
-import {  View  } from '...'
-export const _SafeAreaView = View;
-//# sourceMappingURL=SafeAreaView.windows.js.map

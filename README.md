@@ -1,35 +1,76 @@
-# WhoDoggy Monorepo
+# WhoDoggy - Microchip Registry Application
 
-Welcome to the WhoDoggy project — a comprehensive microchip scanning and identification platform for dogs.
+A comprehensive microchip registry application for reuniting lost pets with their owners by scanning microchips and searching across 22 different databases.
 
-## Overview
+## Project Structure
 
-This monorepo contains all codebases, tools, documentation, and configurations for the WhoDoggy app ecosystem, including:
-
-- **apps/mobile** — React Native mobile app with QR scanning capabilities.
-- **apps/web** — React web app.
-- **packages/backend** — Node.js backend API with PostgreSQL and Firebase integration.
-- **packages/shared** — Shared utilities and TypeScript types.
-- **packages/api-client** — TypeScript API client generated from OpenAPI specs.
-- **packages/scripts** — Utility scripts used in build and deployment.
-- **tools** — Developer tooling such as OpenAPI code generators.
-- **docs** — Documentation including architecture, policies, and API specs.
-
-## Tooling
-
-- Package manager: pnpm workspaces
-- Language: TypeScript (ESM)
-- Linters: Biome (primary), ESLint (React Native only)
-- Testing: Vitest and Supertest
-- CI/CD: Expo Application Services (EAS) for mobile builds
+```
+WhoDoggy/
+├── apps/
+│   ├── mobile/          # React Native mobile app
+│   └── web/             # React web application
+├── packages/
+│   ├── api-client/      # API client library
+│   ├── backend/         # Express.js backend server
+│   ├── scripts/         # Build and deployment scripts
+│   └── shared/          # Shared types and utilities
+└── tools/               # Development tools
+```
 
 ## Getting Started
 
-See individual package READMEs for detailed setup instructions.
+### Prerequisites
+- Node.js 18+
+- pnpm package manager
+
+### Installation
+```bash
+# Install dependencies
+pnpm install
+
+# Build shared packages
+pnpm run build:shared
+
+# Start development servers
+pnpm run dev
+```
+
+### Development Commands
+
+```bash
+# Run all tests
+pnpm test
+
+# Type checking
+pnpm run type-check
+
+# Linting
+pnpm run lint
+
+# Build all packages
+pnpm run build
+```
+
+## Features
+
+- Microchip scanning and database lookup
+- Search across 22 different pet registry databases
+- Web and mobile applications
+- Real-time lost pet alerts
+- Owner contact management
+
+## Technology Stack
+
+- **Frontend**: React, React Native, TypeScript
+- **Backend**: Node.js, Express, TypeScript
+- **Database**: PostgreSQL, Prisma ORM
+- **Testing**: Vitest, Jest
+- **Build**: Vite, Metro, TypeScript
 
 ## Contributing
 
-Please review the `docs/code-of-conduct.md` and `CONTRIBUTING.md` before contributing.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
 
----
+## License
 
+See [LICENSE](LICENSE) file for details.

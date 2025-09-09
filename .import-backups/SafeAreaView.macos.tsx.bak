@@ -1,4 +1,0 @@
-import {   View   } from '...'
-import type { NativeSafeAreaViewInstance } from './SafeArea.types';
-
-export const _SafeAreaView = View as unknown as NativeSafeAreaViewInstance;

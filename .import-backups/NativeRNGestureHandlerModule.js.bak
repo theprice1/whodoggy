@@ -1,3 +1,0 @@
-import {  TurboModuleRegistry  } from '...'
-export default TurboModuleRegistry.getEnforcing('RNGestureHandlerModule');
-//# sourceMappingURL=NativeRNGestureHandlerModule.js.map

@@ -1,3 +1,0 @@
-import {  requireNativeModule  } from '...'
-export default requireNativeModule('ExpoSystemUI');
-//# sourceMappingURL=ExpoSystemUI.js.map

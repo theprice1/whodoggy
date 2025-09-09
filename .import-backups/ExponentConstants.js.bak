@@ -1,3 +1,0 @@
-import {  requireOptionalNativeModule  } from '...'
-export default requireOptionalNativeModule('ExponentConstants');
-//# sourceMappingURL=ExponentConstants.js.map

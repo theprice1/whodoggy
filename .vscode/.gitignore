@@ -1,0 +1,7 @@
+# Ignore all settings and launch configurations
+settings.json
+launch.json
+tasks.json
+
+# Ignore workspace storage
+workspaceStorage/

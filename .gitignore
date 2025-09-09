@@ -1,51 +1,74 @@
-# Node modules (all packages)
-**/node_modules/
+# Dependencies
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
 
-# Build output folders (commonly dist, build)
-**/dist/
-**/build/
-
-# Expo / React Native
+# Build outputs
+dist/
+build/
 .expo/
-.expo-shared/
-ios/Pods/
-ios/build/
-android/.gradle/
-android/app/build/
+.next/
+out/
+coverage/
 
-# Environment variable files (never commit real secrets)
-**/.env
-**/.env.local
-**/.env.*.local
-**/.env.production
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
 # Temporary files
-.DS_Store
-Thumbs.db
+*.tmp
+*.temp
+*.bak
+*.backup
 
-# VSCode settings
-.vscode/
+# Backup directories (prevent future .import-backups)
+.import-backups/
+*-backups/
 
-# Mac system files
-.AppleDouble
-.LSOverride
+# TypeScript
+*.tsbuildinfo
 
-# Others
-*.swp
-*.swo
-
-# Husky
-.husky/_
-
-# Coverage reports
+# Testing
 coverage/
-**/coverage/
 
-# JetBrains IDEs
-.idea/
+# React Native
+.expo/
+.expo-shared/
+
+# Misc
+.cache/
+.parcel-cache/
+.vscode-test/

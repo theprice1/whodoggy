@@ -1,3 +1,0 @@
-import {   ConfigPlugin   } from '...'
-declare const _default: ConfigPlugin<void>;
-export default _default;

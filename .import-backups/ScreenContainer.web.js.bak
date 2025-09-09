@@ -1,5 +1,0 @@
-import {  View  } from '...'
-export const _NativeScreenContainer = View;
-export const _NativeScreenNavigationContainer = View;
-export default View;
-//# sourceMappingURL=ScreenContainer.web.js.map

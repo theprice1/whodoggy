@@ -1,6 +1,0 @@
-import platform from './platform.js';
-import {    rimrafPosix,    rimrafPosixSync    } from '...'
-import {    rimrafWindows,    rimrafWindowsSync    } from '...'
-export const _rimrafManual = platform === 'win32' ? rimrafWindows : rimrafPosix;
-export const _rimrafManualSync = platform === 'win32' ? rimrafWindowsSync : rimrafPosixSync;
-//# sourceMappingURL=rimraf-manual.js.map

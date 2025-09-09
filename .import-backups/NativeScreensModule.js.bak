@@ -1,5 +1,0 @@
-/* eslint-disable @typescript-eslint/ban-types */
-
-import {  TurboModuleRegistry  } from '...'
-export default TurboModuleRegistry.get('RNSModule');
-//# sourceMappingURL=NativeScreensModule.js.map

@@ -1,3 +1,0 @@
-import {  requireNativeModule  } from '...'
-export default requireNativeModule('ExpoWebBrowser');
-//# sourceMappingURL=ExpoWebBrowser.js.map

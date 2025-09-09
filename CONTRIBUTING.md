@@ -1,29 +1,45 @@
 # Contributing to WhoDoggy
 
-Thanks for your interest in contributing!
+## Development Setup
 
-## How to Contribute
+1. Clone the repository
+2. Install dependencies: `pnpm install`
+3. Build shared packages: `pnpm run build:shared`
+4. Start development: `pnpm run dev`
 
-1. Fork the repo.
-2. Create a feature branch (`git checkout -b feature/your-feature`).
-3. Commit your changes with clear messages.
-4. Push to your branch.
-5. Open a Pull Request.
+## Code Style
 
-## Policies to Follow
+- Use TypeScript for all new code
+- Follow existing code formatting (ESLint + Prettier)
+- Write tests for new features
+- Update documentation as needed
 
-- Please adhere to our [Code of Conduct](./docs/CODE_OF_CONDUCT.md).
-- Provide feedback according to our [Feedback Policy](./docs/FEEDBACK_POLICY.md).
-- Respect our [Legal, Ethical, Social, and Professional (LESP) guidelines](./docs/LESP.md).
+## Commit Guidelines
 
-## Style Guide
+- Use conventional commit format
+- Include relevant tests
+- Ensure all checks pass
 
-- Use consistent code formatting and linting.
-- Write tests for new features.
+## Pull Request Process
 
-## Related Documents
+1. Create feature branch from `main`
+2. Make your changes
+3. Add/update tests
+4. Ensure all checks pass
+5. Submit pull request
 
-- [Privacy Policy](./privacy-policy.md)
-- [Data Deletion Policy](./data-deletion-policy.md)
-- [LESP Principles](./LESP.md)
-- [Code of Conduct](./CODE_OF_CONDUCT.md)
+## Development Commands
+
+```bash
+# Type checking
+pnpm run type-check
+
+# Testing
+pnpm test
+
+# Linting
+pnpm run lint
+
+# Building
+pnpm run build
+```

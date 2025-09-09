@@ -1,8 +1,0 @@
-import {  NativeModules,  Platform  } from '...'
-
-type PlatformConstants = {
-  forceTouchAvailable: boolean;
-};
-
-export default (NativeModules?.PlatformConstants ??
-  Platform.constants) as PlatformConstants;

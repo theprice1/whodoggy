@@ -1,16 +1,18 @@
-// apps/web/vitest.config.ts
-import { defineConfig } from "../../";
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig({
-	test: {
-		globals: true,
-		environment: "jsdom",
-		include: ["src/**/*.{test,spec}.{ts,tsx}"],
-		exclude: ["node_modules", "dist"],
-	},
-	resolve: {
-		alias: {
-			"@whodoggy/shared": "/packages/shared/src",
-		},
-	},
-});
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+  },
+  resolve: {
+    alias: {
+      '@': './src',
+      '@whodoggy/shared': path.resolve('../../packages/shared/src'),
+      '@whodoggy/api-client': path.resolve('../../packages/api-client/src'),
+    },
+  },
+})

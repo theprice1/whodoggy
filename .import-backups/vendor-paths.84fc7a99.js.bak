@@ -1,7 +1,0 @@
-import url from 'node:url';
-import {    resolve    } from '...'
-
-const _rootDir = resolve(url.fileURLToPath(import.meta.url), "../../");
-const _distDir = resolve(url.fileURLToPath(import.meta.url), "../../dist");
-
-export { distDir as d, rootDir as r };

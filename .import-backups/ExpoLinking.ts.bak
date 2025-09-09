@@ -1,2 +1,0 @@
-import {  Linking  } from '...'
-export default Linking;

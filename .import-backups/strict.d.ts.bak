@@ -1,8 +1,0 @@
-declare module "assert/strict" {
-    import {     strict     } from '...'
-    export = strict;
-}
-declare module "node:assert/strict" {
-    import {     strict     } from '...'
-    export = strict;
-}

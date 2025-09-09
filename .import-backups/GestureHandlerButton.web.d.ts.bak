@@ -1,4 +1,0 @@
-import * as React from 'react';
-import {  View  } from '...'
-declare const _default: React.ForwardRefExoticComponent<React.RefAttributes<View>>;
-export default _default;

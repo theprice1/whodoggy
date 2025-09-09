@@ -1,5 +1,0 @@
-import {  HostComponent  } from '...'
-import {  RawButtonProps  } from '...'
-import RNGestureHandlerButtonNativeComponent from '../specs/RNGestureHandlerButtonNativeComponent';
-
-export default RNGestureHandlerButtonNativeComponent as HostComponent<RawButtonProps>;

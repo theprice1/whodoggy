@@ -1,4 +1,0 @@
-import {  LogBoxInspectorContainer  } from '...'
-import {  registerRootComponent  } from '...'
-
-registerRootComponent(LogBoxInspectorContainer);

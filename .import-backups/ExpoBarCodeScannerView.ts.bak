@@ -1,7 +1,0 @@
-import {  requireNativeViewManager  } from '...'
-import React from 'react';
-
-const ExpoBarCodeScannerView: React.ComponentType<any> =
-  requireNativeViewManager('ExpoBarCodeScanner');
-
-export default ExpoBarCodeScannerView;

@@ -1,3 +1,0 @@
-import {  requireNativeModule  } from '...'
-export default requireNativeModule('ExpoBarCodeScanner');
-//# sourceMappingURL=ExpoBarCodeScannerModule.js.map

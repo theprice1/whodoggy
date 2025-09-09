@@ -1,3 +1,0 @@
-import {  type ZodErrorMap  } from '...'
-declare const errorMap: ZodErrorMap;
-export default errorMap;

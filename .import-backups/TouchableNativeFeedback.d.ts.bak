@@ -1,2 +1,0 @@
-import {  TouchableNativeFeedback  } from '...'
-export default TouchableNativeFeedback;
