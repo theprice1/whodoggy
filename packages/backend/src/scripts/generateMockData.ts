@@ -80,11 +80,19 @@ function randomDateBetween(start: Date, end: Date): Date {
   return faker.date.between({ from: start, to: end });
 }
 
+function generateNIPhoneNumber(): string {
+  // Northern Ireland phone numbers start with 028
+  const areaCode = '028';
+  const number = faker.string.numeric(4) + ' ' + faker.string.numeric(4);
+  return `${areaCode} ${number}`;
+}
+
 function generateNorthernIrelandAddress(): string {
   const cities = ["Belfast", "Derry", "Lisburn", "Bangor", "Newtownabbey", "Craigavon", "Carrickfergus", "Ballymena", "Omagh", "Enniskillen"];
   const city = faker.helpers.arrayElement(cities);
   const streetNumber = faker.number.int({ min: 1, max: 999 });
-  const streetName = faker.location.streetName();
+  const streetNames = ["Main Street", "High Street", "Church Road", "Park Avenue", "Mill Lane", "Castle Street", "Bridge Road", "Victoria Street", "King's Road", "Queen's Avenue"];
+  const streetName = faker.helpers.arrayElement(streetNames);
   const postcode = `BT${faker.number.int({ min: 1, max: 99 })} ${faker.string.alpha({ length: 3, casing: 'upper' })}`;
 
   return `${streetNumber} ${streetName}, ${city}, ${postcode}, Northern Ireland`;
@@ -111,13 +119,13 @@ for (let regNum = 1; regNum <= REGISTRY_COUNT; regNum++) {
       gender: randomGender(),
       dateOfBirth: dob.toISOString(),
       ownerName: faker.person.fullName(),
-      ownerPhone: faker.phone.number('028 #### ####'), // NI phone format
+      ownerPhone: generateNIPhoneNumber(),
       ownerEmail: faker.internet.email(),
       ownerCity: generateNorthernIrelandAddress(),
       registeredAt: faker.date.past({ years: 5 }).toISOString(),
       microchipImplantDate: implantDate.toISOString(),
       registryName: registryName,
-      vaccinated: faker.datatype.boolean({ probability: 0.85 }), // Most dogs are vaccinated
+      vaccinated: faker.datatype.boolean({ probability: 0.85 }),
       notes: faker.lorem.sentence(),
       lastCheckup: faker.date.recent({ days: 365 }).toISOString(),
     });
@@ -137,7 +145,7 @@ while (records.length < TOTAL_ENTRIES) {
     gender: randomGender(),
     dateOfBirth: dob.toISOString(),
     ownerName: faker.person.fullName(),
-    ownerPhone: faker.phone.number('028 #### ####'),
+    ownerPhone: generateNIPhoneNumber(),
     ownerEmail: faker.internet.email(),
     ownerCity: generateNorthernIrelandAddress(),
     registeredAt: faker.date.past({ years: 5 }).toISOString(),
@@ -160,18 +168,25 @@ fs.writeFileSync(OUTPUT_PATH, JSON.stringify(records, null, 2));
 
 // Generate separate files for each registry
 console.log('Generating individual registry files...');
-const registryGroups = records.reduce((groups: Record<string, DogRecord[]>, record) => {
-  if (!groups[record.registryName]) {
-    groups[record.registryName] = [];
-  }
-  groups[record.registryName].push(record);
-  return groups;
-}, {});
+const registryGroups: Record<string, DogRecord[]> = {};
 
-Object.entries(registryGroups).forEach(([registryName, registryRecords], index) => {
-  const registryFileName = path.join(outputDir, `registry-${index + 1}.json`);
-  fs.writeFileSync(registryFileName, JSON.stringify(registryRecords, null, 2));
-  console.log(`  ${registryName}: ${registryRecords.length} records → ${registryFileName}`);
+// Safely populate registryGroups
+records.forEach((record) => {
+  const registryName = record.registryName;
+  if (!registryGroups[registryName]) {
+    registryGroups[registryName] = [];
+  }
+  registryGroups[registryName].push(record);
+});
+
+// Generate registry files with safe iteration
+const registryEntries = Object.entries(registryGroups);
+registryEntries.forEach(([registryName, registryRecords], index) => {
+  if (registryRecords && Array.isArray(registryRecords)) {
+    const registryFileName = path.join(outputDir, `registry-${index + 1}.json`);
+    fs.writeFileSync(registryFileName, JSON.stringify(registryRecords, null, 2));
+    console.log(`  ${registryName}: ${registryRecords.length} records → ${registryFileName}`);
+  }
 });
 
 console.log(`✅ Generated ${records.length} mock records to ${OUTPUT_PATH}`);
@@ -182,20 +197,51 @@ console.log(`   Registries: ${Object.keys(registryGroups).length}`);
 console.log(`   Unique Microchips: ${usedIds.size}`);
 console.log(`   Average per Registry: ${Math.round(records.length / Object.keys(registryGroups).length)}`);
 
-// Generate summary report
+// Generate summary report with complete null safety
+const validDobDates = records
+  .map(r => {
+    const date = new Date(r.dateOfBirth);
+    return date.getTime();
+  })
+  .filter(date => !isNaN(date) && isFinite(date));
+
+// Build registries info array safely
+const registriesInfo: Array<{
+  id: number;
+  name: string;
+  recordCount: number;
+  fileName: string;
+}> = [];
+
+const safeRegistryEntries = Object.entries(registryGroups);
+for (let i = 0; i < safeRegistryEntries.length; i++) {
+  const entry = safeRegistryEntries[i];
+  if (entry && entry.length >= 2) {
+    const [name, recordsArray] = entry;
+    registriesInfo.push({
+      id: i + 1,
+      name: name || `Registry_${i + 1}`,
+      recordCount: (recordsArray && Array.isArray(recordsArray)) ? recordsArray.length : 0,
+      fileName: `registry-${i + 1}.json`
+    });
+  }
+}
+
 const summary = {
   totalRecords: records.length,
   generatedAt: new Date().toISOString(),
-  registries: Object.entries(registryGroups).map(([name, records], index) => ({
-    id: index + 1,
-    name,
-    recordCount: records.length,
-    fileName: `registry-${index + 1}.json`
-  })),
-  breeds: [...new Set(records.map(r => r.breed))].sort(),
-  dateRange: {
-    oldestDog: Math.min(...records.map(r => new Date(r.dateOfBirth).getTime())),
-    youngestDog: Math.max(...records.map(r => new Date(r.dateOfBirth).getTime()))
+  registries: registriesInfo,
+  breeds: [...new Set(records.map(r => r.breed || 'Unknown'))].sort(),
+  dateRange: validDobDates.length > 0 ? {
+    oldestDogTimestamp: Math.min(...validDobDates),
+    youngestDogTimestamp: Math.max(...validDobDates),
+    oldestDog: new Date(Math.min(...validDobDates)).toISOString(),
+    youngestDog: new Date(Math.max(...validDobDates)).toISOString()
+  } : {
+    oldestDogTimestamp: null,
+    youngestDogTimestamp: null,
+    oldestDog: null,
+    youngestDog: null
   }
 };
 
