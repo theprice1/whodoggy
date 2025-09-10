@@ -45,7 +45,11 @@
     "db:seed": "pnpm --filter @whodoggy/backend db:seed",
     "db:studio": "pnpm --filter @whodoggy/backend db:studio",
     "openapi:generate": "pnpm --filter @whodoggy/openapi generate",
-    "openapi:watch": "pnpm --filter @whodoggy/openapi watch"
+    "openapi:watch": "pnpm --filter @whodoggy/openapi watch",
+    "assets:generate": "node scripts/generate-icons.js",
+    "assets:optimize": "svgo -f assets/raw/svg -o assets/generated/svg",
+    "assets:clean": "rimraf apps/mobile/assets/*.png apps/web/public/favicon.ico",
+    "prebuild": "npm run assets:generate"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.3",

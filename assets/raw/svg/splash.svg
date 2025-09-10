@@ -1,0 +1,22 @@
+<svg viewBox="0 0 1242 2688" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1242" height="2688" fill="#2D89EF"/>
+  <g transform="translate(621, 1344)">
+    <circle r="150" fill="white" opacity="0.9"/>
+    <g transform="scale(2)">
+      <ellipse cx="0" cy="5" rx="45" ry="42" fill="#2D89EF"/>
+      <ellipse cx="-35" cy="-20" rx="20" ry="30" fill="#2D89EF" transform="rotate(-25 -35 -20)"/>
+      <ellipse cx="35" cy="-20" rx="20" ry="30" fill="#2D89EF" transform="rotate(25 35 -20)"/>
+      <ellipse cx="0" cy="20" rx="25" ry="20" fill="white"/>
+      <circle cx="-15" cy="0" r="5" fill="#2C3E50"/>
+      <circle cx="15" cy="0" r="5" fill="#2C3E50"/>
+      <ellipse cx="0" cy="20" rx="8" ry="6" fill="#2C3E50"/>
+      <rect x="-30" y="35" width="60" height="12" rx="6" fill="#F5A623"/>
+    </g>
+  </g>
+  <text x="621" y="1600" font-family="Poppins, Arial, sans-serif" font-size="72" font-weight="700" text-anchor="middle" fill="white">
+    WhoDoggy?
+  </text>
+  <text x="621" y="1680" font-family="Inter, Arial, sans-serif" font-size="32" text-anchor="middle" fill="white" opacity="0.9">
+    Every dog has an identity
+  </text>
+</svg>

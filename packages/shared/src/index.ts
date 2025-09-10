@@ -1,14 +1,5 @@
-// Export OpenAPI client
-export * from "./hooks/useAuth.js";
-// Firebase Admin SDK exports
-export {
-  adminAuth,
-  adminDb,
-  app as adminApp,
-} from "./firebase/firebaseAdmin.js";
-// Optionally export everything else from client SDK
-export * from "./firebase/firebaseClient.js";
+// WhoDoggy Shared Package - Platform Agnostic Code
 
-// Firebase Client SDK exports
-export { clientApp, clientAuth, clientDb } from "./firebase/firebaseClient.js";
-export * from "./openapi/openapi.js";
+export * from './types';
+export * from './utils';
+export * from './constants';
