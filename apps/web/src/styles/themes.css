@@ -1,0 +1,23 @@
+/* packages/web/src/styles/themes.css */
+:root {
+  --color-primary: #2D89EF;
+  --color-secondary: #F5A623;
+  --color-background: #FFFFFF;
+  --color-surface: #F5F5F5;
+  --color-text: #2C3E50;
+}
+
+[data-theme="dark"] {
+  --color-primary: #4799F0;
+  --color-secondary: #F7B84B;
+  --color-background: #121212;
+  --color-surface: #1E1E1E;
+  --color-text: #EAEAEA;
+}
+
+/* Automatic dark mode images */
+@media (prefers-color-scheme: dark) {
+  .logo {
+    content: url('/images/logo-dark.svg');
+  }
+}
