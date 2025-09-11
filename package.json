@@ -46,10 +46,11 @@
     "db:studio": "pnpm --filter @whodoggy/backend db:studio",
     "openapi:generate": "pnpm --filter @whodoggy/openapi generate",
     "openapi:watch": "pnpm --filter @whodoggy/openapi watch",
-    "assets:generate": "node scripts/generate-icons.js",
-    "assets:optimize": "svgo -f assets/raw/svg -o assets/generated/svg",
-    "assets:clean": "rimraf apps/mobile/assets/*.png apps/web/public/favicon.ico",
-    "prebuild": "npm run assets:generate"
+    "assets:generate": "tsx packages/scripts/src/generateAssets.ts",
+    "assets:optimize": "svgo --folder assets/raw/svg --recursive --config '{\"plugins\":[{\"name\":\"preset-default\",\"params\":{\"overrides\":{\"removeViewBox\":false}}}]}'",
+    "assets:clean": "rm -rf assets/generated/* apps/*/assets/generated/* apps/web/public/logo*.png",
+    "assets:all": "npm run assets:clean && npm run assets:optimize && npm run assets:generate",
+    "assets:icons": "npm run assets:generate && echo 'Icons updated for mobile and web'"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.3",

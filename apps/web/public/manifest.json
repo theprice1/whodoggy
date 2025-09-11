@@ -1,21 +1,25 @@
 {
-  "name": "WhoDoggy - Dog Microchip Scanner",
   "short_name": "WhoDoggy",
-  "description": "Scan dog microchips and connect to 22 databases",
+  "name": "WhoDoggy - Dog Microchip Scanner",
+  "description": "Professional dog microchip scanner with access to 22 international databases",
   "icons": [
     {
-      "src": "/images/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
     },
     {
-      "src": "/images/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#2D89EF",
   "background_color": "#FFFFFF"

@@ -1,0 +1,68 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D89EF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A9EF2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="dogBodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5A623;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F7B84B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="300" height="200" fill="#F8F9FA"/>
+
+  <!-- Dog body -->
+  <ellipse cx="150" cy="140" rx="40" ry="30" fill="url(#dogBodyGradient)"/>
+
+  <!-- Dog head -->
+  <circle cx="150" cy="100" r="25" fill="url(#dogBodyGradient)"/>
+
+  <!-- Ears -->
+  <ellipse cx="135" cy="85" rx="8" ry="15" fill="url(#dogBodyGradient)" transform="rotate(-20 135 85)"/>
+  <ellipse cx="165" cy="85" rx="8" ry="15" fill="url(#dogBodyGradient)" transform="rotate(20 165 85)"/>
+
+  <!-- Eyes -->
+  <circle cx="142" cy="95" r="3" fill="white"/>
+  <circle cx="158" cy="95" r="3" fill="white"/>
+  <circle cx="142" cy="95" r="1.5" fill="#333"/>
+  <circle cx="158" cy="95" r="1.5" fill="#333"/>
+
+  <!-- Nose -->
+  <ellipse cx="150" cy="105" rx="2" ry="1.5" fill="#333"/>
+
+  <!-- Mouth -->
+  <path d="M150 107 Q145 110 142 108 M150 107 Q155 110 158 108" stroke="#333" stroke-width="1" fill="none"/>
+
+  <!-- Legs -->
+  <rect x="125" y="160" width="8" height="20" rx="4" fill="url(#dogBodyGradient)"/>
+  <rect x="140" y="160" width="8" height="20" rx="4" fill="url(#dogBodyGradient)"/>
+  <rect x="152" y="160" width="8" height="20" rx="4" fill="url(#dogBodyGradient)"/>
+  <rect x="167" y="160" width="8" height="20" rx="4" fill="url(#dogBodyGradient)"/>
+
+  <!-- Tail -->
+  <path d="M190 130 Q200 120 195 110" stroke="url(#dogBodyGradient)" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Phone in paws -->
+  <rect x="180" y="110" width="25" height="40" rx="5" fill="url(#phoneGradient)" stroke="#1E5AA8" stroke-width="1"/>
+  <rect x="182" y="115" width="21" height="25" rx="2" fill="white"/>
+
+  <!-- WhoDoggy logo on phone screen -->
+  <circle cx="192.5" cy="125" r="8" fill="#2D89EF" opacity="0.3"/>
+  <text x="192.5" y="128" font-family="Arial" font-size="4" text-anchor="middle" fill="#2D89EF" font-weight="bold">W</text>
+
+  <!-- Phone buttons -->
+  <circle cx="192.5" cy="140" r="3" fill="#F5A623"/>
+
+  <!-- Connecting lines -->
+  <path d="M175 120 Q180 115 185 118" stroke="#2D89EF" stroke-width="2" fill="none" opacity="0.6"/>
+
+  <!-- Welcome text bubble -->
+  <ellipse cx="80" cy="60" rx="50" ry="20" fill="white" stroke="#2D89EF" stroke-width="2"/>
+  <text x="80" y="58" font-family="Poppins, Arial, sans-serif" font-size="8" text-anchor="middle" fill="#2D89EF" font-weight="600">Welcome to</text>
+  <text x="80" y="68" font-family="Poppins, Arial, sans-serif" font-size="6" text-anchor="middle" fill="#F5A623" font-weight="600">WhoDoggy!</text>
+
+  <!-- Speech bubble tail -->
+  <polygon points="110,70 120,75 115,85" fill="white" stroke="#2D89EF" stroke-width="2"/>
+</svg>

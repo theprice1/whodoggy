@@ -1,0 +1,19 @@
+<svg viewBox="0 0 280 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="facebookShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Button background -->
+  <rect width="280" height="50" rx="25" fill="#1877F2" filter="url(#facebookShadow)"/>
+
+  <!-- Facebook f logo -->
+  <g transform="translate(35, 25)">
+    <rect x="-8" y="-10" width="16" height="20" rx="2" fill="white"/>
+    <path d="M-2 -10 L-2 -6 L-4 -6 L-4 -2 L-2 -2 L-2 10 L2 10 L2 -2 L6 -2 L6 -6 L2 -6 L2 -8 C2 -9 3 -9 4 -9 L6 -9 L6 -13 L2 -13 C-1 -13 -2 -11 -2 -8 Z" fill="#1877F2"/>
+  </g>
+
+  <!-- Text -->
+  <text x="140" y="32" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="white">Continue with Facebook</text>
+</svg>

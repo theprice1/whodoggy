@@ -1,0 +1,25 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="searchDarkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4799F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5BA3F2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Magnifying glass circle -->
+  <circle cx="10" cy="10" r="7" fill="none" stroke="url(#searchDarkGradient)" stroke-width="2"/>
+  <circle cx="10" cy="10" r="5" fill="#1E1E1E" opacity="0.3"/>
+
+  <!-- Inner reflection -->
+  <circle cx="8" cy="8" r="2" fill="white" opacity="0.2"/>
+
+  <!-- Handle -->
+  <line x1="16" y1="16" x2="21" y2="21" stroke="url(#searchDarkGradient)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Handle grip -->
+  <circle cx="18.5" cy="18.5" r="1" fill="#F7B84B" opacity="0.8"/>
+
+  <!-- Search beam -->
+  <line x1="10" y1="6" x2="10" y2="14" stroke="#F7B84B" stroke-width="0.5" opacity="0.6"/>
+  <line x1="6" y1="10" x2="14" y2="10" stroke="#F7B84B" stroke-width="0.5" opacity="0.6"/>
+</svg>

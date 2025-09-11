@@ -1,7 +1,11 @@
-// packages/web/webpack.config.js
+// apps/web/webpack.config.js
+const path = require('path');
+
 module.exports = {
+  // ... existing config
   module: {
     rules: [
+      // ... existing rules
       {
         test: /\.svg$/,
         use: [
@@ -9,24 +13,30 @@ module.exports = {
             loader: '@svgr/webpack',
             options: {
               typescript: true,
-              icon: true,
               dimensions: false,
+              svgoConfig: {
+                plugins: [
+                  {
+                    name: 'preset-default',
+                    params: {
+                      overrides: {
+                        removeViewBox: false,
+                      },
+                    },
+                  },
+                ],
+              },
             },
           },
         ],
       },
-      {
-        test: /\.(png|jpg|jpeg|gif|webp)$/,
-        type: 'asset',
-        parser: {
-          dataUrlCondition: {
-            maxSize: 10 * 1024, // 10kb
-          },
-        },
-        generator: {
-          filename: 'images/[name].[hash:8][ext]',
-        },
-      },
     ],
+  },
+  resolve: {
+    ...config.resolve,
+    alias: {
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@whodoggy/shared': path.resolve(__dirname, '../../packages/shared/src'),
+    },
   },
 };

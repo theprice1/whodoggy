@@ -1,0 +1,29 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="profileDarkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4799F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5BA3F2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Profile circle background -->
+  <circle cx="12" cy="12" r="10" fill="#1E1E1E" stroke="url(#profileDarkGradient)" stroke-width="2"/>
+
+  <!-- Head -->
+  <circle cx="12" cy="9" r="4" fill="url(#profileDarkGradient)"/>
+  <circle cx="12" cy="9" r="3" fill="#1E1E1E" opacity="0.3"/>
+
+  <!-- Body/shoulders -->
+  <path d="M6 18 Q6 15 8 14 Q10 13 12 13 Q14 13 16 14 Q18 15 18 18" stroke="url(#profileDarkGradient)" stroke-width="2" fill="url(#profileDarkGradient)" opacity="0.8"/>
+  <path d="M7 18 Q7 15.5 9 14.5 Q11 13.5 12 13.5 Q13 13.5 15 14.5 Q17 15.5 17 18" fill="#1E1E1E" opacity="0.3"/>
+
+  <!-- Profile details -->
+  <circle cx="10" cy="8.5" r="0.8" fill="#1E1E1E"/>
+  <circle cx="14" cy="8.5" r="0.8" fill="#1E1E1E"/>
+  <ellipse cx="12" cy="10" rx="0.8" ry="0.5" fill="#1E1E1E"/>
+
+  <!-- Status indicator -->
+  <circle cx="18" cy="6" r="3" fill="#28A745" stroke="#1E1E1E" stroke-width="1"/>
+  <circle cx="18" cy="6" r="1.5" fill="#1E1E1E"/>
+  <path d="M17 6 L18 7 L19 5" stroke="#28A745" stroke-width="1" fill="none"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Upload arrow -->
+  <path d="M12 21 L12 8" stroke="#2D89EF" stroke-width="2" stroke-linecap="round"/>
+  <path d="M16 12 L12 8 L8 12" stroke="#2D89EF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Base -->
+  <rect x="4" y="3" width="16" height="2" rx="1" fill="#F5A623"/>
+
+  <!-- Arrow head -->
+  <polygon points="12,8 16,12 8,12" fill="#F5A623"/>
+</svg>

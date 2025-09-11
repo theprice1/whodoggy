@@ -1,0 +1,19 @@
+<svg viewBox="0 0 280 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="appleShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Button background -->
+  <rect width="280" height="50" rx="25" fill="#000000" filter="url(#appleShadow)"/>
+
+  <!-- Apple logo -->
+  <g transform="translate(35, 25)">
+    <path d="M-3 -8 C-2 -10 0 -10 1 -8 C2 -6 1 -4 0 -4 C-1 -4 -2 -6 -3 -8 Z" fill="white"/>
+    <path d="M-4 -2 C-6 0 -6 4 -4 6 C-2 8 2 8 4 6 C6 4 6 0 4 -2 C4 -3 3 -4 2 -4 C0 -4 -2 -4 -4 -2 Z M-2 2 C-2 0 0 0 2 0 C2 2 0 4 -2 4 C-2 2 -2 2 -2 2 Z" fill="white"/>
+  </g>
+
+  <!-- Text -->
+  <text x="140" y="32" font-family="SF Pro Text, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="white">Continue with Apple</text>
+</svg>

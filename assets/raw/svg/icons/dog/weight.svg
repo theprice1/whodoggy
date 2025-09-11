@@ -1,0 +1,25 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale -->
+  <ellipse cx="12" cy="18" rx="8" ry="3" fill="#2D89EF" opacity="0.3"/>
+  <rect x="10" y="8" width="4" height="10" fill="#2D89EF" stroke="#1E5AA8" stroke-width="1"/>
+
+  <!-- Scale platform -->
+  <ellipse cx="12" cy="8" rx="6" ry="2" fill="#F5A623" stroke="#D4941C" stroke-width="1"/>
+
+  <!-- Weight display -->
+  <rect x="9" y="12" width="6" height="3" rx="1" fill="white" stroke="#2D89EF" stroke-width="1"/>
+  <text x="12" y="14.5" font-family="Arial" font-size="2" text-anchor="middle" fill="#2D89EF" font-weight="bold">25kg</text>
+
+  <!-- Scale legs -->
+  <rect x="6" y="17" width="2" height="2" fill="#666"/>
+  <rect x="16" y="17" width="2" height="2" fill="#666"/>
+
+  <!-- Paw print on scale -->
+  <g transform="translate(12, 6)">
+    <ellipse cx="0" cy="1" rx="1.5" ry="2" fill="#2D89EF" opacity="0.5"/>
+    <circle cx="-1.5" cy="-1" r="0.8" fill="#2D89EF" opacity="0.5"/>
+    <circle cx="-0.5" cy="-1.5" r="0.8" fill="#2D89EF" opacity="0.5"/>
+    <circle cx="0.5" cy="-1.5" r="0.8" fill="#2D89EF" opacity="0.5"/>
+    <circle cx="1.5" cy="-1" r="0.8" fill="#2D89EF" opacity="0.5"/>
+  </g>
+</svg>

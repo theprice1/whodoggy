@@ -1,0 +1,36 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fingerprintGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5A623;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F7B84B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fingerprint ridges -->
+  <g fill="none" stroke="url(#fingerprintGradient)" stroke-width="1.5" stroke-linecap="round">
+    <!-- Outer ridges -->
+    <path d="M12 4 C16 4 19 7 19 11 C19 15 16 18 12 18"/>
+    <path d="M12 6 C15 6 17 8 17 11 C17 14 15 16 12 16"/>
+    <path d="M12 8 C13.5 8 15 9.5 15 11 C15 12.5 13.5 14 12 14"/>
+
+    <!-- Inner core -->
+    <path d="M12 10 C12.5 10 13 10.5 13 11 C13 11.5 12.5 12 12 12"/>
+
+    <!-- Left side ridges -->
+    <path d="M5 11 C5 7 8 4 12 4"/>
+    <path d="M7 11 C7 8 9 6 12 6"/>
+    <path d="M9 11 C9 9.5 10.5 8 12 8"/>
+
+    <!-- Distinctive patterns -->
+    <path d="M12 12 L12 20"/>
+    <path d="M10 14 Q11 16 12 18"/>
+    <path d="M14 14 Q13 16 12 18"/>
+
+    <!-- Side curves -->
+    <path d="M8 13 Q10 15 12 16"/>
+    <path d="M16 13 Q14 15 12 16"/>
+  </g>
+
+  <!-- Center dot -->
+  <circle cx="12" cy="11" r="1" fill="url(#fingerprintGradient)"/>
+</svg>

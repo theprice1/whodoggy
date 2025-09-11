@@ -1,0 +1,22 @@
+<svg viewBox="0 0 280 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="googleShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Button background -->
+  <rect width="280" height="50" rx="25" fill="white" stroke="#E0E0E0" stroke-width="1" filter="url(#googleShadow)"/>
+
+  <!-- Google G logo -->
+  <g transform="translate(35, 25)">
+    <circle cx="0" cy="0" r="10" fill="white"/>
+    <path d="M0 -10 A 10 10 0 0 1 7.07 -7.07 L5 -5 A 6 6 0 0 0 0 -6 A 6 6 0 0 0 0 6 A 6 6 0 0 0 6 0 L6 -2 L2 -2 L2 2 L4 2 L4 0 A 10 10 0 0 1 0 -10 Z" fill="#4285F4"/>
+    <path d="M0 -6 A 6 6 0 0 0 -4.24 -4.24 L-6.36 -6.36 A 10 10 0 0 1 0 -10 Z" fill="#EA4335"/>
+    <path d="M0 6 A 6 6 0 0 0 4.24 4.24 L6.36 6.36 A 10 10 0 0 1 0 10 Z" fill="#34A853"/>
+    <path d="M0 10 A 10 10 0 0 1 -7.07 7.07 L-5 5 A 6 6 0 0 0 0 6 Z" fill="#FBBC05"/>
+  </g>
+
+  <!-- Text -->
+  <text x="140" y="32" font-family="Roboto, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="#3C4043">Continue with Google</text>
+</svg>

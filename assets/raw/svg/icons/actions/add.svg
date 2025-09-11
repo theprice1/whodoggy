@@ -1,0 +1,8 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Plus circle -->
+  <circle cx="12" cy="12" r="10" fill="#28A745" stroke="#1E7E34" stroke-width="1"/>
+  <circle cx="12" cy="12" r="8" fill="white" opacity="0.9"/>
+
+  <!-- Plus symbol -->
+  <path d="M12 6 L12 18 M6 12 L18 12" stroke="#28A745" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -18,8 +18,7 @@
     "sourceMap": true,
     "verbatimModuleSyntax": true,
     "types": [
-      "node",
-      "vite/client"
+      "node"
     ],
     "baseUrl": ".",
     "paths": {

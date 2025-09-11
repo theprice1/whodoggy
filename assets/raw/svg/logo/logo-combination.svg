@@ -1,0 +1,32 @@
+<svg viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D89EF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A9EF2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2D89EF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5A623;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Icon -->
+  <g transform="translate(40, 40)">
+    <circle cx="0" cy="0" r="30" fill="url(#iconGradient)" stroke="#1E5AA8" stroke-width="2"/>
+    <circle cx="0" cy="0" r="22" fill="white" opacity="0.9"/>
+    <path d="M-15 -15 L-8 15 L-3 -5 L3 15 L8 -15 L3 -20 L-8 -20 Z" fill="#2D89EF"/>
+    <g transform="translate(12, -8)">
+      <ellipse cx="0" cy="3" rx="4" ry="5" fill="#F5A623"/>
+      <circle cx="-5" cy="-3" r="2" fill="#F5A623"/>
+      <circle cx="-2" cy="-5" r="2" fill="#F5A623"/>
+      <circle cx="2" cy="-5" r="2" fill="#F5A623"/>
+      <circle cx="5" cy="-3" r="2" fill="#F5A623"/>
+    </g>
+  </g>
+
+  <!-- Text -->
+  <text x="100" y="50" font-family="Poppins, Arial, sans-serif" font-size="32" font-weight="700" fill="url(#textGradient)">WhoDoggy</text>
+
+  <!-- Tagline -->
+  <text x="100" y="65" font-family="Inter, Arial, sans-serif" font-size="10" fill="#666" opacity="0.8">Dog Microchip Scanner</text>
+</svg>

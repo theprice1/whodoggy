@@ -1,0 +1,25 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Calendar -->
+  <rect x="3" y="4" width="18" height="16" rx="2" fill="#2D89EF" stroke="#1E5AA8" stroke-width="1"/>
+  <rect x="4" y="7" width="16" height="12" rx="1" fill="white"/>
+
+  <!-- Calendar header -->
+  <rect x="3" y="4" width="18" height="3" rx="2" fill="#F5A623"/>
+
+  <!-- Rings -->
+  <rect x="6" y="2" width="1" height="4" rx="0.5" fill="#666"/>
+  <rect x="17" y="2" width="1" height="4" rx="0.5" fill="#666"/>
+
+  <!-- Dates -->
+  <text x="7" y="12" font-family="Arial" font-size="3" fill="#2D89EF" font-weight="bold">1</text>
+  <text x="10" y="12" font-family="Arial" font-size="3" fill="#666">2</text>
+  <text x="13" y="12" font-family="Arial" font-size="3" fill="#666">3</text>
+  <text x="16" y="12" font-family="Arial" font-size="3" fill="#666">4</text>
+  <text x="19" y="12" font-family="Arial" font-size="3" fill="#666">5</text>
+
+  <text x="7" y="15" font-family="Arial" font-size="3" fill="#666">6</text>
+  <text x="10" y="15" font-family="Arial" font-size="3" fill="#666">7</text>
+  <text x="13" y="15" font-family="Arial" font-size="3" fill="#F5A623" font-weight="bold">8</text>
+  <text x="16" y="15" font-family="Arial" font-size="3" fill="#666">9</text>
+  <text x="19" y="15" font-family="Arial" font-size="3" fill="#666">10</text>
+</svg>

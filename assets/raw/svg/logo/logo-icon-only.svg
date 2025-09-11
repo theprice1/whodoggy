@@ -1,0 +1,36 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D89EF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A9EF2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer circle -->
+  <circle cx="50" cy="50" r="45" fill="url(#primaryGradient)" stroke="#1E5AA8" stroke-width="2"/>
+
+  <!-- Inner circle -->
+  <circle cx="50" cy="50" r="35" fill="white" opacity="0.9"/>
+
+  <!-- W letter -->
+  <path d="M30 30 L35 55 L40 35 L45 55 L50 30 L45 25 L35 25 Z" fill="#2D89EF" stroke="#1E5AA8" stroke-width="1"/>
+
+  <!-- Paw print -->
+  <g transform="translate(55, 35)">
+    <!-- Main pad -->
+    <ellipse cx="0" cy="5" rx="6" ry="8" fill="#F5A623"/>
+    <!-- Toes -->
+    <circle cx="-8" cy="-5" r="3" fill="#F5A623"/>
+    <circle cx="-3" cy="-8" r="3" fill="#F5A623"/>
+    <circle cx="3" cy="-8" r="3" fill="#F5A623"/>
+    <circle cx="8" cy="-5" r="3" fill="#F5A623"/>
+  </g>
+
+  <!-- Subtle QR pattern -->
+  <g opacity="0.1">
+    <rect x="20" y="70" width="3" height="3" fill="#2D89EF"/>
+    <rect x="26" y="70" width="3" height="3" fill="#2D89EF"/>
+    <rect x="74" y="70" width="3" height="3" fill="#2D89EF"/>
+    <rect x="80" y="70" width="3" height="3" fill="#2D89EF"/>
+  </g>
+</svg>

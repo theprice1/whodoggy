@@ -1,0 +1,80 @@
+<svg viewBox="0 0 375 812" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="splashBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D89EF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4A9EF2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5A623;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="375" height="812" fill="url(#splashBg)"/>
+
+  <!-- Subtle pattern overlay -->
+  <g opacity="0.1">
+    <pattern id="qrPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect x="2" y="2" width="4" height="4" fill="white"/>
+      <rect x="8" y="8" width="4" height="4" fill="white"/>
+      <rect x="14" y="2" width="4" height="4" fill="white"/>
+      <rect x="2" y="14" width="4" height="4" fill="white"/>
+    </pattern>
+    <rect width="375" height="812" fill="url(#qrPattern)"/>
+  </g>
+
+  <!-- Main logo -->
+  <g transform="translate(187.5, 300)">
+    <!-- Outer glow circle -->
+    <circle cx="0" cy="0" r="80" fill="white" opacity="0.2" filter="url(#glow)"/>
+
+    <!-- Logo background -->
+    <circle cx="0" cy="0" r="70" fill="white" opacity="0.95"/>
+
+    <!-- WhoDoggy icon -->
+    <circle cx="0" cy="0" r="50" fill="#2D89EF" opacity="0.9"/>
+    <circle cx="0" cy="0" r="35" fill="white" opacity="0.95"/>
+
+    <!-- W letter -->
+    <path d="M-20 -20 L-10 20 L-3 -8 L3 20 L10 -20 L3 -25 L-10 -25 Z" fill="#2D89EF"/>
+
+    <!-- Paw print -->
+    <g transform="translate(20, -10)">
+      <ellipse cx="0" cy="4" rx="8" ry="10" fill="#F5A623"/>
+      <circle cx="-10" cy="-5" r="4" fill="#F5A623"/>
+      <circle cx="-3" cy="-8" r="4" fill="#F5A623"/>
+      <circle cx="3" cy="-8" r="4" fill="#F5A623"/>
+      <circle cx="10" cy="-5" r="4" fill="#F5A623"/>
+    </g>
+  </g>
+
+  <!-- App title -->
+  <text x="187.5" y="450" font-family="Poppins, Arial, sans-serif" font-size="36" font-weight="700" text-anchor="middle" fill="white" filter="url(#glow)">WhoDoggy</text>
+
+  <!-- Tagline -->
+  <text x="187.5" y="480" font-family="Inter, Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" opacity="0.9">Dog Microchip Scanner</text>
+
+  <!-- Connecting to databases text -->
+  <text x="187.5" y="520" font-family="Inter, Arial, sans-serif" font-size="12" text-anchor="middle" fill="white" opacity="0.7">Connecting to 22 databases worldwide</text>
+
+  <!-- Loading indicator -->
+  <g transform="translate(187.5, 600)">
+    <circle cx="-20" cy="0" r="4" fill="white" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite" begin="0s"/>
+    </circle>
+    <circle cx="0" cy="0" r="4" fill="white" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+    <circle cx="20" cy="0" r="4" fill="white" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
+
+  <!-- Version info -->
+  <text x="187.5" y="750" font-family="Arial" font-size="10" text-anchor="middle" fill="white" opacity="0.6">Version 1.0</text>
+</svg>

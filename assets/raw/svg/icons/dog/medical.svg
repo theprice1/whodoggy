@@ -1,0 +1,19 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="medicalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DC3545;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C82333;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Medical cross background -->
+  <circle cx="12" cy="12" r="10" fill="white" stroke="url(#medicalGradient)" stroke-width="2"/>
+
+  <!-- Cross -->
+  <rect x="10" y="6" width="4" height="12" fill="url(#medicalGradient)"/>
+  <rect x="6" y="10" width="12" height="4" fill="url(#medicalGradient)"/>
+
+  <!-- Inner cross -->
+  <rect x="11" y="8" width="2" height="8" fill="white"/>
+  <rect x="8" y="11" width="8" height="2" fill="white"/>
+</svg>

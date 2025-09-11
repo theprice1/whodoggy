@@ -1,0 +1,16 @@
+<svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+  <!-- Button background -->
+  <rect width="200" height="50" rx="25" fill="white" stroke="#2D89EF" stroke-width="2"/>
+
+  <!-- Inner highlight -->
+  <rect x="2" y="2" width="196" height="46" rx="23" fill="#2D89EF" opacity="0.05"/>
+
+  <!-- Button text -->
+  <text x="100" y="32" font-family="Poppins, Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#2D89EF">View History</text>
+
+  <!-- Icon -->
+  <g transform="translate(25, 25)">
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#2D89EF" stroke-width="2"/>
+    <path d="M0 -4 L0 0 L4 4" stroke="#2D89EF" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

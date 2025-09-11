@@ -1,0 +1,26 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="settingsDarkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4799F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5BA3F2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Gear icon -->
+  <path d="M12 2l1.09 3.26L16 4.18l-0.35 3.54L19.27 9l-2.27 2.27L19.27 15l-3.62 1.28L16 19.82l-2.91-1.08L12 22l-1.09-3.18L8 19.82l0.35-3.54L4.73 15l2.27-2.73L4.73 9l3.62-1.28L8 4.18l2.91 1.08L12 2z" fill="url(#settingsDarkGradient)" stroke="#6BB3F5" stroke-width="0.5"/>
+
+  <!-- Inner gear -->
+  <path d="M12 4l0.8 2.4L15 5.4l-0.3 2.6L17.2 9l-1.7 1.7L17.2 15l-2.5 0.9L15 18.6l-2.2-0.8L12 20l-0.8-2.4L9 18.6l0.3-2.6L6.8 15l1.7-1.3L6.8 9l2.5-0.9L9 5.4l2.2 0.8L12 4z" fill="#1E1E1E" opacity="0.8"/>
+
+  <!-- Center circle -->
+  <circle cx="12" cy="12" r="3" fill="#1E1E1E" stroke="url(#settingsDarkGradient)" stroke-width="1"/>
+
+  <!-- Center dot -->
+  <circle cx="12" cy="12" r="1.5" fill="#F7B84B"/>
+
+  <!-- Gear teeth highlights -->
+  <circle cx="12" cy="6" r="1" fill="url(#settingsDarkGradient)" opacity="0.6"/>
+  <circle cx="18" cy="12" r="1" fill="url(#settingsDarkGradient)" opacity="0.6"/>
+  <circle cx="12" cy="18" r="1" fill="url(#settingsDarkGradient)" opacity="0.6"/>
+  <circle cx="6" cy="12" r="1" fill="url(#settingsDarkGradient)" opacity="0.6"/>
+</svg>

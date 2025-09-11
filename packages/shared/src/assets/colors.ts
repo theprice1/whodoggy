@@ -1,31 +1,33 @@
-export const WhoDoggyColors = {
-  // Primary brand colors
-  primary: '#2D89EF',      // Trust Blue
-  secondary: '#F5A623',    // Dog Gold
+// packages/shared/src/assets/colors.ts
+export const BrandColors = {
+  // Core brand colors from SVG designs
+  trustBlue: '#2D89EF',
+  dogGold: '#F5A623',
 
-  // Neutral colors
-  background: '#FFFFFF',
-  surface: '#F5F5F5',
-  text: '#2C3E50',
-  textSecondary: '#666666',
-  border: '#E0E0E0',
+  // Extended palette for gradients
+  trustBlueLight: '#5BA3F2',
+  trustBlueDark: '#1E5AA8',
+  dogGoldLight: '#F7B84B',
+  dogGoldDark: '#D4941C',
 
-  // Semantic colors
-  success: '#28A745',
-  warning: '#FFC107',
-  error: '#DC3545',
-  info: '#17A2B8',
+  // Status colors from status icons
+  successGreen: '#28A745',
+  warningYellow: '#FFC107',
+  errorRed: '#DC3545',
+  infoBlue: '#17A2B8',
 
-  // Dark mode
-  dark: {
-    primary: '#4799F0',
-    secondary: '#F7B84B',
-    background: '#121212',
-    surface: '#1E1E1E',
-    text: '#EAEAEA',
-    textSecondary: '#999999',
-    border: '#2C3E50',
-  }
+  // Neutral palette
+  gray50: '#F9F9F9',
+  gray100: '#F5F5F5',
+  gray200: '#E0E0E0',
+  gray300: '#CCCCCC',
+  gray400: '#999999',
+  gray500: '#666666',
+  gray600: '#4A4A4A',
+  gray700: '#2C3E50',
+  gray800: '#1A1A1A',
+  gray900: '#000000',
 } as const;
 
-export type ColorName = keyof typeof WhoDoggyColors;
+export type BrandColorKey = keyof typeof BrandColors;
+export default BrandColors;

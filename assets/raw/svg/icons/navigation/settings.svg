@@ -1,0 +1,17 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="settingsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D89EF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A9EF2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Gear icon -->
+  <path d="M12 2l1.09 3.26L16 4.18l-0.35 3.54L19.27 9l-2.27 2.27L19.27 15l-3.62 1.28L16 19.82l-2.91-1.08L12 22l-1.09-3.18L8 19.82l0.35-3.54L4.73 15l2.27-2.73L4.73 9l3.62-1.28L8 4.18l2.91 1.08L12 2z" fill="url(#settingsGradient)" stroke="#1E5AA8" stroke-width="0.5"/>
+
+  <!-- Center circle -->
+  <circle cx="12" cy="12" r="3" fill="white" stroke="#2D89EF" stroke-width="1"/>
+
+  <!-- Center dot -->
+  <circle cx="12" cy="12" r="1.5" fill="#F5A623"/>
+</svg>

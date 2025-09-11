@@ -1,36 +1,39 @@
 {
-	"expo": {
-		"name": "WhoDoggy",
-		"slug": "whodoggy",
-		"version": "1.0.0",
-		"orientation": "portrait",
-		"icon": "./assets/icon.png",
-		"userInterfaceStyle": "light",
-		"splash": {
-			"image": "./assets/splash.png",
-			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
-		},
-		"assetBundlePatterns": ["**/*"],
-		"ios": {
-			"supportsTablet": true,
-			"bundleIdentifier": "com.whodoggy.app"
-		},
-		"android": {
-			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
-				"backgroundColor": "#ffffff"
-			},
-			"package": "com.whodoggy.app"
-		},
-		"web": {
-			"favicon": "./assets/favicon.png",
-			"bundler": "metro"
-		},
-		"plugins": ["expo-router"],
-		"scheme": "whodoggy",
-		"experiments": {
-			"typedRoutes": true
-		}
-	}
+  "expo": {
+    "name": "WhoDoggy",
+    "slug": "whodoggy",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2D89EF"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.whodoggy.app",
+      "buildNumber": "1"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#2D89EF"
+      },
+      "package": "com.whodoggy.app",
+      "versionCode": 1
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "name": "WhoDoggy - Dog Microchip Scanner",
+      "shortName": "WhoDoggy",
+      "description": "Scan and lookup dog microchip information across 22 databases",
+      "themeColor": "#2D89EF",
+      "backgroundColor": "#FFFFFF"
+    }
+  }
 }

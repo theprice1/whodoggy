@@ -1,0 +1,31 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="badgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D89EF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4A9EF2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5A623;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Badge background -->
+  <circle cx="60" cy="60" r="55" fill="url(#badgeGradient)" stroke="#1E5AA8" stroke-width="3"/>
+  <circle cx="60" cy="60" r="45" fill="white" opacity="0.95"/>
+  
+  <!-- W -->
+  <path d="M40 35 L47 70 L52 45 L57 70 L64 35 L58 30 L46 30 Z" fill="#2D89EF" stroke="#1E5AA8" stroke-width="1"/>
+  
+  <!-- Paw -->
+  <g transform="translate(75, 45)">
+    <ellipse cx="0" cy="4" rx="5" ry="6" fill="#F5A623"/>
+    <circle cx="-6" cy="-4" r="2.5" fill="#F5A623"/>
+    <circle cx="-2" cy="-6" r="2.5" fill="#F5A623"/>
+    <circle cx="2" cy="-6" r="2.5" fill="#F5A623"/>
+    <circle cx="6" cy="-4" r="2.5" fill="#F5A623"/>
+  </g>
+  
+  <!-- Text around badge -->
+  <path id="textCircle" d="M 60,60 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none"/>
+  <text font-family="Poppins, Arial, sans-serif" font-size="12" font-weight="600" fill="#2D89EF">
+    <textPath href="#textCircle" startOffset="25%">WHODOGGY • SCANNER •</textPath>
+  </text>
+</svg>

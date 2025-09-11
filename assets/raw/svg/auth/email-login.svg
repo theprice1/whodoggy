@@ -1,0 +1,19 @@
+<svg viewBox="0 0 280 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="emailShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Button background -->
+  <rect width="280" height="50" rx="25" fill="white" stroke="#2D89EF" stroke-width="2" filter="url(#emailShadow)"/>
+
+  <!-- Email icon -->
+  <g transform="translate(35, 25)">
+    <rect x="-8" y="-5" width="16" height="10" rx="2" fill="none" stroke="#2D89EF" stroke-width="2"/>
+    <path d="M-8 -3 L0 2 L8 -3" stroke="#2D89EF" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Text -->
+  <text x="140" y="32" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="#2D89EF">Continue with Email</text>
+</svg>

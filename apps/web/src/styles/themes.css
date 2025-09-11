@@ -1,23 +1,51 @@
-/* packages/web/src/styles/themes.css */
+/* apps/web/src/styles/themes.css */
 :root {
+  /* Brand Colors from SVG designs */
   --color-primary: #2D89EF;
   --color-secondary: #F5A623;
+
+  /* UI Colors */
   --color-background: #FFFFFF;
   --color-surface: #F5F5F5;
   --color-text: #2C3E50;
+  --color-text-secondary: #666666;
+  --color-border: #E0E0E0;
+
+  /* Status Colors from status icons */
+  --color-success: #28A745;
+  --color-warning: #FFC107;
+  --color-error: #DC3545;
+  --color-info: #17A2B8;
 }
 
+/* Dark mode from dark SVG assets */
 [data-theme="dark"] {
   --color-primary: #4799F0;
   --color-secondary: #F7B84B;
   --color-background: #121212;
   --color-surface: #1E1E1E;
   --color-text: #EAEAEA;
+  --color-text-secondary: #AAAAAA;
+  --color-border: #333333;
 }
 
-/* Automatic dark mode images */
-@media (prefers-color-scheme: dark) {
-  .logo {
-    content: url('/images/logo-dark.svg');
-  }
+/* Utility classes */
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
 }
