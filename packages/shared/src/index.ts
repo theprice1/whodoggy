@@ -1,5 +1,12 @@
-// WhoDoggy Shared Package - Platform Agnostic Code
+export { useAuth } from './auth/useAuth';
+export type { AuthState, User } from './auth/types';
 
-export * from './types';
-export * from './utils';
-export * from './constants';
+
+export * from './openapi/types';
+
+
+export * from './utils/constants';
+export * from './utils/helpers';
+
+
+export * from './types/common';

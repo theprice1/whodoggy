@@ -32,7 +32,9 @@
     "app/**/*",
     "App.tsx",
     "index.tsx",
-    "./global.d.ts"
+    "./global.d.ts",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
   ],
   "exclude": [
     "node_modules",

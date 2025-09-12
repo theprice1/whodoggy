@@ -1,58 +1,118 @@
-import { useState } from "../../../../../";
-import type React from "react";
+import { useEffect, useState } from "react";
 
-const _SignInScreen = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+type User = {
+	id: string;
+	name: string;
+	email: string;
+	role: string;
+	isActive: boolean;
+};
 
-	const _handleSignIn = (e: React.FormEvent) => {
-		e.preventDefault();
-		// TODO: Add authentication logic here
-		alert(`Signing in with email: ${email}`);
+const ManageUsersScreen = () => {
+  const fetchUsers = async () => {
+    // TODO: Implement user fetching
+    console.log("Fetching users...");
+  };
+
+  const toggleUserActive = async (id: string) => {
+    // TODO: Implement user toggle
+    console.log("Toggling user:", id);
+  };
+
+	const [users, setUsers] = useState<User[]>([]);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		// TODO: Replace with real API call to fetch users
+		const _fetchUsers = async () => {
+			setLoading(true);
+			await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate delay
+			setUsers([
+				{
+					id: "1",
+					name: "Alice",
+					email: "alice@example.com",
+					role: "Admin",
+					isActive: true,
+				},
+				{
+					id: "2",
+					name: "Bob",
+					email: "bob@example.com",
+					role: "User",
+					isActive: true,
+				},
+				{
+					id: "3",
+					name: "Carol",
+					email: "carol@example.com",
+					role: "User",
+					isActive: false,
+				},
+			]);
+			setLoading(false);
+		};
+
+		fetchUsers();
+	}, []);
+
+	const _toggleUserActive = (id: string) => {
+		setUsers((prevUsers) =>
+			prevUsers.map((user) =>
+				user.id === id ? { ...user, isActive: !user.isActive } : user,
+			),
+		);
+		// TODO: Call API to update user status
 	};
 
 	return (
-		<div className="max-w-md mx-auto p-6">
-			<h1 className="text-3xl font-bold mb-6">Sign In</h1>
-			<form onSubmit={handleSignIn} className="flex flex-col">
-				<label htmlFor="email" className="mb-1 font-semibold">
-					Email
-				</label>
-				<input
-					id="email"
-					type="email"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-					required
-					className="border border-gray-300 rounded p-2 mb-4"
-					placeholder="you@example.com"
-					aria-label="Email address"
-				/>
+		<div className="max-w-4xl mx-auto p-6">
+			<h1 className="text-3xl font-bold mb-6">Manage Users</h1>
 
-				<label htmlFor="password" className="mb-1 font-semibold">
-					Password
-				</label>
-				<input
-					id="password"
-					type="password"
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-					required
-					className="border border-gray-300 rounded p-2 mb-6"
-					placeholder="Enter your password"
-					aria-label="Password"
-				/>
-
-				<button
-					type="submit"
-					className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-					aria-label="Sign in button"
-				>
-					Sign In
-				</button>
-			</form>
+			{loading ? (
+				<p>Loading users...</p>
+			) : users.length === 0 ? (
+				<p>No users found.</p>
+			) : (
+				<table className="w-full border-collapse">
+					<thead>
+						<tr className="border-b border-gray-300">
+							<th className="text-left py-2">Name</th>
+							<th className="text-left py-2">Email</th>
+							<th className="text-left py-2">Role</th>
+							<th className="text-left py-2">Active</th>
+							<th className="text-left py-2">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{users.map(({ id, name, email, role, isActive }) => (
+							<tr key={id} className="border-b border-gray-200">
+								<td className="py-2">{name}</td>
+								<td className="py-2">{email}</td>
+								<td className="py-2">{role}</td>
+								<td className="py-2">{isActive ? "Yes" : "No"}</td>
+								<td className="py-2">
+									<button
+										type="button"
+										onClick={() => toggleUserActive(id)}
+										className={`px-3 py-1 rounded text-white ${
+											isActive
+												? "bg-red-600 hover:bg-red-700"
+												: "bg-green-600 hover:bg-green-700"
+										}`}
+										aria-label={`Toggle active status for ${name}`}
+									>
+										{isActive ? "Deactivate" : "Activate"}
+									</button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			)}
 		</div>
 	);
 };
 
-export default SignInScreen;
+export default ManageUsersScreen;
+

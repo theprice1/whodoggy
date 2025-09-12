@@ -1,4 +1,4 @@
-import { useEffect, useState } from "../../../../../";
+import { useEffect, useState } from "react";
 
 type User = {
 	id: string;
@@ -8,7 +8,17 @@ type User = {
 	isActive: boolean;
 };
 
-const _ManageUsersScreen = () => {
+const ManageUsersScreen = () => {
+  const fetchUsers = async () => {
+    // TODO: Implement user fetching
+    console.log("Fetching users...");
+  };
+
+  const toggleUserActive = async (id: string) => {
+    // TODO: Implement user toggle
+    console.log("Toggling user:", id);
+  };
+
 	const [users, setUsers] = useState<User[]>([]);
 	const [loading, setLoading] = useState(true);
 
@@ -105,3 +115,4 @@ const _ManageUsersScreen = () => {
 };
 
 export default ManageUsersScreen;
+

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "../../../../../";
+import { useEffect, useState } from "react";
 
 type DogInfo = {
 	id: string;
@@ -8,7 +8,7 @@ type DogInfo = {
 	microchipId: string;
 };
 
-const _EditDogInfoScreen = () => {
+const EditDogInfoScreen = () => {
 	// Example dog info state (in real app, fetch from API)
 	const [dogInfo, setDogInfo] = useState<DogInfo>({
 		id: "",
@@ -108,3 +108,6 @@ const _EditDogInfoScreen = () => {
 };
 
 export default EditDogInfoScreen;
+const fetchDogInfo = () => {};
+const handleChange = (field: string, value: any) => {};
+const handleSave = () => {};

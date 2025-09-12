@@ -1,4 +1,4 @@
-import { useEffect, useState } from "../../../../../";
+import { useEffect, useState } from "react";
 
 type LogEntry = {
 	id: string;
@@ -7,7 +7,7 @@ type LogEntry = {
 	message: string;
 };
 
-const _LogsScreen = () => {
+const LogsScreen = () => {
 	const [logs, setLogs] = useState<LogEntry[]>([]);
 	const [loading, setLoading] = useState(true);
 
@@ -85,3 +85,4 @@ const _LogsScreen = () => {
 };
 
 export default LogsScreen;
+const fetchLogs = () => {};

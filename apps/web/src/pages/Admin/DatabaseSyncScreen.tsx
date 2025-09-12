@@ -1,6 +1,6 @@
-import { useState } from "../../../../../";
+import { useState } from "react";
 
-const _DatabaseSyncScreen = () => {
+const DatabaseSyncScreen = () => {
 	const [isSyncing, setIsSyncing] = useState(false);
 	const [syncStatus, setSyncStatus] = useState<string | null>(null);
 
@@ -47,3 +47,4 @@ const _DatabaseSyncScreen = () => {
 };
 
 export default DatabaseSyncScreen;
+const handleSync = () => {};

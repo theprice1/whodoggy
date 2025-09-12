@@ -10,7 +10,7 @@
     "outDir": "dist",
     "rootDir": "src",
     "composite": true,
-    "declaration": false,
+    "declaration": true,
     "declarationMap": false,
     "sourceMap": true,
     "verbatimModuleSyntax": true,

@@ -1,6 +1,6 @@
 // apps/web/src/pages/Home/HomeScreen.tsx
 
-import { Link } from "../../../../../";
+import { Link } from "react-router-dom";
 import type React from "react";
 
 const HomeScreen: React.FC = () => {

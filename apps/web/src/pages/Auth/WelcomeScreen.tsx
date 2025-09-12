@@ -1,6 +1,11 @@
-import { useNavigate } from "../../../../../";
+import { useNavigate } from "react-router-dom";
 
-const _WelcomeScreen = () => {
+const WelcomeScreen = () => {
+  const navigate = (path: string) => {
+    // TODO: Implement navigation
+    console.log("Navigate to:", path);
+  };
+
 	const _navigate = useNavigate();
 
 	return (
@@ -33,3 +38,4 @@ const _WelcomeScreen = () => {
 };
 
 export default WelcomeScreen;
+

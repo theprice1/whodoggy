@@ -1,5 +1,5 @@
 // apps/mobile/src/api/dogRegistry.ts
-import type { paths } from "@whodoggy/shared/openapi";
+import type { paths } from "@whodoggy/shared";
 
 const _BASE_URL = "https://api.whodoggy.com";
 

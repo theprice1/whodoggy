@@ -5,19 +5,19 @@ import {
 	StyleSheet,
 	Text,
 	TextInput,
-} from "../../../../../";
-import { useState } from "../../../../../";
+} from "react-native";
+import { useState } from "react";
 
 // Define colors as constants to avoid color literals in styles
-const _COLORS = {
+const COLORS = {
 	gray300: "#D1D5DB",
 };
 
-const _ProfileScreen = () => {
+const ProfileScreen = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 
-	const _handleSave = () => {
+	const handleSave = () => {
 		Alert.alert("Profile Saved", `Name: ${name}\nEmail: ${email}`);
 	};
 
@@ -53,7 +53,7 @@ const _ProfileScreen = () => {
 	);
 };
 
-const _styles = StyleSheet.create({
+const styles = StyleSheet.create({
 	container: {
 		flexGrow: 1,
 		padding: 16,

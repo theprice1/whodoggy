@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Icon } from './components/Icon/Icon';
+import { Icon } from './components/Icon/Icon.js';
 
 function App() {
   return (

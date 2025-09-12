@@ -1,7 +1,13 @@
-import { useState } from "../../../../../";
+import { useState } from "react";
 import type React from "react";
 
-const _SubmitFeedbackScreen = () => {
+const SubmitFeedbackScreen = () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: Implement form submission
+    console.log("Form submitted");
+  };
+
 	const [feedback, setFeedback] = useState("");
 	const [email, setEmail] = useState("");
 	const [submitted, setSubmitted] = useState(false);
@@ -66,3 +72,5 @@ const _SubmitFeedbackScreen = () => {
 };
 
 export default SubmitFeedbackScreen;
+
+

@@ -1,6 +1,8 @@
 // apps/web/src/firebase/firebase.ts
 
-import { getApps, getAuth, getFirestore, initializeApp } from "../../../../";
+import { initializeApp, getApps } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import type { FirebaseApp } from "firebase/app";
 
 const _firebaseConfig = {
@@ -14,6 +16,17 @@ const _firebaseConfig = {
 
 const _existingApps = getApps();
 let app: FirebaseApp;
+const existingApps = getApps();
+const firebaseConfig = {
+  // Add your Firebase config here
+  apiKey: process.env.VITE_FIREBASE_API_KEY,
+  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VITE_FIREBASE_APP_ID
+};
+
 if (!existingApps.length) {
 	app = initializeApp(firebaseConfig);
 } else {

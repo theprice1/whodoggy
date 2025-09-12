@@ -42,27 +42,27 @@ const iconMap = {
 
 type IconName = keyof typeof iconMap;
 
-export const Icon: React.FC<IconProps> = ({ 
-  name, 
-  size = 24, 
+export const Icon: React.FC<IconProps> = ({
+  name,
+  size = 24,
   color = 'currentColor',
   className = ''
 }) => {
   const iconSrc = iconMap[name as IconName];
-  
+
   if (!iconSrc) {
-    return <div className={\w-\ h-\ bg-gray-300 \\} />;
+    return <div className="w-4 h-4 bg-gray-300" />;
   }
 
   return (
-    <img 
+    <img
       src={iconSrc}
-      alt={\\ icon\}
+      alt={`${name} icon`}
       width={size}
       height={size}
       className={className}
-      style={{ 
-        filter: color !== 'currentColor' ? \rightness(0) saturate(100%) \\ : undefined 
+      style={{
+        filter: color !== 'currentColor' ? getColorFilter(color) : undefined
       }}
     />
   );

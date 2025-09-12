@@ -1,69 +1,122 @@
-// packages/mobile/src/screens/Scanner/QRScannerOverlay.tsx
 import React from 'react';
-import { View, StyleSheet, Animated } from 'react-native';
-import Svg, { Path, Line } from 'react-native-svg';
+import { View, Text, StyleSheet } from 'react-native';
 
-export const QRScannerOverlay: React.FC = () => {
-  const scanLineAnim = React.useRef(new Animated.Value(0)).current;
+interface QRScannerOverlayProps {
+  isScanning?: boolean;
+}
 
-  React.useEffect(() => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(scanLineAnim, {
-          toValue: 1,
-          duration: 2000,
-          useNativeDriver: true,
-        }),
-        Animated.timing(scanLineAnim, {
-          toValue: 0,
-          duration: 2000,
-          useNativeDriver: true,
-        }),
-      ])
-    ).start();
-  }, []);
-
+export const QRScannerOverlay: React.FC<QRScannerOverlayProps> = ({
+  isScanning = false
+}) => {
   return (
-    <View style={StyleSheet.absoluteFillObject}>
-      {/* Dark overlay with transparent center */}
-      <Svg style={StyleSheet.absoluteFillObject}>
-        <Path
-          d="M0,0 L100%,0 L100%,100% L0,100% Z
-             M20%,35% L80%,35% L80%,65% L20%,65% Z"
-          fill="rgba(0,0,0,0.6)"
-        />
-      </Svg>
-
-      {/* Corner markers */}
-      <View style={styles.corners}>
-        <Svg width="100%" height="100%">
-          {/* Top-left corner */}
-          <Path
-            d="M20,35 L20,40 M20,35 L25,35"
-            stroke="#F5A623"
-            strokeWidth="4"
-            strokeLinecap="round"
-          />
-          {/* Add other corners... */}
-        </Svg>
+    <View style={styles.overlay}>
+      <View style={styles.topMask} />
+      <View style={styles.middleRow}>
+        <View style={styles.sideMask} />
+        <View style={styles.scanArea}>
+          <View style={styles.corners}>
+            <View style={[styles.corner, styles.topLeft]} />
+            <View style={[styles.corner, styles.topRight]} />
+            <View style={[styles.corner, styles.bottomLeft]} />
+            <View style={[styles.corner, styles.bottomRight]} />
+          </View>
+          {isScanning && (
+            <View
+              style={[
+                styles.scanLine,
+                // Add animation here if needed
+              ]}
+            />
+          )}
+        </View>
+        <View style={styles.sideMask} />
       </View>
-
-      {/* Animated scan line */}
-      <Animated.View
-        style={[
-          styles.scanLine,
-          {
-            transform: [
-              {
-                translateY: scanLineAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [-100, 100],
-                }),
-              },
-            ],
-          },
-        ]}
-      />
+      <View style={styles.bottomMask}>
+        <Text style={styles.instruction}>
+          Position the QR code within the frame to scan
+        </Text>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    backgroundColor: 'transparent',
+  },
+  topMask: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  },
+  middleRow: {
+    flexDirection: 'row',
+    height: 250,
+  },
+  sideMask: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  },
+  scanArea: {
+    width: 250,
+    height: 250,
+    position: 'relative',
+  },
+  corners: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  corner: {
+    position: 'absolute',
+    width: 20,
+    height: 20,
+    borderColor: '#FFFFFF',
+  },
+  topLeft: {
+    top: 0,
+    left: 0,
+    borderTopWidth: 3,
+    borderLeftWidth: 3,
+  },
+  topRight: {
+    top: 0,
+    right: 0,
+    borderTopWidth: 3,
+    borderRightWidth: 3,
+  },
+  bottomLeft: {
+    bottom: 0,
+    left: 0,
+    borderBottomWidth: 3,
+    borderLeftWidth: 3,
+  },
+  bottomRight: {
+    bottom: 0,
+    right: 0,
+    borderBottomWidth: 3,
+    borderRightWidth: 3,
+  },
+  scanLine: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: 2,
+    backgroundColor: '#00FF00',
+    top: '50%',
+  },
+  bottomMask: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  instruction: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    textAlign: 'center',
+    paddingHorizontal: 20,
+  },
+});

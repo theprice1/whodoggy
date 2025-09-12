@@ -1,58 +1,53 @@
-import { ScrollView, StyleSheet, Switch, Text, View } from "../../../../../";
-import { useState } from "../../../../../";
+import { ScrollView, StyleSheet, Switch, Text, View } from "react-native";
+import { useState } from "react";
 
-const _AccessibilityOptionsScreen = () => {
-	const [largeTextEnabled, setLargeTextEnabled] = useState(false);
-	const [highContrastEnabled, setHighContrastEnabled] = useState(false);
+const AccessibilityOptionsScreen = () => {
+  const [largeText, setLargeText] = useState(false);
+  const [highContrast, setHighContrast] = useState(false);
 
-	return (
-		<ScrollView contentContainerStyle={styles.container}>
-			<Text style={styles.headerText}>Accessibility Options</Text>
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.headerText}>Accessibility Options</Text>
 
-			<View style={styles.optionRow}>
-				<Text style={styles.optionText}>Enable Large Text</Text>
-				<Switch
-					value={largeTextEnabled}
-					onValueChange={setLargeTextEnabled}
-					accessibilityLabel="Toggle large text"
-					accessibilityHint="Turns on larger font size for better readability"
-				/>
-			</View>
+      <View style={styles.optionRow}>
+        <Text style={styles.optionText}>Enable Large Text</Text>
+        <Switch
+          value={largeText}
+          onValueChange={setLargeText}
+        />
+      </View>
 
-			<View style={styles.optionRow}>
-				<Text style={styles.optionText}>Enable High Contrast</Text>
-				<Switch
-					value={highContrastEnabled}
-					onValueChange={setHighContrastEnabled}
-					accessibilityLabel="Toggle high contrast mode"
-					accessibilityHint="Enhances contrast for better visibility"
-				/>
-			</View>
-
-			{/* Add more accessibility options as needed */}
-		</ScrollView>
-	);
+      <View style={styles.optionRow}>
+        <Text style={styles.optionText}>Enable High Contrast</Text>
+        <Switch
+          value={highContrast}
+          onValueChange={setHighContrast}
+        />
+      </View>
+    </ScrollView>
+  );
 };
 
-const _styles = StyleSheet.create({
-	container: {
-		flexGrow: 1,
-		padding: 16,
-	},
-	headerText: {
-		fontSize: 24,
-		fontWeight: "bold",
-		marginBottom: 24,
-	},
-	optionRow: {
-		alignItems: "center",
-		flexDirection: "row",
-		justifyContent: "space-between",
-		marginBottom: 16,
-	},
-	optionText: {
-		fontSize: 18,
-	},
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  optionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E0E0E0',
+  },
+  optionText: {
+    fontSize: 16,
+  },
 });
 
 export default AccessibilityOptionsScreen;
