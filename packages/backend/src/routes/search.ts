@@ -1,32 +1,32 @@
-// packages/backend/src/routes/search.ts
 import express from "express";
-import fetch from "node-fetch";
+import { _getDogByMicrochipId } from "../services/dogService.js";
 
 const router: express.Router = express.Router();
 
-// List of registry URLs
-const _registryPorts = Array.from({ length: 22 }, (_, i) => 4101 + i);
-const _registryUrls = _registryPorts.map(
-	(port) => `http://127.0.0.1:${port}/search`,
-);
-
 // GET /api/search/:microchipId
 router.get("/:microchipId", async (req, res) => {
-	const { microchipId } = req.params;
+  const { microchipId } = req.params;
 
-	for (const url of _registryUrls) {
-		try {
-			const _response = await fetch(`${url}/${microchipId}`);
-			if (_response.ok) {
-				const _data = await _response.json();
-				return res.json({ source: url, ..._data });
-			}
-		} catch {
-			// silently ignore failures — move to next registry
-		}
-	}
+  try {
+    // Search local database using existing service function
+    const dog = await _getDogByMicrochipId(microchipId);
 
-	return res.status(404).json({ message: "Dog not found in any registry." });
+    if (dog) {
+      // Return dog data with registry information
+      return res.json(dog);
+    } else {
+      return res.status(404).json({
+        message: "Dog not found in any registry.",
+        searchedMicrochipId: microchipId
+      });
+    }
+  } catch (error) {
+    console.error("Search error:", error);
+    return res.status(500).json({
+      message: "Error searching for dog",
+      error: error instanceof Error ? error.message : "Unknown error"
+    });
+  }
 });
 
 export default router;
