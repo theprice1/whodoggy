@@ -1,12 +1,12 @@
-import { useState } from "react";
 import type React from "react";
+import { useState } from "react";
 
 const ContactSupportScreen = () => {
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Implement form submission
-    console.log("Form submitted");
-  };
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		// TODO: Implement form submission
+		console.log("Form submitted");
+	};
 
 	const [email, setEmail] = useState("");
 	const [subject, setSubject] = useState("");
@@ -84,5 +84,3 @@ const ContactSupportScreen = () => {
 };
 
 export default ContactSupportScreen;
-
-

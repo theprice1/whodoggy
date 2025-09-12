@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
 	Alert,
 	Button,
@@ -6,7 +7,6 @@ import {
 	Text,
 	TextInput,
 } from "react-native";
-import { useState } from "react";
 
 // Define colors as constants to avoid color literals in styles
 const COLORS = {

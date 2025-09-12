@@ -1,31 +1,31 @@
 {
-  "name": "@whodoggy/tools",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "tsc",
-    "clean": "rimraf dist node_modules/.cache",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "format": "biome format --write .",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest"
-  },
-  "dependencies": {
-    "@whodoggy/backend": "workspace:*",
-    "@whodoggy/shared": "workspace:*",
-    "axios": "^1.7.8",
-    "firebase-admin": "^12.7.0",
-    "pg": "^8.13.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.0",
-    "@types/pg": "^8.11.10",
-    "rimraf": "^5.0.10",
-    "tsx": "^4.20.0",
-    "typescript": "^5.6.3",
-    "vitest": "^2.1.0"
-  }
+	"name": "@whodoggy/tools",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "tsc",
+		"clean": "rimraf dist node_modules/.cache",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write .",
+		"format": "biome format --write .",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"@whodoggy/backend": "workspace:*",
+		"@whodoggy/shared": "workspace:*",
+		"axios": "^1.7.8",
+		"firebase-admin": "^12.7.0",
+		"pg": "^8.13.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.0",
+		"@types/pg": "^8.11.10",
+		"rimraf": "^5.0.10",
+		"tsx": "^4.20.0",
+		"typescript": "^5.6.3",
+		"vitest": "^2.1.0"
+	}
 }

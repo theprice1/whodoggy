@@ -1,33 +1,33 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { _auth as auth } from "../firebase/firebase.js";
-import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Implement login logic
-  };
+	const handleLogin = (e: React.FormEvent) => {
+		e.preventDefault();
+		// TODO: Implement login logic
+	};
 
-  return (
-    <div>
-      <form onSubmit={handleLogin}>
-        <input 
-          type="email" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
-        <input 
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
+	return (
+		<div>
+			<form onSubmit={handleLogin}>
+				<input
+					type="email"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					placeholder="Email"
+				/>
+				<input
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+					placeholder="Password"
+				/>
+				<button type="submit">Login</button>
+			</form>
+		</div>
+	);
 }

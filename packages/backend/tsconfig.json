@@ -1,45 +1,29 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "target": "es2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "lib": [
-      "es2022"
-    ],
-    "outDir": "./dist",
-    "rootDir": ".",
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "verbatimModuleSyntax": true,
-    "types": [
-      "node"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@whodoggy/shared/*": [
-        "../shared/src/*"
-      ],
-      "@whodoggy/shared": [
-        "../shared/src/index.ts"
-      ]
-    }
-  },
-  "include": [
-    "src/**/*",
-    "prisma/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.test.*",
-    "**/*.spec.*"
-  ],
-  "references": [
-    {
-      "path": "../shared"
-    }
-  ]
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"target": "es2022",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"lib": ["es2022"],
+		"outDir": "./dist",
+		"rootDir": ".",
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"verbatimModuleSyntax": true,
+		"types": ["node"],
+		"baseUrl": ".",
+		"paths": {
+			"@whodoggy/shared/*": ["../shared/src/*"],
+			"@whodoggy/shared": ["../shared/src/index.ts"]
+		}
+	},
+	"include": ["src/**/*", "prisma/**/*"],
+	"exclude": ["node_modules", "dist", "**/*.test.*", "**/*.spec.*"],
+	"references": [
+		{
+			"path": "../shared"
+		}
+	]
 }

@@ -1,8 +1,8 @@
-import {
-  _getAllRegistries as getAllRegistries,
-  _getRegistryById as getRegistryById
-} from "../controllers/registriesController.js"; // ✅ ESM requires .js
 import express from "express";
+import {
+	_getAllRegistries as getAllRegistries,
+	_getRegistryById as getRegistryById,
+} from "../controllers/registriesController.js"; // ✅ ESM requires .js
 
 const router: express.Router = express.Router();
 

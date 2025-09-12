@@ -1,25 +1,29 @@
 // apps/web/src/components/ui/InfoDialog.tsx
-import React from 'react';
+import type React from "react";
 
 interface InfoDialogProps {
-  visible: boolean;
-  message: string;
-  onClose: () => void;
+	visible: boolean;
+	message: string;
+	onClose: () => void;
 }
 
-export const InfoDialog: React.FC<InfoDialogProps> = ({ visible, message, onClose }) => {
-  if (!visible) return null;
+export const InfoDialog: React.FC<InfoDialogProps> = ({
+	visible,
+	message,
+	onClose,
+}) => {
+	if (!visible) return null;
 
-  return (
-    <div className="info-dialog-overlay" onClick={onClose}>
-      <div className="info-dialog" onClick={(e) => e.stopPropagation()}>
-        <p className="info-dialog-message">{message}</p>
-        <button className="info-dialog-button" onClick={onClose}>
-          OK
-        </button>
-      </div>
-    </div>
-  );
+	return (
+		<div className="info-dialog-overlay" onClick={onClose}>
+			<div className="info-dialog" onClick={(e) => e.stopPropagation()}>
+				<p className="info-dialog-message">{message}</p>
+				<button className="info-dialog-button" onClick={onClose}>
+					OK
+				</button>
+			</div>
+		</div>
+	);
 };
 
 // Add to your CSS:
@@ -35,7 +39,7 @@ export const InfoDialog: React.FC<InfoDialogProps> = ({ visible, message, onClos
 //   align-items: center;
 //   z-index: 1000;
 // }
-// 
+//
 // .info-dialog {
 //   background: white;
 //   padding: 20px;

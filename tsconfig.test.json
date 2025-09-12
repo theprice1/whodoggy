@@ -1,18 +1,15 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "noEmit": true,
-    "types": [
-      "node",
-      "vitest/globals"
-    ]
-  },
-  "include": [
-    "packages/**/*.test.*",
-    "packages/**/*.spec.*",
-    "apps/**/*.test.*",
-    "apps/**/*.spec.*",
-    "tools/**/*.test.*",
-    "tools/**/*.spec.*"
-  ]
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"noEmit": true,
+		"types": ["node", "vitest/globals"]
+	},
+	"include": [
+		"packages/**/*.test.*",
+		"packages/**/*.spec.*",
+		"apps/**/*.test.*",
+		"apps/**/*.spec.*",
+		"tools/**/*.test.*",
+		"tools/**/*.spec.*"
+	]
 }

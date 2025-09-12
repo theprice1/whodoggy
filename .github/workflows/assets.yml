@@ -1,4 +1,3 @@
-# .github/workflows/assets.yml
 name: Asset Generation
 
 on:
@@ -17,13 +16,17 @@ jobs:
         with:
           node-version: '18'
 
-      - run: npm ci
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - run: pnpm install --frozen-lockfile
 
       - name: Generate assets
-        run: npm run assets:generate
+        run: pnpm run assets:generate
 
       - name: Validate assets
-        run: npm run assets:validate
+        run: pnpm run assets:validate
 
       - name: Commit generated assets
         run: |

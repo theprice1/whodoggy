@@ -1,19 +1,19 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "noEmit": false,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "outDir": "dist",
-    "tsBuildInfoFile": "dist/.tsbuildinfo",
-    "removeComments": true
-  },
-  "exclude": [
-    "node_modules",
-    "**/*.test.*",
-    "**/*.spec.*",
-    "tools/**/*",
-    "apps/mobile/**/*"
-  ]
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"noEmit": false,
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"outDir": "dist",
+		"tsBuildInfoFile": "dist/.tsbuildinfo",
+		"removeComments": true
+	},
+	"exclude": [
+		"node_modules",
+		"**/*.test.*",
+		"**/*.spec.*",
+		"tools/**/*",
+		"apps/mobile/**/*"
+	]
 }

@@ -1,17 +1,17 @@
 {
-  "extends": ["../../.eslintrc.json"],
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
-  "env": {
-    "node": true
-  },
-  "rules": {
-    "@typescript-eslint/no-misused-promises": [
-      "error",
-      {
-        "checksVoidReturn": false
-      }
-    ]
-  }
+	"extends": ["../../.eslintrc.json"],
+	"parserOptions": {
+		"project": "./tsconfig.json"
+	},
+	"env": {
+		"node": true
+	},
+	"rules": {
+		"@typescript-eslint/no-misused-promises": [
+			"error",
+			{
+				"checksVoidReturn": false
+			}
+		]
+	}
 }

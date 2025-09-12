@@ -559,9 +559,10 @@ export type ImageName<T extends ImageCategory> = keyof typeof Images[T];
 ### Mobile Icon Component
 
 ```typescript
+
+import { IconName, IconProps } from '@whodoggy/shared/assets';
 // apps/mobile/src/components/Icon/Icon.tsx
 import React from 'react';
-import { IconProps, IconName } from '@whodoggy/shared/assets';
 
 // Dynamic imports for all icons
 const iconMap: Record<IconName, any> = {
@@ -598,9 +599,10 @@ export const Icon: React.FC<IconProps> = ({
 ### Web Icon Component
 
 ```typescript
+
+import { IconName, IconProps } from '@whodoggy/shared/assets';
 // apps/web/src/components/Icon/Icon.tsx
 import React, { lazy, Suspense } from 'react';
-import { IconProps, IconName } from '@whodoggy/shared/assets';
 
 // Lazy load icon components
 const iconComponents: Record<IconName, React.LazyExoticComponent<any>> = {
@@ -647,7 +649,7 @@ export const Icon: React.FC<IconProps> = ({
         "apps/*",
         "packages/*"
       ],
-        "scripts": {
+        "scripts": 
     "assets:generate": "node scripts/generate-assets.js",
       "assets:optimize": "node scripts/optimize-images.js",
         "assets:sync": "node scripts/sync-assets.js",
@@ -655,14 +657,12 @@ export const Icon: React.FC<IconProps> = ({
             "assets:clean": "rimraf assets/generated apps/*/src/assets/generated",
               "prebuild": "npm run assets:generate",
                 "build": "turbo run build",
-                  "dev": "turbo run dev --parallel"
-  },
-  "devDependencies": {
+                  "dev": "turbo run dev --parallel",
+  "devDependencies": 
     "sharp": "^0.32.0",
       "svgo": "^3.0.0",
         "fs-extra": "^11.0.0",
           "turbo": "^1.10.0"
-  }
 }
 ```
 
@@ -671,12 +671,11 @@ export const Icon: React.FC<IconProps> = ({
 ```json
 {
   "name": "@whodoggy/mobile",
-    "scripts": {
+    "scripts": 
     "assets:ios": "npm run assets:generate --workspace=whodoggy && node ../../scripts/sync-ios-assets.js",
       "assets:android": "npm run assets:generate --workspace=whodoggy && node ../../scripts/sync-android-assets.js",
         "ios": "npm run assets:ios && react-native run-ios",
           "android": "npm run assets:android && react-native run-android"
-  }
 }
 ```
 
@@ -685,11 +684,10 @@ export const Icon: React.FC<IconProps> = ({
 ```json
 {
   "name": "@whodoggy/web",
-    "scripts": {
+    "scripts": 
     "assets:web": "npm run assets:generate --workspace=whodoggy && node ../../scripts/sync-web-assets.js",
       "dev": "npm run assets:web && next dev",
         "build": "npm run assets:web && next build"
-  }
 }
 ```
 

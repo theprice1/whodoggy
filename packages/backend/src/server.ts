@@ -1,8 +1,8 @@
-import { _errorHandler } from "./middleware/errorHandler.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import { _errorHandler } from "./middleware/errorHandler.js";
 import deleteDataRoutes from "./routes/deleteData.js";
 import dogsRoutes from "./routes/dogs.js";
 import registriesRoutes from "./routes/registries.js";
@@ -28,5 +28,5 @@ app.use(_errorHandler);
 // Server start
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`✅ WhoDoggy backend running on http://localhost:${port}`);
+	console.log(`✅ WhoDoggy backend running on http://localhost:${port}`);
 });

@@ -1,12 +1,9 @@
 {
-  "extends": [
-    "../../.eslintrc.json",
-    "@react-native-community"
-  ],
-  "parserOptions": {
-    "project": "./tsconfig.json",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  }
+	"extends": ["../../.eslintrc.json", "@react-native-community"],
+	"parserOptions": {
+		"project": "./tsconfig.json",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	}
 }

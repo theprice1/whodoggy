@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
 const WelcomeScreen = () => {
-  const navigate = (path: string) => {
-    // TODO: Implement navigation
-    console.log("Navigate to:", path);
-  };
+	const navigate = (path: string) => {
+		// TODO: Implement navigation
+		console.log("Navigate to:", path);
+	};
 
 	const _navigate = useNavigate();
 
@@ -38,4 +38,3 @@ const WelcomeScreen = () => {
 };
 
 export default WelcomeScreen;
-

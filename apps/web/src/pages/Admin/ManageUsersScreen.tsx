@@ -9,15 +9,15 @@ type User = {
 };
 
 const ManageUsersScreen = () => {
-  const fetchUsers = async () => {
-    // TODO: Implement user fetching
-    console.log("Fetching users...");
-  };
+	const fetchUsers = async () => {
+		// TODO: Implement user fetching
+		console.log("Fetching users...");
+	};
 
-  const toggleUserActive = async (id: string) => {
-    // TODO: Implement user toggle
-    console.log("Toggling user:", id);
-  };
+	const toggleUserActive = async (id: string) => {
+		// TODO: Implement user toggle
+		console.log("Toggling user:", id);
+	};
 
 	const [users, setUsers] = useState<User[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -115,4 +115,3 @@ const ManageUsersScreen = () => {
 };
 
 export default ManageUsersScreen;
-

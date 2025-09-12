@@ -1,14 +1,14 @@
 // src/routes/dogs.ts
 
-import {
-  _createDog as createDog,
-  _deleteDog as deleteDog,
-  _getDogById as getDogById,
-  _getDogByMicrochipId as getDogByMicrochipId,
-  _getDogs as getDogs,
-  _updateDog as updateDog,
-} from "../controllers/dogController.js";
 import express from "express";
+import {
+	_createDog as createDog,
+	_deleteDog as deleteDog,
+	_getDogById as getDogById,
+	_getDogByMicrochipId as getDogByMicrochipId,
+	_getDogs as getDogs,
+	_updateDog as updateDog,
+} from "../controllers/dogController.js";
 
 const router: express.Router = express.Router();
 

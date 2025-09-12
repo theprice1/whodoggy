@@ -1,8 +1,8 @@
 // shared/firebase.ts
 
+import type { Analytics } from "firebase/analytics";
 // Firebase core and services
 import { getAuth, getFirestore, initializeApp } from "../../";
-import type { Analytics } from "firebase/analytics";
 
 // Optional: analytics (only on web)
 let analytics: Analytics | null = null;

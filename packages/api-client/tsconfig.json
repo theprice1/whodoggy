@@ -1,44 +1,28 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "target": "es2022",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "lib": [
-      "es2022",
-      "DOM"
-    ],
-    "outDir": "dist",
-    "rootDir": "src",
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "types": [
-      "node"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@whodoggy/shared/*": [
-        "../shared/src/*"
-      ],
-      "@whodoggy/shared": [
-        "../shared/src/index.ts"
-      ]
-    }
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.test.*",
-    "**/*.spec.*"
-  ],
-  "references": [
-    {
-      "path": "../shared"
-    }
-  ]
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"target": "es2022",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"lib": ["es2022", "DOM"],
+		"outDir": "dist",
+		"rootDir": "src",
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"types": ["node"],
+		"baseUrl": ".",
+		"paths": {
+			"@whodoggy/shared/*": ["../shared/src/*"],
+			"@whodoggy/shared": ["../shared/src/index.ts"]
+		}
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist", "**/*.test.*", "**/*.spec.*"],
+	"references": [
+		{
+			"path": "../shared"
+		}
+	]
 }

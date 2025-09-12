@@ -1,64 +1,44 @@
 {
-  "version": "1.0.0",
-  "assets": {
-    "logo": {
-      "source": "assets/raw/svg/logo.svg",
-      "outputs": {
-        "mobile": {
-          "ios": {
-            "sizes": [
-              20,
-              29,
-              40,
-              60,
-              76,
-              83.5,
-              1024
-            ],
-            "path": "apps/mobile/ios/WhoDoggy/Images.xcassets/AppIcon.appiconset/"
-          },
-          "android": {
-            "sizes": {
-              "mdpi": 48,
-              "hdpi": 72,
-              "xhdpi": 96,
-              "xxhdpi": 144,
-              "xxxhdpi": 192
-            },
-            "path": "apps/mobile/android/app/src/main/res/"
-          }
-        },
-        "web": {
-          "sizes": [
-            16,
-            32,
-            192,
-            512
-          ],
-          "formats": [
-            "png",
-            "webp",
-            "svg"
-          ],
-          "path": "apps/web/public/icons/"
-        }
-      }
-    },
-    "icons": {
-      "source": "assets/raw/svg/icons/*.svg",
-      "outputs": {
-        "mobile": {
-          "format": "svg",
-          "path": "apps/mobile/src/assets/icons/"
-        },
-        "web": {
-          "format": [
-            "svg",
-            "react-component"
-          ],
-          "path": "apps/web/src/assets/icons/"
-        }
-      }
-    }
-  }
+	"version": "1.0.0",
+	"assets": {
+		"logo": {
+			"source": "assets/raw/svg/logo.svg",
+			"outputs": {
+				"mobile": {
+					"ios": {
+						"sizes": [20, 29, 40, 60, 76, 83.5, 1024],
+						"path": "apps/mobile/ios/WhoDoggy/Images.xcassets/AppIcon.appiconset/"
+					},
+					"android": {
+						"sizes": {
+							"mdpi": 48,
+							"hdpi": 72,
+							"xhdpi": 96,
+							"xxhdpi": 144,
+							"xxxhdpi": 192
+						},
+						"path": "apps/mobile/android/app/src/main/res/"
+					}
+				},
+				"web": {
+					"sizes": [16, 32, 192, 512],
+					"formats": ["png", "webp", "svg"],
+					"path": "apps/web/public/icons/"
+				}
+			}
+		},
+		"icons": {
+			"source": "assets/raw/svg/icons/*.svg",
+			"outputs": {
+				"mobile": {
+					"format": "svg",
+					"path": "apps/mobile/src/assets/icons/"
+				},
+				"web": {
+					"format": ["svg", "react-component"],
+					"path": "apps/web/src/assets/icons/"
+				}
+			}
+		}
+	}
 }

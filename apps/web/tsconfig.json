@@ -1,58 +1,35 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "target": "es2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "lib": [
-      "es2022",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "noEmit": false,
-    "outDir": "dist",
-    "rootDir": "src",
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "verbatimModuleSyntax": true,
-    "types": [
-      "node"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@whodoggy/shared/*": [
-        "../../packages/shared/src/*"
-      ],
-      "@whodoggy/shared": [
-        "../../packages/shared/src/index.ts"
-      ],
-      "@whodoggy/api-client/*": [
-        "../../packages/api-client/src/*"
-      ],
-      "@whodoggy/api-client": [
-        "../../packages/api-client/src/index.ts"
-      ]
-    }
-  },
-  "include": [
-    "src/**/*",
-    "vite.config.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build",
-    "**/*.test.*",
-    "**/*.spec.*"
-  ],
-  "references": [
-    {
-      "path": "../../packages/shared"
-    },
-    {
-      "path": "../../packages/api-client"
-    }
-  ]
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"target": "es2022",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"lib": ["es2022", "DOM", "DOM.Iterable"],
+		"noEmit": false,
+		"outDir": "dist",
+		"rootDir": "src",
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"verbatimModuleSyntax": true,
+		"types": ["node"],
+		"baseUrl": ".",
+		"paths": {
+			"@whodoggy/shared/*": ["../../packages/shared/src/*"],
+			"@whodoggy/shared": ["../../packages/shared/src/index.ts"],
+			"@whodoggy/api-client/*": ["../../packages/api-client/src/*"],
+			"@whodoggy/api-client": ["../../packages/api-client/src/index.ts"]
+		}
+	},
+	"include": ["src/**/*", "vite.config.ts"],
+	"exclude": ["node_modules", "dist", "build", "**/*.test.*", "**/*.spec.*"],
+	"references": [
+		{
+			"path": "../../packages/shared"
+		},
+		{
+			"path": "../../packages/api-client"
+		}
+	]
 }
