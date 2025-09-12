@@ -1,20 +1,20 @@
 import React from 'react';
 
-// Import SVGs with default imports (not ReactComponent)
-import HomeIcon from '../assets/icons/home.svg';
-import SearchIcon from '../assets/icons/search.svg';
-import ScanIcon from '../assets/icons/scan.svg';
-import ProfileIcon from '../assets/icons/profile.svg';
-import SettingsIcon from '../assets/icons/settings.svg';
-import AddIcon from '../assets/icons/add.svg';
-import EditIcon from '../assets/icons/edit.svg';
-import DeleteIcon from '../assets/icons/delete.svg';
-import ShareIcon from '../assets/icons/share.svg';
-import SuccessIcon from '../assets/icons/success.svg';
-import ErrorIcon from '../assets/icons/error.svg';
-import WarningIcon from '../assets/icons/warning.svg';
-import InfoIcon from '../assets/icons/info.svg';
-import MicrochipIcon from '../assets/icons/microchip.svg';
+// Import SVGs from the correct paths in your assets folder
+import HomeIcon from '../../../../../assets/raw/svg/icons/navigation/home.svg';
+import SearchIcon from '../../../../../assets/raw/svg/icons/navigation/search.svg';
+import ScanIcon from '../../../../../assets/raw/svg/icons/navigation/scan.svg';
+import ProfileIcon from '../../../../../assets/raw/svg/icons/navigation/profile.svg';
+import SettingsIcon from '../../../../../assets/raw/svg/icons/navigation/settings.svg';
+import AddIcon from '../../../../../assets/raw/svg/icons/actions/add.svg';
+import EditIcon from '../../../../../assets/raw/svg/icons/actions/edit.svg';
+import DeleteIcon from '../../../../../assets/raw/svg/icons/actions/delete.svg';
+import ShareIcon from '../../../../../assets/raw/svg/icons/actions/share.svg';
+import SuccessIcon from '../../../../../assets/raw/svg/icons/status/success.svg';
+import ErrorIcon from '../../../../../assets/raw/svg/icons/status/error.svg';
+import WarningIcon from '../../../../../assets/raw/svg/icons/status/warning.svg';
+import InfoIcon from '../../../../../assets/raw/svg/icons/status/info.svg';
+import MicrochipIcon from '../../../../../assets/raw/svg/icons/dog/microchip.svg';
 
 interface IconProps {
   name: string;
@@ -51,7 +51,7 @@ export const Icon: React.FC<IconProps> = ({
   const iconSrc = iconMap[name as IconName];
 
   if (!iconSrc) {
-    return <div className="w-4 h-4 bg-gray-300" />;
+    return <div className={`w-4 h-4 bg-gray-300 ${className}`} />;
   }
 
   return (
@@ -70,7 +70,6 @@ export const Icon: React.FC<IconProps> = ({
 
 // Helper function to apply color filters to SVG images
 function getColorFilter(color: string): string {
-  // This is a simplified approach - for production you'd want a more robust solution
   const colorMap: Record<string, string> = {
     '#2D89EF': 'invert(42%) sepia(93%) saturate(1352%) hue-rotate(204deg) brightness(97%) contrast(103%)',
     '#F5A623': 'invert(64%) sepia(100%) saturate(1374%) hue-rotate(6deg) brightness(100%) contrast(98%)',
