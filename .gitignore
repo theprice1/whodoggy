@@ -72,3 +72,7 @@ coverage/
 .cache/
 .parcel-cache/
 .vscode-test/
+
+# Firebase
+serviceAccountKey.json
+firebase-service-account
